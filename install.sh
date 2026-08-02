@@ -169,7 +169,8 @@ cat > "$INSTALL_ROOT/config.json" <<'JSON'
   "baseUrl": "https://pvalencia--orquesta-informes-serve.modal.run/v1",
   "model": "informes",
   "apiKey": "not-needed",
-  "maxToolRounds": 8
+  "maxToolRounds": 8,
+  "maxTokens": 4096
 }
 JSON
 if [[ ! -f "$INSTALL_ROOT/mcp.json" ]]; then

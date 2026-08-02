@@ -3,13 +3,12 @@ import type { OrquestaConfig } from "../config.js";
 
 export function createLlmClient(cfg: OrquestaConfig): OpenAI {
   if (!cfg.baseUrl) {
-    throw new Error(
-      "Falta ORQUESTA_BASE_URL. Ejemplo: https://<workspace>--orquesta-informes-serve.modal.run/v1"
-    );
+    throw new Error("No hay servidor de modelo configurado.");
   }
   return new OpenAI({
     apiKey: cfg.apiKey,
     baseURL: cfg.baseUrl,
+    timeout: 10 * 60 * 1000,
   });
 }
 
@@ -22,8 +21,8 @@ export async function chatCompletion(
   const res = await client.chat.completions.create({
     model: cfg.model,
     messages,
-    temperature: opts?.temperature ?? 0.3,
-    max_tokens: opts?.maxTokens ?? 2048,
+    temperature: opts?.temperature ?? 0.35,
+    max_tokens: opts?.maxTokens ?? cfg.maxTokens ?? 4096,
   });
   return res.choices[0]?.message?.content ?? "";
 }

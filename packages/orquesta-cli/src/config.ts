@@ -8,6 +8,11 @@ export const DEFAULTS = {
   model: "informes",
   apiKey: "not-needed",
   maxToolRounds: 8,
+  /**
+   * Tokens por llamada (sección). Debe caber con el system prompt
+   * dentro de max_model_len del servidor (hoy 4096 en Modal).
+   */
+  maxTokens: 2048,
 } as const;
 
 export type StoredConfig = {
@@ -15,6 +20,7 @@ export type StoredConfig = {
   model?: string;
   apiKey?: string;
   maxToolRounds?: number;
+  maxTokens?: number;
 };
 
 export type OrquestaConfig = {
@@ -25,6 +31,7 @@ export type OrquestaConfig = {
   configPath: string;
   mcpPath: string;
   maxToolRounds: number;
+  maxTokens: number;
 };
 
 /** Local stdio MCP (como opencode type=local) */
@@ -71,6 +78,7 @@ export function ensureUserConfig(): string {
       model: DEFAULTS.model,
       apiKey: DEFAULTS.apiKey,
       maxToolRounds: DEFAULTS.maxToolRounds,
+      maxTokens: DEFAULTS.maxTokens,
     };
     fs.writeFileSync(p, JSON.stringify(initial, null, 2) + "\n", "utf8");
   }
@@ -115,6 +123,18 @@ export function loadConfig(): OrquestaConfig {
     DEFAULTS.baseUrl
   ).replace(/\/$/, "");
 
+  // Contexto del servidor Modal = 4096; dejar margen para system + historial.
+  let maxTokens = Number(
+    process.env.ORQUESTA_MAX_TOKENS || stored.maxTokens || DEFAULTS.maxTokens
+  );
+  if (!Number.isFinite(maxTokens) || maxTokens <= 0) maxTokens = DEFAULTS.maxTokens;
+  if (maxTokens > 3072) {
+    maxTokens = DEFAULTS.maxTokens;
+    if (stored.maxTokens && stored.maxTokens > 3072) {
+      saveStoredConfig({ maxTokens });
+    }
+  }
+
   return {
     baseUrl,
     apiKey: process.env.ORQUESTA_API_KEY || stored.apiKey || DEFAULTS.apiKey,
@@ -127,6 +147,7 @@ export function loadConfig(): OrquestaConfig {
         stored.maxToolRounds ||
         DEFAULTS.maxToolRounds
     ),
+    maxTokens,
   };
 }
 

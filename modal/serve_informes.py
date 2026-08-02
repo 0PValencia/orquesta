@@ -1,15 +1,13 @@
-"""Sirve Qwen2.5-7B-Instruct + LoRA informes en Modal (API OpenAI-compatible).
+"""Sirve Qwen2.5-7B-Instruct + LoRA informes en Modal (API compatible estilo OpenAI).
 
 Prerrequisitos:
   1. pip install modal && modal setup
-  2. Subir adapter:  modal run modal/upload_adapter.py
-  3. Deploy:         modal deploy modal/serve_informes.py
-  4. (Opcional) Secret orquesta-api-key con clave ORQUESTA_API_KEY
+  2. modal run modal/upload_adapter.py
+  3. modal run modal/serve_informes.py   # descarga/cachea el base model una vez
+  4. modal deploy modal/serve_informes.py
 
-Cliente:
-  export ORQUESTA_BASE_URL=https://<workspace>--orquesta-informes-serve.modal.run/v1
-  export ORQUESTA_API_KEY=...
-  # model id: informes
+Cliente Orquesta usa model id: informes
+URL: https://pvalencia--orquesta-informes-serve.modal.run/v1
 """
 
 from __future__ import annotations
@@ -26,7 +24,6 @@ LORA_NAME = "informes"
 VLLM_PORT = 8000
 MINUTES = 60
 
-# Rutas dentro del contenedor
 ADAPTER_MOUNT = "/models/adapter"
 HF_CACHE = "/root/.cache/huggingface"
 VLLM_CACHE = "/root/.cache/vllm"
@@ -40,12 +37,12 @@ vllm_image = (
     .entrypoint([])
     .pip_install(
         "vllm==0.8.5",
-        "huggingface_hub[hf_transfer]==0.30.2",
-        "hf_transfer",
+        "huggingface_hub==0.30.2",
     )
     .env(
         {
-            "HF_HUB_ENABLE_HF_TRANSFER": "1",
+            # hf_transfer fallaba en el download; usar HTTP normal
+            "HF_HUB_ENABLE_HF_TRANSFER": "0",
             "VLLM_WORKER_MULTIPROC_METHOD": "spawn",
         }
     )
@@ -63,6 +60,22 @@ def _adapter_ready() -> bool:
 
 @app.function(
     image=vllm_image,
+    volumes={HF_CACHE: hf_cache_vol},
+    timeout=45 * MINUTES,
+)
+def download_base_model():
+    """Cachea Qwen2.5-7B-Instruct en el Volume HF (una vez)."""
+    from huggingface_hub import snapshot_download
+
+    print(f"Descargando {BASE_MODEL}…")
+    path = snapshot_download(BASE_MODEL, local_files_only=False)
+    hf_cache_vol.commit()
+    print(f"OK cache en {path}")
+    return path
+
+
+@app.function(
+    image=vllm_image,
     gpu="A10G",
     timeout=60 * MINUTES,
     scaledown_window=10 * MINUTES,
@@ -71,18 +84,27 @@ def _adapter_ready() -> bool:
         VLLM_CACHE: vllm_cache_vol,
         "/models": models_vol,
     },
-    # Opcional: modal secret create orquesta-api-key ORQUESTA_API_KEY=...
-    # y añade: secrets=[modal.Secret.from_name("orquesta-api-key")],
 )
-@modal.concurrent(max_inputs=8)
-@modal.web_server(port=VLLM_PORT, startup_timeout=15 * MINUTES)
+@modal.concurrent(max_inputs=4)
+@modal.web_server(port=VLLM_PORT, startup_timeout=20 * MINUTES)
 def serve():
-    """Arranca vLLM OpenAI-compatible con LoRA `informes`."""
+    """Arranca vLLM con LoRA `informes`."""
     if not _adapter_ready():
         raise RuntimeError(
             f"Adapter incompleto en {ADAPTER_MOUNT}. "
-            "Ejecuta primero: modal run modal/upload_adapter.py"
+            "Ejecuta: modal run modal/upload_adapter.py"
         )
+
+    # Asegurar pesos base en cache (si ya están, es rápido)
+    from huggingface_hub import snapshot_download
+
+    try:
+        snapshot_download(BASE_MODEL, local_files_only=True)
+        print("Base model ya en cache HF")
+    except Exception:
+        print("Base model no en cache; descargando…")
+        snapshot_download(BASE_MODEL, local_files_only=False)
+        hf_cache_vol.commit()
 
     cmd = [
         "python",
@@ -92,7 +114,6 @@ def serve():
         BASE_MODEL,
         "--served-model-name",
         LORA_NAME,
-        BASE_MODEL,
         "--host",
         "0.0.0.0",
         "--port",
@@ -100,16 +121,17 @@ def serve():
         "--enable-lora",
         "--lora-modules",
         f"{LORA_NAME}={ADAPTER_MOUNT}",
+        "--max-lora-rank",
+        "64",
         "--max-model-len",
         "4096",
         "--dtype",
         "auto",
         "--gpu-memory-utilization",
-        "0.90",
+        "0.92",
         "--enforce-eager",
     ]
 
-    # API key opcional (Modal Secret `orquesta-api-key` → ORQUESTA_API_KEY)
     api_key = os.environ.get("ORQUESTA_API_KEY")
     if api_key:
         os.environ["VLLM_API_KEY"] = api_key
@@ -119,16 +141,16 @@ def serve():
 
 
 @app.local_entrypoint()
-def main():
+def main(skip_download: bool = False):
+    if not skip_download:
+        print("Cacheando modelo base en Modal Volume…")
+        download_base_model.remote()
     print(
         f"""
-App: {APP_NAME}
-Base: {BASE_MODEL}
-LoRA name (OpenAI model id): {LORA_NAME}
+Listo para deploy:
+  modal deploy modal/serve_informes.py
 
-1) Sube pesos:   modal run modal/upload_adapter.py
-2) Deploy:       modal deploy modal/serve_informes.py
-3) CLI:          export ORQUESTA_BASE_URL=https://<...>.modal.run/v1
-                 orquesta chat
+URL: https://pvalencia--orquesta-informes-serve.modal.run/v1
+Model id: {LORA_NAME}
 """
     )

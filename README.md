@@ -4,7 +4,7 @@ Dataset + fine-tune de informes SI I, inferencia en **Modal**, agente CLI **orqu
 
 Repo: [github.com/0PValencia/orquesta](https://github.com/0PValencia/orquesta)
 
-## Instalar el CLI (como OpenCode)
+## Instalar el CLI
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/0PValencia/orquesta/master/install.sh | bash
