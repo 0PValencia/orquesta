@@ -5,26 +5,25 @@ import { createSession, describeMcpStatus, endSession, runTurn } from "../agent/
 
 export async function chatCommand(opts: { message?: string }): Promise<void> {
   const cfg = loadConfig();
-  if (!cfg.baseUrl) {
-    console.error(
-      "Configura ORQUESTA_BASE_URL (URL Modal .../v1).\nEjemplo:\n  export ORQUESTA_BASE_URL='https://pvalencia--orquesta-informes-serve.modal.run/v1'"
-    );
-    process.exitCode = 1;
-    return;
-  }
 
   console.error(`
 ╔══════════════════════════════════════╗
-║           ORQUESTA  v0.1             ║
-║   Agente · Informes · Modal · MCP    ║
+║           ORQUESTA                   ║
+║   Agente de informes académicos      ║
 ╚══════════════════════════════════════╝
 `);
-  console.error(`LLM → ${cfg.baseUrl} | model=${cfg.model}`);
-  console.error(`MCP file → ${cfg.mcpPath}`);
 
+  process.stderr.write("Preparando agente…\n");
   const session = await createSession(cfg);
   console.error(describeMcpStatus(session.mcpStatus));
-  console.error(`Comandos: orquesta mcp add | doctor | config | --help\n`);
+  console.error(`
+Comandos útiles (fuera del chat):
+  orquesta ayuda       — guía de uso
+  orquesta mcp add     — conectar Google Docs u otra herramienta
+  orquesta estado      — comprobar que todo esté listo
+
+Dentro del chat: escribe tu pedido, o «ayuda» / «salir».
+`);
 
   try {
     if (opts.message) {
@@ -34,16 +33,34 @@ export async function chatCommand(opts: { message?: string }): Promise<void> {
     }
 
     const rl = readline.createInterface({ input, output });
-    console.log('Orquesta listo. Escribe tu pedido (o "exit"/"salir").\n');
+    console.log("¿Qué informe o sección necesitas?\n");
     while (true) {
       const line = (await rl.question("tú> ")).trim();
       if (!line) continue;
       if (line === "exit" || line === "salir" || line === "quit") break;
+      if (line === "ayuda" || line === "help") {
+        console.log(
+          "\nEjemplos:\n" +
+            "  • Redacta la introducción de un SI para taller de motos\n" +
+            "  • Genera objetivos para un sistema escolar\n" +
+            "  • Escribe conclusiones de un proyecto de condominio\n" +
+            "  • Crea el documento en Google Docs  (necesita: orquesta mcp add)\n"
+        );
+        continue;
+      }
       try {
+        process.stderr.write("…\n");
         const out = await runTurn(session, line);
         console.log("\norquesta>\n" + out + "\n");
       } catch (err) {
-        console.error("Error:", err instanceof Error ? err.message : err);
+        const msg = err instanceof Error ? err.message : String(err);
+        if (/503|ECONNREFUSED|fetch failed|timeout/i.test(msg)) {
+          console.error(
+            "El modelo está arrancando (1–2 min la primera vez). Vuelve a intentarlo."
+          );
+        } else {
+          console.error("No pude completar eso:", msg);
+        }
       }
     }
     rl.close();

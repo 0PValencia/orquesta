@@ -2,11 +2,27 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
+/** Valores de fábrica — el usuario no necesita exportar variables técnicas. */
+export const DEFAULTS = {
+  baseUrl: "https://pvalencia--orquesta-informes-serve.modal.run/v1",
+  model: "informes",
+  apiKey: "not-needed",
+  maxToolRounds: 8,
+} as const;
+
+export type StoredConfig = {
+  baseUrl?: string;
+  model?: string;
+  apiKey?: string;
+  maxToolRounds?: number;
+};
+
 export type OrquestaConfig = {
   baseUrl: string;
   apiKey: string;
   model: string;
   configDir: string;
+  configPath: string;
   mcpPath: string;
   maxToolRounds: number;
 };
@@ -37,15 +53,80 @@ export function configDir(): string {
   return process.env.ORQUESTA_HOME?.trim() || path.join(os.homedir(), ".orquesta");
 }
 
+export function configPath(): string {
+  return path.join(configDir(), "config.json");
+}
+
+export function ensureConfigDir(dir: string = configDir()): void {
+  fs.mkdirSync(dir, { recursive: true });
+}
+
+/** Crea ~/.orquesta/config.json con defaults si no existe. */
+export function ensureUserConfig(): string {
+  ensureConfigDir();
+  const p = configPath();
+  if (!fs.existsSync(p)) {
+    const initial: StoredConfig = {
+      baseUrl: DEFAULTS.baseUrl,
+      model: DEFAULTS.model,
+      apiKey: DEFAULTS.apiKey,
+      maxToolRounds: DEFAULTS.maxToolRounds,
+    };
+    fs.writeFileSync(p, JSON.stringify(initial, null, 2) + "\n", "utf8");
+  }
+  if (!fs.existsSync(path.join(configDir(), "mcp.json"))) {
+    fs.writeFileSync(
+      path.join(configDir(), "mcp.json"),
+      JSON.stringify({ mcpServers: {} }, null, 2) + "\n",
+      "utf8"
+    );
+  }
+  return p;
+}
+
+function readStored(): StoredConfig {
+  const p = configPath();
+  if (!fs.existsSync(p)) return {};
+  try {
+    return JSON.parse(fs.readFileSync(p, "utf8")) as StoredConfig;
+  } catch {
+    return {};
+  }
+}
+
+export function saveStoredConfig(partial: StoredConfig): void {
+  ensureConfigDir();
+  const current = readStored();
+  const next = { ...current, ...partial };
+  fs.writeFileSync(configPath(), JSON.stringify(next, null, 2) + "\n", "utf8");
+}
+
+/**
+ * Prioridad: variable de entorno (avanzado) → config.json → defaults.
+ * El usuario normal solo usa defaults / config.json (sin exports).
+ */
 export function loadConfig(): OrquestaConfig {
+  ensureUserConfig();
   const dir = configDir();
+  const stored = readStored();
+  const baseUrl = (
+    process.env.ORQUESTA_BASE_URL ||
+    stored.baseUrl ||
+    DEFAULTS.baseUrl
+  ).replace(/\/$/, "");
+
   return {
-    baseUrl: (process.env.ORQUESTA_BASE_URL || "").replace(/\/$/, ""),
-    apiKey: process.env.ORQUESTA_API_KEY || "not-needed",
-    model: process.env.ORQUESTA_MODEL || "informes",
+    baseUrl,
+    apiKey: process.env.ORQUESTA_API_KEY || stored.apiKey || DEFAULTS.apiKey,
+    model: process.env.ORQUESTA_MODEL || stored.model || DEFAULTS.model,
     configDir: dir,
+    configPath: configPath(),
     mcpPath: path.join(dir, "mcp.json"),
-    maxToolRounds: Number(process.env.ORQUESTA_MAX_TOOL_ROUNDS || 8),
+    maxToolRounds: Number(
+      process.env.ORQUESTA_MAX_TOOL_ROUNDS ||
+        stored.maxToolRounds ||
+        DEFAULTS.maxToolRounds
+    ),
   };
 }
 
@@ -59,7 +140,6 @@ function normalizeServer(raw: Record<string, unknown>): McpServerConfig | null {
       headers: (raw.headers as Record<string, string>) || undefined,
     };
   }
-  // legacy: { command, args } sin type
   if (!raw.command || typeof raw.command !== "string") return null;
   return {
     type: "local",
@@ -90,13 +170,34 @@ export function saveMcpFile(mcpPath: string, data: McpFile): void {
   fs.writeFileSync(mcpPath, JSON.stringify(data, null, 2) + "\n", "utf8");
 }
 
-export function ensureConfigDir(dir: string): void {
-  fs.mkdirSync(dir, { recursive: true });
-}
-
 export function formatServerLine(name: string, s: McpServerConfig): string {
   if (s.type === "remote") {
-    return `- ${name} [remote] ${s.url}`;
+    return `- ${name} [remoto] ${s.url}`;
   }
   return `- ${name} [local] ${s.command} ${(s.args || []).join(" ")}`.trimEnd();
 }
+
+/** Texto de ayuda amigable (sin jerga de env vars). */
+export const HELP_TEXT = `
+Orquesta — agente de informes académicos (SI I)
+
+Comandos principales:
+  orquesta              Hablar con el agente (empezar aquí)
+  orquesta ayuda        Ver esta guía
+  orquesta estado       Ver si el modelo y los MCP están listos
+  orquesta mcp add      Conectar una herramienta (Google Docs, etc.)
+  orquesta mcp list     Ver herramientas conectadas
+  orquesta mcp remove   Quitar una herramienta
+
+Ejemplos:
+  orquesta
+  > Redacta la justificación de un SI para biblioteca municipal
+
+  orquesta mcp add
+  > (te pregunta nombre, si es local o remoto, y el comando)
+
+Notas:
+  • El modelo ya viene configurado; no hace falta exportar URLs.
+  • Sin MCP puedes redactar informes en el chat.
+  • Con MCP (Docs) el agente puede crear/editar documentos.
+`.trim();

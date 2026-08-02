@@ -1,6 +1,6 @@
 import { Command } from "commander";
 import { chatCommand } from "./commands/chat.js";
-import { configCommand } from "./commands/config.js";
+import { configCommand, helpCommand } from "./commands/config.js";
 import { doctorCommand } from "./commands/doctor.js";
 import {
   mcpAddCommand,
@@ -10,51 +10,58 @@ import {
   mcpRemoveCommand,
   mcpShowCommand,
 } from "./commands/mcp.js";
+import { ensureUserConfig } from "./config.js";
+
+ensureUserConfig();
 
 const program = new Command();
 
 program
   .name("orquesta")
-  .description(
-    "Agente CLI Orquesta — informes vía Modal + MCP\n\n" +
-      "  orquesta              Abre el chat del agente\n" +
-      "  orquesta mcp add      Añade un MCP (local o remoto)\n" +
-      "  orquesta doctor       Verifica configuración"
-  )
+  .description("Agente de informes académicos. Escribe «orquesta ayuda» para ver los comandos.")
   .version("0.1.0");
 
 program
   .command("chat", { isDefault: true })
-  .description("REPL del agente (LLM Modal + tools MCP) [default]")
-  .option("-m, --message <text>", "Un solo mensaje (sin REPL)")
+  .description("Hablar con el agente (comando principal)")
+  .option("-m, --message <text>", "Un solo mensaje y salir")
   .action(async (opts) => {
     await chatCommand(opts);
   });
 
 program
-  .command("config")
-  .description("Muestra la configuración actual (Modal / rutas)")
+  .command("ayuda")
+  .alias("help-es")
+  .description("Guía de comandos en español")
   .action(() => {
-    configCommand();
+    helpCommand();
   });
 
 program
-  .command("doctor")
-  .description("Comprueba ORQUESTA_BASE_URL, modelo y MCP")
+  .command("estado")
+  .alias("doctor")
+  .description("Comprobar si el modelo y las herramientas están listos")
   .action(() => {
     doctorCommand();
   });
 
-const mcp = program.command("mcp").description("Gestión de servidores MCP (estilo OpenCode)");
+program
+  .command("config")
+  .description("Ver configuración guardada")
+  .action(() => {
+    configCommand();
+  });
+
+const mcp = program.command("mcp").description("Conectar herramientas (Google Docs, etc.)");
 
 mcp
   .command("add")
-  .description("Añade un servidor MCP (interactivo: nombre, local/remoto, comando o URL)")
-  .argument("[name]", "Nombre del servidor")
-  .option("--url <url>", "MCP remoto (salta prompt de tipo)")
-  .option("--command <cmd>", "Comando local completo entre comillas")
-  .option("--env <KEY=VALUE>", "Variable de entorno (repetible)", collect, [])
-  .option("--header <KEY=VALUE>", "Header HTTP remoto (repetible)", collect, [])
+  .description("Añadir una herramienta (nombre → local o remoto → comando/URL)")
+  .argument("[name]", "Nombre")
+  .option("--url <url>", "Servidor remoto")
+  .option("--command <cmd>", "Comando local")
+  .option("--env <KEY=VALUE>", "Variable de entorno", collect, [])
+  .option("--header <KEY=VALUE>", "Header HTTP", collect, [])
   .action(async (name: string | undefined, opts) => {
     await mcpAddCommand({
       name,
@@ -67,15 +74,15 @@ mcp
 
 mcp
   .command("list")
-  .description("Lista servidores en ~/.orquesta/mcp.json")
+  .description("Listar herramientas conectadas")
   .action(() => {
     mcpListCommand();
   });
 
 mcp
   .command("show")
-  .description("Muestra la config JSON de un servidor")
-  .argument("<name>", "Nombre del servidor")
+  .description("Ver detalle de una herramienta")
+  .argument("<name>", "Nombre")
   .action((name: string) => {
     mcpShowCommand(name);
   });
@@ -83,22 +90,22 @@ mcp
 mcp
   .command("remove")
   .alias("rm")
-  .description("Elimina un servidor MCP")
-  .argument("[name]", "Nombre (si omites, pregunta)")
+  .description("Quitar una herramienta")
+  .argument("[name]", "Nombre")
   .action(async (name?: string) => {
     await mcpRemoveCommand(name);
   });
 
 mcp
   .command("init")
-  .description("Crea ~/.orquesta/mcp.json vacío")
+  .description("Crear archivo de herramientas vacío")
   .action(() => {
     mcpInitCommand();
   });
 
 mcp
   .command("path")
-  .description("Imprime la ruta de mcp.json")
+  .description("Ruta del archivo de herramientas")
   .action(() => {
     mcpPathCommand();
   });

@@ -93,14 +93,14 @@ function formatMcpStatusForPrompt(s: McpStatus): string {
 
 export function describeMcpStatus(s: McpStatus): string {
   if (!s.configured.length) {
-    return "⚠ No hay MCP configurados. Añade uno con: orquesta mcp add";
+    return "○ Sin herramientas extra (MCP). Puedes redactar igual. Para Docs: orquesta mcp add";
   }
   if (!s.connected.length) {
-    return `⚠ MCP configurados (${s.configured.join(", ")}) pero ninguno conectó${
-      s.failed.length ? ` — fallaron: ${s.failed.join(", ")}` : ""
+    return `⚠ Herramientas en config (${s.configured.join(", ")}) pero no conectaron${
+      s.failed.length ? ` — revisa: ${s.failed.join(", ")}` : ""
     }.`;
   }
-  return `✓ MCP: ${s.connected.join(", ")} (${s.toolCount} tools)`;
+  return `✓ Herramientas listas: ${s.connected.join(", ")} (${s.toolCount} funciones)`;
 }
 
 export async function runTurn(session: AgentSession, userText: string): Promise<string> {

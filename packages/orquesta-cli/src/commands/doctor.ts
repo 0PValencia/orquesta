@@ -1,42 +1,24 @@
 import { loadConfig, loadMcpFile } from "../config.js";
 
+/** Diagnóstico en lenguaje simple (alias: orquesta estado). */
 export function doctorCommand(): void {
   const cfg = loadConfig();
   const mcp = loadMcpFile(cfg.mcpPath);
-  const checks: { ok: boolean; msg: string }[] = [];
+  const n = Object.keys(mcp.mcpServers).length;
 
-  checks.push({
-    ok: Boolean(cfg.baseUrl),
-    msg: cfg.baseUrl
-      ? `ORQUESTA_BASE_URL = ${cfg.baseUrl}`
-      : "Falta ORQUESTA_BASE_URL (debe terminar en /v1, no la URL del dashboard)",
-  });
-  checks.push({
-    ok: cfg.baseUrl.includes("/v1") || !cfg.baseUrl,
-    msg: cfg.baseUrl.includes("/v1")
-      ? "BASE_URL incluye /v1"
-      : cfg.baseUrl
-        ? "BASE_URL no termina en /v1 — añade /v1"
-        : "BASE_URL vacío",
-  });
-  checks.push({
-    ok: !cfg.baseUrl.includes("modal.com/apps"),
-    msg: cfg.baseUrl.includes("modal.com/apps")
-      ? "Estás usando la URL del dashboard; usa ...modal.run/v1"
-      : "BASE_URL no es dashboard (ok)",
-  });
-  checks.push({
-    ok: true,
-    msg: `Modelo: ${cfg.model}`,
-  });
-  checks.push({
-    ok: true,
-    msg: `MCP file: ${cfg.mcpPath} (${Object.keys(mcp.mcpServers).length} servidores)`,
-  });
+  console.log("Estado de Orquesta\n");
 
-  console.log("Orquesta doctor\n");
-  for (const c of checks) {
-    console.log(`${c.ok ? "✓" : "✗"} ${c.msg}`);
+  const okModel = Boolean(cfg.baseUrl && cfg.model);
+  console.log(`${okModel ? "✓" : "✗"} Modelo listo (${cfg.model})`);
+
+  if (n === 0) {
+    console.log("○ Herramientas MCP: ninguna todavía");
+    console.log("  → Conecta una con: orquesta mcp add");
+  } else {
+    console.log(`✓ Herramientas MCP configuradas: ${n}`);
+    console.log("  → Ver lista: orquesta mcp list");
   }
-  if (checks.some((c) => !c.ok)) process.exitCode = 1;
+
+  console.log("\nPara empezar: orquesta");
+  console.log("Guía de comandos: orquesta ayuda");
 }

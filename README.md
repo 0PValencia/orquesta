@@ -10,14 +10,6 @@ Repo: [github.com/0PValencia/orquesta](https://github.com/0PValencia/orquesta)
 curl -fsSL https://raw.githubusercontent.com/0PValencia/orquesta/master/install.sh | bash
 ```
 
-Luego:
-
-```bash
-export ORQUESTA_BASE_URL='https://pvalencia--orquesta-informes-serve.modal.run/v1'
-orquesta doctor
-orquesta mcp add
-orquesta
-```
 
 ## Piezas
 

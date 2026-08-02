@@ -158,17 +158,30 @@ if [[ "$no_modify_path" != "true" ]]; then
 fi
 
 echo ""
-echo -e "${GREEN}✓ Orquesta instalado${NC}"
-echo -e "${MUTED}Binario:${NC} $INSTALL_DIR/orquesta"
+echo -e "${GREEN}✓ Orquesta listo${NC}"
+echo -e "${MUTED}Comando:${NC} orquesta"
 echo ""
-echo -e "${MUTED}Siguiente:${NC}"
-echo "  export ORQUESTA_BASE_URL='https://TU--orquesta-informes-serve.modal.run/v1'"
-echo "  orquesta doctor"
-echo "  orquesta mcp add"
+
+# Config por defecto (modelo Modal) — sin exports manuales
+mkdir -p "$INSTALL_ROOT"
+cat > "$INSTALL_ROOT/config.json" <<'JSON'
+{
+  "baseUrl": "https://pvalencia--orquesta-informes-serve.modal.run/v1",
+  "model": "informes",
+  "apiKey": "not-needed",
+  "maxToolRounds": 8
+}
+JSON
+if [[ ! -f "$INSTALL_ROOT/mcp.json" ]]; then
+  echo '{"mcpServers":{}}' > "$INSTALL_ROOT/mcp.json"
+fi
+
+echo -e "${GREEN}Ya puedes usarlo:${NC}"
+echo "  orquesta ayuda"
 echo "  orquesta"
 echo ""
 if ! command -v orquesta >/dev/null 2>&1; then
-  echo -e "${ORANGE}Abre una terminal nueva o ejecuta:${NC}"
+  echo -e "${ORANGE}Si no encuentra el comando, abre una terminal nueva o ejecuta:${NC}"
   echo "  export PATH=\"$INSTALL_DIR:\$PATH\""
   echo ""
 fi
