@@ -1,8 +1,15 @@
-import readline from "node:readline/promises";
-import { stdin as input, stdout as output } from "node:process";
+import { stdout as output } from "node:process";
 import { loadConfig } from "../config.js";
-import { createSession, describeMcpStatus, endSession, runTurn } from "../agent/loop.js";
+import {
+  createSession,
+  describeMcpStatus,
+  endSession,
+  runTurn,
+  type AgentEvent,
+} from "../agent/loop.js";
 import { parseChoices, presentChoices, stripChoices } from "../ui/choices.js";
+import { ThinkingUI, readChatLine } from "../ui/thinking.js";
+import { assistantBubble, c, userBubble } from "../ui/theme.js";
 
 function isAbort(err: unknown): boolean {
   if (!err || typeof err !== "object") return false;
@@ -19,21 +26,18 @@ function cleanExit(code = 0): never {
   process.exit(code);
 }
 
-async function readUserLine(prompt: string): Promise<string> {
-  const rl = readline.createInterface({ input, output, terminal: true });
-  const onSig = () => {
-    rl.close();
-    cleanExit(0);
+function bindThinking(ui: ThinkingUI): (e: AgentEvent) => void {
+  return (e) => {
+    if (e.type === "cycle") {
+      ui.log("cycle", `ciclo ${e.round}/${e.max} · ~${e.promptTokens} tokens`);
+    } else if (e.type === "tool") {
+      ui.log("tool", `MCP → ${e.name}`);
+    } else if (e.type === "retry_format") {
+      ui.log("warn", `reintento: ${e.reason}`);
+    } else if (e.type === "info") {
+      ui.log("info", e.text);
+    }
   };
-  rl.on("SIGINT", onSig);
-  try {
-    return (await rl.question(prompt)).trim();
-  } catch (err) {
-    if (isAbort(err)) cleanExit(0);
-    throw err;
-  } finally {
-    rl.close();
-  }
 }
 
 async function handleAgentReply(
@@ -42,21 +46,19 @@ async function handleAgentReply(
   interactive: boolean
 ): Promise<void> {
   let current = out;
-  // Hasta 5 rondas de aclaración por menú
   for (let i = 0; i < 5; i++) {
     const choices = parseChoices(current);
     if (!choices) {
       const text = stripChoices(current);
-      if (text) console.log("\norquesta>\n" + text + "\n");
+      if (text) console.log("\n" + assistantBubble(text) + "\n");
       return;
     }
 
     if (choices.preamble) {
-      console.log("\norquesta>\n" + choices.preamble + "\n");
+      console.log("\n" + assistantBubble(choices.preamble) + "\n");
     }
 
     if (!interactive) {
-      // Modo -m: mostrar opciones en texto plano
       console.log(choices.question);
       choices.options.forEach((o, idx) => console.log(`  ${idx + 1}) ${o}`));
       console.log("  *) Opción propia");
@@ -71,12 +73,14 @@ async function handleAgentReply(
       throw err;
     }
 
-    console.log(`→ ${pick}\n`);
-    process.stderr.write("… generando\n");
-    current = await runTurn(session, pick);
+    console.log(userBubble(pick));
+    const ui = new ThinkingUI();
+    ui.begin();
+    current = await runTurn(session, pick, { onEvent: bindThinking(ui) });
+    await ui.finish(interactive);
   }
   const text = stripChoices(current);
-  if (text) console.log("\norquesta>\n" + text + "\n");
+  if (text) console.log("\n" + assistantBubble(text) + "\n");
 }
 
 export async function chatCommand(opts: { message?: string }): Promise<void> {
@@ -92,14 +96,14 @@ export async function chatCommand(opts: { message?: string }): Promise<void> {
   };
   process.on("SIGINT", onSigInt);
 
-  console.error(`
-╔══════════════════════════════════════╗
+  console.log(`
+${c.green}╔══════════════════════════════════════╗
 ║           ORQUESTA                   ║
 ║   Agente de informes académicos      ║
-╚══════════════════════════════════════╝
+╚══════════════════════════════════════╝${c.reset}
 `);
 
-  process.stderr.write("Preparando agente…\n");
+  process.stderr.write(`${c.dim}Preparando agente…${c.reset}\n`);
   let session;
   try {
     session = await createSession(cfg);
@@ -108,29 +112,28 @@ export async function chatCommand(opts: { message?: string }): Promise<void> {
     throw err;
   }
 
-  console.error(describeMcpStatus(session.mcpStatus));
-  console.error(`
-Comandos útiles (fuera del chat):
-  orquesta ayuda       — guía de uso
-  orquesta mcp add     — conectar Google Docs u otra herramienta
-  orquesta estado      — comprobar que todo esté listo
-
-Dentro del chat: escribe tu pedido, «ayuda» o Ctrl+C / «salir» para salir.
+  console.log(describeMcpStatus(session.mcpStatus));
+  console.log(`
+${c.dim}Comandos: orquesta ayuda · orquesta mcp add · orquesta update
+Chat: escribe tu pedido · «proceso» no hace falta (Enter tras Pensando) · salir / Ctrl+C${c.reset}
 `);
 
   try {
     if (opts.message) {
-      process.stderr.write("… generando\n");
-      const out = await runTurn(session, opts.message);
+      console.log(userBubble(opts.message));
+      const ui = new ThinkingUI();
+      ui.begin();
+      const out = await runTurn(session, opts.message, { onEvent: bindThinking(ui) });
+      await ui.finish(false);
       await handleAgentReply(session, out, false);
       return;
     }
 
-    console.log("¿Qué informe o sección necesitas?\n");
+    console.log(`${c.dim}¿Qué informe o sección necesitas?${c.reset}`);
     while (true) {
       let line: string;
       try {
-        line = await readUserLine("tú> ");
+        line = await readChatLine();
       } catch (err) {
         if (isAbort(err)) cleanExit(0);
         throw err;
@@ -141,30 +144,33 @@ Dentro del chat: escribe tu pedido, «ayuda» o Ctrl+C / «salir» para salir.
         console.log(
           "\nEjemplos:\n" +
             "  • Redacta la introducción de un SI para taller de motos\n" +
-            "  • Genera el informe completo de un sistema escolar\n" +
-            "  • Escribe conclusiones de un proyecto de condominio\n" +
-            "  • Crea el informe en Google Docs / Documents  (usa el MCP de Docs)\n"
+            "  • Crea el informe en Google Docs / Documents (usa MCP)\n" +
+            "  • Tras «Pensando ✓», Enter muestra el proceso (ciclos/tools)\n"
         );
         continue;
       }
+
       try {
-        process.stderr.write("… generando\n");
-        const out = await runTurn(session, line);
+        console.log(userBubble(line));
+        const ui = new ThinkingUI();
+        ui.begin();
+        const out = await runTurn(session, line, { onEvent: bindThinking(ui) });
+        await ui.finish(true);
         await handleAgentReply(session, out, true);
       } catch (err) {
         if (isAbort(err)) cleanExit(0);
         const msg = err instanceof Error ? err.message : String(err);
         if (/503|ECONNREFUSED|fetch failed|timeout/i.test(msg)) {
           console.error(
-            "El modelo está arrancando (1–2 min la primera vez). Vuelve a intentarlo."
+            `${c.yellow}El modelo está arrancando (1–2 min). Vuelve a intentarlo.${c.reset}`
           );
         } else if (/maximum context length|demasiado largo/i.test(msg)) {
           console.error(
-            "El pedido (o las tools MCP) ocupan demasiado contexto. Prueba un mensaje más corto."
+            `${c.yellow}Contexto lleno. Prueba un pedido más corto o «salir» y vuelve a entrar.${c.reset}`
           );
-          console.error(msg);
+          console.error(c.dim + msg + c.reset);
         } else {
-          console.error("No pude completar eso:", msg);
+          console.error(`${c.yellow}No pude completar eso:${c.reset}`, msg);
         }
       }
     }

@@ -13,9 +13,6 @@ import {
 } from "../mcp/client.js";
 import { toolsCatalog } from "../mcp/catalog.js";
 
-/** Una o más tool_call en el mismo mensaje del assistant. */
-const TOOL_RE_GLOBAL = /<tool_call>\s*([\s\S]*?)\s*<\/tool_call>/gi;
-
 /** Pedido explícito de Google Docs / Documents / documento remoto. */
 const DOCS_INTENT =
   /\b(google\s*docs?|documents?|docs\.google|en\s+(un\s+)?(documento|doc|docs?|documents?)(\s+de\s+google)?|crear\s+(un\s+)?(doc|documento)|documentId|insertar\s+en\s+(el\s+)?doc|escribir\s+en\s+(el\s+)?(doc|docs?|documents?)|sube(lo|r)?\s+a\s+(docs?|documents?)|exportar\s+(a\s+)?(pdf|docs?|documents?)|guarda(r|lo)?\s+en\s+(docs?|documents?))\b/i;
@@ -144,7 +141,21 @@ export function describeMcpStatus(s: McpStatus): string {
   return `✓ Herramientas listas: ${s.connected.join(", ")} (${s.toolCount} funciones)`;
 }
 
-export async function runTurn(session: AgentSession, userText: string): Promise<string> {
+export type AgentEvent =
+  | { type: "cycle"; round: number; max: number; promptTokens: number }
+  | { type: "tool"; name: string }
+  | { type: "retry_format"; reason: string }
+  | { type: "info"; text: string };
+
+export type RunTurnOpts = {
+  onEvent?: (e: AgentEvent) => void;
+};
+
+export async function runTurn(
+  session: AgentSession,
+  userText: string,
+  opts?: RunTurnOpts
+): Promise<string> {
   if (DOCS_INTENT.test(userText) && session.tools.length === 0) {
     const msg = noMcpMessage(session.mcpStatus, userText);
     session.messages.push({ role: "user", content: userText });
@@ -153,7 +164,7 @@ export async function runTurn(session: AgentSession, userText: string): Promise<
   }
 
   if (FULL_REPORT_INTENT.test(userText) && !DOCS_INTENT.test(userText)) {
-    return generateLongReport(session, userText);
+    return generateLongReport(session, userText, opts);
   }
 
   if (DOCS_INTENT.test(userText) && session.tools.length > 0) {
@@ -161,47 +172,74 @@ export async function runTurn(session: AgentSession, userText: string): Promise<
   }
   session.lastUserQuery = userText;
   session.messages.push({ role: "user", content: userText });
-  return agentLoop(session);
+  return agentLoop(session, opts);
 }
 
 /**
  * Bucle estilo OpenCode:
  * 1) prompt = system + historial + schemas tools + pedido
  * 2) LLM
- * 3) si hay tool_call → ejecutar → historial
- * 4) volver a 2
+ * 3) si hay tool_call (o JSON de tool) → ejecutar → historial
+ * 4) si finge tools sin formato válido → corregir y repetir
+ * 5) volver a 2
  */
-async function agentLoop(session: AgentSession): Promise<string> {
+async function agentLoop(session: AgentSession, opts?: RunTurnOpts): Promise<string> {
   const maxRounds = Math.max(session.cfg.maxToolRounds, 1);
+  const emit = opts?.onEvent;
   let final = "";
+  let formatRetries = 0;
 
   for (let round = 0; round < maxRounds; round++) {
     const prompt = buildPrompt(session);
-    process.stderr.write(
-      `[orquesta] ciclo ${round + 1}/${maxRounds} · ~${approxTokens(prompt)} tokens prompt\n`
-    );
+    const promptTokens = approxTokens(prompt);
+    emit?.({ type: "cycle", round: round + 1, max: maxRounds, promptTokens });
 
     const reply = await chatCompletion(session.client, session.cfg, prompt);
     session.messages.push({ role: "assistant", content: reply });
 
-    const calls = parseToolCalls(reply);
+    let calls = parseToolCalls(reply);
+
+    // El modelo a menudo pone JSON en ``` sin <tool_call> — ya lo parseamos;
+    // si aún finge usar MCP, forzar reintento.
+    if (!calls.length && session.toolsMode && looksLikeFakeTools(reply)) {
+      formatRetries++;
+      if (formatRetries <= 3) {
+        emit?.({
+          type: "retry_format",
+          reason: "respondió con JSON simulado; pidiendo <tool_call> real",
+        });
+        session.messages.push({
+          role: "user",
+          content:
+            "ERROR: No ejecutaste ninguna tool. Prohibido simular ni usar ```json. " +
+            "Responde AHORA solo con una o más llamadas en este formato exacto (nada más):\n" +
+            '<tool_call>{"name":"create_document","arguments":{"title":"Consecuencias de la Guerra"}}</tool_call>\n' +
+            "Empieza por create_document. No inventes documentId.",
+        });
+        continue;
+      }
+    }
+
     if (!calls.length) {
-      final = stripToolCalls(reply).trim() || reply.trim();
+      final = stripToolNoise(reply).trim() || reply.trim();
       break;
     }
 
     if (session.tools.length === 0) {
       final =
-        stripToolCalls(reply).trim() +
+        stripToolNoise(reply).trim() +
         "\n\n[Orquesta] Intenté usar tools pero no hay MCP. Ejecuta: orquesta mcp add";
       break;
     }
 
     session.toolsMode = true;
+    formatRetries = 0;
     const resultBlocks: string[] = [];
 
-    for (const call of calls) {
-      process.stderr.write(`[orquesta] tool → ${call.name}\n`);
+    // Máx 3 tools por ciclo para no inflar contexto
+    const batch = calls.slice(0, 3);
+    for (const call of batch) {
+      emit?.({ type: "tool", name: call.name });
       const raw = await callTool(session.servers, session.tools, call.name, call.arguments);
       const clipped =
         raw.length > MAX_TOOL_RESULT_CHARS
@@ -213,9 +251,10 @@ async function agentLoop(session: AgentSession): Promise<string> {
     session.messages.push({
       role: "user",
       content:
-        `Resultados de tools (ciclo ${round + 1}):\n\n` +
+        `Resultados REALES de tools (ciclo ${round + 1}):\n\n` +
         resultBlocks.join("\n\n") +
-        `\n\nContinúa el bucle: más <tool_call> si hace falta, o respuesta final al usuario.`,
+        `\n\nUsa documentId/índices de estos resultados. ` +
+        `Siguiente: más <tool_call> o respuesta final breve con el link/id del documento.`,
     });
   }
 
@@ -228,32 +267,79 @@ async function agentLoop(session: AgentSession): Promise<string> {
 
 type ParsedCall = { name: string; arguments: Record<string, unknown> };
 
+function tryParseCall(raw: string): ParsedCall | null {
+  try {
+    const parsed = JSON.parse(raw.trim()) as {
+      name?: string;
+      tool?: string;
+      arguments?: Record<string, unknown>;
+      args?: Record<string, unknown>;
+      params?: Record<string, unknown>;
+    };
+    const name = (parsed.name || parsed.tool || "").trim();
+    if (!name) return null;
+    // Placeholder inventado → inválido
+    const args = parsed.arguments || parsed.args || parsed.params || {};
+    return { name, arguments: args };
+  } catch {
+    return null;
+  }
+}
+
+/** Acepta <tool_call>, fences ```json y objetos sueltos {name, arguments}. */
 function parseToolCalls(text: string): ParsedCall[] {
   const out: ParsedCall[] = [];
-  const re = new RegExp(TOOL_RE_GLOBAL.source, "gi");
+  const seen = new Set<string>();
+
+  const add = (c: ParsedCall | null) => {
+    if (!c) return;
+    const key = `${c.name}:${JSON.stringify(c.arguments)}`;
+    if (seen.has(key)) return;
+    seen.add(key);
+    out.push(c);
+  };
+
+  const tagRe = /<tool_call>\s*([\s\S]*?)\s*<\/tool_call>/gi;
   let m: RegExpExecArray | null;
-  while ((m = re.exec(text))) {
-    try {
-      const parsed = JSON.parse(m[1].trim()) as {
-        name?: string;
-        arguments?: Record<string, unknown>;
-        args?: Record<string, unknown>;
-      };
-      const name = (parsed.name || "").trim();
-      if (!name) continue;
-      out.push({
-        name,
-        arguments: parsed.arguments || parsed.args || {},
-      });
-    } catch {
-      /* skip malformed */
+  while ((m = tagRe.exec(text))) add(tryParseCall(m[1]));
+
+  const fenceRe = /```(?:json)?\s*([\s\S]*?)```/gi;
+  while ((m = fenceRe.exec(text))) {
+    const body = m[1].trim();
+    if (body.startsWith("{")) add(tryParseCall(body));
+    else if (body.startsWith("[")) {
+      try {
+        const arr = JSON.parse(body) as unknown[];
+        for (const item of arr) {
+          if (item && typeof item === "object") add(tryParseCall(JSON.stringify(item)));
+        }
+      } catch {
+        /* ignore */
+      }
     }
   }
+
+  // Objetos JSON sueltos con "name" y "arguments"
+  const objRe =
+    /\{\s*"name"\s*:\s*"[^"]+"\s*,\s*"(?:arguments|args|params)"\s*:\s*\{[\s\S]*?\}\s*\}/g;
+  while ((m = objRe.exec(text))) add(tryParseCall(m[0]));
+
   return out;
 }
 
-function stripToolCalls(text: string): string {
-  return text.replace(new RegExp(TOOL_RE_GLOBAL.source, "gi"), "").trim();
+function looksLikeFakeTools(text: string): boolean {
+  return (
+    /create_document|insert_text|append_text|get_document_structure|document_id_here|Ejecutando:/i.test(
+      text
+    ) || /```json[\s\S]*"name"\s*:/i.test(text)
+  );
+}
+
+function stripToolNoise(text: string): string {
+  return text
+    .replace(/<tool_call>[\s\S]*?<\/tool_call>/gi, "")
+    .replace(/```(?:json)?\s*\{[\s\S]*?"name"\s*:[\s\S]*?\}\s*```/gi, "")
+    .trim();
 }
 
 /** system + (schemas si toolsMode) + historial podado */
@@ -264,15 +350,18 @@ function buildPrompt(session: AgentSession): OpenAI.Chat.ChatCompletionMessagePa
   }
 
   const schemas = toolsCatalog(session.tools, {
-    maxTools: 22,
+    maxTools: 18,
     query: session.lastUserQuery,
   });
 
   const toolsMsg: OpenAI.Chat.ChatCompletionMessageParam = {
     role: "system",
     content:
-      `## Tools disponibles este ciclo (schemas)\n${schemas}\n\n` +
-      `Ejecuta el bucle agente: razona → tool_call(s) → espera resultados → sigue o responde.`,
+      `## Tools MCP este ciclo\n${schemas}\n\n` +
+      `OBLIGATORIO: para usar una tool emite EXACTAMENTE:\n` +
+      `<tool_call>{"name":"NOMBRE","arguments":{...}}</tool_call>\n` +
+      `Prohibido: markdown \`\`\`json, inventar documentId, decir que ya ejecutaste sin tool_call.\n` +
+      `Flujo típico Docs: create_document → (opcional structure) → get_document_structure → insert_text por sección.`,
   };
 
   if (history[0]?.role === "system") {
@@ -321,17 +410,25 @@ function pruneHistory(
   return packed;
 }
 
-async function generateLongReport(session: AgentSession, userText: string): Promise<string> {
-  process.stderr.write(
-    `[orquesta] Informe largo → ${REPORT_SECTIONS.length} secciones (así se alcanzan informes extensos).\n`
-  );
+async function generateLongReport(
+  session: AgentSession,
+  userText: string,
+  opts?: RunTurnOpts
+): Promise<string> {
+  opts?.onEvent?.({
+    type: "info",
+    text: `Informe largo → ${REPORT_SECTIONS.length} secciones`,
+  });
 
   const parts: string[] = [];
   const context = `Pedido del usuario:\n${userText}\n\nRedacta SOLO la sección indicada, extensa y formal (tercera persona), lista para un informe SI I de ~100–120 páginas en total. No resumas de más. No uses tool_call.`;
 
   for (let i = 0; i < REPORT_SECTIONS.length; i++) {
     const sec = REPORT_SECTIONS[i];
-    process.stderr.write(`[orquesta] Sección ${i + 1}/${REPORT_SECTIONS.length}: ${sec.title}\n`);
+    opts?.onEvent?.({
+      type: "info",
+      text: `Sección ${i + 1}/${REPORT_SECTIONS.length}: ${sec.title}`,
+    });
 
     const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [
       session.messages[0],
