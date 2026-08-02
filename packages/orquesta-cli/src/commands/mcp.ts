@@ -121,23 +121,8 @@ export async function mcpAddCommand(opts: {
       return;
     }
     const parts = splitCommand(cmdLine);
+    // Env solo vía --env (no se pregunta en el asistente interactivo)
     const env = parseKvList(opts.env);
-    const nonInteractive = Boolean(opts.command);
-    if (!nonInteractive && !opts.env?.length) {
-      const addEnv = await confirm("¿Añadir variables de entorno?", false);
-      if (addEnv) {
-        while (true) {
-          const line = await ask("ENV KEY=VALUE (vacío para terminar)");
-          if (!line) break;
-          const eq = line.indexOf("=");
-          if (eq <= 0) {
-            console.log("Formato: KEY=VALUE");
-            continue;
-          }
-          env[line.slice(0, eq)] = line.slice(eq + 1);
-        }
-      }
-    }
     const local: McpLocalServer = {
       type: "local",
       command: parts[0],
@@ -156,23 +141,8 @@ export async function mcpAddCommand(opts: {
       process.exitCode = 1;
       return;
     }
+    // Headers solo vía --header
     const headers = parseKvList(opts.header);
-    const nonInteractive = Boolean(opts.url);
-    if (!nonInteractive && !opts.header?.length) {
-      const addH = await confirm("¿Añadir headers HTTP (p. ej. Authorization)?", false);
-      if (addH) {
-        while (true) {
-          const line = await ask("Header KEY=VALUE (vacío para terminar)");
-          if (!line) break;
-          const eq = line.indexOf("=");
-          if (eq <= 0) {
-            console.log("Formato: KEY=VALUE");
-            continue;
-          }
-          headers[line.slice(0, eq)] = line.slice(eq + 1);
-        }
-      }
-    }
     const remote: McpRemoteServer = {
       type: "remote",
       url,

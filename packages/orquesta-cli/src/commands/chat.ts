@@ -60,6 +60,7 @@ Dentro del chat: escribe tu pedido, «ayuda» o Ctrl+C / «salir» para salir.
 
   try {
     if (opts.message) {
+      process.stderr.write("… generando\n");
       const out = await runTurn(session, opts.message);
       console.log(out);
       return;
@@ -96,7 +97,7 @@ Dentro del chat: escribe tu pedido, «ayuda» o Ctrl+C / «salir» para salir.
         continue;
       }
       try {
-        process.stderr.write("… generando (informes largos van por secciones)\n");
+        process.stderr.write("… generando\n");
         const out = await runTurn(session, line);
         console.log("\norquesta>\n" + out + "\n");
       } catch (err) {
@@ -109,6 +110,11 @@ Dentro del chat: escribe tu pedido, «ayuda» o Ctrl+C / «salir» para salir.
           console.error(
             "El modelo está arrancando (1–2 min la primera vez). Vuelve a intentarlo."
           );
+        } else if (/maximum context length|demasiado largo/i.test(msg)) {
+          console.error(
+            "El pedido (o las tools MCP) ocupan demasiado contexto. Prueba un mensaje más corto o `orquesta mcp remove` temporalmente."
+          );
+          console.error(msg);
         } else {
           console.error("No pude completar eso:", msg);
         }

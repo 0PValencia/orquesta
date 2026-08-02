@@ -41,7 +41,7 @@ export async function connectServers(mcp: McpFile): Promise<{
           inputSchema: t.inputSchema as Record<string, unknown> | undefined,
         });
       }
-      console.error(`[mcp] conectado: ${name} (${listed.tools.length} tools)`);
+      // Silencioso: el estado se muestra en describeMcpStatus
     } catch (err) {
       failed.push(name);
       console.error(`[mcp] falló ${name}:`, err instanceof Error ? err.message : err);
@@ -58,11 +58,18 @@ async function connectOne(name: string, cfg: McpServerConfig): Promise<Connected
       requestInit: cfg.headers ? { headers: cfg.headers } : undefined,
     });
   } else {
+    // stderr ignore: oculta "npm notice", banners del server MCP, etc.
     transport = new StdioClientTransport({
       command: cfg.command,
       args: cfg.args ?? [],
-      env: { ...process.env, ...cfg.env } as Record<string, string>,
+      env: {
+        ...process.env,
+        npm_config_loglevel: "error",
+        NPM_CONFIG_UPDATE_NOTIFIER: "false",
+        ...cfg.env,
+      } as Record<string, string>,
       cwd: cfg.cwd,
+      stderr: "ignore",
     });
   }
   const client = new Client({ name: `orquesta-${name}`, version: "0.1.0" });
@@ -103,12 +110,40 @@ export async function closeServers(servers: ConnectedServer[]): Promise<void> {
   }
 }
 
-export function toolsCatalog(tools: OrquestaTool[]): string {
+/** Catálogo compacto y acotado (el contexto Modal es 4k). */
+export function toolsCatalog(
+  tools: OrquestaTool[],
+  opts?: { maxChars?: number }
+): string {
   if (!tools.length) return "(No hay servidores MCP configurados o conectados.)";
-  return tools
-    .map((t) => {
-      const schema = t.inputSchema ? JSON.stringify(t.inputSchema) : "{}";
-      return `- ${t.fullName}: ${t.description || ""}\n  schema: ${schema}`;
-    })
-    .join("\n");
+
+  const maxChars = opts?.maxChars ?? 2800;
+  const PRIORITY =
+    /create|insert|append|write|read_document|get_document|list_document|replace|format|heading|table|image|export|duplicate|delete_text|find_text|generate_academic|paragraph|citation|bibliography|page_break|structure|academic/i;
+
+  const sorted = [...tools].sort((a, b) => {
+    const pa = PRIORITY.test(a.name) || PRIORITY.test(a.fullName) ? 0 : 1;
+    const pb = PRIORITY.test(b.name) || PRIORITY.test(b.fullName) ? 0 : 1;
+    return pa - pb || a.fullName.localeCompare(b.fullName);
+  });
+
+  const lines: string[] = [];
+  let size = 0;
+  for (const t of sorted) {
+    const line = `- ${t.fullName}`;
+    if (size + line.length + 1 > maxChars) break;
+    lines.push(line);
+    size += line.length + 1;
+  }
+  const omitted = sorted.length - lines.length;
+  let out = lines.join("\n");
+  if (omitted > 0) {
+    out += `\n… y ${omitted} tools más (puedes llamarlas por nombre razonable).`;
+  }
+  return (
+    out +
+    "\n\nPara usar una tool responde con:\n" +
+    '<tool_call>{"name":"<fullName>","arguments":{...}}</tool_call>'
+  );
 }
+

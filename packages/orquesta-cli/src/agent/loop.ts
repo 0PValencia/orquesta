@@ -20,7 +20,7 @@ const DOCS_INTENT =
 
 /** Pedido de informe largo / completo → generar por secciones (≈120 págs no caben en 1 respuesta). */
 const FULL_REPORT_INTENT =
-  /\b(informe\s+completo|proyecto\s+completo|todo\s+el\s+informe|genera(r)?\s+(el\s+)?informe|documento\s+completo|perfil\s+completo|redacta\s+(un\s+)?informe)\b/i;
+  /\b(informe\s+completo|proyecto\s+completo|todo\s+el\s+informe|documento\s+completo|perfil\s+completo|(genera(r)?|redacta)\s+(el\s+|un\s+)?informe\s+completo)\b/i;
 
 const REPORT_SECTIONS: { id: string; title: string; hint: string }[] = [
   { id: "portada", title: "PORTADA", hint: "Universidad, facultad, grupo, título, integrantes, materia, gestión" },
@@ -87,9 +87,13 @@ export async function createSession(cfg: OrquestaConfig): Promise<AgentSession> 
   };
 
   const client = createLlmClient(cfg);
-  const catalog = toolsCatalog(tools);
   const statusBlock = formatMcpStatusForPrompt(mcpStatus);
-  const system = `${loadSystemPrompt()}\n\n## Estado MCP ahora\n${statusBlock}\n\n## Tools MCP disponibles\n${catalog}`;
+  const toolsNote = tools.length
+    ? `Hay ${tools.length} tools MCP listas (${connected.join(", ") || "—"}). ` +
+      "El listado detallado se añade solo cuando el usuario pide Google Docs / documentos. " +
+      "Para redactar texto en el chat NO uses tools."
+    : "(sin tools MCP)";
+  const system = `${loadSystemPrompt()}\n\n## Estado MCP ahora\n${statusBlock}\n\n## Tools MCP\n${toolsNote}`;
 
   return {
     messages: [{ role: "system", content: system }],
@@ -144,7 +148,13 @@ export async function runTurn(session: AgentSession, userText: string): Promise<
     return generateLongReport(session, userText);
   }
 
-  session.messages.push({ role: "user", content: userText });
+  let content = userText;
+  if (DOCS_INTENT.test(userText) && session.tools.length > 0) {
+    content =
+      `${userText}\n\n## Catálogo MCP (usa tool_call si hace falta)\n` +
+      toolsCatalog(session.tools, { maxChars: 2800 });
+  }
+  session.messages.push({ role: "user", content });
   return agentLoop(session);
 }
 
