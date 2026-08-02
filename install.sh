@@ -89,11 +89,13 @@ mkdir -p "$INSTALL_DIR" "$SRC_DIR"
 if [[ -d "$SRC_DIR/.git" ]]; then
   echo -e "${MUTED}Actualizando código en ${NC}$SRC_DIR"
   git -C "$SRC_DIR" remote set-url origin "$REPO" 2>/dev/null || true
+  # Copia de instalación: siempre igualar al remoto (tolera force-push / ramas divergentes)
   git -C "$SRC_DIR" fetch --depth 1 origin "$BRANCH"
-  git -C "$SRC_DIR" checkout -B "$BRANCH" "origin/$BRANCH" 2>/dev/null \
-    || git -C "$SRC_DIR" pull --ff-only origin "$BRANCH"
+  git -C "$SRC_DIR" checkout -B "$BRANCH" "origin/$BRANCH"
+  git -C "$SRC_DIR" reset --hard "origin/$BRANCH"
+  git -C "$SRC_DIR" clean -fd
 else
-  # carpeta puede existir vacía
+  # carpeta puede existir vacía o sin .git
   rm -rf "$SRC_DIR"
   git clone --depth 1 --branch "$BRANCH" "$REPO" "$SRC_DIR"
 fi
@@ -162,17 +164,19 @@ echo -e "${GREEN}✓ Orquesta listo${NC}"
 echo -e "${MUTED}Comando:${NC} orquesta"
 echo ""
 
-# Config por defecto (modelo Modal) — sin exports manuales
+# Config por defecto (modelo Modal) — solo si no existe (no pisar ajustes del usuario)
 mkdir -p "$INSTALL_ROOT"
-cat > "$INSTALL_ROOT/config.json" <<'JSON'
+if [[ ! -f "$INSTALL_ROOT/config.json" ]]; then
+  cat > "$INSTALL_ROOT/config.json" <<'JSON'
 {
   "baseUrl": "https://pvalencia--orquesta-informes-serve.modal.run/v1",
   "model": "informes",
   "apiKey": "not-needed",
   "maxToolRounds": 8,
-  "maxTokens": 4096
+  "maxTokens": 2048
 }
 JSON
+fi
 if [[ ! -f "$INSTALL_ROOT/mcp.json" ]]; then
   echo '{"mcpServers":{}}' > "$INSTALL_ROOT/mcp.json"
 fi
