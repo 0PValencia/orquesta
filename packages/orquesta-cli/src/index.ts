@@ -10,6 +10,7 @@ import {
   mcpRemoveCommand,
   mcpShowCommand,
 } from "./commands/mcp.js";
+import { updateCommand } from "./commands/update.js";
 import { ensureUserConfig } from "./config.js";
 
 ensureUserConfig();
@@ -54,6 +55,15 @@ program
   .description("Comprobar si el modelo y las herramientas están listos")
   .action(() => {
     doctorCommand();
+  });
+
+program
+  .command("update")
+  .alias("actualizar")
+  .description("Actualizar Orquesta desde GitHub (sin borrar ni volver a curl)")
+  .option("--reinstall", "Reinstalar con el install.sh remoto")
+  .action(async (opts) => {
+    await updateCommand({ remoteInstall: Boolean(opts.reinstall) });
   });
 
 program

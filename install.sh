@@ -172,7 +172,7 @@ if [[ ! -f "$INSTALL_ROOT/config.json" ]]; then
   "baseUrl": "https://pvalencia--orquesta-informes-serve.modal.run/v1",
   "model": "informes",
   "apiKey": "not-needed",
-  "maxToolRounds": 8,
+  "maxToolRounds": 16,
   "maxTokens": 2048
 }
 JSON
@@ -184,6 +184,7 @@ fi
 echo -e "${GREEN}Ya puedes usarlo:${NC}"
 echo "  orquesta ayuda"
 echo "  orquesta"
+echo "  orquesta update     # tras subir cambios a GitHub"
 echo ""
 if ! command -v orquesta >/dev/null 2>&1; then
   echo -e "${ORANGE}Si no encuentra el comando, abre una terminal nueva o ejecuta:${NC}"

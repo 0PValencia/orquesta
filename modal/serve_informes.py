@@ -124,11 +124,11 @@ def serve():
         "--max-lora-rank",
         "64",
         "--max-model-len",
-        "4096",
+        "8192",
         "--dtype",
         "auto",
         "--gpu-memory-utilization",
-        "0.92",
+        "0.90",
         "--enforce-eager",
     ]
 

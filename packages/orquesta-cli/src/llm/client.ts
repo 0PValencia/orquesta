@@ -1,8 +1,8 @@
 import OpenAI from "openai";
 import type { OrquestaConfig } from "../config.js";
 
-/** Contexto del servidor Modal (vLLM max-model-len). */
-const CONTEXT_LIMIT = 4096;
+/** Debe coincidir con --max-model-len de Modal (vLLM). */
+export const CONTEXT_LIMIT = 8192;
 
 export function createLlmClient(cfg: OrquestaConfig): OpenAI {
   if (!cfg.baseUrl) {
@@ -15,7 +15,7 @@ export function createLlmClient(cfg: OrquestaConfig): OpenAI {
   });
 }
 
-function approxTokens(messages: OpenAI.Chat.ChatCompletionMessageParam[]): number {
+export function approxTokens(messages: OpenAI.Chat.ChatCompletionMessageParam[]): number {
   // Heurística barata (español ~3–4 chars/token). Mejor pecar de alto.
   const chars = JSON.stringify(messages).length;
   return Math.ceil(chars / 3);
@@ -26,10 +26,10 @@ function clampMaxTokens(
   messages: OpenAI.Chat.ChatCompletionMessageParam[]
 ): number {
   const prompt = approxTokens(messages);
-  const room = CONTEXT_LIMIT - prompt - 48;
+  const room = CONTEXT_LIMIT - prompt - 64;
   if (room < 128) {
     throw new Error(
-      `El mensaje es demasiado largo para el modelo (${prompt} tokens aprox. de prompt; límite ${CONTEXT_LIMIT}). Acorta el pedido o desactiva MCP temporales.`
+      `El mensaje es demasiado largo para el modelo (${prompt} tokens aprox. de prompt; límite ${CONTEXT_LIMIT}). Acorta el pedido o empieza un chat nuevo con «salir».`
     );
   }
   return Math.max(128, Math.min(requested, room));

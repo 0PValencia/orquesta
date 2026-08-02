@@ -110,40 +110,5 @@ export async function closeServers(servers: ConnectedServer[]): Promise<void> {
   }
 }
 
-/** Catálogo compacto y acotado (el contexto Modal es 4k). */
-export function toolsCatalog(
-  tools: OrquestaTool[],
-  opts?: { maxChars?: number }
-): string {
-  if (!tools.length) return "(No hay servidores MCP configurados o conectados.)";
-
-  const maxChars = opts?.maxChars ?? 2800;
-  const PRIORITY =
-    /create|insert|append|write|read_document|get_document|list_document|replace|format|heading|table|image|export|duplicate|delete_text|find_text|generate_academic|paragraph|citation|bibliography|page_break|structure|academic/i;
-
-  const sorted = [...tools].sort((a, b) => {
-    const pa = PRIORITY.test(a.name) || PRIORITY.test(a.fullName) ? 0 : 1;
-    const pb = PRIORITY.test(b.name) || PRIORITY.test(b.fullName) ? 0 : 1;
-    return pa - pb || a.fullName.localeCompare(b.fullName);
-  });
-
-  const lines: string[] = [];
-  let size = 0;
-  for (const t of sorted) {
-    const line = `- ${t.fullName}`;
-    if (size + line.length + 1 > maxChars) break;
-    lines.push(line);
-    size += line.length + 1;
-  }
-  const omitted = sorted.length - lines.length;
-  let out = lines.join("\n");
-  if (omitted > 0) {
-    out += `\n… y ${omitted} tools más (puedes llamarlas por nombre razonable).`;
-  }
-  return (
-    out +
-    "\n\nPara usar una tool responde con:\n" +
-    '<tool_call>{"name":"<fullName>","arguments":{...}}</tool_call>'
-  );
-}
+export { selectTools, toolsCatalog } from "./catalog.js";
 

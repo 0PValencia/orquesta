@@ -3,23 +3,23 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { type OrquestaConfig, loadMcpFile } from "../config.js";
-import { chatCompletion, createLlmClient } from "../llm/client.js";
+import { approxTokens, chatCompletion, createLlmClient, CONTEXT_LIMIT } from "../llm/client.js";
 import {
   callTool,
   closeServers,
   connectServers,
-  toolsCatalog,
   type ConnectedServer,
   type OrquestaTool,
 } from "../mcp/client.js";
+import { toolsCatalog } from "../mcp/catalog.js";
 
-const TOOL_RE = /<tool_call>\s*([\s\S]*?)\s*<\/tool_call>/i;
+/** Una o más tool_call en el mismo mensaje del assistant. */
+const TOOL_RE_GLOBAL = /<tool_call>\s*([\s\S]*?)\s*<\/tool_call>/gi;
 
-/** Pedido explícito de Google Docs / Documents / documento remoto (no basta con "informe"). */
+/** Pedido explícito de Google Docs / Documents / documento remoto. */
 const DOCS_INTENT =
   /\b(google\s*docs?|documents?|docs\.google|en\s+(un\s+)?(documento|doc|docs?|documents?)(\s+de\s+google)?|crear\s+(un\s+)?(doc|documento)|documentId|insertar\s+en\s+(el\s+)?doc|escribir\s+en\s+(el\s+)?(doc|docs?|documents?)|sube(lo|r)?\s+a\s+(docs?|documents?)|exportar\s+(a\s+)?(pdf|docs?|documents?)|guarda(r|lo)?\s+en\s+(docs?|documents?))\b/i;
 
-/** Pedido de informe largo / completo → generar por secciones (≈120 págs no caben en 1 respuesta). */
 const FULL_REPORT_INTENT =
   /\b(informe\s+completo|proyecto\s+completo|todo\s+el\s+informe|documento\s+completo|perfil\s+completo|(genera(r)?|redacta)\s+(el\s+|un\s+)?informe\s+completo)\b/i;
 
@@ -47,6 +47,10 @@ const REPORT_SECTIONS: { id: string; title: string; hint: string }[] = [
   { id: "bib", title: "BIBLIOGRAFÍA", hint: "APA, 6–12 referencias plausibles" },
 ];
 
+const MAX_TOOL_RESULT_CHARS = 3000;
+/** Proteger resultados de tools recientes (estilo OpenCode prune). */
+const PROTECT_RECENT_TOOL_CHARS = 12000;
+
 function loadSystemPrompt(): string {
   const here = path.dirname(fileURLToPath(import.meta.url));
   const candidates = [
@@ -73,6 +77,8 @@ export type AgentSession = {
   cfg: OrquestaConfig;
   client: ReturnType<typeof createLlmClient>;
   mcpStatus: McpStatus;
+  toolsMode: boolean;
+  lastUserQuery: string;
 };
 
 export async function createSession(cfg: OrquestaConfig): Promise<AgentSession> {
@@ -90,10 +96,9 @@ export async function createSession(cfg: OrquestaConfig): Promise<AgentSession> 
   const client = createLlmClient(cfg);
   const statusBlock = formatMcpStatusForPrompt(mcpStatus);
   const toolsNote = tools.length
-    ? `Hay ${tools.length} tools MCP listas en: ${connected.join(", ") || "—"}. ` +
-      "Úsalas SOLO si el usuario pide Docs/Documents/documento remoto (el catálogo se inyecta en ese caso). " +
-      "Si hay varios servidores, elige el que mejor encaje con la tarea. " +
-      "Para redactar solo en el chat: NO uses tools."
+    ? `Hay ${tools.length} tools MCP en: ${connected.join(", ") || "—"}. ` +
+      "En modo tools el ciclo es: prompt(system+historial+schemas)+LLM → ejecutar tool_call → historial → repetir. " +
+      "Activa tools solo si el usuario pide Docs/Documents/documento remoto."
     : "(sin tools MCP)";
   const system = `${loadSystemPrompt()}\n\n## Estado MCP ahora\n${statusBlock}\n\n## Tools MCP\n${toolsNote}`;
 
@@ -104,6 +109,8 @@ export async function createSession(cfg: OrquestaConfig): Promise<AgentSession> 
     cfg,
     client,
     mcpStatus,
+    toolsMode: false,
+    lastUserQuery: "",
   };
 }
 
@@ -145,27 +152,173 @@ export async function runTurn(session: AgentSession, userText: string): Promise<
     return msg;
   }
 
-  // Informe largo: una sección por llamada (capaz de acercarse a decenas/centenas de páginas)
   if (FULL_REPORT_INTENT.test(userText) && !DOCS_INTENT.test(userText)) {
     return generateLongReport(session, userText);
   }
 
-  let content = userText;
   if (DOCS_INTENT.test(userText) && session.tools.length > 0) {
-    const byServer = new Map<string, number>();
-    for (const t of session.tools) {
-      byServer.set(t.server, (byServer.get(t.server) || 0) + 1);
-    }
-    const serversLine = [...byServer.entries()]
-      .map(([n, c]) => `- ${n} (${c} tools)`)
-      .join("\n");
-    content =
-      `${userText}\n\n## Servidores MCP conectados\n${serversLine}\n` +
-      `Elige el servidor más adecuado al pedido.\n\n## Catálogo MCP (usa tool_call si hace falta)\n` +
-      toolsCatalog(session.tools, { maxChars: 2800 });
+    session.toolsMode = true;
   }
-  session.messages.push({ role: "user", content });
+  session.lastUserQuery = userText;
+  session.messages.push({ role: "user", content: userText });
   return agentLoop(session);
+}
+
+/**
+ * Bucle estilo OpenCode:
+ * 1) prompt = system + historial + schemas tools + pedido
+ * 2) LLM
+ * 3) si hay tool_call → ejecutar → historial
+ * 4) volver a 2
+ */
+async function agentLoop(session: AgentSession): Promise<string> {
+  const maxRounds = Math.max(session.cfg.maxToolRounds, 1);
+  let final = "";
+
+  for (let round = 0; round < maxRounds; round++) {
+    const prompt = buildPrompt(session);
+    process.stderr.write(
+      `[orquesta] ciclo ${round + 1}/${maxRounds} · ~${approxTokens(prompt)} tokens prompt\n`
+    );
+
+    const reply = await chatCompletion(session.client, session.cfg, prompt);
+    session.messages.push({ role: "assistant", content: reply });
+
+    const calls = parseToolCalls(reply);
+    if (!calls.length) {
+      final = stripToolCalls(reply).trim() || reply.trim();
+      break;
+    }
+
+    if (session.tools.length === 0) {
+      final =
+        stripToolCalls(reply).trim() +
+        "\n\n[Orquesta] Intenté usar tools pero no hay MCP. Ejecuta: orquesta mcp add";
+      break;
+    }
+
+    session.toolsMode = true;
+    const resultBlocks: string[] = [];
+
+    for (const call of calls) {
+      process.stderr.write(`[orquesta] tool → ${call.name}\n`);
+      const raw = await callTool(session.servers, session.tools, call.name, call.arguments);
+      const clipped =
+        raw.length > MAX_TOOL_RESULT_CHARS
+          ? raw.slice(0, MAX_TOOL_RESULT_CHARS) + "\n…[resultado truncado]"
+          : raw;
+      resultBlocks.push(`### ${call.name}\n${clipped}`);
+    }
+
+    session.messages.push({
+      role: "user",
+      content:
+        `Resultados de tools (ciclo ${round + 1}):\n\n` +
+        resultBlocks.join("\n\n") +
+        `\n\nContinúa el bucle: más <tool_call> si hace falta, o respuesta final al usuario.`,
+    });
+  }
+
+  if (!final) {
+    final =
+      "Se alcanzó el límite de ciclos de tools sin respuesta final. Reformula el pedido o revisa los MCP.";
+  }
+  return final;
+}
+
+type ParsedCall = { name: string; arguments: Record<string, unknown> };
+
+function parseToolCalls(text: string): ParsedCall[] {
+  const out: ParsedCall[] = [];
+  const re = new RegExp(TOOL_RE_GLOBAL.source, "gi");
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text))) {
+    try {
+      const parsed = JSON.parse(m[1].trim()) as {
+        name?: string;
+        arguments?: Record<string, unknown>;
+        args?: Record<string, unknown>;
+      };
+      const name = (parsed.name || "").trim();
+      if (!name) continue;
+      out.push({
+        name,
+        arguments: parsed.arguments || parsed.args || {},
+      });
+    } catch {
+      /* skip malformed */
+    }
+  }
+  return out;
+}
+
+function stripToolCalls(text: string): string {
+  return text.replace(new RegExp(TOOL_RE_GLOBAL.source, "gi"), "").trim();
+}
+
+/** system + (schemas si toolsMode) + historial podado */
+function buildPrompt(session: AgentSession): OpenAI.Chat.ChatCompletionMessageParam[] {
+  const history = pruneHistory(session.messages);
+  if (!session.toolsMode || !session.tools.length) {
+    return history;
+  }
+
+  const schemas = toolsCatalog(session.tools, {
+    maxTools: 22,
+    query: session.lastUserQuery,
+  });
+
+  const toolsMsg: OpenAI.Chat.ChatCompletionMessageParam = {
+    role: "system",
+    content:
+      `## Tools disponibles este ciclo (schemas)\n${schemas}\n\n` +
+      `Ejecuta el bucle agente: razona → tool_call(s) → espera resultados → sigue o responde.`,
+  };
+
+  if (history[0]?.role === "system") {
+    return [history[0], toolsMsg, ...history.slice(1)];
+  }
+  return [toolsMsg, ...history];
+}
+
+function pruneHistory(
+  messages: OpenAI.Chat.ChatCompletionMessageParam[]
+): OpenAI.Chat.ChatCompletionMessageParam[] {
+  if (messages.length <= 2) return messages;
+
+  const system = messages[0]?.role === "system" ? [messages[0]] : [];
+  let rest = (system.length ? messages.slice(1) : [...messages]).map((m) => {
+    if (m.role !== "user" || typeof m.content !== "string") return m;
+    if (!/Resultado(s)? de (la )?tool/i.test(m.content)) return m;
+    if (m.content.length <= MAX_TOOL_RESULT_CHARS) return m;
+    return {
+      ...m,
+      content: m.content.slice(0, MAX_TOOL_RESULT_CHARS) + "\n…[truncado]",
+    };
+  });
+
+  // Proteger cola reciente de resultados; compactar los viejos
+  let toolBudget = 0;
+  for (let i = rest.length - 1; i >= 0; i--) {
+    const m = rest[i];
+    if (m.role !== "user" || typeof m.content !== "string") continue;
+    if (!/Resultado(s)? de (la )?tool/i.test(m.content)) continue;
+    toolBudget += m.content.length;
+    if (toolBudget > PROTECT_RECENT_TOOL_CHARS) {
+      rest[i] = {
+        ...m,
+        content: "[Resultado de tool anterior omitido para liberar contexto]",
+      };
+    }
+  }
+
+  let packed = [...system, ...rest];
+  // Si aún excede ~70% del contexto, soltar mensajes viejos
+  const softCap = Math.floor(CONTEXT_LIMIT * 0.7 * 3); // chars aprox
+  while (packed.length > 4 && JSON.stringify(packed).length > softCap) {
+    packed.splice(system.length, 1);
+  }
+  return packed;
 }
 
 async function generateLongReport(session: AgentSession, userText: string): Promise<string> {
@@ -205,62 +358,9 @@ async function generateLongReport(session: AgentSession, userText: string): Prom
   return full.trim();
 }
 
-async function agentLoop(session: AgentSession): Promise<string> {
-  let final = "";
-  for (let round = 0; round < session.cfg.maxToolRounds; round++) {
-    const reply = await chatCompletion(session.client, session.cfg, session.messages);
-    session.messages.push({ role: "assistant", content: reply });
-
-    const match = reply.match(TOOL_RE);
-    if (!match) {
-      final = reply;
-      break;
-    }
-
-    if (session.tools.length === 0) {
-      final =
-        reply.replace(TOOL_RE, "").trim() +
-        "\n\n[Orquesta] Intenté usar una tool pero no hay MCP conectado. Ejecuta: orquesta mcp add";
-      break;
-    }
-
-    let parsed: { name?: string; arguments?: Record<string, unknown> };
-    try {
-      parsed = JSON.parse(match[1].trim()) as {
-        name?: string;
-        arguments?: Record<string, unknown>;
-      };
-    } catch {
-      session.messages.push({
-        role: "user",
-        content: "Resultado tool: JSON inválido en tool_call. Corrige el formato.",
-      });
-      continue;
-    }
-
-    const name = parsed.name || "";
-    const args = parsed.arguments || {};
-    process.stderr.write(`[orquesta] tool → ${name}\n`);
-    const result = await callTool(session.servers, session.tools, name, args);
-    session.messages.push({
-      role: "user",
-      content: `Resultado de la tool ${name}:\n${result}\n\nContinúa: otra tool_call o respuesta final al usuario.`,
-    });
-  }
-
-  if (!final) {
-    final =
-      "Se alcanzó el límite de rondas de tools sin respuesta final. Reformula el pedido o revisa los MCP.";
-  }
-  return final;
-}
-
 function noMcpMessage(status: McpStatus, userText: string): string {
   const wantsDocs = DOCS_INTENT.test(userText);
-  const lines = [
-    "No puedo completar la parte de Google Docs / MCP ahora.",
-    "",
-  ];
+  const lines = ["No puedo completar la parte de Google Docs / MCP ahora.", ""];
   if (!status.configured.length) {
     lines.push("No detecto ningún servidor MCP configurado.");
     lines.push("Para añadir uno:");

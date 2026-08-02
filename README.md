@@ -10,6 +10,14 @@ Repo: [github.com/0PValencia/orquesta](https://github.com/0PValencia/orquesta)
 curl -fsSL https://raw.githubusercontent.com/0PValencia/orquesta/master/install.sh | bash
 ```
 
+Después de subir cambios a GitHub:
+
+```bash
+orquesta update
+# o: orquesta actualizar
+# reinstalar limpio: orquesta update --reinstall
+```
+
 
 ## Piezas
 

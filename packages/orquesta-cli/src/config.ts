@@ -7,10 +7,10 @@ export const DEFAULTS = {
   baseUrl: "https://pvalencia--orquesta-informes-serve.modal.run/v1",
   model: "informes",
   apiKey: "not-needed",
-  maxToolRounds: 8,
+  maxToolRounds: 16,
   /**
-   * Tokens por llamada (sección). Debe caber con el system prompt
-   * dentro de max_model_len del servidor (hoy 4096 en Modal).
+   * Tokens de salida por ciclo LLM.
+   * Contexto Modal ≈ 8192 (prompt + completion).
    */
   maxTokens: 2048,
 } as const;
@@ -123,14 +123,14 @@ export function loadConfig(): OrquestaConfig {
     DEFAULTS.baseUrl
   ).replace(/\/$/, "");
 
-  // Contexto del servidor Modal = 4096; dejar margen para system + historial.
+  // Contexto Modal ≈ 8192; dejar margen para system + historial + tools.
   let maxTokens = Number(
     process.env.ORQUESTA_MAX_TOKENS || stored.maxTokens || DEFAULTS.maxTokens
   );
   if (!Number.isFinite(maxTokens) || maxTokens <= 0) maxTokens = DEFAULTS.maxTokens;
-  if (maxTokens > 3072) {
+  if (maxTokens > 4096) {
     maxTokens = DEFAULTS.maxTokens;
-    if (stored.maxTokens && stored.maxTokens > 3072) {
+    if (stored.maxTokens && stored.maxTokens > 4096) {
       saveStoredConfig({ maxTokens });
     }
   }
@@ -206,6 +206,7 @@ Comandos principales:
   orquesta              Hablar con el agente (empezar aquí)
   orquesta ayuda        Ver esta guía
   orquesta estado       Ver si el modelo y los MCP están listos
+  orquesta update       Actualizar desde GitHub (tras un push)
   orquesta mcp add      Conectar una herramienta (Google Docs, etc.)
   orquesta mcp list     Ver herramientas conectadas
   orquesta mcp remove   Quitar una herramienta
@@ -214,6 +215,9 @@ Ejemplos:
   orquesta
   > Redacta la justificación de un SI para biblioteca municipal
 
+  orquesta update
+  orquesta update --reinstall
+
   orquesta mcp add
   > (te pregunta nombre, si es local o remoto, y el comando)
 
@@ -221,4 +225,5 @@ Notas:
   • El modelo ya viene configurado; no hace falta exportar URLs.
   • Sin MCP puedes redactar informes en el chat.
   • Con MCP (Docs) el agente puede crear/editar documentos.
+  • Tras subir cambios a GitHub: orquesta update
 `.trim();
