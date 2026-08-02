@@ -1,0 +1,11 @@
+# pesos / artefactos locales
+training/outputs/
+qwen25-7b-informes-adapter/
+*.safetensors
+*.zip
+packages/orquesta-cli/node_modules/
+packages/orquesta-cli/dist/
+.venv/
+__pycache__/
+.env
+.netlify/

@@ -1,0 +1,1984 @@
+﻿Contenido
+1.- PERFIL	3
+1.1.- INTRODUCCION	3
+1.2.- ANTECEDENTES	3
+1.2.1.-Misiòn	3
+1.2.2.-Visión	4
+1.3.- ESTRUCTURA ORGANIZACIONAL	5
+1.4.- JUSTIFICACION	5
+1.5.- DESCRIPCION DEL PROBLEMA	6
+1.6.- FORMULACION DEL PROBLEMA	7
+1.7.- OBJETIVOS	8
+1.7.1.- OBJETIVO GENERAL	8
+1.7.2 OBJETIVO ESPECIFICO	8
+1.8.- ALCANCE	8
+1.8.1 Subsistema inscripción	8
+1.8.2.-Subsistema Notas:	9
+1.8.3.-Subsistema Gestión.	11
+ANEXOS	12
+ENTREVISTAS	13
+2.- ELEMENTOS DEL SISTEMA BASADO EN COMPUTADORAS.-	15
+2.1 HARDWARE	15
+2.1.1 SERVIDOR	15
+2.1.2 CLIENTE	15
+2.1.3 MEDIOS DE COMUNICACIÓN	15
+2.1.4 OTROS DISPOSITIVOS	15
+2.2 SOFTWARE	15
+2.2.1 SERVIDOR	15
+2.2.2 CLIENTE	15
+2.2.3 OTRO SOFTWARE ADICIONAL	15
+2.3.-Datos.	15
+2.4.-Procesos.-	16
+2.5.-Gente/Usuario.	16
+2.5.1.-Super-Usuario.	16
+2.5.2.-Usuario.	17
+2.5.3.-Cliente.	17
+3.-MARCO TEORICO	17
+3.1 TECNOLOGIA  PARA  EL DESARROLLO	17
+LO  DEL SOFTWARE	17
+3.2-ESTRATEGIA PARA EL DESARROLLO DEL SOFTWARE	18
+3.2.1-METODOLOGIA PARA EL DESARROLLO DEL SOFTWARE	18
+3.3-HERRAMIENTAS DE DESARROLLO	29
+3.3.1 SOFTWARE	29
+3.3.2 HARDWARE	30
+3.4.-POSIBLES COSTOS	30
+3.5 POSIBLES BENEFICIOS	31
+3.5.1 TIEMPO	31
+3.5.2 ESFUERZO	31
+3.5.3 COSTOS	31
+3.6.-POSIBLES CLIENTES	31
+
+
+
+
+
+
+
+
+
+
+
+1.- PERFIL
+1.1.- INTRODUCCION
+En la actualidad en  nuestro país la educación cumple un rol de vital importancia, donde el estudiante se enfrenta a una tecnología que avanza en gran magnitud y donde la sociedad se ve consumida por los nuevos desafíos y de esta manera surge la necesidad de mejorar la atención pedagógica y tener una educación integral donde incluya la educación académica, física y espiritual.
+Esta intención de educación se ve truncada cuando la educación se ve consumida con el flujo de información que comienza desde la inscripción del alumno hasta las exigidas por el Ministerio de Educación y Cultura.
+Actualmente la unidad educativa EAGLES´ SCHOOL, ubicada en la ciudad de Santa Cruz, el cual cuenta con un sistema no tan sofisticado para el tamaño de Infraestructura de la U.E.
+Con el desarrollo del presente sistema se pretende mejorar las condiciones actuales de trabajo en lo que concierne al manejo de la información académica, de manera que el manejo de Datos de los estudiante más seguro y automático procesándola de manera ágil y eficiente, de modo que pueda beneficiar a todos los miembros que conforman la unidad educativa, ya sean estos: Administrativos, Docentes, Alumnos, Tutores o Padres de Familia.
+1.2.- ANTECEDENTES
+1.2.1.-Misiòn
+“La educación es el problema mayor y más difícil que pueda plantearse al hombre”
+Creemos que la educación es válida y valiosa, un acato de coraje y un paso al frente de la valentía humana (Fernando Savater). Para que la filosofía y la misión asuman el valor de la experiencia concreta, la Corporación Educativa Santa Cruz cuenta con los medios más modernos y avanzados para cumplir con la misión de formar con excelencia bachilleres bilingües, con sólidos conocimientos y practica en ciencias exactas, sociales y biológicas, como también en la computación, arte y deporte.
+La calidad de la formación impartida hace posible que estos bachilleres puedan ingresar, con seguridad, a cualquier centro superior de educación en Bolivia o en el exterior. Con este propósito se estimula y orienta el desarrollo de una personalidad individualmente capacitada e integrada socialmente, de manera que en la vida adulta los egresados de Eagles’ School, conformen un conjunto de ciudadanos que se distingan por su competencia profesional, por su sensibilidad y su integridad moral y que, sobresaliendo en el servicio a su comunidad, tengan influencia en las decisiones que esta pueda adoptar en beneficio de todos. El elemento troncal que inspira todas las actividades escolares es la exaltación de los valores de integridad personal, de ética, de solidaridad, de libertad y de autodisciplina como norma moral para todos.
+Para conseguir los propósitos enunciados, la corporación ofrece: Edificaciones modernas, aulas con aire acondicionado, baños y servicios diseñados de acuerdo a normas internacionales, material de apoyo audiovisual en unidades didácticas, un selecto cuerpo de profesores. El Eagles’ School estimula la participación de los padres de familia como complemento indispensable del proceso educativo, porque estos juegan un papel importante para alcanzar las metas propuestas.
+1.2.2.-Visión
+La Corporación Educativa Santa Cruz, con visión de futuro considera:
+Que es imprescindible una innovación creadora de los propósitos, medios y fines de la educación, que haga posible enfrentar con seguridad los enormes desafíos del milenio.
+Que la complejidad de los procesos industriales, las nuevas técnicas agrícolas, el desarrollo de sofisticados sistemas de servicios, la revolución en los medios de información y comunicación, la eclosión de la biotecnología, la ingeniería genética, los logros espaciales, la investigación de universo, la preeminencia de idiomas y lenguas para la comunicación, la incorporación de ordenadores cada vez más sofisticados y complejos, la preservación del medio ambiente y su acción sobre la ecología, la apertura a la información y a los procesos lógicos nos llevan  a la era del conocimiento y del talento humano. Que este futuro adviene incontenible con prescindencia de geografía, de origen, de raza o de idioma.
+Que este nuevo mundo técnicamente maravilloso, sofisticado y fantástico, ofrece grandes oportunidades a todos aquellos que estén adecuadamente formados para entenderlo, vivirlo y perfeccionarlo. Pero que se tornara cruel, insensible y letal para todos aquellos que lo desafíen, se omitan o no estén técnicamente capacitados y sentimentalmente sensibilizados.
+Atendiendo a todas estas expectativas, la corporación establece un Centro Educativo Integrado preescolar, primario y secundario, que ofrece una conjugación de enseñanza y aprendizaje para los niños y adolescentes, que los habilite en : El campo de las ciencias exactas, sociales y biológicas, por medio de la percepción del pensamiento lógico y del análisis crítico, no solo como abstracción sino como aplicación práctica de investigación y experimentación, que haga posible no solo conocer el cómo, sino por qué y el para qué. Los idiomas español e inglés, el primero como fuente con nuestra cultura y el segundo como vehículo para aprender y comprender al mundo que nos rodea.
+
+
+
+
+
+
+
+
+
+1.3.- ESTRUCTURA ORGANIZACIONAL
+
+1.4.- JUSTIFICACION
+
+Debido a la administración académica de la U.E. EAGLES´ SCHOOL, en el registro y control académico tanto de los profesores como alumnos, exige mucho tiempo y esfuerzo, porque  no todos los procesos están automatizados.
+
+En el proceso de pago de plan de estudio, habilitar el pago con moneda nacional no tan solo con Dólares.
+En la gestión 2013 se dieron cambios a la Reforma Educativa como ser que la Gestión Académico está dividida en 4 bimestres, el promedio se lo determinara considerando la valoración cuantitativa y valoración cualitativa que contempla cuatro parámetros que son: Ser, Saber, Hacer y Decidir,   las calificaciones  que  desde esta gestión es sobre 100 puntos  se obtendrá  mediante el porcentaje asignado a cada uno de esos parámetros.
+Al procesar las notas, nuestro sistema debe implementarse de una forma más fácil y accesible de organizar.
+Por lo tanto es necesario modificar el sistema de información que permita mejorar el servicio que se brinda a la población estudiantil de dicho establecimiento, optimizar el tiempo del proceso de inscripción y notas.
+1.5.- DESCRIPCION DEL PROBLEMA
+    • Si están muchos usuarios conectados al servidor, el sistema actual empieza a ralentizarse, esto ocasiona que exista una demora para realizar consultas o pagos, este problema se da en temporada de inscripción.
+
+    • A la hora de inscribir a un nuevo estudiante, el sistema actual tarda en actualizar las inscripciones, esto ocasiona que se demore en saber si existe cupo para el curso al que el nuevo estudiante desea inscribirse.
+    • Si un alumno antiguo desea cambiarse de paralelo, el sistema no está diseñado para realizar esa modificación.
+
+    • Los postulantes una vez presentados sus requisitos si cometieran algún error  en el llenado de sus datos, tienen que volver a realizar todos los requisitos ya        presentados anteriormente.							
+							
+    • En el examen de admisión que toman a los nuevos estudiantes, la asignación del paralelo lo determinan en base a su nivel de ingles que obtuvo en el examen de admisión.
+
+    • En la factura recibida por el primer pago, no indica el aula donde se pasará clases.
+
+    • El sistema actual cuando se registran hermanos, la verificación de su parentesco familiar la realizan de forma manual, mediante sus certificados de nacimiento.
+
+    • El descuento que se otorga cuando se inscribe a familiares el sistema no lo calcula, la realizan de forma manual.
+
+    • El sistema no registra el descuento del pago de las colegiaturas de los funcionarios administrativos.
+
+    • Al momento de decidir que alumnos entran al reforzamiento el profesor toma esta decisión de acuerdo a las notas obtenidas.
+
+    • Los profesores registran sus notas en documento Excel,  este proceso es moroso, además de que el trabajo se doblega debido a que otro funcionario administrativo tiene que realizar el nuevo procedimiento registrándolo al sistema.
+
+    • Al momento en que la secretaria ingresa notas al sistema si cometiera alguna equivocación en el llenado de notas, para corregir este error tiene que volver a ingresar las notas de todas las materias que el alumno está cursando en la gestión actual.   											
+    • Las notas al ser realizadas en Excel son vulnerables, ya que pueden ser fácilmente modificadas o alteradas por terceras personas.
+
+    • No existe un control hacia los docentes respecto al registro de notas de sus materias respectivas, esto ocasiona un retraso de entrega de boletines y perjudica a los estudiantes del establecimiento y al personal administrativo.
+
+    • Los padres de familia que desean hacer un seguimiento  a su(s) hijo(s) sobre su rendimiento académico escolar, solo pueden ver las notas finales de cada trimestre.
+
+    • A la hora de realizar consultas ya sea ver notas o ver pagos, el sistema actual tiene un tiempo de ejecución largo ya que la base de datos tiene tuplas innecesarias.
+
+    • Actualmente los usuarios que son parte del personal administrativo, todos tienen el mismo privilegio, esto implica que todos pueden hacer cambios en la base de datos, ocasionando daños y perjuicios al establecimiento si es que hay un mal uso de ellos.
+
+    • La U. E. realiza un cobro de mensualidad con un costo tanto en dólares. coordinando con los padres de familia. el cobro lo realizan a la secretaría o personal autorizado, tomando en cuenta que los pagos se realizan  de acuerdo al nivel en que el alumno se encuentra: Para los estudiantes del nivel inicial y primaria el monto de la colegiatura es de aproximadamente Bs.1400, para el nivel de secundaria es Bs. 2200.
+
+    • El sistema actual no realiza descuentos cuando se pagan las 10 colegiaturas en un solo pago.
+
+    • No existe un reconocimiento para los alumnos destacados, ni algún privilegio como a la hora de inscribirse o algún descuento.
+
+    • El colegio solamente permite el pago en dólares americanos, no en la moneda nacional (bolivianos) para realizar las respectivas mensualidades.
+
+    • La secretaria al tener que subir las notas que cada profesor registra en una          planilla para que ella las introduzca al sistema, existe riesgo de que cometa  	   equivocaciones  en alguna de sus funciones por tener que hacer más de una   actividad a la vez. 
+    • Al momento de cerrar la gestión se verifica la continuidad del alumno de	 forma manual.  							
+1.6.- FORMULACION DEL PROBLEMA
+ Habiendo analizado los problemas que presenta el colegio Eagles. Se pretende automatizar  el proceso de inscripción y procesamiento de notas de los alumnos, uno de los problemas más sobresalientes en la U.E. Eagles´School.
+Daremos un orden y un control a todos los procesos que se realizan durante la gestión.
+1.7.- OBJETIVOS
+1.7.1.- OBJETIVO GENERAL
+Desarrollar un sistema de información para Gestionar la inscripción, Pagos y procesamiento de  notas para la U.E.  Eagles´School.
+1.7.2 OBJETIVO ESPECIFICO
+    • Recabar información del funcionamiento del establecimiento mediante entrevistas y  cuestionarios a los encargados del colegio.  
+    • Diseñar e implementar una base de datos utilizando un Sistema Gestor de Base de Datos “SQL Server 2008, capaz de soportar todos los requerimientos del Sistema.
+    • Implementar el sistema utilizando lenguaje de programación “Visual C#” de Visual Studio 2012”.
+    • Diseñar una interfaz gráfica aún más agradable entre el usuario y el ordenador.
+    • Realizar pruebas necesarias sobre el buen funcionamiento del sistema, que cumpla los requisitos planteados previa etapa de desarrollo.
+1.8.- ALCANCE
+El sistema está dividido en tres sub-sistemas los cuales son:
+    • Sub-sistema de inscripción.
+    • Sub-sistema de Notas.
+    • Sub-sistema de Gestión.
+
+1.8.1 Subsistema inscripción
+Este sub-sistema está estructurado en dos partes que son: Inscripción para Alumnos nuevos e Inscripción para Alumnos antiguos. 
+    • Inscripción de Alumnos Nuevos.
+Alumno Nuevo
+El postulante deberá presentar los siguientes requisitos:
+    • Cédula de Identidad(C.I.)			
+    • Nombre					
+    • Apellido Paterno				
+    • Apellido materno				
+    • Dirección					
+    • Teléfono					
+    • Libreta Escolar				
+    • Certificado de nacimiento			
+    • Pasaporte(si es de nacionalidad extranjera) 
+                        ▪    Formulario de solicitud de Inscripción (RUDE)				
+Una vez presentado los requisitos se le asignará al postulante una fecha de evaluación.
+Prueba de Admisión	
+Consiste en que los estudiantes deben dar una evaluación, esta consta de dos partes:
+    • Examen Académico(Lenguaje, Matemática, Ingles)
+    • Examen Psicotécnico(Escrito, Oral)	
+El valor de la nota obtenida en el examen de inglés determinara que paralelo le corresponde al estudiante. 
+Inscripción de Alumnos Antiguos.
+Alumnos Antiguos
+Del alumno antiguo lo que el sistema requiere es:
+•	Código de Alumno
+Pago Plan de Estudios
+El  postulante  debe realizar al menos un pago para asignarle sus datos como alumno.
+•	Código del Alumno	
+•	Aula			
+•	Paralelo		
+Todos esos datos estarán incluidos en la factura q se le otorgará al momento de efectuar  su primer  pago.
+1.8.2.-Subsistema Notas:
+ Todo lo que este sub-sistema abarcará está indicado en las siguientes tablas:
+Gestionar Alumnos
+Se proporcionará los datos del alumno, el código de alumno y su estado.	
+
+Gestionar Curso
+Almacenará información general del curso como ser: código del curso, paralelo, id del aula.
+
+Gestionar Materia
+Proporcionará datos importantes de las materias como ser: código materia y sigla.
+		
+Gestionar Profesor
+Al maestro se le asignara y registrara los siguientes datos: Código de profesor, carnet de identidad y otros datos personales.
+Gestionar Alumno-Curso
+Se proporcionará los datos al estudiante en cada curso correspondiente para cada número de gestión para posteriormente hacer el procesamiento de sus notas y se usarán los siguientes parámetros: Código Alumno, Código Curso,  Gestión, Código Materia.
+
+Gestionar Curso-Materia-Profesor
+En gestionar curso-materia-profesor se  especificará la relación existente entre Curso, Materia  y  Profesor como ser: gestión, código curso, código materia, código profesor, cantidad Horas.
+
+Evaluación
+Las notas se determinaran considerando la Valoración Cuantitativa y Valoración Cualitativa dentro de esto se valoran  cuatro parámetros que son: Ser valor asignado 20 puntos, Saber valor asignado 30 puntos, Hacer valor asignado 30 puntos y Decidir valor asignado 20 puntos. Según el promedio se dan distintas observaciones. Se requerirá de los siguientes atributos: Número de bimestre, código alumno, código materia, código profesor, nota cuantitativa, descripción cualitativa de la nota.
+				
+Con estos datos, obtendremos la nota de la valoración cuantitativa, y la descripción de la valoración cualitativa.
+Gestionar Nota Final
+Mediante esta tabla se incorpora un atributo más que es: Nota de Reforzamiento, a este valor se sumará la nota obtenida de la valoración cuantitativa y cualitativa dando como resultado la nota bimestral. Para gestionar la nota final del alumno se requiere de los siguientes datos: nota de Reforzamiento, nota bimestral, descripción de nota bimestral. Con la nota bimestral de cada materia, más su descripción, se puede proceder a  rellenar el boletín del alumno. 
+
+1.8.3.-Subsistema Gestión.
+
+Los miembros del Personal Administrativo y los Padres de Familia podrán  acceder a una parte del sistema para realizar consultas. Para ello se necesitará de los siguientes datos: código de administrador, cargo, cédula de Identidad, teléfono y dirección.
+
+
+ANEXOS 
+
+
+ENTREVISTAS
+Entrevista # 1
+Lugar: Av. Beni 5ª anillo………………………………… Duración: 43 minutos………………
+Datos  de la Corporación Educativa
+Nombre: ……EaglesSchool…………………………………………………..
+(* ) Privada		 (  ) Estatal		() Convenio   
+Datos del Entrevistado
+Nombre: Limberg Osinaga Guzmán…………………………………………
+Cargo: Administrador de Sistemas
+Datos del Entrevistador
+Nombre: 
+Daniel  López 
+Eddy Escalante
+Alejandro Cabrera
+ Joel  Carita
+ Silvia Ulloa
+1.- ¿Cantidad de niveles?
+El colegio Eagles’ School tiene los siguientes  niveles: Kínder, Primaria y Secundaria.  
+2.- Un alumno nuevo, ¿qué requisitos tiene que cumplir?
+Presentar libreta de los cursos anteriores, Certificado de nacimiento, carnet de identidad de los Padres.
+3.- ¿Permiten inscribir después de un bimestre?
+ Si se permite.
+4.-¿Cómo asignan el paralelo a cada alumno?
+El director decide el paralelo del estudiante, en base a la nota obtenida en el examen académico y psicológico.
+5.-La prueba académica para admisión de estudiantes, ¿qué materias contempla?
+    • Ingles
+    • Matemática
+    • Lenguaje
+6.- ¿Qué tipos de descuento proporciona el colegio?
+    • Cuando dos familiares estudian en el colegio el descuento es del 5%.
+    • Cuando tres familiares estudian en el colegio el descuento es del 10%.
+7.- ¿El pago del plan de estudios varía según el nivel en el que el estudiante se encuentre?
+Si, el pago se lo realiza con moneda extranjera (dólares)  aproximadamente para el nivel inicial la colegiatura es de Bs. 1.400  y para el nivel de secundaria es de aproximadamente Bs. 2.200.
+8.- Los padres de familias o tutores, ¿qué  pueden consultar mediante  la página web con la que cuenta del colegio?
+Las notas  finales además de actividades del colegio. Ejemplo actividades por el aniversario del colegio.
+9.- Si un alumno antiguo desea cambiarse de paralelo, ¿qué necesita hacer?
+Realizar una solicitud indicando su cambio, uno de sus docentes le hará seguimiento para medir si es apto para estar en otro paralelo.
+  10.- ¿Quién es la persona que delega las acciones de inicio y cierre de gestión?
+Es el director que delega esa tarea al Administrador del sistema.
+11-¿Cuáles son las funciones asignadas al Administrador del sistema?
+Son: Insertar, Modificar, Eliminar, Buscar a los estudiantes mediante su código
+12.- ¿Quiénes son las personas autorizadas de registrar notas?
+La secretaria.
+13.- ¿Se puede pagar las mensualidades en Entidades Financieras?
+No, solo en caja del colegio.
+
+
+2.- ELEMENTOS DEL SISTEMA BASADO EN COMPUTADORAS.-
+2.1 HARDWARE
+2.1.1 SERVIDOR
+    • Memoria RAM 4Gb.
+    • Disco Duro 500 Gb.
+    • Tarjeta Madre Intel
+    • Micro Procesador cd-rom
+2.1.2 CLIENTE
+    • 1 computadora con los requisitos básicos del sistema
+    • impresora 
+    • Cables de red 
+2.1.3 MEDIOS DE COMUNICACIÓN
+    • Switch,  (para  la conexión de red) 
+    • Wi-Fi (para la comunicación inalámbrica de la información)
+2.1.4 OTROS DISPOSITIVOS
+ninguno
+2.2 SOFTWARE
+2.2.1 SERVIDOR
+    • SQL server 2008
+    • Lenguaje de programación C# de Visual Studio 2012
+    • Sistema operativo WINDOWS SEVEN
+2.2.2 CLIENTE
+    • Sistema Operativo Windows 7 home Premium
+    • Lenguaje de programación C# de Visual Studio 2012
+2.2.3 OTRO SOFTWARE ADICIONAL
+    • Microsoft Office Excel 2013
+    • Microsoft Office Word 2013
+    • Paint
+    • Enterprise Architect 
+2.3.-Datos.
+Cliente:
+Tendremos los siguientes campos para cada alumno:
+(Código, Nombre, Apellido Paterno, Apellido Materno, Dirección, Teléfono, Estado).
+
+Gestión.
+Manipulará los siguientes atributos:
+Inscripción: cédula de identidad, libreta, rude.
+Pago de las colegiaturas: código del alumno.
+Proceso de registrar notas:
+ Alumno, curso, materia, evaluación, código de Profesor.
+2.4.-Procesos.-
+ Inscripción: En este proceso se divide en dos categorías, si el alumno que desea inscribirse es nuevo en la Unidad Educativa, o si el alumno que desea inscribirse es antiguo. En el caso de que sea un nuevo estudiante, primeramente se debe de verificar su boletín del año anterior, después se le pedirá sus datos personales y se anotará como un postulante más, y se le dará una fecha de evaluación en la que se medirán sus capacidades y en base a eso, asignarle un paralelo, tomando en cuenta que la nota de inglés será la que tenga más ponderación. Una vez obtenidos los resultados, el nuevo estudiante con su curso y respectivo paralelo, deberá de realizar el primer pago de la gestión y con ello el sistema lo reconocerá como un estudiante inscrito para dicha gestión.
+En el caso para los alumnos antiguos, solamente deben de ir a caja y verificar con su código de alumno que maneja el sistema, con ello se verificará, si este aprobó o no. Luego debe de realizar el primer pago de la gestión para aparecer en el sistema como alumno inscrito.  
+Pago: Si el estudiante, ya sea nuevo o antiguo, no realiza ningún pago, entonces el sistema no lo reconocerá como inscrito. Por eso, una vez realizado el primer pago ya sea de alumno nuevo o antiguo, el sistema le dará un nuevo código (para alumno nuevo) y actualizara el código (para alumno antiguo) para que de esta manera el alumno esté habilitado para la gestión correspondiente.
+Notas: Según la nueva reforma educativa, el sistema de notas está dividido en dos aspectos: La parte Cualitativa y la parte Cuantitativa, en la parte Cuantitativa,  están involucrados  cuatro factores para el proceso de evaluación a tomar en cuenta, los cuales son: Ser (20 puntos), Saber (30 puntos), Hacer (30 puntos), Decidir (20 puntos). La valoración cualitativa consiste  en hacer una descripción acerca del promedio obtenido forma literal, para realizar una advertencia o una felicitación de acuerdo al promedio. 
+2.5.-Gente/Usuario.
+  2.5.1.-Super-Usuario.
+    • Insertar a nuevos alumnos.
+    • Actualizar ciertos valores de atributos como por ejemplo  que un alumno que pertenecía a un determinado paralelo, el cual solicito su cambio, su docente evalúa  su desempeño, si su nivel de ingles es apto para estar en el paralelo al que se postula, entonces aprueban su cambio, luego el sistema debe registrar el cambio.  
+    • Modificar,  aquellos valores de los atributos en los cuales halla habido error, por ejemplo si en el proceso de inscripción algún dato del postulante se registro mal, se lo ingreso al sistema con esas fallas y al realizar el primer pago de la colegiatura  noto el error,  solicita        la corrección el sistema guardará la corrección realizada.
+    • Eliminar  los datos de aquellos alumnos por ejemplo que hallan sido expulsados.
+    • Realizar consultas mediante el registro de los alumnos.
+    • Imprimir boletín.
+2.5.2.-Usuario.
+    • Docente: registra las notas de sus materias asignadas, ver  la lista de los  alumnos inscritos a su materia.
+    • Secretaría: En época de inscripción apoya al administrador del sistema con el registro de alumnos,  en cualquier época de la gestión realiza consultas.
+2.5.3.-Cliente.
+Como padre de familia se puede realizar distintas consultas como ser ver el rendimiento académico detallado(es decir ver las notas de cada parcial, no tan solo el promedio del bimestre)  de sus hijos, ver el plan de pago de la gestión. 
+3.-MARCO TEORICO
+3.1 TECNOLOGIA  PARA  EL DESARROLLO
+LO  DEL SOFTWARE
+    • SISTEMA OPERATIVO
+El Sistema de Información trabaja mínimamente sobre Windows Seven en adelante.
+    • GESTOR DE BASE DE DATOS
+Se eligió trabajar con SQL Server 2008 por su fácil manejabilidad y dominio, ya que este gestor es capaz de trabajar sobre la plataforma de Windows, Linux y otros.
+Funcionalidad: SQL Server 2008 dispone de muchas de las funciones que exigen los desarrolladores profesionales, como compatibilidad completa con la mayor parte de los entornos de programación. 
+Portabilidad: SQL Server 2008 se ejecuta en la inmensa mayoría de sistemas operativos y la mayor parte de los casos, los datos se pueden transferir de un sistema a otro sin dificultad. 
+Facilidad de uso: SQL Server 2008 resulta fácil de utilizar y administrar. Las herramientas de SQL Server son potentes y flexibles, sin sacrificar su capacidad de uso. 
+
+    • LENGUAJE DE PROGRAMACION
+La implementación se la realizara en el Lenguaje de Programación Visual C# 2012 por sus características principales:
+        ◦ Orientado a Objetos.
+        ◦ Portabilidad en distintos Sistemas Operativos.
+        ◦ Facilidad del manejo del lenguaje como tal.
+3.2-ESTRATEGIA PARA EL DESARROLLO DEL SOFTWARE
+3.2.1-METODOLOGIA PARA EL DESARROLLO DEL SOFTWARE
+3.2.1.1 CARACTERISTICAS DEL P.U.D.S.
+EL PROCESO UNIFICADO ESTA DIRIGIDO POR CASOS DE USO
+Para construir un sistema con éxito debemos conocer lo que sus futuros usuarios necesitan y desean.
+El termino usuario no solo hace referencia a usuarios humanos sino a otros sistemas. En este sentido, el termino usuario representa alguien o algo que interactúa con el sistema que estamos desarrollando.
+Un caso de uso es un fragmento de funcionalidad del sistema que proporciona al usuario un resultado importante. Los casos de uso representan los requisitos funcionales. Todos los casos de uso juntos constituye el modelo de casos de uso el cual describe la funcionalidad total del sistema.
+
+EL PROCESO UNIFICADO ESTA CENTRADO EN LA AQUITECTURA
+El concepto de arquitectura software incluye los aspectos estáticos y dinámicos más significativos del sistema. La arquitectura surge de las necesidades de la empresa, como las perciben los usuarios, y los inversores, y se refleja en los casos de uso. Sin embargo, también se ve influida por muchos otros factores, como la plataforma en la que funcionar el software. El proceso ayuda al arquitecto a centrarse en los objetivos adecuados, como la compresibilidad, la capacidad de adaptación al cambio, y la reutilización.
+
+Debe haber interacción entre los casos de uso y la arquitectura. 
+Tanto la arquitectura como los casos de uso deben evolucionar en  paralelo.
+Los arquitectos moldean el sistema para darle una forma, podemos decir que el arquitecto:
+    • Crea un esquema en borrador de la arquitectura, comenzando por la parte de la arquitectura que no es especifica de los casos de uso 
+    • A continuación, el arquitecto trabaja con un subconjunto de los casos de uso especificados, con aquellos que representen las funciones clave del sistema en desarrollo
+    • A medida que los casos de uso se especifican y maduran, se descubre más de la arquitectura. Esto, a su vez, lleva a la maduración de más casos de uso.
+Este proceso continua hasta que se considere que la arquitectura es estable.
+EL PROCESO UNIFICADO ES ITERATIVO E INCREMENTAL
+El desarrollo de un producto software comercial supone un gran esfuerzo que puede durar entre varios meses hasta posiblemente un año o más. Es práctico dividir el producto en partes más pequeñas o mini proyectos. Cada mini proyecto es una iteración que resulta en un incremento. Las iteraciones hacen referencia a pasos en el flujo, y en los incrementos, al crecimiento del producto. 
+En cada iteración, los desarrolladores identifican y especifican los casos de uso relevantes, crean un diseño utilizando la arquitectura seleccionada como guía, implementan el diseño mediante componentes, y verifican que los componentes satisfacen los casos de uso.
+Los beneficios de un proceso iterativo controlado:
+    • La iteración controlada reduce el coste del riesgo a los costes de un solo incremento.
+    • La iteración controlada reduce el riesgo de no sacar al mercado el producto en el calendario previsto.
+    • La iteración controlada acelera el ritmo del esfuerzo de desarrollo en su totalidad debido a que los desarrolladores trabajan de manera más eficiente para obtener resultados claros a corto plazo.
+    • La iteración controlada reconoce una realidad que a menudo se ignora que las necesidades del usuario y sus correspondientes requisitos no pueden definirse completamente al principio.
+FLUJOS DE TRABAJO
+CAPTURA DE LOS REQUISITOS Es el proceso de averiguar, normalmente en circunstancias difíciles, lo que se debe construir.
+ANALISIS
+Analizamos los requisitos que se describieron en la captura de requisitos, refinándolos y estructurándolos. El objetivo de hacerlo es conseguir una comprensión mas precisa de los requisitos y una descripción de los mismos que sea fácil de mantener y que nos ayude a estructurar el sistema entero.
+DISEÑO
+En el diseño modelamos el sistema y encontramos su forma para que soporte todos los requisitos incluyendo los requisitos no funcionales y otras restricciones que se le suponen.
+IMPLEMENTACION
+El propósito principal de la implementación es desarrollar la arquitectura y el sistema como un todo.
+
+PRUEBA
+Verificamos el resultado de la implementación probando cada construcción, incluyendo tanto construcciones internas como intermedias, así como las versiones finales del sistema a ser entregadas a terceros.
+FASES
+
+INICIO
+Se desarrolla una descripción del producto final a partir de una buena idea y se presenta el análisis de negocio para el producto. Esencialmente, esta fase responde a las siguientes preguntas:
+ELABORACION
+Se especifican en detalle la mayoría de los casos de uso del producto y se diseña la arquitectura del sistema.
+Al final de la fase de elaboración, el director de proyecto esta en disposición de planificar las actividades y estimar los recursos necesarios para terminar el proyecto.
+TRANSICION
+Cubre el periodo durante el cual el producto se convierte en versión beta. En la versión beta un número reducido de usuarios con experiencia prueba el producto e informa de defectos y deficiencias. La fase de transición conlleva actividades como la fabricación, formación del cliente, el proporcionar una línea de ayuda y asistencia y la corrección de los defectos que se encuentren tras la entrega. El equipo de mantenimiento suele dividir esos defectos en dos categorías: los que tienen suficiente impacto en la operación para justificar una versión incrementada (versión delta) y los que pueden corregirse en la siguiente versión normal.
+
+
+
+CONSTRUCCION
+Se crea el producto. Es esta fase, la línea base de la arquitectura crece hasta convertirse en el sistema completo. 
+Al final de esta fase, el producto contiene todos los casos de uso que la dirección y el cliente ha acordado para el desarrollo de esta versión.
+
+3.2.1.2CARACTERISTICAS DE U.M.L.
+UML es un lenguaje para visualizar, especificar, construir y documentar los artefactos (modelos) de un sistema que involucra una gran cantidad de software, desde una perspectiva orientada a objetos
+    • UML es una notación, no es un proceso
+    • Se han definido muchos procesos para UML.
+    • Rational ha ideado RUP, el“procesounificado”.Utilizable para sistemas que no sean software
+    • Bloques básicos de construcción
+        ◦ Elementos
+	Estructurales, Comportamiento, Agrupación, Anotación
+        ◦ Relaciones
+        ◦ Diagramas
+    • Reglas para combinar bloques
+        ◦ Establecen qué es un modelo bien formado
+    • Mecanismos comunes
+Especificaciones, Extensibilidad, Dicotomía interfaz-relación
+    • El Lenguaje Unificado de Modelado (UML) es una notación que combina elementos de tres importantes estándares de diseño OO: 
+        ◦ OMT de Rumbaugh
+        ◦ Análisis y diseño OO de Booch y 
+        ◦ El modelo de Jacobson
+    • Ha tenido varias modificaciones desde su creación siendo la última versión la 2.0
+
+
+	DIAGRAMA DE PAQUETES.-
+Permite dividir un sistema grande en unidades más pequeñas.
+Los paquetes ofrecen un mecanismo general para la organización de los modelos/subsistemas agrupando elementos de modelado.
+CASOS DE USO.-
+Representa la funcionalidad que ofrece el sistema en lo que se refiere a su interacción externa con los usuarios. 
+
+DIAGRAMA DE SECUENCIA
+Muestra una interacción ordenada según la secuencia temporal de eventos. 
+
+
+DIAGRAMA DE ESTADOS
+    • Muestra la secuencia de estados por los que pasa un caso de uso,  un objeto a lo largo de su vida, o todo el sistema.
+    • Controla la forma con la que el usuario se introduce al sistema.
+
+
+DIAGRAMA DE DISTRIBUCION.-
+    • Muestran la disposición física de los distintos nodos que componen un sistema y el reparto de los componentes sobre dichos nodos. 
+
+
+
+DIAGRAMA DE ACTIVIDAD.-
+    • Muestra cómo fluye el control de unas clases a otras con la finalidad de culminar con un flujo de control total que corresponde con la consecución de un proceso más complejo. 
+
+DIAGRAMA DE COMPONENTES.-
+    • Los diagramas de componentes describen los elementos físicos del sistema y sus interrelaciones.
+    • Los componentes representan todos los tipos de elementos de software que entran    en la fabricación de aplicaciones informáticas.
+DIAGRAMA DE CLASES.-
+    • Es el diagrama principal para el análisis y diseño. 
+    • Un diagrama de clases presenta las clases del sistema con sus interrelaciones estructurales y de herencia. 
+    • La definición de clase incluye definiciones para atributos y operaciones. 
+
+DIAGRAMA DE OBJETOS.-
+    • El Modelado de Objetos permite representar el ciclo de vida de los objetos a través de sus interacciones. 
+
+DIAGRAMA DE TIEMPOS
+ Empleados para mostrar las interacciones donde el propósito fundamental consiste en razonar sobre la ocurrencia de eventos en el tiempo que provocan el cambio de estados de un elemento estructural (clase, componente, etc.).
+
+
+DIAGRAMA DE COMUNICACIÓN.-
+    • Equivalente al diagrama de colaboración del OMG UML 1.x. Permite especificar interacciones entre objetos que conforman la estructura interna de un clasificador.
+DIAGRAMA DE COLABORACION.-
+    • Es una forma de representar interacción entre objetos. 
+    • El diagrama de colaboración se centra en estudiar todos los efectos de un objeto dado durante un escenario.
+
+DIAGRAMA DE ESTRUCTURA COMPUESTA.-
+    • Se emplea para visualizar de manera gráfica las partes que definen la estructura interna de un clasificador. 
+
+DIAGRAMA GENERAL DE ITERACION.-
+    • Se emplea fundamentalmente para representar las interacciones, a través de diagramas o fragmentos de diagramas de secuencias, entre los actores y el sistema como una gran caja negra, y de diagramas de actividades en los que aparecen dichos fragmentos.
+
+
+
+
+
+
+
+
+
+
+
+
+MODELADO CONCEPTUAL DE OBJETOS MEDIANTE UML
+    • Para el diseño de una base de datos se pueden utilizar los diagramas de 
+        ◦ Casos de uso: para el análisis de la base de datos, examinando roles de los usuarios y operaciones a realizarse con la base de datos.
+        ◦ Diagrama de clases: para el diseño conceptual de la base de datos.
+SIMBOLOGIA DE DIAGRAMAS DE CLASES
+La multiplicidad se representa con:
+    • Un número fijo: 1
+    • Un intervalo de valores: 2..5
+    • Un rango en el cual uno de los extremos es un asterisco. Por ejemplo, 2..* significa 2 o más.
+    • Una combinación de elementos separados por comas: 1, 3..5, 7, 15..*
+Un asterisco: * . Indica cero o más
+3.3-HERRAMIENTAS DE DESARROLLO
+Las Herramientas a utilizar en nuestro proyecto están los siguientes:
+3.3.1 SOFTWARE
+    • VISUAL C#.-Visual C# es un lenguaje de programación de los llamados “visuales”, puesto que parte de la programación que se realiza con él se basa en la utilización de elementos visuales. La palabra “Visual” hace referencia al método que se utiliza para crear la interfaz gráfica de usuario. En lugar de escribir numerosas líneas de código para describir la apariencia y la ubicación de los elementos de la interfaz, simplemente podemos agregar objetos prefabricados en su lugar dentro de la pantalla, que ahorran mucho tiempo de programación y que sobrepasan el concepto de la programación convencional en cuanto a la estructura secuencial del programa.
+
+    • SQL SERVER 2008.- Se trata de un SGBD objeto-relacional. SQL Server 2008 permite crear los tipos estructurados definidos por el usuario; Estos tipos estructurados tienen un número de características:
+    • Todos los aspectos de un comportamiento son provistos mediante métodos, funciones y procedimientos.
+    • Sus atributos son encapsulados mediante el uso del sistema generador observador y mutador de (funciones  get y set) propias del programa.
+    • Las comparaciones de usos valores son únicamente realizadas mediante funciones definidas por el usuario.
+    • Existe las jerarquías de tipo, en las cuales más tipos especializados (subtipos) tienen todos sus atributos y todos los métodos de los tipos generalizados (supertipos), pero pueden agregar nuevos atributos y métodos particulares.
+    • UML.- El lenguaje de modelado StarUML(UML, por sus siglas en ingles, UnifiedModelingLanguage ) es el lenguaje de modelado de sistemas de software más conocido y utilizado en la actualidad y está respaldado por el OMG(Object Management Group). Es un lenguaje grafico para visualizar, especificar, construir y documentar un  sistema.UML ofrece un estándar para describir un “plano ” del sistema(modelo), incluyendo aspectos conceptuales tales como procesos de negocio y funciones del sistema, y aspectos concretos como expresiones de lenguajes de programación, esquemas de bases de datos y componentes reutilizables.
+    • sistema operativo Windows 7
+
+    • Enterprise Architect
+
+3.3.2 HARDWARE
+
+    • Impresora
+    • Computadora  para cliente
+    • Servidor 
+    • Switch
+3.4.-POSIBLES COSTOS
+3.5 POSIBLES BENEFICIOS
+3.5.1 TIEMPO
+    I. Búsquedade datos, obtención de los reportes con mayor velocidad.
+    II. Procesar las notas con mayor rapidez
+    III. Procesar las consultas con mayor rapidez y eficiencia
+3.5.2 ESFUERZO
+    I. Facilita en el Manejo de la información.
+    II. Facilita la Verificación de notas
+    III. Llenado de Cuaderno de Boletines (centralizar notas)
+3.5.3 COSTOS
+                               Reduce el costo en:
+    I. Material de Inscripción 
+    II. Registro de alumnos (Folder por cada alumno)
+    III. Cuaderno de boletines
+
+3.6.-POSIBLES CLIENTES
+
+Este Software está diseñado para que entre en el mercado de los Sistemas de información, por lo tanto los posibles clientes son: toda Unidad Educativa Dedicada al control del alumnado como por ejemplo:
+    • Colegios
+    • Institutos
+    • Centros Educativos
+
+4.- METODO ISHIKAWA
+    • IDENTIFICAR PROBLEMAS
+Elaborar una lista de problemas
+P1.-  Administración Académica de forma manual.
+P2.-  Inadecuada infraestructura de trabajo.
+P3.-  Búsqueda morosa de información. 
+P4.-  Se desconoce información personal de alumno.
+P5.-  Demora en el proceso de la inscripción al alumno nuevo debido a la búsqueda de cupos por aula considerando paralelos. 
+P6.-  Perdida de tiempo en la inscripción de alumnos antiguos porque se vuelve a registrar nuevamente todo sus datos personales.
+P7.-  Deficiente proceso en la asignación de ítems a docentes nuevos y antiguos.
+P8.-  Perdida de tiempo en el Registro de docentes.
+P9.-  Inadecuado proceso de elaboración de notas por alumno por parte del docente.
+P10.- Moroso proceso en la elaboración de notas trimestrales por motivos de búsqueda y trascripción (Libro centralizador de notas).
+P11.- Perdida de mucho tiempo en la trascripción de notas hacia los boletines trimestrales y libretas ya que estos se los realizan de forma manual.
+P12.- Cálculo erróneo de planilla de mensualidades.
+P13.- Inadecuada infraestructura del establecimiento.
+P14.- Falta de ambiente de estudio como: una biblioteca o sala de cómputo.	
+P15.- Computadoras obsoletas.
+P16.- Las estadísticas no son confiables.
+P17.- Deficiencia en la asignación de: Materias, Docentes, Aulas y Horarios.
+P18.- Ineficiente control de docentes en cuanto a la asistencia debido al proceso manual.
+P19.- Ineficiente control de asistencia de los alumnos.
+P20.- Cobro de multas de forma manual.
+P21.- Personal ineficiente.
+P22.- Retraso de los docentes.
+P23.- Deficiencia en el control de alumnos deudores.
+P24.- Mala organización de trabajo.
+P25.- Falta de motivación.
+P26.- Demora en la realización de reportes.
+P27.- Falta de control en la entrega de Boletines.
+P28.- Ineficiente Control de insumos.
+P29.- Error en la Elaboración de notas trimestrales.
+P30.-Ineficiente Control De Reforzamiento.
+P31.- falta de información de Padres o apoderados.
+P32.-Retraso en la entrega de notas de docentes.
+P33.- No existen ningún tipo de descuento académico.
+
+
+
+Elaborar una lista de problemas
+
+DEPURACION DE PROBLEMAS
+Problemas depurados:
+
+P2,P7,P8,P13,P14,P15,P18,P19,P20,P21,P22,P24,P25,P28,P31. 	
+
+Problemas a resolver:
+
+P1,P3,P4,P5,P6,P9,P10,P11,P12,P16,P17,P23,P26,P27,P29,P30,P32.
+
+LISTA DE PROBLEMAS FINALES 
+P1.-  Administración Académica de forma manual. *// el colegio tiene un sistema, mas este no es el mejor de los mejores 
+P3.-  Búsqueda morosa de información. *
+P4.-  Se desconoce información personal de alumno.*
+P5.-  Demora en el proceso de la inscripción al alumno nuevo debido a la búsqueda de cupos por aula considerando paralelos. *//ver
+P6.-  Perdida de tiempo en la inscripción de alumnos antiguos porque se vuelve a registrar nuevamente todo sus datos personales.*
+P9.-  Inadecuado proceso de elaboración de notas por alumno por parte del docente.*
+P10.- Moroso proceso en la elaboración de notas trimestrales por motivos de búsqueda y trascripción (Libro centralizador de notas).  *bimestre   ///lo tiene en distintas tablas
+P11.- Perdida de mucho tiempo en la trascripción de notas hacia los boletines trimestrales y libretas ya que estos se los realizan de forma manual. *
+P12.- Cálculo erróneo de planilla de mensualidades.
+P16.- Las estadísticas no son confiables.
+P17.- Deficiencia en la asignación de: Materias, Docentes, Aulas y Horarios.*
+P23.- Deficiencia en el control de alumnos deudores.*
+P26.- Demora en la realización de reportes.*
+P27.- Falta de control en la entrega de Boletines.*
+P29.- Error en la Elaboración de notas bimestrales*
+P30.-Ineficiente Control De Reforzamiento.
+P32.-Retraso en la entrega de notas de docentes.
+P33.- No existe ningún tipo de descuento académico.
+
+
+
+
+    • IDENTIFICAR PROPIETARIO DE PROBLEMAS
+    • Jefe Sistemas
+    • Docente
+    • Secretaria
+    • Padre de Familia
+
+	     Propietario
+Problema	JefeSistemas	Secretaria	Docente	PadreDeFamilia
+P1		X	X	X
+P3	X	X		X
+P4		X	X	X
+P5		X	X	
+P6	X	X		X
+P9	X	X		X
+P10	X	X	X	X
+P11	X	X	X	
+P12	X			X
+P16	X	X		X
+P17	X		X	
+P23	X			X
+P26	X	X		
+P27		X		X
+P29	X	X	X	X
+P30			X	X
+P32		X		
+
+
+
+
+
+    • IDENTIFICAR PRINCIPALES CATEGORIAS
+
+    • INSCRIPCION
+Se lleva a cabo el registro de todos los alumnos.
+    • GESTION ACADEMICA
+Una gestión se maneja la información de la unidad educativa.  
+    • NOTAS
+Las notas elaboradas en una gestión académica. Realizadas por la Secretaria correspondiente a un alumno 
+    • PERSONAL
+Elabora la cuenta para cada consulta en respecto a lo ocurrido en la gestión para un alumno cualquiera.
+
+
+
+
+
+
+
+
+
+
+
+
+
+    • ANALIZAR Y DISCUTIR EL PROBLEMA
+ Alternativas de cambio para solucionar problemas:
+    • Desarrollar un sistema de información para Gestionar la inscripción y procesamiento de  notas para el Colegio Eagles, School.
+    • Adquirir Software y hardware para el funcionamiento del sistema.
+    • Capacitar personal para el debido manejo del sistema.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5.-Diseño de Datos.
+ 5.1-Diseño Lógico.
+    5.1.1.-Diagrama de clases.
+
+
+    5.1.2.-Mapeo.
+1.-Gestión
+Año	Fecha_Inicio	Fecha_Finalización	Estado
+P.K.
+2.-Personal_Administrativo.
+                          F.K.
+Cod_Administrativo	Año_Gestión	Nombre	Ap_Paterno	Ap_Materno	Cargo	teléfono	Dirección   	
+P.K.                 F.K.
+3.-Cupo.
+Id_Cupo	C.I_Postulante	Año_Gestion
+P.K                 F.K                   F.K.
+3.-Alumno_Nuevo                                                                                                                                   
+P.K                                                                                                                                                    
+5.- Examen
+      F.K
+     C.I	Prueba_Academica	Prueba_Ingles	Prueba_Psicotècnica
+    P.K.
+6.-Plan_de_Pago
+Id_Plan_Pago	C.I	Cod_Alumno	Nro_Cuota	Precio	Id_Examen
+P.K.                    F.K.         F.K                                                                               F.K.
+7.-Descuento
+Id_Descuento	Cod_Pago	Nivel	Id_Plan_Pago
+P.K.                                                                                                              F.K.
+8.-Curso
+Cod_Curso	Nombre	Nivel
+P.K.  
+9.-Paralelo
+Color_Paralelo	Id_Aula	Cod_Curso
+ P.K.                                          F.K.
+10.-Alumno
+Cod_Alumno	Cod_Curso
+P.K.                     F.K.
+11.-Usuario
+Id_Usuario	Cod_Alumno
+P.K.                   F.K.
+12.-Materia
+Sigla_Materia	Nombre	Cod_Curso
+P.K.                                     F.K.
+13.-Profesor
+Codigo	Nombre	Apellido_Paterno	Apellido_Materno	Direcciòn	Telèfono
+P.K.
+14.-Dicta
+Sigla_Materia	Codigo_Profesor
+P.K.	     P.K.
+15.-Nota
+Nro_Bimestre	Cod_Alumno	Sigla_Materia	Gestiòn	Nota_Final
+P.K.                    F.K.                      F.K.                   
+16.-Sub-Notas
+Nro_Bimestre	Nota_Cuantitativa	Descripciòn_Nota	Nota_Repechaje
+F.K.
+
+
+17.-Libreta--Boletin
+Id_Libreta	Nro_Bimestre
+P.K                 F.K.
+5.1.3.-Normalizacion:
+
+
+
+
+
+
+
+
+
+
+5.2.-Diseño Físico.
+ 5.2.1.-Tabla de Volumen.
+ALUMNO_NUEVO					
+ATRIBUTO	TIPO	AMPLITUD	TIPO DE LLAVE	NULO	DESCRIPCION
+CEDULA_IDENTIDAD	NUMERO	7	PRIMARIA	NOT NULL	NRO DEL CARNET
+LIBRETA	NUMERO	1	 	NOT NULL	IDENTTIFICADOR DE GRADO CORRESPONDIENTE
+CURSO	NUMERO	2	 	NOT NULL	CURSO ASIGNADO
+NOMBRE	ALFABETICO	30	 	NOT NULL	NOMBRE DEL ALUMNO
+APELLIDO_PATERNO	ALFABETICO	20	 	NOT NULL	APELLIDO PATERNO DEL ALUMNO
+APELLIDO_MATERNO	ALFABETICO	20	 	NOT NULL	APELLIDO MATERNO DEL ALUMNO
+FECHA_NACIMIENTO	FECHA	10	 	NOT NULL	FECHA DE NACIMIENTO
+TELEFONO	NUMERO	7	 	NOT NULL	NRO TELEFONO
+R.U.D.E	NUMERO	1	 	NOT NULL	IDENTIFICADOR DE RUDE
+ESTADO R.U.D.E	LETRA	1	 	NOT NULL	SI EL RUDE ESTA CORRECTO
+DIRECCION	ALFABETICO	50	 	NOT NULL	DIRECCION DEL ALUMNO
+AÑO _G	NUMERO	4	 	NOT NULL	AÑO EN QUE INICIO
+					
+EXAMEN					
+CEDULA_IDENTIDAD	NUMERO	7	PRI/FOR	NOT NULL	NRO DEL CARNET
+PRUEBA_ACADEMICA	NUMERO	3	 	NOT NULL	RESULTADO DEL EXAMEN
+PRUEBA_PSICOLOGICA	ALFABETICO	50	 	NOT NULL	DESCRIPCION DE LA PRUEBA
+					
+PLAN_DE_PAGO					
+ID_PLAN_DE_PAGO	NUMERO	4	PRIMARIA	NOT NULL	EL ID DE PAGO POR ALUMNO
+CI	NUMERO	7	FORANEA	NOT NULL	CARNET DEL ALUMNO
+NRO_CUOTA	NUMERO	2	 	NOT NULL	LAS CUOTAS A PAGAR
+PRECIO	NUMERO	4	 	NOT NULL	PRECIO DE CADA CUOTA
+COD_ALUMNO	NUMERO	4	FORANEA	NULL	CODIGO DE CADA ALUMNO
+					
+GESTION					
+ANHO	NUMERO	4	PRIMARIA	NOT NULL	ANHO EN EL SE ABRE LA GESTION
+INICIO_GESTION	FECHA	4	 	NOT NULL	FECHA EN QUE ABRE
+FIN_GESTION	FECHA	4	 	NOT NULL	FECHA EN QUE CIERRA
+ESTADO	LETRA	10	 	NOT NULL	DESCRIPCION DE LA GESTION
+					
+PERSONAL_ADMINISTRATIVO				
+ID_ADM	NUMERO	4	PRIMARIA	NOT NULL	CODIGO DEL PERSONAL
+NOMBRE	ALFABETICO	30	 	NOT NULL	NOMBRE DEL PERSONAL
+CARGO	ALFABETICO	15	 	NOT NULL	FUNCION QUE HACE
+DIRECCION	ALFABETICO	50	 	NOT NULL	DIRECCION DE SU DOMICILIO
+APELLIDO_PATERNO	ALFABETICO	30	 	NOT NULL	APELLIDO PATERNO DEL PERSONAL
+APELLIDO_MATERNO	ALFABETICO	30	 	NOT NULL	APELLIDO MATERNO DEL PERSONAL
+					
+DESCUENTO					
+NIVEL	ALFABETICO	15	 	NOT NULL	NIVEL DEL ALUMNO
+ID_PLAN_DE_PAGO	NUMERO	4	PRI/FOR	NOT NULL	EL ID DE PAGO POR ALUMNO
+					
+ALUMNO					
+COD_ALUMNO	NUMERO	4	PRIMARIA	NOT NULL	CODIGO DE ALUMNO
+COD_CURSO	ALFABETICO	4	FORANEA	NOT NULL	CODIGO DEL CURSO
+COLOR_PARALELO	ALFABETICO	10	 	NOT NULL	IDENTIFICADOR PARA DIVIDIR EL CURSO
+GESTION_ACTUAL	NUMERO	4	 	NOT NULL	LA GESTION ACTUAL
+ESTADO	LETRA	1	 	NOT NULL	ESTADO DEL ALUMNO
+					
+PARALELO					
+COLOR_PARALELO	ALFABETICO	10	 	NOT NULL	IDENTIFICADOR PARA DIVIDIR EL CURSO
+COD_CURSO	ALFABETICO	4	PRI/FOR	NOT NULL	CODIGO DEL ALUMNO
+AULA	NUMERO	3	 	NOT NULL	CURSO DONDE SE PASA CLASES
+					
+CURSO					
+CODIGO_CURSO	ALFABETICO	4	PRIMARIA	NOT NULL	CODIGO DEL CURSO
+NOMBRE	ALFABETICO	30	 	NOT NULL	NOMBRE DEL CURSO
+CAPACIDAD	NUMERO	2	 	NOT NULL	CANTIDAD SOPORTADA
+					
+CUPO					
+NRO_CUPO	NUMERO	2	 	NOT NULL	CUPOS DISPONIBLES
+COD_CURSO	ALFABETICO	4	PRI/FOR	NOT NULL	CODIGO DEL CURSO
+					
+NOTA					
+COD_ALUMNO	NUMERO	4	PRI/FOR	NOT NULL	CODIGO DEL ALUMNO
+COD_MATERIA	ALFABETICO	6	FORANEA	NOT NULL	CODIGO DE LA MATERIA
+NRO_BIMESTRE	NUMERO	1	PRI/FOR	NOT NULL	BIMESTRE ACTUAL
+NOTA_CUANTITATIVA	NUMERO	3	 	NOT NULL	PROMEDIO DE BIMESTRE
+NOTA_REFORZAMIENTO	NUMERO	3	 	NOT NULL	NOTA DE REFORZAMIENTO
+NOTA_FINAL	NUMERO	3	 	NOT NULL	NOTA FINAL
+VALORACION_CUALITATIVA	ALFABETICO	100	 	NOT NULL	DESCRIPCION DEL PROMEDIO
+					
+MATERIA					
+CODIGO	NUMERO	4	 	NOT NULL	CODIGO DE LA MATERIA
+NOBRE_MATERIA	ALFABETICO	15	 	NOT NULL	NOMBRE DE LA MATERIA
+COD_CURSO	NUMERO	4	 	NOT NULL	CODIGO DEL CURSO
+					
+BOLETIN					
+PROMEDIA_MATERIAS	NUMERO	3	 	NOT NULL	PROMEDIO DE LAS MATERIAS
+RENDIMIENTO	ALFABETICO	20	 	NOT NULL	DESCRIPCION 
+					
+DICTA					
+COD_MATERA	ALFABETICO	4	FORANEA	NOT NULL	CODIGO DE LA MATERIA
+COD_PROFESOR	NUMERO	4	FORANEA	NOT NULL	CODIGO DEL PROFESOR
+					
+PROFESOR					
+CODIGO	NUMERO	4	PRIMARIA	NOT NULL	CODIGO DEL PROFESOR
+NOMBRE	ALFABETICO	30	 	NOT NULL	NOMBRE DEL PROFESOR
+APELLIDO_PATERNO	ALFABETICO	30	 	NOT NULL	APELLIDO PATERNO DEL PROFESOR
+APELLIDO_MATERNO	ALFABETICO	30	 	NOT NULL	APELLIDO MATERNO DEL PROFESOR
+DIRECCION	ALFABETICO	3	 	NOT NULL	DIRECCION DEL PROFESOR
+TELEFONO	NUMERO	7	 	NOT NULL	NRO TELEFONICO
+
+5.2.2.-Script.
+CREATE DATABASE	POBLANDO
+USE POBLANDO
+CREATE TABLE GESTION
+(
+AÑO_GESTION INT NOT NULL,
+INICIO_GESTION DATE NOT NULL,
+FIN_GESTION DATE NOT NULL,
+ESTADO VARCHAR(10) NOT NULL,
+PRIMARY KEY(AÑO_GESTION)
+)
+CREATE TABLE PERSONA
+(
+CI INT NOT NULL,
+NOMBRE VARCHAR(20) NOT NULL,
+AP_PATERNO VARCHAR(20) NOT NULL,
+AP_MATERNO VARCHAR(20) NOT NULL,
+FECHA_NACIMIENTO DATE NOT NULL,
+DIRECCION VARCHAR(50) NULL,
+SEXO CHAR NOT NULL,
+PRIMARY KEY (CI)
+)
+CREATE TABLE RUDE
+(
+COD_RUDE INT NOT NULL,
+RUDE BIT NOT NULL,
+ESTADO_RUDE CHAR NOT NULL,
+PRIMARY KEY (COD_RUDE)
+)
+CREATE TABLE TELEFONO
+(
+CI INT NOT NULL,
+TELEFONO INT  NULL,
+FOREIGN KEY (CI) REFERENCES PERSONA(CI)
+)
+CREATE TABLE ADMINISTRATIVO
+(
+ID_ADM INT NOT NULL,
+CI INT NOT NULL,
+CARGO VARCHAR(50) NOT NULL,
+AÑO_GESTION INT NULL,
+PRIMARY KEY(ID_ADM,CI),
+FOREIGN KEY(CI) REFERENCES PERSONA(CI)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+)
+CREATE TABLE NUEVO_ALUMNO
+(
+CI INT NOT NULL,
+LIBRETA BIT NOT NULL,
+CURSO INT NOT NULL,
+NIVEL VARCHAR(15) NOT NULL,
+COD_RUDE INT NOT NULL,
+AÑO_GESTION INT NOT NULL,
+PRIMARY KEY (CI),
+FOREIGN KEY (COD_RUDE) REFERENCES RUDE(COD_RUDE)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+FOREIGN KEY (AÑO_GESTION) REFERENCES GESTION(AÑO_GESTION)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+FOREIGN KEY (CI) REFERENCES PERSONA(CI)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+)
+CREATE TABLE EXAMEN
+(
+CI_ALUMNO INT NOT NULL,
+PRUEBA_ACADEMICA INT NOT NULL,
+PRUEBA_INGLES INT NOT NULL,
+PRUEBA_PSICOTECNICA CHAR NOT NULL,
+PRIMARY KEY (CI_ALUMNO),
+FOREIGN KEY (CI_ALUMNO) REFERENCES PERSONA(CI)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+)
+CREATE TABLE CURSO
+(
+COD_CURSO INT NOT NULL,
+NIVEL VARCHAR(15) NOT NULL,--VA DESPUES DEL NOMBRE DEL CURSO
+NOMBRE_CURSO VARCHAR(20) NOT NULL,--PRIMERO VA EL NOMBRE DEL CURSO
+CAPACIDAD INT NOT NULL,
+PRIMARY KEY (COD_CURSO)
+)
+CREATE TABLE CUPO		
+(
+COD_CURSO INT NOT NULL,
+NRO_CUPO INT NOT NULL,
+FOREIGN KEY (COD_CURSO) REFERENCES CURSO(COD_CURSO)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+)
+
+
+CREATE TABLE PARALELO
+(
+COD_CURSO INT NOT NULL,
+COLOR VARCHAR(10) NOT NULL,
+PRIMARY KEY(COD_CURSO,COLOR),
+FOREIGN KEY (COD_CURSO) REFERENCES CURSO(COD_CURSO)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+)
+CREATE TABLE PLAN_DE_PAGO
+(
+ID_PLAN INT NOT NULL,
+CI INT NOT NULL,
+PRECIO INT NOT NULL,
+DESCUENTO FLOAT NULL,
+NRO_CUOTA INT NOT NULL
+PRIMARY KEY(ID_PLAN,CI)
+FOREIGN KEY(CI) REFERENCES PERSONA(CI)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+)
+CREATE TABLE REGISTRA
+(
+COD_ALUMNO INT NOT NULL,
+ID_PLAN INT NOT NULL,
+CI INT NOT NULL,
+PRIMARY KEY (COD_ALUMNO),
+FOREIGN KEY (ID_PLAN,CI) REFERENCES PLAN_DE_PAGO
+ON UPDATE CASCADE
+ON DELETE CASCADE
+)
+
+CREATE TABLE ALUMNO
+(
+COD_ALUMNO INT NOT NULL,
+COLOR_PARALELO VARCHAR(10) NOT NULL,
+COD_CURSO INT NOT NULL,
+GESTION_ACUTAL INT NOT NULL,
+PRIMARY KEY (COD_ALUMNO),
+FOREIGN KEY(COD_CURSO,COLOR_PARALELO) REFERENCES PARALELO
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+FOREIGN KEY (COD_ALUMNO) REFERENCES REGISTRA(COD_ALUMNO)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+)
+6.-Modelo de Negocio
+ 
+
+
+
+
+  
+
+
+
+
+
+
+     
+
+
+
+
+
+
+
+7.-Identificar Actores y Casos de Uso.
+
+
+A1: Director
+Es el encargado de Administrar la  Gestión Académica del colegio, dirige para el cumplimiento de las actividades escolares de acuerdo con lo establecido por el Ministerio de Educación.
+Al ser el Inicio y cierre parte de la agestión Académica el director dirige este proceso. 
+A2: Postulante
+Persona que quiere estudiar en el colegio, para esto se verificará si existe cupo para el grado al que se postula quien presentara su libreta que indica el grado que le toca además de que llena el formulario RUDE con sus datos personales.
+A3: Secretaria
+ Una de sus funciones es al atender a cada postulante verificar la existencia de  cupo.
+Entregar a cada alumno su respectivo Plan de Pagos,  recibe el pago de la colegiatura de todos alumnos del colegio.
+
+A4: Administrador del Sistema.
+Lleva a cabo las instrucciones concernientes al sistema que el director efectúa, como ser  habilitar más cupo para un respectivo curso. 
+Registra en el sistema las notas  de todas las materias que lleva cada alumno, las cuales se las proporciona el profesor designado para dictar la respectiva materia.
+Además de imprimir boletines.
+
+A5 Alumno Antiguo.
+ Es la persona que ya estudia en la Unidad Educativa, por lo tanto sus datos ya están registrados en el sistema, se registra también  para cada alumno las notas que obtiene en cada materia durante el bimestre.
+A6 Profesor.
+Efectúa el llenado de las notas de las materias que dicta para su posterior registro en el sistema.
+7.1. Lista de  Casos de Uso.-	
+CU1 Administrar Gestión
+CU2Gestionar Login
+CU3 Administrar Curso
+CU4 Gestionar Materia
+CU5Gestionar Paralelo
+CU6 Gestionar Cupo
+CU7 Gestionar  Personal Administrativo
+CU8  Gestionar Profesor
+CU9Administrar Postulante
+//CU10 Registrar Rude
+CU11 Gestionar Prueba de Admisión
+CU12 Registrar Plan de Pagos 
+CU13 Gestionar Descuento
+CU14Administrar Inscripción
+CU15Administrar Alumno
+CU16Administrar Bitacora
+CU17 Gestionar Nota
+CU18  Generar   Boletín
+CU19Reservar Cupo
+
+
+
+
+
+
+Casos de Uso	Actor	Rol
+CU1 Administrar Gestión
+	                Director
+		Autoriza el inicio y la  finalización de la Gestión Académica. 
+
+CU2 Gestionar Materia
+	    • Administrador del Sistema
+	Registra en el Sistema las materias que se deben llevar en cada curso en base a lo que establece la Reforma Educativa.
+
+CU3 Administrar Profesor
+	    • Director
+    • Administrador del Sistema
+	Director 
+    • Designa  a los profesores  a   que materias de que curso dictaran clases.
+Administrador del Sistema
+    • Registra en el Sistema a los          profesores encargados de    dictar todas las materias de  cada paralelo de cada curso.
+
+CU4 Supervisar  Personal       Administrativo
+	    • Administrador del Sistema
+	Consultar cada cargo como administrativo que persona lo ocupa. 
+CU5 Gestionar Inscripción
+
+
+
+
+
+
+	    • Alumno
+    • Secretaria	    • Alumno
+Otorga los datos    personales.
+    • Secretaria
+Rellena el formulario de inscripción con los datos del alumno.
+
+
+CU6 Registrar Rude
+
+	Secretaria	Registra en el sistema los datos del formulario RUDE, además verifica si está completo o no.
+CU7 Gestionar Cupo
+	Secretaria
+
+	Al momento de inscribir a un alumno verifica si tiene cupo el curso al que le corresponde ingresar.
+CU8 Administrar Curso
+	    • Administrador del Sistema
+	Registra en el sistema la cantidad de alumnos que se pueden inscribir a cada curso
+CU9  Gestionar Prueba de Admisión
+	    • Secretaria
+    • Administrador del Sistema
+	    • Secretaria
+    • Asigna al postulante una fecha de acuerdo al orden en que se presentan, para que rindan una prueba que contempla las materias de Ingles, Matemática, Lenguaje, y Psicotécnica.
+    •  Administrador del Sistema
+    • Registra en el sistema la nota de cada materia que obtuvo el postulante 
+
+CU10 Asignar Paralelo
+
+
+
+
+
+
+
+
+
+
+
+	    • Administrador del Sistema
+	Asigna al postulante a un paralelo del curso al que le corresponde ingresar, el paralelo que le toca lo determina el valor de la nota que obtuvo en la prueba de inglés. 
+CU11 Administrar Alumno
+	    • Secretaria
+    • Administrador del Sistema
+	    • Secretaria
+Inscribe al alumno al grado que le corresponde conociendo su código como alumno.
+    • Administrador del Sistema
+    • Registra en el boletín bimestral las notas que obtuvo cada alumno en las materias asignadas al grado en el que se encuentra.
+    • Imprime boletines.
+CU12 Registrar Plan de Pagos 
+	    • Administrador del Sistema
+	Luego de obtener las notas de la prueba de admisión, el sistema le genera un plan de pago de las 10 colegiaturas que conforman la Gestión Académica. El valor de cada colegiatura se determina de acuerdo al nivel  en el que el alumno se encuentra.
+CU13 Gestionar Descuento
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	Secretaria	Verifica si el alumno presenta algunos de los casos en los que se realiza una reducción en el valor fijado de la colegiatura.
+CU14 Gestionar Nota
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	Profesor
+Administrador de Sistemas
+	    • Profesor
+    • Registra en un cuadernillo pedagógico las notas de  la(s ) materia(s) que dicta.
+Estas notas son: nota cuantitativa que es un valor numérico de la nota que obtuvo, nota reforzamiento, nota final que es la suma de la nota cuantitativa y nota reforzamiento, y nota cualitativa que es una descripción literal de la nota final de cada bimestre. 
+    • Administrador de Sistemas
+Ingresa al sistema las notas de cada materia, que lleva  cada alumno del colegio, puede modificar estas notas en caso de que hubiera ocurrido una equivocación. 
+
+CU15  Generar   Boletín
+
+
+
+
+	    • Administrador del Sistema
+	    • Administrador del Sistema
+Registra en el boletín las siguientes notas para cada bimestre de la Gestión Académica:
+    • Nota Cuantitativa.
+    • Nota Reforzamiento.
+    • Nota Final.
+    • Nota Cualitativa.
+CU16 Reservar Cupo
+		    • Secretaria
+Antes de finalizar la Gestión Académica consulta a os alumnos sobre su continuidad en el colegio, si la respuesta es afirmativa se esperara a terminar la Gestión para comprobar si el alumno aprueba el grado que cursaba para determinar a qué grado corresponde la reserva de cupo. Si la respuesta es negativa se tiene un cupo disponible para tal curso. 
+    • Alumno
+Confirma su continuidad  para la siguiente Gestión Académica.
+
+
+
+
+7.2.-Priorizacion de Casos de Uso.
+Casos de Uso	Estado	Prioridad	Riesgo
+CU1 Administrar Gestión
+	Incorporado	Critico	Critico
+CU2 Gestionar Materia
+	Incorporado	Critico	Critico
+CU3 Administrar Profesor
+	Incorporado	Critico	Critico
+CU4 Supervisar  Personal Administrativo
+	Aprobado	Normal	Normal
+CU5 Gestionar Inscripción
+	Incorporado	Critico	Critico
+CU6 Registrar Rude
+	Aprobado	Critico	Critico
+CU7 Gestionar Cupo
+	Aprobado	Normal	Normal
+CU8 Administrar Curso
+	Aprobado	Normal	Normal
+CU9  Gestionar Prueba de Admisión
+	Aprobado	Normal	Normal
+CU10 Asignar Paralelo
+	Aprobado	Normal	Normal
+CU11 Administrar Alumno
+	Incorporado	Critico	Critico
+CU12 Registrar Plan de Pagos 
+	Incorporado	Critico	Critico
+CU13 Gestionar Descuento
+	Aprobado	Normal	Normal
+CU14 Gestionar Nota
+	Incorporado	Critico	Critico
+CU15  Generar   Boletín
+	Incorporado	Critico	Critico
+CU16 Reservar Cupo
+	Aprobado	Normal	Normal
+7.3.-Detallar Casos de Uso 
+
+
+
+
+Nombre de Casos de Uso	CU1 Administrar Gestión
+
+Propósito	Crear y Administrar una Nueva Gestión Académica
+Descripción	El director es quien inicia y cierra la Gestión Académica en cumplimiento a las instrucciones del Ministerio de Educación
+Actores	Director y Administrador del Sistema
+Actor Iniciador	Director
+Precondición	
+Proceso o Flujo de Suceso	        1.1 Seleccione nuevo para Registrar una nueva Gestión.
+Esta opción pone en blanco las casillas de:
+      Año 
+      Inicio_Gestion
+      Fin_Gestion
+      Estado
+Deberá ingresar dichos datos.
+ 1.2 Guardar
+Seleccione guardar para registrar los datos de la nueva gestión.
+        1.3 Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+2. Modificar
+Seleccione modificar para realizar alguna modificación sobre los atributos:
+  
+
+   Se podrá hacer alguna modificación si el atributo Estado de la gestión esta como abierta.
+2.1Guardar
+Seleccione guardar para registrar los datos de la nueva Gestión.
+2.2Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+
+
+
+
+
+
+Post Condición	
+CU2 Administrar Curso
+CU6  Gestionar Profesor
+CU5 Gestionar  Personal Administrativo
+
+CU7 Administrar Inscripción
+
+
+
+
+Exception	No se puede agregar una nueva gestión si el estado de la  actual Gestión se encuentra  abierto.
+
+ 
+
+Nombre de Casos de Uso	
+CU2 Administrar Curso 
+Propósito	Registrar los cargos que ejercen los empleados
+Habrá opciones de registrar y editar un cargo
+Descripción	El director es quien inicia y cierra la Gestión Academica en cumplimiento a las instrucciones del Ministerio de Educación
+Actores	Director
+Actor Iniciador	Director
+Precondición	CU1 Administrar Gestión
+
+Proceso o Flujo de Suceso	        1.2 Seleccione nuevo para Registrar una nueva Gestión.
+Esta opción pone en blanco las casillas de:
+      Id_Adm 
+      Cargo
+      Direccion
+      nombre
+     Ap.Paterno
+   Ap.Materno
+   Teléfono
+
+Deberá ingresar dichos datos.
+ 1.2 Guardar
+Seleccione guardar para registrar los datos de un nuevo Administrativo.
+        1.4 Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+2. Modificar
+Seleccione modificar para realizar alguna modificación sobre los  atributos:
+  Direccion
+   nombre
+   Ap.Paterno
+   Ap.Materno
+   Teléfono
+ 
+2.1Guardar
+Seleccione guardar para registrar los datos actualizados del administrativo.
+2.2Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+Post Condición	
+Exception	
+	
+
+
+
+
+
+ 
+
+Nombre de Casos de Uso	CU3 Gestionar Cupo
+Propósito	Registrar el valor de cupos asignados y las modificaciones  que tendrá tras la inscripción de los alumnos.
+Descripción	Se asigna una determinada cantidad de cupo para cada paralelo de cada curso.
+Actores	Secretaria
+Actor Iniciador	Secretaria
+Precondición	
+Proceso o Flujo de Suceso	        1.3 Seleccione nuevo para Registrar  la cantidad de cupos disponibles para la gestión actual.
+        1.4 Esta opción pone en blanco las casillas de:
+Nro_Cupo
+Deberá ingresar dicho dato.
+ 1.2 Guardar
+Seleccione guardar para registrar
+El numero de cupo.
+        1.5 Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+2.-Modificar
+Seleccione modificar para realizar alguna modificación sobre el atributo:
+Nro_Cupo
+
+ Se podrá hacer alguna modificación si el atributo Estado de la gestión esta como abierta.
+2.1Guardar
+Seleccione guardar para registrar la cantidad de cupo asignada para cada paralelo de cada curso.
+2.2Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+
+
+
+
+
+
+Post Condición	CU6 Gestionar Inscripción 
+Exception	
+	
+
+
+Nombre de Casos de Uso	CU4  Gestionar Prueba de Admisión
+
+Propósito	Registrar el valor de la nota obtenida en la prueba de ingles, matemática, lenguaje.
+Descripción	La Prueba de Admisión contempla las materias de Ingles, Matematica,Lenguaje.
+Actores	Administrador del Sistema
+Actor Iniciador	Administrador del Sistema
+Precondición	CU6 Gestionar Inscripción 
+
+Proceso o Flujo de Suceso	        1.5 Seleccione nuevo para Registrar  los datos correspondientes al numero de Prueba de Admision asignada al Postulante.
+        1.6 Esta opción pone en blanco las casillas de:
+Cedula_Identidad
+Prueba_Academica
+Prueba_Ingles
+Prueba_Psicologica
+Deberá ingresar dichos datos.
+ 1.2 Guardar
+Seleccione guardar para registrar
+Los datos correspondientes al postulante que se asigno ese numero de prueba.
+        1.6 Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+2.-Modificar
+Seleccione modificar para realizar alguna modificación sobre el valor asignado a los atributos:
+Prueba_Academica
+Prueba_Ingles
+Prueba_Psicologica
+
+2.1Guardar
+Seleccione guardar para registrar valor de la nota corregida.
+2.2Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+
+
+
+
+
+
+Post Condición	
+Exception	
+	
+
+
+
+Nombre de Casos de Uso	CU5 Asignar Paralelo
+Propósito	Registrar a cada alumno a un paralelo 
+Descripción	La determinación del paralelo si es Postulante lo determina la nota que obtuvo en la prueba de ingles.
+Si es Alumno  enbase al paralelo de su anterior curso.
+Actores	CU4  Gestionar Prueba de Admisión
+Actor Iniciador	CU4  Gestionar Prueba de Admisión
+Precondición	CU4  Gestionar Prueba de Admisión
+Proceso o Flujo de Suceso	        1.7 Seleccione nuevo para Registrar  los datos correspondientes al Paralelo a asigna.
+        1.8 Esta opción pone en blanco las casillas de:
+Color_Paralelo
+Id_Aula
+Cod_Curso
+Deberá ingresar dichos datos.
+ 1.2 Guardar
+Seleccione guardar para registrar
+Los datos correspondientes a los paralelos asignados a un curso. 
+        1.7 Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+2.-Modificar
+Seleccione modificar para realizar alguna modificación sobre el valor asignado a los atributos:
+Prueba_Academica
+Prueba_Ingles
+Prueba_Psicologica
+
+2.1Guardar
+Seleccione guardar el paralelo .
+2.2Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+
+
+
+
+
+
+Post Condición	CU8 Registrar Plan de Pagos 
+Exception	El color de paralelo asignado ya existe.
+	
+
+
+
+
+Nombre de Casos de Uso
+	CU7 Registrar Rude
+
+Propósito	Registrar los datos de los postulantes
+Descripción	Contar con la información personal de los alumnos.  
+Actores	Alumno
+Secretaria
+Actor Iniciador	Alumno
+Precondición	CU6Gestionar Inscripcion
+
+Proceso o Flujo de Suceso	        1.9 Seleccione nuevo para Registrar  los datos correspondientes al alumno
+        1.10 Esta opción pone en blanco las casillas de:
+Codigo_Rude
+RudePresento
+Estado
+Nombre
+Deberá ingresar dichos datos.
+ 1.2 Guardar
+Seleccione guardar para registrar
+Los datos correspondientes a un alumno.
+        1.8 Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+2.-Modificar
+Seleccione modificar para realizar alguna modificación sobre el valor asignado a los atributos:
+RudePresento
+
+Estado
+Nombre
+
+2.1Guardar
+Seleccione guarda, para registrar los cambios asignados al alumno correspondientes.
+2.2Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+
+
+
+
+
+
+Post Condición	
+Exception	
+	
+
+
+Nombre de Casos de Uso	CU8Registrar Plan de Pagos
+
+Propósito	Registrar  el monto y fecha de las colegiaturas. 
+Descripción	El plan de pagos contiene el monto de las 10 colegiaturas y fecha de pago.
+Actores	Secretaria
+Actor Iniciador	Secretaria
+Precondición	
+Proceso o Flujo de Suceso	        1.11 Seleccione nuevo para Registrar  los datos correspondientes al plan de pagos correspondiente a un alumno.
+        1.12 Esta opción pone en blanco las casillas de:
+Id_plande_pagos
+Cedula
+Nro_de_Cuota
+Precio
+
+Deberá ingresar dichos datos.
+ 1.2 Guardar
+Seleccione guardar para registrar
+Los datos correspondientes a un plan de pagos de un alumno.
+        1.9 Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+2.-Modificar
+Seleccione modificar para realizar alguna modificación sobre el valor asignado a los atributos:
+Nro_de_Cuota
+2.1Guardar
+Seleccione guarda, para registrar los cambios asignados al plan de pagos correspondiente a un alumno.
+2.2Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+
+
+
+
+
+
+Post Condición	
+Exception	
+	
+
+ 
+Nombre de Casos de Uso	CU9Gestionar Descuento
+
+Propósito	Registrar  el porcentaje de descuento que tendrá un alumno 
+Descripción	Contiene un valor de porcentaje de la cantidad de descuento
+Actores	Secretaria
+Actor Iniciador	Secretaria
+Precondición	CU8Registrar Plan de Pagos
+Proceso o Flujo de Suceso	        1.13 Seleccione nuevo para Registrar  los datos correspondientes al descuento asignado al plan de pagos correspondiente a un alumno.
+        1.14 Esta opción pone en blanco las casillas de:
+CodigoPlan de Pagos
+Tipos de Descuento
+
+Deberá ingresar dichos datos.
+ 1.2 Guardar
+Seleccione guardar para registrar
+Los datos correspondientes al descuento correspondiente a un plan de pagos de  un alumno.
+        1.10 Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+
+
+
+
+
+Post Condición	
+Exception	El nuevo alumno puede no tener descuento
+	
+
+
+Nombre de Casos de Uso	CU10Administrar Alumno
+
+Propósito	Registrar  al alumno al curso correspondiente. 
+Descripción	
+Actores	Alumno
+Secretaria
+Actor Iniciador	Alumno
+Precondición	CU8Registrar Plan de Pagos 
+Proceso o Flujo de Suceso	        1.15 Seleccione nuevo para Registrar  los datos correspondientes alumno
+        1.16 Esta opción pone en blanco las casillas de:
+Cod_Curso
+CodParalelo
+Gestion
+Estado_alumno
+
+Deberá ingresar dichos datos.
+ 1.2 Guardar
+Seleccione guardar para registrar
+Los datos correspondientes al alumno.
+        1.11 Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+2.-Modificar
+Seleccione modificar para realizar alguna modificación sobre el valor asignado a los atributos:
+Cod_Curso
+CodParalelo
+Estado_alumno
+
+2.1Guardar
+Seleccione guarda, para registrar los cambios asignados al alumno.
+2.2Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+
+
+
+
+
+
+Post Condición	
+Exception	
+	
+
+
+
+
+
+
+Nombre de Casos de Uso	CU11Administar Curso
+
+Propósito	Registrar  las materias que se llevan en cada curso. 
+Descripción	
+Actores	Administrador del Sistema
+Actor Iniciador	Administrador del Sistema
+Precondición	
+Proceso o Flujo de Suceso	        1.17 Seleccione nuevo para Registrar  los datos correspondientes a un curso
+        1.18 Esta opción pone en blanco las casillas de:
+Cod_Curso
+Nombre
+Capacidad
+
+Deberá ingresar dichos datos.
+ 1.2 Guardar
+Seleccione guardar para registrar
+Los datos correspondientes al alumno.
+        1.12 Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+2.-Modificar
+Seleccione modificar para realizar alguna modificación sobre el valor asignado a lo atributo:
+Capacidad
+2.1Guardar
+Seleccione guarda, para registrar los cambios asignados al curso.
+2.2Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+
+
+
+
+
+
+Post Condición	
+Exception	
+	
+
+
+Nombre de Casos de Uso	CU11Administar Curso
+
+Propósito	Registrar  las materias que se llevan en cada curso. 
+Descripción	
+Actores	Administrador del Sistema
+Actor Iniciador	Administrador del Sistema
+Precondición	
+Proceso o Flujo de Suceso	        1.19 Seleccione nuevo para Registrar  los datos correspondientes a un curso
+        1.20 Esta opción pone en blanco las casillas de:
+Cod_Curso
+Nombre
+Capacidad
+
+Deberá ingresar dichos datos.
+ 1.2 Guardar
+Seleccione guardar para registrar
+Los datos correspondientes al alumno.
+        1.13 Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+2.-Modificar
+Seleccione modificar para realizar alguna modificación sobre el valor asignado a lo atributo:
+Capacidad
+2.1Guardar
+Seleccione guarda, para registrar los cambios asignados al curso.
+2.2Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+
+
+
+
+
+
+Post Condición	
+Exception	
+	
+
+
+
+Nombre Caso de Uso	CU14Admistrar Profesor
+
+Propósito 	Conocer la o las materias se asignaron a un profesor, que días pasa clases, cuantas horas  pasa clases.
+	
+Actores	Profesor
+Administrador del Sistema
+Actor Iniciador	Director
+
+Precondición	CU8 Administrar Curso, CU10Gestionar Materia
+
+Proceso o Flujo  de Suceso	1.-Registrar nuevo Profesor
+   1.1.-Seleccione nuevo para Registrar un Nuevo     Profesor
+Esta opción pone en blanco las casillas de:
+Código
+Nombre
+Apellido Paterno 
+Apellido Materno
+Dirección
+Teléfono  
+Deberá ingresar dichos datos.
+1.2 Guardar
+Seleccione guardar para registrar los datos del nuevo profesor.
+        1.3 Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+
+2. Modificar
+Seleccione editar para realizar alguna modificación sobre los datos del profesor seleccionado. 
+Código
+Nombre
+Apellido Paterno 
+Apellido Materno
+Dirección
+Teléfono  
+2.1Guardar
+Seleccione guardar para registrar los datos del nuevo Profesor.
+2.2Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+
+
+ 
+Pos Condición	CU12 Gestionar Nota
+
+Excepción	El código de Profesor ya existe
+	
+
+
+Nombre Caso de Uso	CU15 Gestionar Nota
+
+Descripción	Se ingresaran al sistema las notas de las materias que lleva cada uno de los alumnos, las cuales los profesores las llenan en planillas de Excel o en un cuadernillo de registro de Docente  Para el registro de estas notas se tomó en cuenta la Valoración Cuantitativa y Valoración Cualitativa dentro de esto se valoran  cuatro parámetros que son: Ser valor asignado 20 puntos, Saber valor asignado 30 puntos, Hacer valor asignado 30 puntos y Decidir valor asignado 20 puntos.
+
+Propósito	Registrar, modificar las notas bimestrales que se asignan a cada alumno de las materias que lleva.
+Actores	Profesor
+Actor Iniciador	Profesor
+Precondición	CU10Gestionar Materia
+CU11Admistrar Profesor
+
+Proceso o Flujo  de Suceso	1.-Registrar.
+   1.1.-Seleccione nueva para Registrar una nueva nota 
+Esta opción pone en blanco las casillas de:
+Cod_Alumno
+Cod_Materia
+Nro_Bimestre
+Nota_Cuantitativa
+Nota_Reforzamiento
+Nota_Final
+Valoracion_Cualitativa
+
+Deberá ingresar dichos datos.
+1.2 Guardar
+Seleccione guardar para registrar los datos nueva nota correspondiente de una de las N materias que lleva un alumno. 
+        1.4 Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+2. Modificar
+Seleccione editar para realizar alguna modificación sobre los datos de la  nota de un determinado bimestre de una de las materias que lleva un alumno.
+
+Nota_Cuantitativa
+Nota_Reforzamiento
+Nota_Final
+Valoracion_Cualitativa
+2.1Guardar
+Seleccione guardar para registrar los datos corregidos de la nota de una materia que lleva un alumno
+2.2Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+
+
+
+Pos Condición	CU17 Generar Boletín
+
+Excepción	No puede modificar la final del bimestre, sin modificar las notas que la determinaron.
+
+
+Nombre Caso de Uso	CU16 Modificar Nota de Repechaje
+Descripción	Se ingresaran al sistema las notas de repechaje de todas las materias que lleva cada uno de los alumnos, las cuales los profesores las llenan en planillas de Excel o en un cuadernillo de registro de Docente  Para el registro de estas notas se tomará en cuenta la nota cuantitativa y cualitativa. Si el alumno consigue una nota mayor, ésta reemplaza a la anterior.
+Propósito	Registrar, modificar las notas bimestrales que se asignan a cada alumno de las materias que lleva.
+Actores	Profesor
+Actor Iniciador	Profesor
+Precondición	CU10Gestionar Materia
+Proceso o Flujo  de Suceso	1.-Registrar.
+   1.1.-Seleccione el registro de notas para Registrar una nueva nota que en este caso, la casilla de nota de repechaje. 
+Esta opción permite insertar la nota de repechaje para su respectiva materia:
+Nota_Reforzamiento.
+Deberá ingresar dichos datos.
+1.2 Guardar
+Seleccione guardar para registrar las notas de repechaje correspondiente a sus materias que lleva un alumno. 
+        1.5 Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+2. Modificar
+Seleccione editar para realizar alguna modificación sobre los datos de la nota de reforzamiento de un determinado bimestre de una de las materias que lleva un alumno.
+      Nota_Reforzamiento
+
+2.1Guardar
+Seleccione guardar para registrar los datos corregidos de la nota de una materia que lleva un alumno
+2.2Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+
+
+
+Post Condición	CU15 Gestionar nota
+
+Excepción	No puede modificar la final del bimestre, sin modificar las notas que la determinaron.
+	
+
+
+
+
+Nombre Caso de Uso	CU17 Generar Boletín
+
+Propósito	Genera un boletín para un alumno correspondiente, y a sus padres un certificado, que es un medio que informa  el rendimiento académico que obtuvo en sus materias.
+Actores	Administrador del Sistema.
+Actor Iniciador	Alumno
+Precondición	U12 Gestionar Nota
+
+
+
+Proceso o Flujo  de Suceso	1.-Registrar.
+A los valores de cada uno de los atributos asignados a la tabla nota,
+Se aumentara los siguientes atributos:
+     Promedio_Materias
+     Rendimiento
+1.1.-Seleccione nuevo para registrar un nuevo boletín.
+Esta acción pondrá copiara los valores asignados a los atributos de la tabla nota, de cada alumno y nos habilitara para el llenado de los siguientes atributos de la tabla boletín:
+     Promedio_Materias
+     Rendimiento
+Deberá ingresar dichos datos.
+
+ 1.2 Guardar
+Seleccione guardar para registrar los datos que contendrá un  boletín bimestral correspondiente a un alumno.
+        1.6 Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+ 2. Modificar
+Seleccione modificar para realizar alguna modificación sobre los datos que contendrá el boletín de un alumno.
+      Se podrán realizar en cambio en los sgtes atributos
+     Promedio_Materias
+     Rendimiento
+2.1Guardar
+Seleccione guardar para registrar los datos corregidos del boletín correspondiente a un alumno.
+     2.2Imprimir
+ Seleccione imprimir para imprimir los datos que se asignaron a la tabla boletín.
+2.3Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+
+
+
+Excepción	No puede modificar el promedio final, sin modificar la(s) nota(s) que determinaron este valor.
+
+
+
+Nombre Caso de Uso	CU18 Reservar Cupo
+
+Propósito	Reservar un cupo para el alumno ya sea antiguo o nuevo para la inscripción de la próxima gestión escolar
+Actores	Alumno.
+Secretaria.
+Actor Iniciador	Alumno
+Precondición	CU15 Gestionar nota
+
+
+
+
+Proceso o Flujo  de Suceso	1.-Registrar.
+Registrará el carnet de identidad del estudiante y se verificará si es un alumno nuevo o antiguo.
+
+ 1.2 Guardar
+Seleccione guardar para registrar los datos que contendrá un  boletín bimestral correspondiente a un alumno.
+        1.7 Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+ 2. Modificar
+Seleccione modificar para realizar alguna modificación sobre los datos que contendrá el formulario de reserva de cupo.
+     Rendimiento
+2.1Guardar
+Seleccione guardar para registrar los datos corregidos del boletín correspondiente a un alumno. 
+2.3Salir
+Seleccione salir para Terminar o cancelar la operación y retornar al formulario anterior.
+
+
+
+Excepción	El alumno decida no continuar con la siguiente gestión.
+
+
+
+ 
+
+
+
+
+
+8.-Analisis de Arquitectura.
+8.1.-Identificar Paquete.
+Paquete Gestión Académica.
+
+
+Función.
+    • En este paquete se Gestiona la información necesaria para el inicio de una Gestión Académica
+
+
+
+
+
+
+
+Paquete Inscripción.
+
+
+Función.
+En este paquete se registrara la información necesaria para inscribir tanto a los postulantes a ser alumnos del colegio, como a los que actualmente ya son alumnos.
+
+
+Paquete Nota
+
+
+Función.
+En este paquete se registrara la información necesaria para Gestionar la Nota de los alumnos.
+8.2. – Vista de Casos de Uso.
+
+
+
+
+
+8.3.-Analizar Paquete.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+9.-Diagrama de Comunicación.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

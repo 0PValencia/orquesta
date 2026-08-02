@@ -1,0 +1,3156 @@
+﻿ 
+
+
+
+
+
+
+
+
+
+
+SISTEMA DE INFORMACIÓN PARA GESTIONAR LOS PACIENTES, RESERVAS, SERVICIOS E INVENTARIOS DEL CONSULTORIO DENTAL 
+“SONRIE”.
+Grupo “C”.
+Docente: Ing. Garzón Cuellar Angélica.
+Materia: Sistemas de Información 1.
+Grupo: SC.
+Semestre: 2-2020	
+
+ Integrantes:
+    • Cruz Condori Carla - 218015356. 
+    • Huanca Choque Elián René - 218024975.
+    • Montaño Anivarro Andres - 218154526.
+    • Vidal Urquiza Javier Andrés – 218058489.
+
+Santa Cruz –Bolivia.
+
+Indice
+1.	PERFIL.	5
+1.1INTRODUCCIÓN.	6
+1.2 ANTECEDENTES.	7
+1.3 JUSTIFICACIÓN.	8
+1.4 DESCRIPCIÓN DEL PROBLEMA.	9
+1.5 FORMULACIÓN DEL PROBLEMA.	11
+1.6 OBJETIVOS.	12
+1.6.1. OBJETIVO GENERAL.	12
+1.6.2. OBJETIVO ESPECIFICOS.	12
+1.7 ALCANCE.	13
+1.8 ENTREVISTA.	17
+   2.ELEMENTOS DEL SISTEMA BASADO EN COMPUTADORAS.	19
+2.1 HARDWARE:	20
+2.1.1 SERVIDOR:	20
+2.1.2 CLIENTE:	20
+2.1.3 MEDIO DE COMUNICACIÓN:	20
+2.1.4 OTROS DISPOSITIVOS:	20
+2.2 SOFTWARE:	21
+2.2.1SERVIDOR:	21
+2.2.2 CLIENTE:	21
+2.2.3 OTRO SOFTWARE ADICIONAL:	21
+2.3 DATOS.	22
+2.4. PROCESOS.	23
+2.5 GENTE/USUARIO.	24
+2.6 DOCUMENTO.	24
+3.TECNOLOGIA PARA EL DESARROLLO DEL SOFTWARE.	25
+3.1 ESTRATEGIA PARA EL DESARROLLO DEL SOFTWARE	26
+3.2 METODOLOGIA PARA EL DESARROLLO DEL SOFTWARE	26
+3.2.1 CARACTERISTICAS DEL PUDS	26
+3.2.2 CARACTERISTICAS DEL UML	27
+3.3 HERRAMIENTAS DE DESARROLLO	28
+3.3.1POSIBLES COSTOS	29
+3.3.2 POSIBLES BENEFICIOS.	29
+3.4 POSIBLES CLIENTES.	30
+4. DISEÑO DE DATOS.	31
+4.1 DISEÑO LOGICO DE DATOS.	32
+4.1.1 DIAGRAMA DE CLASES CONSULTORIO DENTAL.	32
+4.1.2MAPEO	33
+4.2 DISEÑO FISICO.	35
+4.2.1 TABLA DE VOLUMEN	35
+4.2.2 SCRIPT	41
+4.2.3 POBLACION DE DATOS.	45
+4.2.4 CONSULTAS	52
+4.2.4 CONSULTAS	60
+5.MODELO DE NEGOCIO.	62
+5.1 DIAGRAMAS DE ACTIVIDAD	63
+6. METODO ISHIKAWA	68
+6.1 IDENTIFICAR PROBLEMAS	69
+6.1.1Lista de problemas:	69
+6.1.2 Depurar problemas.	69
+6.1.3 Lista de problemas finales.	69
+6.1.4 Propietario de problemas.	70
+6.1.5 Analisis de problemas.	72
+6.1.6 Estimación y cuantificación de los problemas.	73
+6.1.7 Alternativa de cambio.	74
+6.1.8 Conclusión y recomendación.	76
+6.1.9 Diseñar el diagrama de Ishikawa.	76
+6.2. Diseñar el método Ishikawa	76
+6.2 I denticación del problema	76
+6.2 2 dentificar principales categorías.	76
+6.2.3. dentificar principal causas.	77
+7. F.T. CAPTURA DE REQUISITOS.	78
+7.1. ACTORES	79
+7.2. CASOS DE USO	79
+7.3. PRIORIZAR CASOS DE USO	80
+7.4. DETALLAR CASOS DE USO	83
+7.5 Estructurar Modelo De Casos De Uso:	109
+8. F.T. ANALISIS.	110
+8.1. ANALISIS DE ARQUITECTURA	111
+8.1.1 Identificar paquetes:	111
+8.1.2 Relacionar paquetes y casos de uso:	112
+8.1.3 Vistas de casos de uso:	115
+8.2. ANALISIS DE CASOS DE USO:	123
+      8.23 diagrama de comunicación
+          8.2.4 diagrama de comunicación 
+          8.2.5 diagrama de clases 
+         8.2.6 diagrama de despliegue
+        8.2.7 diagrama organixado en capas 
+
+
+
+
+
+
+
+
+
+
+
+
+
+CAPÍTULO N°1:
+    1. PERFIL.
+
+
+
+1.1INTRODUCCIÓN.
+
+
+Este trabajo especifica la sucesión de procesos realizado, buscando la implementación de un sistema para un consultorio dental.
+
+Una particularidad de la microempresa, es la manipulación manual de la mayoría de los documentos y reportes importantes, lo que causa una variedad de inconvenientes que afecta en gran medida el desempeño de ello. 
+Como ser: Una mala organización, perdida de documentos, perdida excesiva de tiempo, una mala impresión de sus clientes…etc.
+
+Como primordial, se requiere recolectar los requisitos para poder elaborar el sistema. Los cuales fueron metódicamente definido por medio de una entrevista al propietario del consultorio y a la delimitación del paciente.
+
+Toda la información obtenida se usará para la creación de un sistema de información, que sea cumpliendo los requisitos del cliente y la del propietario y adaptable a cualquier cambio que se realice.
+
+Este proyecto tiene como enfoque lo siguiente, gestión de pacientes, las reservas de turnos, el gestionamiento de inventario, gestión de trabajadores.
+
+1.2 ANTECEDENTES.
+
+
+El consultorio dental “SONRIE” inicio a brindar servicios desde el año 2016 como decisión del doctor Milton Poquechoque LL. y la doctora Estefany Cerezo T. los cuales son esposos y propietarios del negocio. Desde entonces ha perdurado el negocio hasta la actualidad.
+
+La idea se origina con la experiencia que había obtenido el doctor al haber trabajado en una clínica como su primer trabajo y al paso del tiempo en un consultorio privado. 
+
+ las ganas de superación que tenía por salir adelante lo llevaron a ser posible su propio consultorio.
+
+A principios el consultorio se dedica a realizar pequeños trabajos por la falta de instrumentos, actualmente ofrecen los nuevos tratamientos ortodoncia estética y cirugías.
+
+El consultorio conserva desde sus inicios los datos e informaciones manualmente que son manipulados en libros por ambos doctores.
+
+La misión del consultorio es brindar un servicio óptimo, eficiente y cómodo para el paciente de manera que quede satisfecho con el servicio.
+
+El lugar de atención está ubicado es en la Avenida El Mechero, Calle 3, Zona Plan 3000.Horario de atención 09:00 am a 12:00am y 15:00pm a 19:00pm de lunes a sábado.
+
+
+
+
+1.3 JUSTIFICACIÓN.
+
+
+
+La implementación de un sistema de información se vio necesario por los inconvenientes que se presenta como mencionamos la manipulación de documentos de forma manual que nos ocasiona una pérdida tiempo al buscar un historial de un paciente, También el tener un control de inventario, poco control de dinero entrante y saliente, atención de paciente de forma desproporcionada.
+Ya que se busca que de esta forma todos los procesos se agilicen y lograrlos en el menor tiempo posible. 
+
+
+
+1.4 DESCRIPCIÓN DEL PROBLEMA.
+
+El consultorio “SONRIE” se dedica a la prevención, curación y tratamientos de las enfermedades dentales. Además de la realización de estética y tratamiento dental. Todo esto es manejado por el Dr. Milton Poquechoque y la Dra. Estefany Cerezo.
+El consultorio cuenta con el proceso de gestionar pacientes nada más, esto lo realiza de forma manual. El gestionamiento de inventario lo realiza mentalmente. Debido al crecimiento de los pacientes y al aumento de servicios se ha convertido en problemas para los doctores el cual afecta al desenvolvimiento del consultorio. 
+    1. Gestión de pacientes
+        1.1. Registro
+Se registran primeramente sus datos personales (Nombre, CI, Edad, Dirección, Teléfono, email), datos extras como ser alergias o casos especiales como mujeres embarazadas también personas con un tipo de discapacidad.
+A partir de la primera consulta, se detalla en qué estado se encuentra la dentadura del paciente, la fecha.
+        1.2. Historial
+Aquí se registra todos los servicios que recibió el paciente desde la primera visita detallando cada fecha y costo.
+    2. Turnos
+        2.1. Orden de atención
+Cada paciente recibe una fecha para su consulta y a partir de ahí es por orden de llegada, en algunos casos el Doctor Determinará que paciente tiene un proceso más rápido y los atiende primero para agilizar la fila.
+        2.2. Cancelaciones
+Si existiese alguna razón por la cual el paciente no puede asistir o le surgió algún imprevisto mientras esperaba, su turno pasa al siguiente en cola.
+    3. Gestión Inventario
+Se hace un pedido de materiales cuando el Doctor ve determinado, no es un tiempo exacto. Al llegar el pedido se almacenan y contabilizan.
+En el caso de necesitar algún producto que no lo tengan en el consultorio para un paciente con un caso especial, se hace un pedido aparte.
+    4. Servicios
+Se terciarían los servicios como laboratorios dentales o elaboración de prótesis. El doctor manda el pedido a los laboratorios con las medidas correctas y luego recibe el producto terminado.
+    5. Contabilidad
+El pago de servicios dependerá del tratamiento del paciente. El paciente puede pagar un adelanto al empezar el tratamiento y el resto del pago al finalizar. Servicios rápidos como una limpieza o consultas se pagan ese mismo día. Todas estas transacciones se llevan en el libro de cuentas, por si se el paciente lleva un tratamiento largo, pueden pagar mensualmente.
+Los gastos que consume el consultorio igual se registran en el libro de cuentas, por ahora manualmente. Con todos estos datos se puede sacar la ganancia que produce el consultorio.
+
+
+1.5 FORMULACIÓN DEL PROBLEMA.
+
+
+Por motivos que actualmente el consultorio dental “SONRIE” aún realizan de forma manual todos los procesos que pueden ser automatizados, se vio la fatalidad de realizar un sistema de información que permitan los procesos mencionados como el de gestionar pacientes, gestionar turnos, administración contable, administración de inventarios.
+
+1.6 OBJETIVOS.
+
+   1.6.1. OBJETIVO GENERAL.
+Desarrollar un sistema de información para gestionar los pacientes, reservas, beneficiarios e inventarios del consultorio dental sonríe.
+
+    1.6.2. OBJETIVO ESPECIFICOS.
+    •        Obtener la información necesaria para desarrollar el proyecto, por medio de entrevistas al propietario del consultorio.
+    • Diseñar el diagrama de clases adecuado.
+    •  Construir la base de datos en un SGBD.
+    • Utilizar el lenguaje Unificado de UML para los requerimientos del sistema a través de diagramas.
+    • Implementar Funciones y Procedimientos necesarios.
+    • Conectar la base de datos a un servidor.
+    • Diseñar la web interface para que sea user-friendly y cumpla todas las necesidades.
+    • Desarrollar el software utilizando el lenguaje de programación PHP.
+
+
+
+
+
+
+
+1.7 ALCANCE.
+
+    • Gestión Paciente.
+Se almacenará los datos personales de los pacientes.
+    • Registrar Pacientes. -  Se permitirá registrar a los pacientes almacenando los siguientes datos: nombre completo, ci, edad, dirección, lugar y fecha de nacimiento, género, teléfono, domicilio y datos extras como ser alergias o casos especiales como mujeres embarazadas también personas con un tipo de discapacidad.
+
+    • Búsqueda de paciente. - Se permitirá a los Odontólogos realizar una búsqueda rápida al registro del paciente mediante sus datos principales como su CI, Nombre, Apellido.
+
+    • Actualización de datos del paciente. - Se permitirá actualizar los datos del paciente.
+
+    • Eliminar paciente. - Se podrá eliminar al paciente manteniendo sus datos para posibles consultas futuras.
+
+    • Gestión usuaria.
+Esta gestión es para registrar, modificar, eliminar o verificar a los usuarios que manipulan el sistema.
+    • Registrar usuario. - se permitirá la creación de usuarios para los Odontólogos, así podrán ingresar al sistema y poder manipularlo para su respectivo uso.
+Se les asignará un nombre de usuario y una contraseña, respectivamente, para que puedan ingresar al sistema.
+
+    • Actualizar datos. - se permitirá actualizar los datos del usuario o modificarlos en caso de ser necesario.
+
+    • Eliminar usuario. Se podrá eliminar al usuario registrado.
+
+    • Inicio de sesión. - Cada usuario ingresará al sistema mediante un nombre de usuario y contraseña.
+
+    • Gestión Odontólogo.
+Se podrá registrar, actualizar o eliminar a los respectivos Odontólogos que trabajan en el consultorio.
+    • Registrar trabajador-. Se podrá registrar a los Odontólogos guardando los siguientes datos: nombre completo, ci, edad, teléfono, dirección.
+
+    • Actualizar datos. - se permitirá actualizar los datos de los Odontólogos.
+
+    • Eliminar trabajador-. Se podrá eliminar a los Odontólogos que fueron registrados.
+
+
+    • Gestión Turno.
+Se podrá agendar, reprogramar y eliminar turnos de controles de tratamiento del paciente.
+    • Registrar fecha y hora. - Se podrá elegir la fecha del control de tratamiento del paciente.
+    • Actualizar turno. - Se podrá modificar la fecha del tratamiento previamente establecida.
+    • Eliminar reserva. - Se podrá eliminar una reserva ya programada.
+
+
+    • Gestión Inventario. 
+Se realizará esta gestión para registrar, actualizar y eliminar los diferentes materiales y materias primas que son de uso en un consultorio dental y por ende están en el inventario, permitiendo llevar un registro contable de todos los gastos incurridos en un paciente.
+    • Registrar producto. - Se registrará la información de los productos con su respectivo costo en la compra y venta.
+
+    • Actualizar producto. - Se permitirán los cambios en la información del producto.
+
+
+    • Eliminar producto. - Se permitirá la eliminación de un producto del sistema en caso de descartarse de este.
+
+    • Gestión Servicio.
+Se podrá registrar, actualizar o eliminar los servicios que brinda el consultorio dental.
+    • Registrar Servicio. Se registrará los servicios que pueda brindar el consultorio dental.
+
+    • Actualizar Servicio. Se podrá modificar los datos de un servicio ya registrado.
+    • Eliminar Servicio. Se podrá eliminar un servicio del sistema, en caso de que el consultorio ya no lo ofrezca.
+    • Gestión Historial Clínico.
+Se registrará los tratamientos de los pacientes, que se haya realizado o los que se tenga que realizar.
+    • Registrar historial. – Una vez que entre en tratamiento el paciente se podrá crear un historial clínico para el respectivo seguimiento del tratamiento. 
+
+    • Actualizar historial. - Se actualizará el historial clínico de cada paciente al terminar una cita médica.
+    • Imprimir. - Se podrá imprimir el historial clínico de cada paciente.
+
+    • Gestión Odontograma.
+Se le asignara un esquema de las arcas dentales a cada paciente.
+    • Registrar odontograma. - Se la asignará un odontograma a cada paciente donde se guardará la modificación dental que recibió. 
+    • Actualizar odontograma. - Se actualizará el odontograma de cada paciente conforme su avance.
+    • Imprimir. - Se podrá imprimir el odontograma de cada paciente.
+    • Gestión Plan de Pago
+
+Se registrará el plan de pago para un determinado tratamiento.
+
+    • Registrar Plan Pago. - Se le asignara un plan de pago a cada paciente que tenga un tratamiento.
+    • Revisar Saldo Pendiente. - Se podrá revisar el saldo pendiente de un plan de pago.
+    • Eliminar Plan de Pago. – Se podrá eliminar un plan de pago del sistema.
+
+    • Gestión Pago
+
+Se registrará el pago para un determinado tratamiento o atencion.
+
+    • Registrar Pago. – Se registrará en el sistema el pago, en la fecha que fue realizado.
+    • Consultar Pago. – Se podrá consultar si un pago fue realizado o no.
+
+    • Gestión Atención.
+
+Se registrará la atención para una determinada reserva.
+
+    • Registrar Atención. - Se registra una atención para cada reserva que no ha sido cancelado, con la hora que la atención empezó.
+    • Registrar el fin. – Al concluir la atención se registra la hora.
+
+    • Gestión Factura
+
+Se registrará una factura por cada pago.
+
+    • Registrar Factura. – Se registra la factura con los datos apropiados.
+    • Imprimir. – Imprime la factura.
+
+
+
+1.8 ENTREVISTA.
+
+Objetivo
+Recolectar información de la empresa para poder tener una mejor claridad sobre los distintos requisitos funcionales que se implementarán en el sistema
+
+Lugar: Plan 3000 Av. Mechero, calle 3
+Duración: 20 minutos.
+Fecha: 07/12/2020 
+
+Datos de la empresa
+    • Nombre de la empresa: Centro dental sonríe
+
+Datos del entrevistado
+    • Nombre: Dr. Milton Poquechoque LL. 
+    • Edad: 36
+    • Cargo/ocupación: Odontólogo
+
+Datos del entrevistador
+    • Nombre: Carla Cruz Condori
+
+
+
+1.- ¿Desde qué año inició sus operaciones la empresa?
+    • La empresa empezó a realizar sus operaciones desde el año 2016 en el mismo lugar en el que actualmente se encuentra.
+
+2.- ¿Antes de empezar a trabajar tuvo la oportunidad de experimentar otro trabajo?
+    • Trabajé en 2 lugares, en una clínica y en un consultorio principal
+
+3.- ¿Cómo está basada la estructura organizacional de la empresa?, ¿está conformada por una o más personas?
+    • La organización está basada entre su esposa la Dra. Estefany Cerezo T. y el Dr. Milton Poquechoque.
+
+4.- ¿Qué función es la que ejerce en la empresa?
+    • Soy odontólogo y especialista en ortodoncia e implantología.
+
+5.- ¿La empresa tiene un encargado que administre la parte contable?
+    • Si. La empresa paga a una contadora profesional para que realice los pagos de impuesto y toda la parte contable.
+
+6.- ¿La empresa tiene alguna misión?
+    • El de brindar un buen servicio a los clientes y que estos puedan estar satisfechos con el trabajo que realizamos.
+
+7.- ¿La empresa maneja inventario o registra las compras que realiza?
+    • No se realiza inventarios, todo lo hacemos mentalmente, no hemos visto la necesidad de hacerlo antes, pero quizás ahora sería bueno realizar uno para un mejor control.
+
+8.- ¿De dónde se compran los instrumentos materiales que se necesitan?, ¿Cada cuánto se realizan pedidos?
+    • Los instrumentos son comprados de “caja dental”, realizamos pedidos de los insumos, como ser los espejos dentales que son cambiados cada mes.
+
+9.- ¿La empresa realiza la tercerización que es la contratación a otra firma para que preste un servicio?
+    • Si se terciariza a varios laboratorios. Pero generalmente la empresa acude a laboratorios clandestinos por evadir impuesto, pero estos dicen realizar buen trabajo en la prótesis y son conocidos por su reputación.
+
+10.- ¿Cuáles son los gastos de la empresa?
+    • Alquiler, insumos dentales, materiales de bioseguridad, servicios básicos.
+
+
+
+
+
+
+
+
+
+
+
+CAPÍTULO N°2
+   2.ELEMENTOS DEL SISTEMA BASADO EN COMPUTADORAS.
+
+	
+
+2.1 HARDWARE: 
+
+2.1.1 SERVIDOR: 
+NOMBRE 	VERSION 	CARACTERISTICA 
+Procesador 	Intel(R) Core(TM) i54200u 	1.60 GHz 
+Memoria RAM 	KINGTOM VALUE RAM DDR3 512mb 	4 GB 
+Disco Duro Del SO 	HITACHI 2.5 Pulg. 5400 RPM 	4 TB-SATA 6GB/S – 128MB 
+Monitor 	LED LG 27MP48HQ 	27 Pulg. 
+2.1.2 CLIENTE: 
+NOMBRE 	VERSION 	CARACTERISTICA 
+Procesador 	INTEL CORE I5-4200H 4THG 	3M CACHE – 2.80 GHZ 
+Memoria RAM 	KINGSTON DDR3 	8GB 
+Tarjeta de Video 	NVIDIA GEFORCE GTX 
+750 TI 	2GB 
+Disco Duro 	WESTERN DIGITAL 	1.5 TB 
+Monitor 	SAMSUNG 	LED - 21 PULG. 
+
+2.1.3 MEDIO DE COMUNICACIÓN: 
+El medio de comunicación que se utilizara para transferir la información será a través de una red local que conectara todas las computadoras participantes del sistema y también por una red WIFI.  
+
+2.1.4 OTROS DISPOSITIVOS: 
+DISPOSITIVO 	DESCRIPCION DE USO 
+ 
+ 
+IMPRESORA CANON MP 240	Se requiere este dispositivo para los siguientes casos: 
+ Cuando se realice la emisión de una factura para el cliente. 
+ Para imprimir las recetas dadas por el Doctor al cliente (Paciente). 
+ Para imprimir los historiales de los clientes. 
+ Para realizar los reportes físicos. 
+ 
+ 	 
+
+
+2.2 SOFTWARE: 
+
+2.2.1SERVIDOR: 
+NOMBRE 	VERSION 
+SISTEMA OPERATIVO 	WINDOWS SERVIDOR 2020
+GESTOR DE BASE DE DATOS 	SQL SERVER 
+ANTIVIRUS 	ESET NOD32 SMART SECURITY 7 
+	
+
+
+2.2.2 CLIENTE: 
+NOMBRE 	VERSION 
+SISTEMA OPERATIVO 	WINDOWS 10  
+GESTOR DE BASE DE DATOS 	SQL SERVER 
+ANTIVIRUS 	ESET SMART INTERNET SECURITY 7 
+
+
+2.2.3 OTRO SOFTWARE ADICIONAL:  
+Nombre 	Descripción de Uso 
+Microsoft Excel 2020 	Se utilizará para insertar los datos en la BD. 
+
+
+
+
+
+
+
+
+
+2.3 DATOS.
+
+Se registrarán los siguientes datos en el sistema:
+
+    • Odontólogo: Ci, nombre, Apellido paterno, apellido materno, fecha de nacimiento, género, teléfono, email, dirección.
+
+    • Paciente: Ci, nombre, apellido paterno, apellido materno, fecha de nacimiento, genero, teléfono, email, dirección.
+
+    • Reserva: Código de reserva, fecha.
+
+    • Servicio: código, nombre, descripción, precio.
+
+    • Producto: código, nombre, precio.
+
+    • Consulta: id consulta, fecha, hora inicio, duración, ci paciente.
+
+    • Tratamiento: código, fecha inicio, duración, precio total.
+
+    • Cuota: id cuota, ci paciente, código.
+
+    • Odontograma: id, id consulta.
+
+    • Pieza dental: numero pieza, id odontograma, nombre, estado.
+
+
+
+
+
+
+
+
+
+
+2.4. PROCESOS.
+
+GESTIÓN DE PACIENTES.
+Los pacientes para ser atendidos en las consultas o controles, al llegar obtendrán una ficha lo cual se guardará.
+
+REGISTRO DE USUARIOS.
+Se registran los usuarios para obtener acceso al sistema con los respectivos privilegios asignados como el de (admin, user).
+Estos contaran con un nombre y una contraseña con el cual iniciaran sección al entrar al sistema.
+REGISTRO DE TRABAJADOR.
+Se registrará al personal que trabaja en el consultorio como ser los odontólogos y la contadora.
+CONSULTA.
+El paciente será atendido por el odontólogo quien registrará la consulta. Dando a conocer los tratamientos que se realizará, para después registrarlo en el historial odontológico.
+GESTIÓN HISTORIAL.
+Se realizará el registro del historial del paciente y luego administrar los historiales de los pacientes.
+
+SERVICIO.
+Se registrará los diferentes servicios que se realizan en el consultorio, registrando un precio estándar para el cobro del mismo.
+GESTION DE PAGOS.
+Se realizara el registro de las formas de pago y también se realizaran los seguimientos de las cuotas de la forma de pagó.
+CONTROL DE FLUJO DE CAJA.
+En el momento de ingresar un nuevo inventario se registrará el gasto que implique .
+
+
+REGISTRO DE MATERIALES .
+Se realizara el registro de la nota de compra de los materiales y además se registran los detalles de dicha compra.
+REGISTRO DE PRODUCTOS.
+Se  realizara el registro de los productos tercializados como ser las prótesis, piezas dentales ,y que se refleja en la nota del cliente.
+GESTIÓN DE ODONTOGRAMA.
+Almacena los datos del estado en el que se encuentran cada diente(estado bucal ) del paciente.
+2.5 GENTE/USUARIO.
+El equipo humano que realizará el sistema está conformado por:
+    • CRUZ CONDORI CARLA.
+    • HUANCA CHOQUE ELIAN RENE.
+    • MONTAÑO ANIVARRO ANDRES.
+    • SAHONERO ALEJANDRO.
+    • VIDAL URQUIZA JAVIER.
+2.6 DOCUMENTO.
+ La información que respalda al sistema es:
+    •  Manual de instalación.
+    • Manual de usuario.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CAPÍTULO N°3
+3.TECNOLOGIA PARA EL DESARROLLO DEL SOFTWARE.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3.1 ESTRATEGIA PARA EL DESARROLLO DEL SOFTWARE
+Para realizar el sistema se utilizará 2 estrategias para el desarrollo del software: El Lenguaje Unificado de Modelado (UML) y El Proceso Unificado de Desarrollo de Software(PUDS).
+-Se utilizará UML ya que el PUDS requiere de este lenguaje de modelado, además se necesita el lenguaje Unificado de UML para los requerimientos del sistema a través de diagramas. 
+-Se utilizará PUDS porque es más que un simple proceso, es un marco de trabajo genérico que puede utilizarse para una gran variedad de sistemas software, para diferentes áreas de aplicación, diferentes tipos de organizaciones. Diferentes niveles de aptitud y diferentes tamaños de proyectos.
+3.2 METODOLOGIA PARA EL DESARROLLO DEL SOFTWARE
+3.2.1 CARACTERISTICAS DEL PUDS
+El Proceso Unificado de Desarrollo de Software es un proceso iterativo, un enfoque iterativo propone una comprensión incremental del problema a través de refinamientos sucesivos y un crecimiento incremental de una solución efectiva a través de varios ciclos.
+el desarrollo de un producto software comercial supone un gran esfuerzo que puede durar entre varios meses hasta posiblemente un año o más. Es práctico dividir el producto en partes más pequeñas o mini proyectos. Cada mini proyecto es una iteración que resulta en un incremento. Las iteraciones hacen referencia a pasos en el flujo, y en los incrementos, al crecimiento del producto. En cada iteración, los desarrolladores identifican y especifican los casos de uso relevantes, crean un diseño utilizando la arquitectura seleccionada como guía, implementan el diseño mediante componentes, y verifican que los componentes satisfacen los casos de uso.
+-Reconoce la importancia de la comunicación con el cliente y los métodos directos para describir su punto de vista respectivo de un sistema (el caso de uso)
+-Como parte del enfoque iterativo se encuentra la flexibilidad para acomodarse a nuevos requerimientos o a cambios tácticos de los objetos del negocio
+-Permite que el proyecto identifique y resuelva los riesgos de forma rápida
+-Ayuda a que el arquitecto se centre en las metas correctas: que sea comprensible, permita cambios futuros y la reutilización (Hace énfasis en la importancia de la arquitectura del software)
+-Sugiere un flujo del proceso iterativo e incremental
+El PUDS permite tener un gran control, así como poder obtener resultados tangibles relativamente rápido, además ayudan a adoptar el uso de buenas prácticas probadas en la industria. Aun así, se recomienda utilizar este método en grandes proyectos debido a lo anteriormente dicho, pero en proyectos muy pequeños puede resultar demasiado proceso haciendo que se utilice más tiempo y recursos de lo realmente necesario.
+3.2.2 CARACTERISTICAS DEL UML
+El Lenguaje Unificado de Modelado (UML), es un lenguaje de modelado visual de propósito general que se utiliza para especificar, visualizar, construir y documentar los artefactos de un sistema software. Captura decisiones y conocimientos sobre sistemas que deben ser construidos. Se usa para comprender, diseñar, ojear, configurar, mantener y controlar la información sobre tales sistemas. Está pensado para ser utilizado con todos los métodos de desarrollo, etapas del ciclo de vida, dominios de aplicación y medios.
+-UML es más que una notación visual. Los modelos UML pueden ser utilizados para generar código y casos de prueba. Esto exige un perfil UML adecuado, el uso de herramientas que se correspondan con la plataforma destino y elegir entre varios componentes de implementación.
+-UML es desordenado, impreciso, complejo y enmarañado. Esto es, tanto en un fallo, como una virtud. Cualquier cosa pensada para un uso general va a ser desordenado.
+-UML necesita ser lo suficientemente expresivo para manejar todos los conceptos que surgen en un sistema moderno, como la concurrencia y la distribución.
+UML presenta una variedad de tipos de diagrama, donde las 2 principales son:
+-Estructurales: Diagramas de clase, componentes, despliegue, objetos, paquetes, perfiles y estructura compuesta.
+-De comportamiento: Diagrama de actividades, casos de uso, máquina de estados e interacción.
+
+
+3.3 HERRAMIENTAS DE DESARROLLO
+    • Software
+Para este Proyecto en cuanto a Software utilizaremos:
+
+            ▪ Sistemas Operativos
+                • Windows 10 Home
+            ▪ Sistemas de Aplicación
+                • PHP
+                • Microsoft Excel 2016
+            ▪ Sistema Gestor de Base de Datos
+                • SQL Server
+    • Hardware
+El hardware que vamos a utilizar en este proyecto son 5 Computadoras portátiles.
+    • DELL
+        ◦ Procesador Intel Core i7-1165G7 2.8GHz
+        ◦ 12 GB de memoria RAM
+        ◦ 512 GB SSD M.2
+        ◦ 15.6” Touch Display
+    • Asus
+        ◦ Procesador AMD Ryzen 3400g 3.7 GHz
+        ◦ 8GB de memoria RAM
+        ◦ 256 GB SSD M.2
+        ◦ 256 GB HDD
+    • HP
+        ◦ Procesador Intel Core i5-4210U 2.40GHz
+        ◦ 6GB de memoria RAM
+        ◦ 1TB HDD
+        ◦ 15.6 “Display
+    • HP
+        ◦ Procesador AMD A9-9420 3.0 GHz
+        ◦ 8GB de memoria RAM
+        ◦ 1TB HDD
+        ◦ 15.6” Display
+    • DELL
+        ◦ Procesador Intel Core i3-1165G3 2.0GHz
+        ◦ 8 GB de memoria RAM
+        ◦ 512 GB SSD M.215.6” Display
+
+3.3.1POSIBLES COSTOS
+
+
+
+
+
+
+
+
+
+
+
+3.3.2 POSIBLES BENEFICIOS.
+
+3.3.2.1 TIEMPO.
+Al estar todos los datos del consultorio almacenados en el sistema, el personal podrá buscar información de lo que necesite y obtener esa información en un tiempo muy corto de búsqueda, lo que hace que aumente la productividad en el consultorio.
+
+3.3.2.2 ESFUERZO.
+Los esfuerzos que realiza el personal al momento de buscar alguna información o al gestionar el inventario, se verán reducido mediante el sistema, ya que permitirá al personal un manejo de información con bastante facilidad y eficiencia a la hora de registrar un nuevo paciente, buscar algún tratamiento en específico o administrar el inventario.
+ 
+3.3.3.3 COSTOS.
+Al registrarse todos los datos de manera digital, se reducen los costos en materiales de oficina, como ser hojas de papel, además de tener un mejor control contable al gestionar el inventario.
+
+
+3.4 POSIBLES CLIENTES.
+NOMBRE DEL CONSULTORIO.	DIRECCIÓN.	CELULAR
+CONSULTORIO DENTAL
+CENTRO DE REABILITACIÓN Y ESTETICA DENTAL.	Av. El palmar Calle#9
+(parada 5 Lado Farmacia Alison).	73108819
+CONSULTORIO DENTAL
+WARA	Av. El Mechero Calle #3 
+Zona Plan 3000.	73698413
+
+
+
+
+
+
+
+
+
+
+
+CAPÍTULO N°4
+4. DISEÑO DE DATOS.
+
+		
+
+4.1 DISEÑO LOGICO DE DATOS.
+4.1.1 DIAGRAMA DE CLASES CONSULTORIO DENTAL.
+
+4.1.2MAPEO.
+		
+		
+		
+		
+		
+		
+
+
+
+
+4.2 DISEÑO FISICO.
+4.2.1 TABLA DE VOLUMEN.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4.2.2 SCRIPT
+CREATE DATABASE ConsultorioDental;
+USE ConsultorioDental;
+Create Table permiso
+(
+	id int not null primary key,
+	nombre varchar(50) not null
+);
+
+Create Table rol
+(
+	id int not null primary key,
+	nombre varchar(50) not null
+);
+
+Create Table permisoRol
+(
+	permiso_id int not null,
+	rol_id int not null,
+	primary key (permiso_id, rol_id),
+	foreign key (permiso_id) references permiso(id) 
+	on update cascade on delete cascade,
+	foreign key (rol_id) references rol(id)
+	on update cascade on delete cascade
+);
+Create Table odontologo
+(
+	id int not null primary key,
+	ci varchar(10) not null,
+	nombre varchar(25) not null,
+	apellidoPaterno varchar(25) not null,
+	apellidoMaterno varchar(25) not null,
+	fechaNacimiento date not null,
+	sexo varchar(1) not null,
+	email varchar(50),
+	telefono varchar(10)
+);
+
+Create Table usuario
+(
+	id int not null primary key,
+	nombre varchar(25) not null,
+	contraseña varchar(25) not null,
+	rol_id int not null,
+	odontologo_id int not null,
+	foreign key (rol_id) references rol(id) 
+	on update cascade on delete cascade,
+	foreign key (odontologo_id) references odontologo(id) 
+	on update cascade on delete cascade
+);
+Create Table paciente
+(
+	id int not null primary key,
+	ci varchar(10) not null,
+	nombre varchar(50) not null,
+	apellidoPaterno varchar(25) not null,
+	apellidoMaterno varchar(25) not null,
+	fechaNacimiento datetime not null,
+	sexo varchar(1) not null,
+	telefono varchar(10),
+	email varchar(50)
+);
+create table servicio(
+	id int not null primary key,
+	descripcion text not null,
+	precio decimal not null,
+	estado varchar(1) not null,
+	duracion int not null
+);
+
+create table estadoTratamiento
+(
+	id int not null primary key,
+	descripcion text not null
+);
+Create Table tratamiento
+(
+	id int not null primary key,
+	fechaInicio date,
+	fechaFin date,
+	estadoTra_id int not null,
+	servicio_id int not null,
+	paciente_id int not null,
+	foreign key (paciente_id) references paciente(id)
+	on update cascade on delete cascade,
+  	foreign key (estadoTra_id) references estadoTratamiento(id)
+	on update cascade on delete cascade,
+	foreign key (servicio_id) references servicio(id)
+	on update cascade on delete cascade
+);
+Create Table planPago
+(
+	id int not null primary key,
+	cantidadCuotas int not null,
+	saldoPendiente decimal not null,
+	tratamiento_id int not null,
+	foreign key (tratamiento_id) references tratamiento(id)
+	on update cascade on delete cascade
+);
+
+Create table estadoReserva
+(
+	id int not null primary key,
+	descripcion text not null
+);
+Create Table reserva
+(
+	id int not null primary key,
+	fecha date not null,
+    horaInicio time not null,
+	horaFin time not null,
+	odontologo_id int not null,
+	paciente_id int not null,
+	estadoRes_id int not null,
+	foreign key (odontologo_id) references odontologo(id)
+	on update cascade on delete cascade,
+	foreign key (paciente_id) references paciente(id)
+	on update cascade on delete cascade,
+	foreign key (estadoRes_id) references estadoReserva(id)
+	on update cascade on delete cascade
+);
+create table reservaServicio(
+	reserva_id int not null,
+	servicio_id int not null,
+	duracion int not null,
+	primary key(reserva_id,servicio_id),
+	foreign key (reserva_id) references reserva(id) 
+	on update cascade on delete cascade,
+	foreign key (servicio_id) references servicio(id) 
+	on update cascade on delete cascade
+);
+Create table estadoPieza
+(
+	id int not null primary key,
+	descripcion text not null
+);
+Create table tipoPieza
+(
+	id int not null primary key,
+	descripcion text not null
+);
+create table atencion(
+	id int not null primary key,
+	descripcion text,
+	fecha date not null,
+	hora time not null,
+	reserva_id int not null,
+	foreign key (reserva_id) references reserva(id)
+	on update cascade on delete cascade
+);
+
+Create Table odontograma
+(
+	id int not null primary key,
+	atencion_id int not null,
+	foreign key (atencion_id) references atencion(id)
+	on update cascade on delete cascade
+);
+Create Table piezaDental
+(
+	id int not null ,
+	odontograma_id int not null,
+	estadoPieza_id int not null,
+	tipo_id int not null,
+	primary key(id, odontograma_id),
+	foreign key (estadoPieza_id) references estadoPieza(id)
+	on update cascade on delete cascade,
+	foreign key (tipo_id) references tipoPieza(id) 
+	on update cascade on delete cascade
+);
+create table producto(
+	id int not null primary key,
+	descripcion text not null
+);
+create table notaCompra(
+	id int not null primary key,
+	fechaCompra date not null,
+	odontologo_id int not null,
+    foreign key (odontologo_id ) references odontologo(id)
+	on update cascade on delete cascade
+);
+create table detalleCompra(
+	notaCompra_id int not null,
+	producto_id int not null,
+	cantidad decimal not null,
+	precio decimal not null,
+	importe decimal not null,
+	primary key(notaCompra_id,producto_id),
+            foreign key (notaCompra_id) references notaCompra(id)
+		on update cascade on delete cascade,
+	foreign key (producto_id) references producto(id)
+		on update cascade on delete cascade
+);
+create table pago(
+	id int not null primary key,
+	fecha date not null,
+	montoTotal decimal not null,
+	planPago_id int,
+	atencion_id int not null,
+	foreign key(planPago_id) references planPago(id)
+		ON DELETE NO ACTION ON UPDATE NO ACTION,
+	foreign key(atencion_id) references atencion(id)
+		on update cascade on delete cascade
+);
+create table factura(
+	nroFactura int not null,
+	nombre varchar(25) not null,
+	nit int,
+	fecha date not null,
+	detalle text,
+	importe decimal not null,
+	QR image,
+	pago_id int not null,
+	foreign key (pago_id) references pago(id)
+);
+
+create table receta(
+	id int not null primary key,
+	descripcion text,
+	atencion_id int not null,	
+	foreign key (atencion_id) references atencion(id)
+		on update cascade on delete cascade
+);
+create table detalleAtencion(
+	id int not null,
+	atencion_id int not null,
+	servicio_id int not null,
+	primary key(id,atencion_id,servicio_id),
+	foreign key (atencion_id) references atencion(id)
+		on update cascade on delete cascade,
+	foreign key (servicio_id) references servicio(id)
+		on update cascade on delete cascade
+);	
+create table historial(
+	id int not null primary key,
+	fecha date not null,
+	paciente_id int not null,
+	atencion_id int not null,
+	foreign key (paciente_id) references paciente(id)
+		ON DELETE NO ACTION ON UPDATE NO ACTION,
+	foreign key (atencion_id) references atencion(id)
+		on update cascade on delete cascade
+);
+4.2.3 POBLACION DE DATOS.
+
+--Permiso
+insert into permiso values (1,'Acceso al historial clinico de los pacientes');
+insert into permiso values (2,'Acceso a la gestión de citas');
+insert into permiso values (3,'Acceso al registro de paciente');
+insert into permiso values (4,'Acceso al inventario');
+insert into permiso values (5,'Acceso al sistema de consultas');
+insert into permiso values (6,'Acceso al sistema de tratamiento');
+insert into permiso values (7,'Acceso al registro de usuario');
+
+--Rol
+insert into rol values (1, 'odontologo');
+insert into rol values (2, 'administrador');
+
+--Permiso Rol
+
+insert into permisoRol values (1,1);
+insert into permisoRol values (2,1);
+insert into permisoRol values (3,1);
+insert into permisoRol values (4,1);
+insert into permisoRol values (5,1);
+insert into permisoRol values (6,1);
+insert into permisoRol values (7,2);
+
+--Odontologo
+select * from odontologo
+insert into odontologo values(1,'8529631','Milton','PoqueChoque','Romero','01/05/1984','M','MiltonPocheLL84@gmail.com','75315966');
+insert into odontologo values(2,'7415268','Estefany','Cerezo','Ibañez', '10/20/1986','F', 'Fany_Cerezo1020@gmail.com', '75689741');
+
+--Usuario
+SELECT * from usuario
+insert into usuario values (1, 'MiltonPoquechoque', 'MP01051984',1,1);
+insert into usuario values (2, 'FanyCerezo', 'FC20101986',1,1);
+
+--Paciente
+SELECT * from paciente
+insert into paciente values (1,'8189857','Andres','Montaño','Suarez','01/12/1999','M','75684756','montanoa63@gmail.com');
+insert into paciente values (2,'8226422','Carla','Cruz','Condori','12/12/1999','F','74940481','carla.ccc344@gmail.com');
+insert into paciente values (3,'9648312','Elian','Huanca','Choque','02/05/2000','M','76627246','elian_huanca@gmail.com');
+insert into paciente values (4,'13210479','Alejandro','Sahomero','Rodriguez','11/01/2001','M','78452415','josealejandro12@gmail.com');
+insert into paciente values (5,'8179447','Javier','Vidal','','10/06/2000','M','77392386','javier193061@gmail.com');
+insert into paciente values (6,'8768941','Samuel','Romero','Soliz','01/16/1999','M','70992450','Samuel01@gmail.com');
+insert into paciente values (7,'8465278','Fernando','Rios','Cespedes','01/26/1999','M','75076077','Fercho145@gmail.com');
+insert into paciente values (8,'7995100','Adrianna','Lopez','Sanabria','08/1/2000','F','70941663','Adri_ELS@gmail.com');
+--Servicio
+SELECT * FROM servicio
+insert into servicio values (1,'Incrustaciones de cromo',100,'A',120);
+insert into servicio values (2,'Tapadura con metal',50,'A',90);
+insert into servicio values (3,'Tapadura con oro',50,'A',90);
+insert into servicio values (4,'Tapadura con recina',50,'A',90);
+insert into servicio values (5,'Retiro del nervio',50,'A',60);
+insert into servicio values (7,'Limpieza dental', 200,'A',60);
+insert into servicio values (8,'Curación carie', 250,'A',75);
+insert into servicio values (9,'Blanqueamiento dental',150,'A',60);
+insert into servicio values (10,'Extracción dental', 25,'A',15);
+insert into servicio values (11,'Extracción Muela Del Juicio', 50,'A',45);
+insert into servicio values (12,'Consulta General', 50,'A',30);
+insert into servicio values (13,'Limpieza Rapida', 60,'A',30);
+insert into servicio values(14,'Ortodoncia',4500,'A',720);--visita 30min cada 15 dias
+insert into servicio values(15,'Implantes',3000,'A',240);--visita 1hr cada mes
+insert into servicio values(16,'Odontopediatria',850,'A',180);--visita 30min cada 7 dias
+insert into servicio values(17,'Estetica Dental',800,'I',180);
+insert into servicio values(18,'Perodoncia',600,'A',150);
+insert into servicio values(19,'Protesis',5000,'I',360);
+insert into servicio values(20,'Bruxismo',400,'A',150);
+insert into servicio values(21,'Halitosis',420,'A',150);
+--EstadoTratamiento
+SELECT * FROM estadoTratamiento
+insert into estadoTratamiento values (1,'En Proceso');
+insert into estadoTratamiento values (2,'Finalizado');
+insert into estadoTratamiento values (3,'Abandonado');
+--Tratamiento
+SELECT * FROM tratamiento
+insert into tratamiento values(1,'05/30/2020',null,1,14,1);
+insert into tratamiento values(2,'06/05/2020','09/05/2020',2,15,2);
+insert into tratamiento values(3,'08/20/2020','09/18/2020',2,16,3);
+--Plan Pago
+SELECT * FROM planPago
+insert into planPago values(1,24,1687.5,1);
+insert into planPago values(2,4,0,2);
+insert into planPago values(3,1,0,3);
+--EstadoReserva
+SELECT * FROM estadoReserva
+insert into estadoReserva values (1,'Confirmada');
+insert into estadoReserva values (2,'Cancelada');
+insert into estadoReserva values (3,'Finalizada');
+insert into estadoReserva values (4,'Reprogramada');
+--Reserva
+SELECT * FROM reserva
+insert into reserva values (1,'05/29/2020','15:00','15:30',1,1,3);
+insert into reserva values (2,'05/30/2021','10:00','10:30',1,1,3);
+insert into reserva values (3,'06/15/2020','09:00','09:30',1,1,3);
+insert into reserva values (4,'06/30/2021','10:00','10:30',1,1,3);
+insert into reserva values (5,'07/15/2020','09:00','09:30',1,1,3);
+insert into reserva values (6,'07/30/2021','11:00','11:30',1,1,3);
+insert into reserva values (7,'08/15/2020','10:00','10:30',1,1,3);
+insert into reserva values (8,'08/30/2021','10:00','10:30',1,1,3);
+insert into reserva values (9,'09/15/2020','16:00','16:30',1,1,3);
+insert into reserva values (10,'09/30/2021','10:00','10:30',1,1,3);
+insert into reserva values (11,'10/15/2020','11:00','11:30',1,1,3);
+insert into reserva values (12,'10/30/2021','10:00','10:30',1,1,3);
+insert into reserva values (13,'11/15/2020','11:00','11:30',1,1,3);
+insert into reserva values (14,'11/30/2021','10:00','10:30',1,1,3);
+insert into reserva values (15,'12/15/2020','12:00','12:30',1,1,3);
+insert into reserva values (16,'12/30/2021','10:00','10:30',1,1,3);
+insert into reserva values (17,'01/14/2020','11:00','11:30',1,1,3);
+insert into reserva values (18,'06/04/2021','11:00','11:30',1,2,3);
+insert into reserva values (19,'06/05/2021','11:00','12:00',1,2,3);
+insert into reserva values (20,'07/05/2021','10:00','11:00',1,2,3);
+insert into reserva values (21,'08/05/2021','12:00','13:00',1,2,3);
+insert into reserva values (22,'09/05/2021','12:00','13:00',1,2,3);
+insert into reserva values (23,'08/19/2020','10:00','10:30',2,3,3);
+insert into reserva values (24,'08/20/2020','15:00','15:30',2,3,3);
+insert into reserva values (25,'09/20/2020','15:00','15:30',2,3,3);
+insert into reserva values (26,'10/20/2020','17:00','17:30',2,3,3);
+insert into reserva values (27,'11/20/2020','18:00','18:30',2,3,3);
+insert into reserva values (28,'01/12/2020','16:00','16:30',2,3,3);
+--reservaServicio
+SELECT * FROM reservaServicio
+insert into reservaServicio values (1,12,30);
+insert into reservaServicio values (2,14,30);
+insert into reservaServicio values (3,14,30);
+insert into reservaServicio values (4,14,30);
+insert into reservaServicio values (5,14,30);
+insert into reservaServicio values (6,14,30);
+insert into reservaServicio values (7,14,30);
+insert into reservaServicio values (8,14,30);
+insert into reservaServicio values (9,14,30);
+insert into reservaServicio values (10,14,30);
+insert into reservaServicio values (11,14,30);
+insert into reservaServicio values (12,14,30);
+insert into reservaServicio values (13,14,30);
+insert into reservaServicio values (14,14,30);
+insert into reservaServicio values (15,14,30);
+insert into reservaServicio values (16,14,30);
+insert into reservaServicio values (17,14,30);
+insert into reservaServicio values (18,12,30);
+insert into reservaServicio values (19,15,60);
+insert into reservaServicio values (20,15,60);
+insert into reservaServicio values (21,15,60);
+insert into reservaServicio values (22,15,60);
+insert into reservaServicio values (23,12,30);
+insert into reservaServicio values (24,22,30);
+insert into reservaServicio values (25,22,30);
+insert into reservaServicio values (26,22,30);
+insert into reservaServicio values (27,22,30);
+insert into reservaServicio values (28,22,30);
+--estadoPieza
+SELECT * FROM estadoPieza
+insert into estadoPieza values(1, 'Optimo');
+insert into estadoPieza values(2, 'Con sarrado');
+insert into estadoPieza values(3, 'Podrido');
+insert into estadoPieza values(4, 'Fracturado');
+insert into estadoPieza values(5, 'Con Carie');
+--tipoPieza
+SELECT * FROM tipoPieza
+insert into tipoPieza values(1, 'Incisivos');
+insert into tipoPieza values(2, 'Caninos');
+insert into tipoPieza values(3, 'Premolares');
+insert into tipoPieza values(4, 'Molares');
+--atencion
+SELECT * FROM atencion
+insert into atencion values (1,'Consulta General','05/29/2020','15:00',1);
+insert into atencion values (2,'Ortodoncia','05/30/2021','10:00',2);
+insert into atencion values (3,'Ortodoncia','06/15/2020','09:00',3);
+insert into atencion values (4,'Ortodoncia','06/30/2021','10:00',4);
+insert into atencion values (5,'Ortodoncia','07/15/2020','09:00',5);
+insert into atencion values (6,'Ortodoncia','07/30/2021','11:00',6);
+insert into atencion values (7,'Ortodoncia','08/15/2020','10:00',7);
+insert into atencion values (8,'Ortodoncia','08/30/2021','10:00',8);
+insert into atencion values (9,'Ortodoncia','09/15/2020','16:00',9);
+insert into atencion values (10,'Ortodoncia','09/30/2021','10:00',10);
+insert into atencion values (11,'Ortodoncia','10/15/2020','11:00',11);
+insert into atencion values (12,'Ortodoncia','10/30/2021','10:00',12);
+insert into atencion values (13,'Ortodoncia','11/15/2020','11:00',13);
+insert into atencion values (14,'Ortodoncia','11/30/2021','10:00',14);
+insert into atencion values (15,'Ortodoncia','12/15/2020','12:00',15);
+insert into atencion values (16,'Ortodoncia','12/30/2021','10:00',16);
+insert into atencion values (17,'Ortodoncia','01/14/2020','11:00',17);
+insert into atencion values (18,'Consulta General','06/04/2021','11:00',18);
+insert into atencion values (19,'Implantes','06/05/2021','11:00',19);
+insert into atencion values (20,'Implantes','07/05/2021','10:00',20);
+insert into atencion values (21,'Implantes','08/05/2021','12:00',21);
+insert into atencion values (22,'Implantes','09/05/2021','12:00',22);
+insert into atencion values (23,'Consulta General','08/19/2020','10:00',23);
+insert into atencion values (24,'Odontopediatria','08/20/2020','15:00',24);
+insert into atencion values (25,'Odontopediatria','09/20/2020','15:00',25);
+insert into atencion values (26,'Odontopediatria','10/20/2020','17:00',26);
+insert into atencion values (27,'Odontopediatria','11/20/2020','18:00',27);
+insert into atencion values (28,'Odontopediatria','01/12/2020','16:00',28);
+--odontograma
+SELECT * FROM odontograma
+Insert into odontograma values (1,17);
+Insert into odontograma values (2,22);
+Insert into odontograma values (3,28);
+--PiezaDental
+SELECT * FROM piezaDental
+insert into piezaDental values (11,2,1,1);
+insert into piezaDental values (21,2,1,1);
+insert into piezaDental values (31,2,1,1);
+insert into piezaDental values (41,2,1,1);
+insert into piezaDental values (13,3,1,2);
+insert into piezaDental values (23,3,1,2);
+insert into piezaDental values (33,3,1,2);
+insert into piezaDental values (43,3,1,2);
+insert into piezaDental values (11,1,1,1);
+insert into piezaDental values (21,1,1,1);
+insert into piezaDental values (22,1,1,1);
+insert into piezaDental values (31,1,1,1);
+insert into piezaDental values (32,1,1,1);
+insert into piezaDental values (41,1,1,1);
+insert into piezaDental values (42,1,1,1);
+insert into piezaDental values (13,1,1,2);
+insert into piezaDental values (23,1,1,2);
+insert into piezaDental values (33,1,1,2);
+insert into piezaDental values (43,1,1,2);
+insert into piezaDental values (14,1,1,3);
+insert into piezaDental values (15,1,1,3);
+insert into piezaDental values (24,1,1,3);
+insert into piezaDental values (25,1,1,3);
+insert into piezaDental values (34,1,1,3);
+insert into piezaDental values (35,1,1,3);
+insert into piezaDental values (44,1,1,3);
+insert into piezaDental values (45,1,1,3);
+insert into piezaDental values (16,1,1,4);
+insert into piezaDental values (17,1,1,4);
+insert into piezaDental values (18,1,1,4);
+insert into piezaDental values (26,1,1,4);
+insert into piezaDental values (27,1,1,4);
+insert into piezaDental values (28,1,1,4);
+insert into piezaDental values (36,1,1,4);
+insert into piezaDental values (37,1,1,4);
+insert into piezaDental values (38,1,1,4);
+insert into piezaDental values (46,1,1,4);
+insert into piezaDental values (47,1,1,4);
+insert into piezaDental values (48,1,1,4);
+--Producto
+SELECT * FROM producto
+insert into producto values (1, 'Tijera');--10
+insert into producto values (2, 'Jeringa');--5
+insert into producto values (3, 'Taladro');--100
+insert into producto values (4, 'Equipo de succion');--200
+insert into producto values (5, 'Barbijo');--2
+insert into producto values (6, 'Alcohol');--15
+insert into producto values (7, 'Espejo');--10
+insert into producto values (8, 'Brackets');--50
+insert into producto values (9, 'Fluor');--30
+insert into producto values (10, 'Blanqueador');--40
+insert into producto values (11, 'Anestesia');--30
+insert into producto values (12, 'Desinfectante Dental');--30
+insert into producto values (13, 'Pinza');--15
+insert into producto values (14, 'Alicate');--25
+insert into producto values (15, 'Jabon Liquido Botella 1L');--15
+insert into producto values (16, 'Limpia Vidrios Botella 1L');--8
+insert into producto values (17, 'Lustra Muebles Botella 1L');--13
+insert into producto values (18, 'Alcohol en Gel Botella 1L');--15
+--notaCompra
+SELECT * FROM notaCompra
+insert into notaCompra values(1,'01/08/2021',1);
+insert into notaCompra values(2,'11/12/2020',2);
+insert into notaCompra values(3,'04/01/2021',1);
+insert into notaCompra values(4,'12/06/2020',1);
+--detalleCompra
+SELECT * FROM detalleCompra
+insert into detalleCompra values(1,3,2,45,90);
+insert into detalleCompra values(1,14,2,100,200);
+insert into detalleCompra values(2,15,1,70,70);
+insert into detalleCompra values(2,16,2,120,240);
+insert into detalleCompra values(3,8 ,10,50,500);
+insert into detalleCompra values(3,9 ,5,20,100);
+insert into detalleCompra values(3,10 ,1,200,200);
+insert into detalleCompra values(4,5 ,1,30,30);
+insert into detalleCompra values(4,6 ,2,160,320);
+insert into detalleCompra values(2,18 ,2,65,130);
+--pago
+SELECT * FROM pago
+insert into pago values (1,'05/29/2020',50,null,1);
+insert into pago values (2,'05/30/2020',187.5,1,2);
+insert into pago values (3,'06/15/2020',187.5,1,3);
+insert into pago values (4,'06/30/2020',187.5,1,4);
+insert into pago values (5,'07/15/2020',187.5,1,5);
+insert into pago values (6,'07/30/2020',187.5,1,6);
+insert into pago values (7,'08/15/2020',187.5,1,7);
+insert into pago values (8,'08/30/2020',187.5,1,8);
+insert into pago values (9,'09/15/2020',187.5,1,9);
+insert into pago values (10,'09/30/2020',187.5,1,10);
+insert into pago values (11,'10/15/2020',187.5,1,11);
+insert into pago values (12,'10/30/2020',187.5,1,12);
+insert into pago values (13,'11/15/2020',187.5,1,13);
+insert into pago values (14,'11/30/2020',187.5,1,14);
+insert into pago values (15,'12/15/2020',187.5,1,15);
+insert into pago values (16,'12/30/2020',187.5,1,16);
+insert into pago values (17,'01/14/2021',187.5,1,17);
+insert into pago values (18,'06/04/2020',50,null,18);
+insert into pago values (19,'06/05/2020',750,2,19);
+insert into pago values (20,'07/05/2020',750,2,20);
+insert into pago values (21,'08/05/2020',750,2,21);
+insert into pago values (22,'09/05/2020',750,2,22);
+insert into pago values (23,'08/19/2020',50,null,23);
+insert into pago values (24,'08/20/2020',8000,3,24);
+--factura
+SELECT * FROM factura
+insert into factura values (1,'05/29/2020',50,1);
+insert into factura values (2,'05/30/2020',125,2);
+insert into factura values (3,'06/15/2020',125,3);
+insert into factura values (4,'06/30/2020',125,4);
+insert into factura values (5,'07/15/2020',125,5);
+insert into factura values (6,'07/30/2020',125,6);
+insert into factura values (7,'08/15/2020',125,7);
+insert into factura values (8,'08/30/2020',125,8);
+insert into factura values (9,'09/15/2020',125,9);
+insert into factura values (10,'09/30/2020',125,10);
+insert into factura values (11,'10/15/2020',125,11);
+insert into factura values (12,'10/30/2020',125,12);
+insert into factura values (13,'11/15/2020',125,13);
+insert into factura values (14,'11/30/2020',125,14);
+insert into factura values (15,'12/15/2020',125,15);
+insert into factura values (16,'12/30/2020',125,16);
+insert into factura values (17,'01/14/2021',125,17);
+insert into factura values (18,'06/04/2020',50,18);
+insert into factura values (19,'06/05/2020',750,19);
+insert into factura values (20,'07/05/2020',750,20);
+insert into factura values (21,'08/05/2020',750,21);
+insert into factura values (22,'09/05/2020',750,22);
+insert into factura values (23,'08/19/2020',50,23);
+insert into factura values (24,'08/20/2020',8000,24)
+insert into reserva values (19,'06/05/2021','11:00',1,2,3);
+insert into reserva values (20,'07/05/2021','10:00',1,2,3);
+insert into reserva values (21,'08/05/2021','12:00',1,2,3);
+insert into reserva values (22,'09/05/2021','12:00',1,2,3);
+--receta
+SELECT * FROM receta
+insert into receta values (1,'Tomar 1 amoxicilina',19);
+insert into receta values (2,'Tomar 1 tableta Vitamina K',20);
+insert into receta values (3,'Tomar 1 ibuprofeno',21);
+insert into receta values (4,'Tomar 1 tableta de calcio de 100mg x dia durante 1 semana',24);
+insert into receta values (5,'Tomar 1 tableta de zinc de 50mg x dia durante 4dias ',26);
+insert into receta values (6,'Tomar 1 tableta de calcio de 100mg x dia durante 1 semana',28);
+--detalleAtencion
+SELECT * FROM detalleAtencion
+insert into detalleAtencion values (1,1,12);
+insert into detalleAtencion values (2,2,14);
+insert into detalleAtencion values (3,3,14);
+insert into detalleAtencion values (4,4,14);
+insert into detalleAtencion values (5,5,14);
+insert into detalleAtencion values (6,6,14);
+insert into detalleAtencion values (7,7,14);
+insert into detalleAtencion values (8,8,14);
+insert into detalleAtencion values (9,9,14);
+insert into detalleAtencion values (10,10,14);
+insert into detalleAtencion values (11,11,14);
+insert into detalleAtencion values (12,12,14);
+insert into detalleAtencion values (13,13,14);
+insert into detalleAtencion values (14,14,14);
+insert into detalleAtencion values (15,15,14);
+insert into detalleAtencion values (16,16,14);
+insert into detalleAtencion values (17,17,14);
+insert into detalleAtencion values (18,18,12);
+insert into detalleAtencion values (19,19,15);
+insert into detalleAtencion values (20,20,15);
+insert into detalleAtencion values (21,21,15);
+insert into detalleAtencion values (22,22,15);
+insert into detalleAtencion values (23,23,12);
+insert into detalleAtencion values (24,24,22);
+insert into detalleAtencion values (25,25,22);
+insert into detalleAtencion values (26,26,22);
+insert into detalleAtencion values (27,27,22);
+insert into detalleAtencion values (28,28,22);
+--historial
+SELECT * FROM historial
+insert into historial values (1,'01/14/2021',1,17);
+insert into historial values (2,'09/05/2020',2,22);
+insert into historial values (3,'01/12/2021',3,28);
+
+
+
+4.2.4 CONSULTAS
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+4.2.4 CONSULTAS
+
+
+-- Procedimientos 
+--1. Hacer un PA denominado PA_TotalGastoPaciente que reciba como parámetro el código del paciente  y que 
+--devuelve el pago total de todos los servicios que se le hizo en el consultorio
+
+Create procedure PA_TotalGastoPaciente(@cod_paciente int,@result int output)
+as
+  select @result=isnull(sum(servicio.precio),0)
+from   servicio,paciente,tratamiento
+where  tratamiento.paciente_id=paciente.id and tratamiento.servicio_id=servicio_id and paciente.nombre=@cod_paciente
+return
+
+
+--2. Hacer un PA denominad PA_EstadoPieza  que reciba como parametro codigo de paciente y pieza dental
+-- y que muestre el estado que esta esa pieza dental de dicho paciente 
+
+Create Procedure PA_EstadoPieza(@cod_paciente int,@pieza int,@resul text output)
+as
+  Select @resul=estadoPieza.descripcion 
+  From paciente,historial,atencion,odontograma,piezaDental,estadoPieza
+  Where paciente.id=historial.paciente_id and
+		atencion.id=historial.atencion_id and
+		odontograma.atencion_id=atencion.id and
+		piezaDental.odontograma_id=odontograma.id and 
+		piezaDental.estadoPieza_id=estadoPieza_id and 
+		paciente.id=@cod_paciente and piezaDental.id=@pieza   
+return 
+
+--3. Hacer un PA denominado PA_CantReservas de una Fecha especifica que tuvo un Odontologo 
+
+  Create Procedure PA_CantReservas(@id_odont int,@fecha date,@resul int output) 
+  as
+   Select @resul=isnull(sum(reserva.id),0) 
+   From	  reserva,odontologo
+   Where reserva.odontologo_id=odontologo.id and odontologo.id=@id_odont and reserva.fecha>=@fecha
+
+  return 
+
+--4. Mostrar la Suma Total del Importe de Facturas de los Pacientes con Tratamientos con un Saldo Pendiente
+-- mayor o igual la cantidad sera ingresada por parametro
+
+Create Procedure PA_SumaTol(@nombre char(50),@materno char(25),@paterno char(25),@saldo int ,@result decimal output)
+as
+Select @result=ISNULL(sum(factura.importe),0)
+From factura,paciente,planPago,tratamiento,pago
+Where tratamiento.paciente_id=paciente.id and 
+      planPago.tratamiento_id=tratamiento.id and
+	  pago.planPago_id=planPago.id and 
+	  factura.pago_id=pago.id and paciente.nombre=@nombre
+	  and paciente.apellidoMaterno=@materno and apellidoPaterno=@paterno
+	  and factura.importe>=@saldo 
+return 
+
+--5. Mostrar la Cantidad de Servicios con un Precio Mayor dato ingresado por parametro
+create procedure PA_EstadoPieza(@Rango int,@result int output)
+as
+ Select @result=isnull(sum(servicio.precio),0)
+ From servicio
+ Where precio>=@Rango
+return 
+
+-- TRIGGERS
+
+--1.- Actualizar Datos Odontologo
+Create Trigger TR_Actualizar 
+On odontologo
+for insert 
+as
+  declare @ci_odontologo int,@telefono varchar(10)
+
+  Select @ci_odontologo=ci from inserted
+
+  update odontologo set telefono=@telefono where ci=@ci_odontologo
+
+
+--2. Actualizacion de Datos de la Tabla Paciente 
+Create Trigger TR_Paciente
+on paciente
+for insert 
+as
+  declare @id int,@ci int,@telefono varchar(10),@email varchar(50)
+
+  select @id=id from inserted
+
+  update paciente set telefono=@telefono,ci=@ci,email=@email where id=@id
+
+--3. Insertar Datos Odontologo
+Create Trigger TR_Ingreso
+on atencion 
+for insert 
+as
+ declare @id int,@id_receta int,@descripcion char(80)
+ select @id=id  from inserted
+ insert into receta values (@id_receta,@descripcion,@id);
+
+
+
+
+
+
+
+
+
+
+
+
+
+CAPÍTULO N°5
+5.MODELO DE NEGOCIO.
+
+	
+
+5.1 DIAGRAMAS DE ACTIVIDAD
+Proceso de gestión de reservas
+
+
+
+Proceso de gestión de inventario
+
+
+
+Proceso de atención al paciente.
+
+
+Proceso de gestión de servicios 
+
+Proceso de inicio de sesión
+
+
+
+
+
+
+
+
+
+
+CAPÍTULO N°6
+6. METODO ISHIKAWA
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6.1 IDENTIFICAR PROBLEMAS
+6.1.1Lista de problemas:
+    • P1: Lenta atención a los pacientes.
+    • P2: Perdida de tiempo en la búsqueda del historial de un paciente.
+    • P3: desorden de los pacientes que llegan al consultorio.
+    • P4: Incomodidad de los pacientes a la hora de esperar su cita.
+    • P5: Lentitud al registrar nuevos pacientes.
+    • P6: Deficiencia en gestión de reservas.
+    • P7: Acumulación de los documentos que provocan desorden.
+    • P8: Perdida de información acerca del flujo de caja.
+    • P9: Incumplimiento de los pacientes en su tratamiento.
+    • P10: Deficiencia de información de respaldo de los pacientes.
+    • P11: Perdida de información acerca de los productos dentales.
+    • P12: Poca comprensión del cliente del tratamiento que se le va realizar.
+    • P13: Deficiencia en control de cuotas por un tratamiento realizado.
+    • P14: Limitado espacio para el almacenamiento de los archivos(registros).
+    • P15: Deficiencia en la gestión de inventarios.
+    • P16: Insuficiencia de publicidad y promociones para el consultorio.
+    • P17: Espacio reducido en la infraestructura del consultorio.
+    • P18: Ubicación desfavorable para el establecimiento del consultorio.
+    • P19: Desconocimiento de la agenda de un odontólogo.
+    • P20: Inconvenientes a la hora de registrar un turno al paciente por el desconocimiento de finalización de cada reserva.
+6.1.2 Depurar problemas.
+    • P4: Incomodidad de los pacientes a la hora de esperar su cita.
+    • P5: Lentitud al registrar nuevos pacientes.
+    • P9: Incumplimiento de los pacientes en su tratamiento.
+    • P16: Insuficiencia de publicidad y promociones para el consultorio.
+    • P17: Espacio reducido en la infraestructura del consultorio.
+    • P18: Ubicación desfavorable para el establecimiento del consultorio.
+6.1.3 Lista de problemas finales.
+    • P1: Lenta atención a los pacientes.
+    • P2: Perdida de tiempo en la búsqueda del historial de un paciente.
+    • P3: desorden de los pacientes que llegan al consultorio.
+    • P4: Deficiencia en gestión de reservas.
+    • P5: Acumulación de los documentos que provocan desorden.
+    • P6: Perdida de información acerca del flujo de caja.
+    • P7: Deficiencia de información de respaldo de los pacientes.
+    • P8: Perdida de información acerca de los productos dentales.
+    • P9: Poca comprensión del cliente del tratamiento que se le va realizar.
+    • P10: Deficiencia en control de cuotas por un tratamiento realizado.
+    • P11: Deficiencia en la gestión de inventarios.
+    • P12: Limitado espacio para el almacenamiento de los archivos(registros).
+    • P13: Desconocimiento de la agenda de un odontólogo.
+    • P14: Inconvenientes a la hora de registrar un turno al paciente por el desconocimiento de finalización de cada reserva.
+
+6.1.4 Propietario de problemas.
+ Lista de propietarios:
+    • Propietario 1: Odontólogo.
+    • Función: Brindar servicio.
+
+    • Propietario 2: Recepcionista.
+    • Función: Registrar reservas.
+
+    • Propietario 3: Paciente.
+    • Función: Recibir servicios dentales.
+
+              PROPIETARIO.
+
+
+PROBLEMA.	PROPIETARIO1
+ODONTÓLOGO.	PROPIETARIO2.
+RECEPCIONISTA.	PROPIETARIO3.
+PACIENTE.
+P1: Lenta atención a los pacientes.
+			
+P2: Perdida de tiempo en la búsqueda del historial de un paciente.
+			
+P3: desorden de los pacientes que llegan al consultorio.
+			
+P4: Deficiencia en gestión de reservas.
+			
+P5: Acumulación de los documentos que provocan desorden.
+			
+P6: Perdida de información acerca del flujo de caja.
+			
+P7: Deficiencia de información de respaldo de los pacientes.
+			
+P8: Perdida de información acerca de los productos dentales.
+			
+P9: Poca comprensión del cliente del tratamiento que se le va realizar.
+			
+P10: Deficiencia en control de cuotas por un tratamiento realizado.
+			
+
+
+
+P11: Deficiencia en la gestión de inventarios.
+			
+P12: Limitado espacio para el almacenamiento de los archivos(registros).
+		
+	
+P13: Desconocimiento de la agenda de un odontólogo.
+			
+P14: Inconvenientes a la hora de registrar un turno al paciente por desconocimiento de finalización de cada reserva.
+	
+
+
+		
+
+6.1.5 Analisis de problemas. 
+
+
+
+
+
+
+
+
+	
+
+	
+	
+
+
+
+
+
+
+
+	
+	
+
+
+6.1.6 Estimación y cuantificación de los problemas.
+
+ESTIMACIÓN DE PROBLEMAS	CUANTITATIVO/CUALITATIVO.
+P1: Lenta atención a los pacientes.
+	Transcurso de atención demora en promedio 20 minutos.
+P2: Perdida de tiempo en la búsqueda del historial de un paciente.
+	Se demora como 5 min en localizar y extraer el historial de el paciente es buscada de acuerdo a la última fecha de su visita
+P3: desorden de los pacientes que llegan al consultorio.
+	Desconocimiento de turno de un paciente genera una incomodidad al preguntar a los demás.
+P4: Deficiencia en gestión de reservas.
+	No existe reservas por citas, los pacientes esperan hasta que le toque su turno.
+P5: Acumulación de los documentos que provocan desorden.
+	Ocupa demasiado espacio en el consultorio.
+P6: Perdida de información acerca del flujo de caja.
+	El odontólogo no sabe exactamente,cuánto dinero ingresa al consultorio.
+P7: Deficiencia de información de respaldo de los pacientes.
+	No existe copia de seguridad de los archivos.
+P8: Perdida de información acerca de los detalles de las piezas dentales.
+	No se registran las piezas dentales.
+P9: Poca comprensión del cliente del tratamiento que se le va realizar.
+	El paciente queda no satisfecho con los resultados de su tratamiento por que lo imagino se otra forma.
+P10: Deficiencia en control de cuotas por un tratamiento realizado.	Perdida de los recibos de las cuotas .el cual es el medio por que controlan los pagos.
+P11: Deficiencia en la gestión de inventarios.
+	Insuficiente forma de controlar el inventario.
+P12: Limitado espacio para el almacenamiento de los archivos(registros).
+	El historial tiene que ser pequeño y preciso para que pueda ser almacenado.
+P13: Desconocimiento de la agenda de un odontólogo.
+	No se conoce la agenda de un odontólogo ni cuantos servicio por  pacientes tiene por atender.
+P14: Inconvenientes a la hora de registrar un turno al paciente por desconocimiento de finalización de cada reserva.
+	Se tiene dificultad al recibir una reserva por que no se conoce la hora aproximado de cuanto durará un paciente en su atención.
+
+
+6.1.7 Alternativa de cambio.
+P1: Lenta atención a los pacientes.
+    • Implementar un sistema de información que optimice el tiempo en los procesos.
+P2: Perdida de tiempo en la búsqueda del historial de un paciente.
+    • Implementar un sistema de información que gestione los historiales de cada paciente.
+P3: desorden de los pacientes que llegan al consultorio.
+    • Implementar un sistema de información para la administración de turnos por medio de reservas.
+P4: Deficiencia en gestión de reservas.
+    • Implementar un sistema de información que gestione los turnos de reserva.
+P5: Acumulación de los documentos que provocan desorden.
+    • Implementar un sistema de información que permita gestionar todo el documento posible del consultorio.
+P6: Perdida de información acerca del flujo de caja.
+    • Perdida de información del flujo de caja
+P7: Deficiencia de información de respaldo de los pacientes.
+    • Implementar un sistema de información que permita crear copias de seguridad de todos los datos.
+P8: Perdida de información acerca de los detalles de las piezas dentales.
+    • Implementar un sistema de información que permita registrar los datos relevantes de las piezas dentarias.
+P9: Poca comprensión del cliente del tratamiento que se le va realizar.
+    • Implementar un sistema de información que permita almacenar los servicioa a realizar para poder representarlos de forma adecuada al paciente.
+P10: Deficiencia en control de cuotas por un tratamiento realizado.
+    • Implementar un sistema de información que almacene el seguimiento de las 
+P11: Deficiencia en la gestión de inventarios.
+    • Implementar un sistema de información que gestione inventarios.
+P12: Limitado espacio para el almacenamiento de los archivos(registros).
+    • Implementar un sistema de información que almacene todos los datos del consultorio.
+P13: Desconocimiento de la agenda de un odontólogo.
+    • Implementar un sistema de información que almacene toda la agenda de un odontólogo.
+P14: Inconvenientes a la hora de registrar un turno al paciente por desconocimiento de finalización de cada reserva.
+    • Implementar un sistema de información que almacene todas las reservas con horas aproximadas de cuanto dura una atención por cliente y en base a las horas disponibles registrar las reservas.
+6.1.8 Conclusión y recomendación.
+Llegamos a la conclusión que los problemas radican en el registro y almacenamiento de los datos de los clientes, por que estos aumentan la dificultad y el tiempo en la atención de los pacientes, y en la de administración de cuentas y un control de inventario.
+Por tanto, se tiene la necesidad de un sistema de información para poder realizar sus actividades de forma eficiente y brindar servicios dentales.
+Por tanto, se recomienda un sistema de información para gestionar de manera eficiente y realizar servicios de forma garantizada, tomando en cuenta los problemas mencionados anteriormente.
+6.1.9 Diseñar el diagrama de Ishikawa.
+6.2. Diseñar el método Ishikawa
+6.2 I denticación del problema.
+
+
+
+
+
+6.2 2 dentificar principales categorías.
+
+
+ 6.2.3. dentificar principal causas.                           
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CAPÍTULO N°7
+7. F.T. CAPTURA DE REQUISITOS.
+
+
+
+
+
+
+
+
+
+
+7.1. ACTORES
+    • Odontologo.
+    • Recepcionista.
+    • Paciente.
+    • Administrador.
+7.2. CASOS DE USO
+    1. Gestionar paciente.
+    2. Gestionar reserva.
+    3. Gestionar usuario.
+    4. Gestionar odontologo.
+    5. Gestion atención.
+    6. Gestion servicio.
+    7. Gestionar odontograma.
+    8. Gestionar histórico clínico.
+    9. Gestionar ficha.
+    10. Gestionar producto.
+    11. Gestionar piezadental.
+    12. Gestionar recepcionista.
+    13. Gestionar privilegios.
+    14. Gestionar tratamiento.
+    15. Mostrar agenda.
+    16. Iniciar sección.
+    17. Cerrar sección.
+    18. Validar usuario.
+    19. Asignar roles.
+    20. Asignar Reserva-Servicio
+    21. Asignar Servcio –Atencion. 
+    22. Realizar receta.
+    23. Realizar factura.
+    24. Registrar pago.
+    25. Registrat Nota de Compra
+    26. Administrar el flujo de caja.
+    27. Detallar Bitacora
+
+
+
+
+7.3. PRIORIZAR CASOS DE USO
+Estado
+    • Aprobado: Es usado cuando el caso de uso esta entre los principales en construirse.
+    • Incorporado: Es usado cuando el caso de uso esta entre los próximos a realizarse o tamarse en cuenta.
+    • Propuesto: No es considerado inicialmente.
+Prioridad
+    • Normal: El caso de uso se realiza inicialmente.
+    • Critico: Cuando el caso de uso requiere mas información que le será proporcionada de otro caso de uso.
+    • Significativo: Conforme a la necesidad de ver información con las vistas posibles.
+Riesgo.
+    • Normal: Se usa en los casos de uso básicos de registros de datos.
+    • Critico: Cuando el caso de uso necesita de mucha información para realizarse.
+    • Accesorio: Cuando el caso de uso es base para otros.
+
+
+
+
+
+NRO	NOMBRE DEL CU	ACTOR	ESTADO	PRIORIDAD	RIESGO
+CU1	Gestionar paciente	A1-A2-A3	Aprobado	Normal	Normal
+CU2	Gestionar reserva.
+	A2-A3	Aprobado	Normal	Normal
+CU3	Gestionar usuario.
+	A4	Aprobado	Normal	Normal
+CU4	Gestionar odontologo.
+	A1-A4	Aprobado	Normal	Normal
+CU5	Gestionar atención.
+	A1-A3	Incorporado	Critico	Critico
+CU6	Gestionar servicio	A1-A4	Aprobado	Normal	Normal
+CU7	Gestionar odontograma.
+	A1	Incorporado	Critico	Critico
+CU8	Gestionar histórico clínico.
+	A1	Incorporado	Critico	Critico
+CU9	Gestionar ficha	A2-A3	Incorporado	Critico	Critico
+CU10	Gestionar producto.
+	A1	Aprobado	Normal	Normal
+CU11	Gestionar piezadental.
+	A1	Incorporado	Critico	Critico
+CU12	Gestionar recepcionista.
+	A2-A4	Aprobado	Normal	Normal
+CU13	Gestionar permisos.
+	A4	Incorporado	Critico	Critico
+CU14	Gestionar tratamiento.	A1	Incorporado	Critico	Critico
+CU15	Mostrar agenda.
+	A5	Incorporado	Critico	Critico
+CU16	Iniciar sección	A1-A2-A4	Aprobado	Normal	Normal
+CU17	Cerrar sección.
+	A1-A2-A4	Aprobado	Normal	Normal
+CU18	Validar usuario.	A5	Incorporado	Critico	Critico
+CU19	Asignar roles.
+	A1-A4	Incorporado	Critico	Critico
+CU20	Asignar Reserva-Servicio
+	A2	Incorporado	Critico	Critico
+CU21	Asignar Servicio –Atencion	A1	Incorporado	Critico	Critico
+CU22	Realizar receta	A1	Incorporado	Critico	Critico
+CU23	Realizar factura.
+	A5	Propuesto	Significativo	Accesorio
+CU24	Registrar pago.
+	A2	Incorporado	Critico	Critico
+CU25	Registrar nota de compra	A1-A2-A4	Aprobado	Normal	Normal
+CU26	Administrar el flujo de caja.
+	A5	Propuesto	Significativo	Accesorio
+CU27	Detallar Bitacora	A5	Propuesto	Significativo	Accesorio
+
+
+7.4. DETALLAR CASOS DE USO
+CU1: Gestionar Paciente
+
+Nombre de caso de uso	Gestionar Paciente
+Propósito	Registrar los datos del paciente nuevo o modificar los de uno ya existente
+Actores	Paciente, Odontólogo, Recepcionista
+Actor iniciador	Paciente
+Pre condición	Null;
+Flujo Principal	1. Registrar
+1.1 Si el paciente no está registrado
+1.2 Obtener los datos del paciente
+1.3 Ingresar los datos del paciente al sistema
+1.4 Si ingresamos mal los datos podemos modificarlo posteriormente
+
+2. Modificar.
+2.1 Se busca por nombre en la lista de los pacientes registrados
+2.2 Se adquiere los datos previamente registrados
+2.3 Se incorpora las modificaciones
+2.4 Si ingresamos mal los datos volvemos a repetir este procedimiento
+
+3. Eliminar.
+3.1 Se busca por nombre en la lista de los pacientes registrados
+3.2 Si no existe se omite este procedimiento
+3.3 Si existe se procede a eliminar al paciente del sistema
+Post condición	Null;
+Excepción	Datos ingresados erróneamente.
+
+
+CU2: Gestionar Reserva
+
+
+
+
+
+
+
+Nombre de caso de uso	Gestionar Reserva
+Propósito	Registra las reservas que el paciente determina
+Actores	Paciente y Recepcionista
+Actor iniciador	Paciente
+Pre condición	Null;
+Flujo Principal	1 Registrar.
+1.1. Se crea una nueva reserva
+1.2. Se adquieren los datos a ingresar en la reserva
+1.3. Se incorporan los datos en la reserva
+2 Modificar.
+2.1. No se puede modificar si el dia de la reserva pasó
+2.2. Se busca la reserva en la lista de reservas.
+2.3. Se incorporan los datos para modificar la reserva
+Post condición	Null;
+Excepción	
+
+
+
+
+CU3: Gestionar Usuario
+
+
+
+
+
+
+
+
+Nombre de caso de uso	Gestionar Usuario
+Propósito	Registrar a los usuarios que puedan manipular el sistema
+Actores	Administrador
+Actor iniciador	Administrador
+Pre condición	Asignar Roles
+Flujo Principal	1 Registrar.
+1.1. Se extraen los datos de los respectivos odontólogos, recepcionistas o administradores
+1.2. Se ingresan los datos del usuario.
+1.3. Se les asigna uno o varios roles con sus respectivos
+permisos.
+2 Modificar.
+2.1. Se busca por nombre en la lista de los
+usuarios registrados.
+2.2. Se adquieren los datos anteriormente
+registrados.
+2.3. Se incorporan las modificaciones.
+2.4. Si ingresamos mal los datos volvemos a
+repetir este procedimiento.
+3 Eliminar.
+3.1. Se busca por nombre en la lista de los usuarios registrados
+3.2. Si no existe el usuario se descarta este procedimiento
+3.3. Se elimina al usuario.
+
+CU4: Gestionar Odontologo
+
+
+
+
+
+
+
+CU5: Gestionar Atencion
+
+
+
+
+Nombre de caso de uso	Gestionar Atencion
+Propósito	Gestionar las atenciones realizadas en el consultorio.
+Actores	Paciente, Odontologo
+Actor iniciador	Paciente
+Pre condición	CU2: Registrar Reserva
+Flujo Principal	1.Registrar 
+1.1 Obtener los datos de la atencion.
+1.2 Ingresar los datos de la atencion.
+1.3 Si la atencion ya existe se debe omitir las acciones.
+2.Modificar.
+2.1 Buscar la atencion en la lista de atenciones.
+2.2 Se asigna los nuevos datos.
+3.Eliminar
+3.1 Se busca la atencion en la lista
+3.2 Se elimina la atencion
+
+
+CU6: Gestionar Servicio.
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU7: Gestionar Odontograma
+
+
+
+
+
+
+
+
+
+
+Nombre de caso de uso	Gestionar Odontograma.
+Propósito	Registrar el estado de las piezas dentales.
+Actores	Odontólogo.
+Actor iniciador	Odontólogo.
+Pre condición	CU5:Gestionar Atención.
+Flujo Principal	    1. Registrar.
+        1.1 Es probable que en una atención se cree un odontograma, registrando los diagnosticos de las diferentes piezas dentales dañada.
+Post condición	
+Excepción	Datos ingresados erróneamente.
+
+
+
+
+CU8: Gestionar Historial Clinico
+
+
+
+
+
+
+
+
+
+Nombre de caso de uso	Gestionar Historial Clínico.
+Propósito	Registral el historial clínico de un paciente.
+Actores	Odontologo,Paciente
+Actor iniciador	Odontologo.
+Pre condición	CU1:Gestionar Paciente
+Flujo Principal	    1. Registrar.
+        1.1 El odontólogo registrar el historial después de haber lo registrado como un paciente.
+      2.  Modificar.
+       2.1 Se busca al paciente y se ingresa a su historial.
+       2.2 Se modifica al historial después de haber              recibido una nueva atención.
+  3.Eliminar.
+   3.1 Si se da de baja a un paciente también debe darse de baja su historial.
+
+Post condición	Null
+Excepción	Null
+
+
+CU9: Gestionar Ficha
+
+
+
+
+
+
+
+
+
+
+Nombre de caso de uso	Gestionar Ficha
+Propósito	Efectuar una reserva para que un paciente sea atendido por un odontólogo en un horario disponible.
+Actores	Paciente ,Odontologo,Recepcionista
+Actor iniciador	Paciente
+Pre condición	CU1 Gestionar Paciente
+Flujo Principal	1 Registrar.
+        1.1 Se debe verificar si existe el paciente en la base de datos.
+        1.2 Reserva una ficha.
+        1.3 Se obtienen los datos para la ficha.
+        1.4 Ingresan los datos 
+Post condición	Null
+Excepción	1.2 No se puede crear una ficha en el mismo horario de otro paciente.
+1.4 Datos ingresado erróneamente.
+
+
+
+CU10: Gestionar Producto
+
+
+
+
+
+
+
+
+CU11: Gestionar Pieza Dental
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU:12 Gestionar Recepcionista
+
+Nombre de caso de uso	Gestionar Recepcionista
+Propósito	Registrar los datos de la persona que se encargará de la recepción de los pacientes y su usuario correspondiente
+Actores	Administrador, Recepcionista
+Actor iniciador	Administrador
+Pre condición	-
+Flujo Principal	1. Registrar
+1.1 Si ya existe el recepcionista no se realiza el registro en el sistema
+1.2 Obtener los datos respectivos del recepcionista
+1.3 Ingresar los datos del recepcionista en el sistema
+1.4 Si se ingresan mal los datos se podrán corregir después
+
+2. Modificar 
+2.1 Se busca por nombre en la lista de los recepcionistas
+2.2 Se obtienen los datos previamente registrados
+2.3 Se ingresan los datos a ser actualizados
+
+3. Eliminar
+3.1 Se busca por nombre al recepcionista para su eliminación
+3.2 Si no existe se omite cualquier procedimiento posterior
+3.3 Si existe se procede a eliminarlo
+Post condición	
+Excepción	1.3 Datos ingresados erróneamente
+
+
+
+
+CU13 Gestionar Privilegios
+
+
+Nombre de caso de uso	Gestionar Privilegios
+Propósito	Registra los privilegios que son el acceso a ciertas partes de sistema y los administra
+Actores	Administrador
+Actor iniciador	Administrador
+Pre condición	-
+Flujo Principal	1 Registras.
+1.1 Si el privilegio ya existe en la base de datos se omite los siguiente pasos.
+1.2 El administrador obtiene todos los datos de los privilegios.
+1.3 El administrador ingresa los datos del nuevo privilegio.
+
+2 Actualizar.
+2.1 El administrador Selecciona en el sistema el nombre del privilegio que quiere actualizar.
+2.2 el administrador obtiene los datos del privilegio buscado.
+2.3 El administrador ingresa los datos actualizados del privilegio.
+
+3 Eliminar.
+3.1 El administrador selecciona el privilegio que quiere eliminar.
+3.2 Se elimina el privilegio.
+Post condición	-
+Excepción	1.3 Datos ingresados erróneamente
+1.1 El privilegio ya existe  en la base de datos.
+
+
+CU14 Gestionar Tratamiento
+
+Nombre de caso de uso	Gestionar Tratamiento
+Propósito	Registrar los tratamientos que se realizan los pacientes y administrarlos
+Actores	Odotólogo
+Actor iniciador	Odontologo
+Pre condición	CU5: Gestionar Atención
+Flujo Principal	1. Registrar.
+1.1 El odontólogo ingresa los datos del tratamiento realizdo en la atención.
+
+2 Modificar.
+2.1 El odontólogo busca el tratamiento mediante el nombre del paciente para actualizar datos del tratamiento
+2.2 Se obtienen los datos del tratamiento
+2. 3 Se actualizan los datos del tratamiento
+
+3. Eliminar
+3.1 Se busca mediante el nombre del paciente el tratamiento que se desea eliminar
+3.2 Se elimina el tratamiento 
+
+Post condición	-
+Excepción	Datos ingresados erróneamente
+
+
+CU15 Mostrar Agenda
+
+
+Nombre de caso de uso	Mostrar Agenda
+Propósito	Mostra la Agenda de los doctores.
+Actores	Sistema
+Actor iniciador	Sistema
+Pre condición	Null
+Flujo Principal	    1. Mostrar Cuadro
+        1.1 Se selecciona un doctor para mostrar su respectiva agenda.
+      2.  Imprimir.
+       2.1. Se imprime la Agenda respectiva.
+recibido una nueva atención.
+  3. Actualizar Cuadro.
+Post condición	Null
+Excepción	Null
+
+
+
+
+CU16: Iniciar Sesión.
+
+Nombre de caso de uso	Iniciar Sesion
+Propósito	Iniciar Sesion de un usuario.
+Actores	Odontologo, Recepcionista, Administrador
+Actor iniciador	Odontologo, Recepcionista, Administrador
+Pre condición	Null
+Flujo Principal	    1. Ingresar los datos
+    2. Seleccionar Recordar Usuario
+Post condición	CU18: Validar Usuario
+Excepción	Usuario No Existe
+
+
+
+
+
+
+
+CU17: Cerrar Sesión
+
+Nombre de caso de uso	Cerrar Sesion
+Propósito	Cerrar la sesión de un paciente.
+Actores	Odontologo, Recepcionista, Administrador
+Actor iniciador	Odontologo, Recepcionista, Administrador
+Pre condición	C16: Iniciar Sesion
+Flujo Principal	    1. Seleccionar Boton Cerrar Sesion
+        1.1. Validar el “estas seguro que queres cerrar sesión”
+Post condición	Null
+Excepción	Null
+
+
+
+
+
+
+
+
+
+
+CU18: Validar Usuario
+
+Nombre de caso de uso	Validar Usuario
+Propósito	Verificar que los datos incorporados se encuentran registrados en la base de datos
+Actores	Sistema
+Actor iniciador	Sistema
+Pre condición	Null
+Flujo Principal	1. Verificar
+1.1 El Sistema indaga los datos ingresados buscándolo en la base de datos 
+1.2 El Sistema bota un mensaje indicando si los datos se encuentra o no del respectivo usuario dictado
+Post Condicion	Null
+Excepcion	Null
+
+CU19: Asignar Roles
+
+Nombre de caso de uso	Asignar Roles
+Propósito	Asignar los respectivo Roles para tener acesso a los diversos modulos que ofece el sistema
+Actores	Odontologo, Administrador
+Actor iniciador	Administrador
+Pre condición	CU13:Gestionar Privilegios
+Flujo Principal	1. Registrar
+1.1 Se incorpora el rol
+1.2 Se añade los privilegios correspondientes para el rol
+2. Actualizar.
+2.1 Se indaga el rol en la lista respectiva.
+2.2 Se modifican los atributos del rol
+2.3 Se incorpora los datos actualizados
+3 Eliminar
+3.1 Se ubica al usuario al que le pertenece el rol.
+3.2 Se descarta los permisos que el rol brinda al usuario
+Post Condicion	Null;
+
+CU20: Asignar Reserva-Servicio
+
+Nombre de caso de uso	Asignar Reserva-Servicio
+Propósito	Asignar los servicio que se gestionaran en una reserva
+Actores	Recepcionista
+Actor iniciador	Recepcionista
+Pre condición	CU2: Gestionar Reserva, CU6: Gestionar Servicio
+Flujo Principal	1. Registrar
+1.1 Se indaga el servicio correspondiente en la lista donde corresponde
+1.2 Se elige el servicio deseado.
+1.3 Se añade el servicio a la consulta
+2. Modificar.
+2.1 Se indaga el servicio correspondiente en la lista respectiva
+2.2 Se incorpora los datos a actualizar
+Post Condicion	Null
+Excepcion	Null
+
+
+
+
+
+
+
+
+
+CU21: Asignar Servcio –Atencion.
+
+
+
+Nombre de caso de uso	Asignar Servcio –Atencion. 
+
+Propósito	Asignar un Servicio a los Clientes con su respectivo Odontologo  y que reciba una  Atencion comoda 
+Actores	Odontologo
+Actor iniciador	Odontologo
+Pre condición	Null
+Flujo Principal	Registrar
+Se le asignara un Servico al Paciente
+Se pondrá los detalles del servicio que se designará
+Modificar
+Se busca el Servicio designado en la lista respectiva.
+Se modificará o podrá elegir el servicio a asignar.
+
+Post condición	Null
+Excepción	Datos ingresados erróneamente
+
+
+
+
+
+
+CU22: Realizar Receta
+
+
+
+Nombre de caso de uso	Realizar receta.
+
+Propósito	Recomendar al Cliente por si necesita algún remedio farmacéutico que necesita por dicho servicio resibido
+Actores	Odontologo
+Actor iniciador	Odontologo
+Pre condición	CU1: Gestionar Paciente
+Flujo Principal	Registrar
+Se anota los farmacéuticos que requiere el paciente 
+Se ingresa los datos de dicho producto
+Modificar
+     Se busca la lista respectiva o receta para modificar.
+     Se ingresan los datos para modificar la receta.
+
+Post condición	
+Excepción	Datos ingresados erróneamente
+
+
+
+
+
+CU23: Realizar Factura
+
+
+
+Nombre de caso de uso	Realizar factura.
+
+Propósito	Acreditar el servicio odontológico fue echo con éxito y ocbrado con respectiva cantidad determinada
+Actores	Recepcionasta Paciente
+Actor iniciador	Paciente 
+Pre condición	CU24: Registrar Pago
+Flujo Principal	 Registrar
+     Se efectua una valoración total y se la registra
+Se anota los datos de pago del paciente por el servicio
+Se anota el método de pago que hizo el cliente 
+Post condición	Null
+Excepción	null
+
+
+
+
+
+
+
+
+
+CU24: Registrar Pago
+
+
+
+Nombre de caso de uso	Registrar pago
+
+Propósito	Efectuar el registro del monto que cancelara el cliente por haberse efectua un servicio odontologico
+Actores	Recepcionista
+Actor iniciador	Recepcionista 
+Pre condición	Asignar Servcio –Atencion. 
+
+Flujo Principal	Registrar
+  El monto total de cancelación que hara el cliente 
+  Anotar el método de cancelación del pago por el       servicio
+Post condición	Realizar Factura
+Excepción	Datos ingresados erroneamente
+
+
+
+
+
+
+
+CU25: Registrar nota de compra
+
+
+
+Nombre de caso de uso	Registrar nota de compra
+
+Propósito	Registrar el comprobante del servicio odontológico que se le realizo a un dicho cliente
+Actores	Odontologo, Recepcionista, Administrador
+Actor iniciador	Administrador
+Pre condición	
+Flujo Principal	Registrar 
+  Se obtiene los datos del servicio.
+  Se ingresan los datos del paciente .
+Post condición	
+Excepción	Datos ingresados erroneamente
+
+
+
+
+
+
+
+
+
+CU26: Administrar el flujo de caja
+
+
+
+Nombre de caso de uso	Administrar el flujo de caja.
+
+Propósito	Facilitar información acerca de los ingresos y egresos  del odontológico que a tenido durante un periodo de tiempo
+Actores	Sistema
+Actor iniciador	Sistema
+Pre condición	Null
+Flujo Principal	Registrar 
+1.1 Se saca un balance de los ingresos de un determinado tiempo
+1.2 Se saca un balance de los egresos de un determinando tiempo.
+1.3 Si el servicio ya existe se debe omitir las acciones.
+2.Modificar.
+2.1. Se puede mofiicar la lista de balance de ingreso o egreso
+
+Post condición	Null
+Excepción	Datos ingresados erróneamente
+
+
+
+
+
+
+
+
+CU27: Detallar Bitacora
+
+
+
+Nombre de caso de uso	Detallar Bitacora
+
+Propósito	Registrar cada moficacion de la base de datos
+Actores	Sistema
+Actor iniciador	Sistema
+Pre condición	Null
+Flujo Principal	Registrar 
+1.1 Cada vez que se inserte, modifique o elimine un dato, se registrar la acción y quien la realizo.
+Post condición	Null
+Excepción	Datos ingresados erróneamente
+
+
+7.5 Estructurar Modelo De Casos De Uso:
+
+
+
+
+
+
+
+
+
+
+
+CAPÍTULO N°8
+8. F.T. ANALISIS
+
+
+
+
+
+
+
+
+
+
+
+8.1. Analisis De Arquitectura:
+
+8.1.1. Identificar paquetes:
+
+1. Paquete Administrar Atencion:
+Descripcion: Este paquete permitirá al odontólogo gestionar los datos del paciente para poder llevar un registro de todas las atenciones realizadas con su respectiva descripción.
+
+
+    2.  Paquete Administrar Reserva:
+
+Descripcion: Este paquete permitirá gestionar una administración de las reservas que hay en el consultorio para poder realizar un control de turnos adecuado.
+
+
+
+3. Paquete Administrar Personal:
+Descripcion: Este paquete permitira el almacenamiento de datos de los odontólogos y la recepcionista, asi como asignarles un nombre de usuario y contraseña para tener acceso al sistema, con sus respectivos privilegios y rol.
+
+
+
+
+
+4. Paquete Administrar Seguridad:
+Descripcion: Este paquete permitira llevar a cabo un control de los movimientos y cambios hechos por los usuarios con respecto a la informacion almacenada por el software
+
+
+
+5. Paquete Administrar Flujo De Caja:
+Descripcion: Este paquete tiene como fin determinar los registros de ingresos y egresos que tiene el consultorio al comprar productos y al prestar servicio.
+
+
+8.1.2. Relacionar paquetes y casos de uso:	
+
+-P1: Administrar Atencion
+
+
+
+
+
+
+
+
+
+
+
+
+
+-P2: Administrar Reservas
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-P3: Administrar Seguridad
+
+
+
+
+
+-P4: Administrar Personal
+
+-P5: Administrar Flujo De Caja
+
+
+
+8.1.3. Vista de casos de uso (encapsulamiento de paquetes):
+-P1: Administrar Atencion
+
+-P2: Administrar Reservas
+
+
+-P3: Administrar Seguridad
+
+-P4: Administrar Personal
+
+
+
+
+
+-P5: Administrar Flujo De Caja
+
+
+8.2. Analisis de casos de uso:
+
+CU1: Gestionar Paciente
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU2: Gestionar Reserva
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU3: Gestionar Usuario
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU4: Gestionar Odontologo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU5: Gestionar Atención
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU6: Gestionar Servicio
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU7: Gestionar Odontograma
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU8: Gestionar Historial Clinico
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU9: Gestionar Ficha
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU10: Gestionar Producto
+
+
+
+
+
+
+
+
+CU11: Gestionar Pieza Dental
+
+
+
+
+
+
+
+
+
+CU12: Gestionar Recepcionista
+
+
+
+
+
+
+
+
+
+
+
+
+CU13: Gestionar Permisos
+
+
+
+
+
+
+
+CU14: Gestionar Tratamiento
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU15: Mostrar Agenda
+
+
+
+
+
+
+
+
+
+
+
+CU16: Iniciar Sesion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU17: Cerrar Sesion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU18: Validar Usuario
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU19: Asignar Roles
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU20: Asignar Reserva Servicio
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU21: Asignar Servicio Atención
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU22: Realizar Receta
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU23: Realizar Factura
+
+
+
+
+
+
+
+
+
+
+
+
+CU24: Registrar Pago
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU25: Registrar Nota de Compra
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU26: Administrar flujo de caja
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU27: Detallar Bitácora
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Análisis de clases
+
+CU1: Gestionar Paciente
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU2: Gestionar Reserva
+
+
+
+
+
+
+
+
+
+
+
+
+CU3: Gestionar Usuario
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU4: Gestionar Odontólogos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU5: Gestionar Atención
+
+
+
+
+
+CU6: Gestionar Sevicios
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU8: Gestionar Historial Clínico
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU12: Gestionar Recepcionista
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU13: Gestionar Permisos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU14: Gestionar Tratamiento
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CU19: Asignar Roles
+
+
+
+CU22: Realizar Receta
+
+
+
+
+CU24: Registrar Pago
+
+
+
+
+Plan Pago
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Análisis de paquetes
+
+
+
+
+
+
+
+
+	
+
+
+Diagrama de despliegue
+
+Diagrama de Organizado en capas

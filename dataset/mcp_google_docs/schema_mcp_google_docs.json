@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Esquema de Registro de Uso del MCP Google Documents",
+  "description": "Esquema para capturar patrones correctos de uso del MCP de Google Documents",
+  "type": "object",
+  "required": ["instruction", "input", "output"],
+  "properties": {
+    "instruction": {
+      "type": "string",
+      "description": "Tarea solicitada que involucra Google Docs"
+    },
+    "input": {
+      "type": "object",
+      "description": "Contexto de la tarea",
+      "properties": {
+        "task": { "type": "string" },
+        "documentId": { "type": "string" },
+        "document_state": { "type": "string" },
+        "constraints": { "type": "string" }
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["reasoning", "tool_sequence", "rules_applied", "result"],
+      "properties": {
+        "reasoning": {
+          "type": "string",
+          "description": "Razonamiento sobre qué tools usar y en qué orden"
+        },
+        "tool_sequence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "step": { "type": "integer" },
+              "tool": { "type": "string" },
+              "params": {
+                "type": "object",
+                "properties": {
+                  "documentId": { "type": "string" },
+                  "startIndex": { "type": "integer" },
+                  "endIndex": { "type": "integer" },
+                  "index": { "type": "integer" },
+                  "text": { "type": "string" }
+                }
+              },
+              "purpose": { "type": "string" }
+            }
+          }
+        },
+        "rules_applied": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Reglas del MCP que se aplicaron"
+        },
+        "result": {
+          "type": "object",
+          "description": "Resultado de la operación"
+        }
+      }
+    }
+  }
+}

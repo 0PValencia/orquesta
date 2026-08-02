@@ -1,0 +1,132 @@
+{
+  "seed": 42,
+  "sources": {
+    "proyectos": {
+      "total": 32,
+      "train": [
+        "proyectos:22",
+        "proyectos:16",
+        "proyectos:14",
+        "proyectos:8",
+        "proyectos:1",
+        "proyectos:2",
+        "proyectos:3",
+        "proyectos:9",
+        "proyectos:0",
+        "proyectos:4",
+        "proyectos:5",
+        "proyectos:19",
+        "proyectos:15",
+        "proyectos:7",
+        "proyectos:21",
+        "proyectos:30",
+        "proyectos:27",
+        "proyectos:28",
+        "proyectos:17",
+        "proyectos:24",
+        "proyectos:12",
+        "proyectos:11",
+        "proyectos:10"
+      ],
+      "val": [
+        "proyectos:20",
+        "proyectos:29",
+        "proyectos:18"
+      ],
+      "test": [
+        "proyectos:31",
+        "proyectos:13",
+        "proyectos:25",
+        "proyectos:6",
+        "proyectos:26",
+        "proyectos:23"
+      ],
+      "families": {
+        "alcance": 2,
+        "arquitectura": 1,
+        "bibliografia": 1,
+        "caso_uso": 4,
+        "conclusiones": 1,
+        "diagrama": 1,
+        "introduccion": 1,
+        "justificacion": 1,
+        "objetivos": 1,
+        "otro": 1,
+        "perfil": 5,
+        "portada": 1,
+        "problema": 1,
+        "pruebas": 2,
+        "recomendaciones": 2,
+        "sql": 7
+      }
+    },
+    "temas": {
+      "total": 38,
+      "train": [
+        "temas:18",
+        "temas:19",
+        "temas:14",
+        "temas:27",
+        "temas:32",
+        "temas:0",
+        "temas:2",
+        "temas:36",
+        "temas:28",
+        "temas:25",
+        "temas:31",
+        "temas:29",
+        "temas:23",
+        "temas:24",
+        "temas:21",
+        "temas:9",
+        "temas:7",
+        "temas:13",
+        "temas:3",
+        "temas:11",
+        "temas:34",
+        "temas:16",
+        "temas:12",
+        "temas:33",
+        "temas:1",
+        "temas:4"
+      ],
+      "val": [
+        "temas:10",
+        "temas:5",
+        "temas:26",
+        "temas:15",
+        "temas:6",
+        "temas:35"
+      ],
+      "test": [
+        "temas:17",
+        "temas:20",
+        "temas:30",
+        "temas:22",
+        "temas:8",
+        "temas:37"
+      ],
+      "families": {
+        "definir": 6,
+        "diagrama": 12,
+        "explicar": 15,
+        "glosario": 4,
+        "pruebas": 1
+      }
+    }
+  },
+  "counts": {
+    "train": 49,
+    "val": 9,
+    "test": 12
+  },
+  "phase": 1,
+  "excluded": [
+    "razonamiento",
+    "mcp_google_docs"
+  ],
+  "formats": {
+    "alpaca": "{train,val,test}.jsonl",
+    "messages": "{train,val,test}_messages.jsonl"
+  }
+}

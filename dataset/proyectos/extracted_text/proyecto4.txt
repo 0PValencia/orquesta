@@ -1,0 +1,4929 @@
+– GRUPO 3 –
+
+DOCENTE
+•
+
+M.Sc. Ing. Angélica Garzón Cuéllar
+
+ASIGNATURA
+• Sistemas De Información I
+INTEGRANTES
+•
+•
+•
+•
+•
+•
+
+Andrade Ortiz Esrom Obed
+Huanaco Balvin Edilberto
+Kanashiro Aparicio Takeshi Sergio
+Mogiano Gutiérrez Moises Leonardo
+Olmos Campos Heidy
+Oros Duran Oscar
+Santa Cruz – Bolivia
+
+1
+
+INDICE
+1. PERFIL ............................................................................................................................... 6
+1.1.
+
+INTRODUCCIÓN .................................................................................................. 6
+
+1.2.
+
+ANTECEDENTES ................................................................................................. 7
+
+1.3.
+
+JUSTIFICACIÓN ................................................................................................... 8
+
+1.4.
+
+DESCRIPCIÓN DEL PROBLEMA ......................................................................... 9
+
+1.5.
+
+FORMULACIÓN DEL PROBLEMA ..................................................................... 11
+
+1.6.
+
+OBJETIVOS ........................................................................................................ 11
+
+1.6.1. Objetivo General ................................................................................................. 11
+1.6.2. Objetivos Específicos ........................................................................................... 12
+1.7.
+
+ALCANCE ........................................................................................................... 12
+
+1.8.
+
+ENTREVISTA ..................................................................................................... 16
+
+2. ELEMENTOS DEL SISTEMA BASADO EN COMPUTADORAS....................................... 20
+2.1. HARDWARE .............................................................................................................. 20
+2.1.1. Servidor ............................................................................................................... 20
+2.1.2. Cliente ................................................................................................................. 20
+2.1.3. Medios de comunicación...................................................................................... 20
+2.1.4. Otros dispositivos................................................................................................. 20
+2.2. SOFTWARE ............................................................................................................... 20
+2.2.1. Servidor ............................................................................................................... 20
+2.2.2. Cliente ................................................................................................................. 21
+2.2.3. Otro software adicional ........................................................................................ 21
+2.3. DATOS ....................................................................................................................... 21
+2.4. PROCESOS ............................................................................................................... 22
+2.5. GENTE/USUARIO ...................................................................................................... 23
+2.6. DOCUMENTO ............................................................................................................ 24
+3. TECNOLOGÍA PARA EL DESARROLLO DEL SOFTWARE ............................................ 24
+3.1. ESTRATEGIA PARA EL DESARROLLO DEL SOFTWARE ....................................... 24
+3.2. METODOLOGÍA PARA EL DESARROLLO DEL SOFTWARE ................................... 24
+3.2.1. Características del PUDS .................................................................................... 24
+3.2.2. Características de UML........................................................................................ 26
+3.3. HERRAMIENTAS DE DESARROLLO ........................................................................ 27
+3.3.1. Software .............................................................................................................. 27
+2
+
+3.3.2. Hardware ............................................................................................................. 27
+4. POSIBLES COSTOS ........................................................................................................ 28
+5. POSIBLES BENEFICIOS.................................................................................................. 28
+5.1. TIEMPO ..................................................................................................................... 28
+5.2. ESFUERZO ................................................................................................................ 29
+5.3. COSTOS .................................................................................................................... 29
+6. POSIBLES CLIENTES ...................................................................................................... 29
+7. MODELO DE DOMINIO .................................................................................................... 30
+8. MODELO DE NEGOCIO................................................................................................... 31
+8.1. DIAGRAMA DE ACTIVIDAD ...................................................................................... 31
+9. MARCO TEORICO ........................................................................................................... 36
+CAPÍTULO 1 MÉTODO DE ISHIKAWA............................................................................. 36
+1.1. Identificar problema ................................................................................................ 36
+1.1.1. Lista de problemas ........................................................................................... 36
+1.1.2. Depurar problemas ........................................................................................... 37
+1.1.3. Lista final de problemas.................................................................................... 38
+1.1.4. Propietarios de problemas ................................................................................ 39
+1.1.5. Análisis de problemas ...................................................................................... 40
+1.1.6. Estimación y cuantificación de problema .......................................................... 41
+1.1.7. Alternativas de cambio ..................................................................................... 43
+1.1.8. Conclusión y recomendación............................................................................ 45
+1.1.9. Diseñar el diagrama de Ishikawa ...................................................................... 45
+1.2. Identificar las principales categorías ....................................................................... 45
+1.3. Identificar las causas .............................................................................................. 46
+1.4. Analizar y discutir el diagrama ................................................................................ 46
+CAPITULO 2 FLUJO DE TRABAJO: CAPTURA DE REQUISITOS .................................. 47
+2.1. Actores y casos de uso ........................................................................................... 47
+2.1.1. Actores ............................................................................................................. 47
+2.1.2. Casos de uso ................................................................................................... 47
+2.2 Priorizar casos de uso ............................................................................................. 48
+2.3 Detallar casos de uso .............................................................................................. 50
+2.4 Prototipar interfaz de usuario ................................................................................... 70
+2.5. Estructurar modelo de caso de uso ......................................................................... 73
+3
+
+CAPITULO 3 FLUJO DE TRABAJO: ANALISIS ................................................................ 74
+3.1. Análisis de arquitectura ........................................................................................... 74
+3.1.1. Identificar paquetes .......................................................................................... 74
+3.1.2. Relacionar paquete y casos de uso .................................................................. 75
+3.1.3. Vista de paquetes............................................................................................. 78
+3.2. Análisis de un caso de uso ..................................................................................... 80
+3.2.1. Diagramas de comunicación. ........................................................................... 80
+3.3. Análisis de clase ..................................................................................................... 87
+3.4. Análisis de paquete................................................................................................. 91
+4 FLUJO DE TRABAJO: DISEÑO ..................................................................................... 92
+4.1. Diseño de arquitectura ............................................................................................ 92
+4.1.1. Diseño físico (Diagrama de despliegue) ........................................................... 92
+4.1.2. Diseño lógico (Diagrama organizado en capas) ............................................... 93
+5. DISEÑO DE DATOS ..................................................................................................... 94
+5.1. Diseño de datos lógico ............................................................................................ 94
+5.1.1. Diagrama de clases .......................................................................................... 94
+5.1.2. Mapeo .............................................................................................................. 95
+5.1.3. Normalización ...................................................................................................... 97
+5.2. Diseño de datos físico ............................................................................................. 97
+5.2.1. Tabla de volumen ............................................................................................. 97
+5.2.2. Script ................................................................................................................. 103
+5.2.3. Diagrama relacional........................................................................................ 109
+5.2.4. Actualización de tuplas ................................................................................... 110
+5.2.5. Consultas ....................................................................................................... 112
+5.2.6. Procedimientos almacenados......................................................................... 122
+5.2.7. Disparadores (Triggers) .................................................................................. 124
+5.3. Diseñar caso de uso ............................................................................................. 126
+13.2.1. Diagrama de Secuencia ............................................................................... 126
+6. FLUJO DE TRABAJO: IMPLEMENTACION ................................................................ 142
+6.1 Elección de plataforma de desarrollo del Software................................................. 142
+6.1.1. Lenguaje de programación ............................................................................. 142
+6.1.2. Base de Datos ................................................................................................ 142
+6.1.3. Sistemas Operativo ........................................................................................ 142
+4
+
+6.1.4. Otros .............................................................................................................. 142
+6.2. Implementación de la arquitectura del Sistema ..................................................... 143
+6.2.1. Diagrama de componente principal del sistema ............................................. 143
+6.3. Implementación de la arquitectura del subsistema ................................................ 144
+6.3.1. Realizar diagrama de componente de cada paquete ...................................... 144
+7. CONCLUSION ............................................................................................................ 145
+8. RECOMENDACIÓN .................................................................................................... 146
+9. BIBLIOGRAFIA ........................................................................................................... 147
+ANEXOS............................................................................................................................. 147
+
+5
+
+1. PERFIL
+1.1.
+
+INTRODUCCIÓN
+
+El presente proyecto se redacta con carácter de un mejoramiento de
+organización en gestiones de venta y compra de la empresa SmartPlussHouse,
+con el fin de obtener una digitalización completa a la hora de comprar y
+vender accesorios de seguridad por medio de la web.
+Es iniciativa del propietario aprovechar la creciente demanda de accesorios
+de seguridad de origen chino, tras los sucesos acaecidos con los robos e
+inseguridad en los últimos años. Para tal fin dispone de un proveedor a quien
+se le compra los respectivos accesorios los cuales están distribuidos en sus
+inventarios.
+En los documentos que se presentan a continuación, se recogen todos los
+datos y características que han sido obtenidos de parte de la empresa y el
+propietario desarrollados en los correspondientes anexos, los cuales tienen
+como finalidad comprender el objetivo del proyecto como tal y sus beneficios
+para la empresa, el documento consta de diferentes puntos entre ellos están
+los problemas en general que frecuenta la empresa como a su vez una
+solución eficaz con la cual la empresa tendrá en un mejor control de sus
+gestiones tanto como las compras y ventas de todos sus productos, el
+seguimiento de sus inventarios donde se podrá gestionar las pérdidas y
+ganancias, diarias, semanales, mensuales y a lo largo del tiempo que se
+encuentra vigente al empresa.
+Cabe recalcar que a lo largo del proyecto se ha realizado un seguimiento total
+de la empresa para poder satisfacer todas sus necesidades y dar un servicio
+de calidad. Se ha investigado el valor de cada producto comprado y el valor
+de su venta, en las posteriores páginas se puede encontrar los antecedentes,
+justificación, la descripción y formulación del problema, en las cuales se
+menciona más a detalle cada uno de estos puntos.
+A continuación, un pequeño resumen de lo que podremos ver en cada uno
+de los puntos del documento:
+1. Antecedentes: Podemos observar la misión, visión y objetivo de la
+empresa.
+
+6
+
+2. Justificación: Se tiene un desarrollo completo del por qué la empresa
+necesita un sistema de información.
+3. Descripción del problema: Se describen en totalidad todos los conflictos
+o problemas por los cuales está pasando la empresa en estos momentos
+sin contar con un sistema de información.
+4. Formulación del problema: Se denota con suma totalidad lo que se
+empezará a realizar conforme al proyecto.
+5. Objetivos: Podemos ver el objetivo general y específico de la empresa
+con el cual se va a trabajar en el proyecto.
+6. Alcance: El alcance del proyecto, el límite y todas las funcionalidades
+que tendrá el sistema de información que requiere la empresa.
+Finalmente concluimos con material de referencia conformado por 3
+entrevistas a los funcionarios y gerente de la empresa.
+
+1.2.
+
+ANTECEDENTES
+
+En el mejoramiento y la digitalización de la empresa SmartPlussHouse inicio a
+brindar servicios del año 2018, la idea se origina al incremento en el uso de la
+tecnología requiere dispositivos electrónicos que permitan el desarrollo de las
+obligaciones diarias. En los hogares desfavorecidos se han observado
+respuestas emocionales negativas debido al estrés generado por la falta de
+conocimientos y de recursos económicos.
+Misión:
+La misión de la empresa es brindar un servicio óptimo y eficiente de productos
+de domótica y productor inteligente para el hogar y edificio. Proporcionar a
+nuestros clientes la más alta calidad en servicios de Seguridad y Vigilancia
+Especializada con soluciones integrales de domótica a sus requerimientos de
+seguridad con personal eficiente y constante innovación tecnológica,
+permitiendo su tranquilidad, satisfacción y confianza.
+Visión:
+Dar una mayor seguridad a la población. Posicionar a la empresa
+“SmartPlussHouse” como líder en servicios de seguridad privada, expandiendo
+nuestra presencia a nivel nacional y garantizando un excelente desempeño
+7
+
+en operaciones de seguridad con eficiencia, disciplina y honestidad a
+completa satisfacción de nuestros clientes.
+Objetivo:
+El objetivo es proteger y resguardar la seguridad de las personas puestas a
+nuestros cuidados con la mayor eficiencia en la relación de costos resultado.
+Generar una percepción de seguridad y confianza que favorezca la actividad
+productiva, comercial, de servicios o el bienestar de nuestros clientes. También
+cuenta con un sistema de información para las operaciones de compra y
+venta de almacén.
+El lugar de atención está ubicado en el tercer anillo radial 26 Horario de
+atención de 9:00 Hrs. a 14:00 Hrs.
+
+1.3.
+
+JUSTIFICACIÓN
+
+La empresa SMARTPLUSSHOUSE lleva más de 3 años en el mercado y a la hora
+de realizar una venta tiene dificultades en el manejo y control de la empresa
+en cuanto a la venta y compra de los inventarios ya que solo lo realiza en una
+plantilla de Excel que se los va insertando o escribiendo uno por uno en la tabla
+de Excel. Otro problema también es que al momento de realizar las
+operaciones del inventario también lo hace en Excel y se va perdiendo el
+orden, la información y la organización de la empresa.
+Es por eso que decidimos desarrollar un sistema de información para esta
+empresa ya que desde hace mucho tiempo las empresas han reconocido la
+importancia de administrar acciones claves, como es la facturación, control
+de inventario y agilidad al atender al cliente potencial. Por ende, la
+información se ha ganado el legítimo derecho de ser esencial en los procesos
+de administración de los negocios.
+Para optimizar la información, un negocio se debe administrar de manera
+eficiente y ordenada. Un dueño de negocio debe comprender que así como
+se vende un producto o se generan ganancias es importante la información
+que se obtiene al hacer esas operaciones, para entender si el negocio está en
+buenas condiciones o está decayendo y así desarrollar las estrategias para
+aumentar la competitividad.
+8
+
+El uso adecuado de un sistema de información genera ventajas competitivas,
+porque en la actualidad es necesario que los negocios se adapten al uso de
+las nuevas tecnologías de información para estar a nivel competitivo en el
+mercado. La implementación de un sistema genera muchos beneficios como
+la automatización de cada proceso, rapidez en las tareas de la gestión de la
+información, que conlleva a una mejor administración en los negocios.
+Actualmente no cuenta con un sistema de información para poder obtener
+una digitalización completa a la hora de comprar y vender accesorios de
+seguridad por medio de la web.
+Con la implementación del sistema de información para la empresa
+SMARTPLUSSHOUSE se podrá tener un control total del inventario y la
+facturación. El sistema genera informes de las ventas y productos existentes.
+Otro aspecto importante, es que dicho sistema permitirá resguardar la
+información de forma exacta y confiable, la cual estará disponible para su
+respectivo análisis y contribuir a la toma de decisiones del negocio.
+
+1.4.
+
+DESCRIPCIÓN DEL PROBLEMA
+
+La Empresa “SmartPlussHouse” se dedica a la venta de equipos de seguridad.
+Además de la capacitación extra que damos dentro de la venta para su uso.
+Todo esto es manejado por Santiago Maldonado.
+La empresa cuenta con el proceso de gestionar la venta de insumos de
+seguridad a la vez de la gestión del mantenimiento del producto, el cual se
+puede realizar anualmente. La gestión de inventario se realiza a mano alzada
+en un cuaderno. Debido al alto crecimiento de las ventas y el aumento de sus
+servicios se ha convertido en un problema para el dueño el cual afecta al
+desenvolvimiento de su empresa.
+INVENTARIO
+El Stock de los insumos de seguridad tiene bajos registros manuales, lo cual no
+es muy eficaz ya que hacerlo de manera manual lleva demasiado tiempo y la
+manera de revisarlo es un poco tedioso. Otro problema que surge al hacerlo
+bajo registros manuales, es que es muy fácil su extravío, a diferencia de
+guardarlos en la nube.
+9
+
+Cada que llega un cargamento de los productos se lo registra uno por uno en
+el inventario, es necesario hacer un seguimiento de los productos en caso de
+que se estén por agotar.
+El control de calidad por lote de productos dentro del almacén se realiza de
+manera manual por observación, este método de inspección genera que no
+siempre se llegue a verificar que un lote esté en buenas condiciones para su
+distribución.
+Los informes de inventarios tardan en generarse ya que esto implica hacer
+muchos cálculos manuales para poder obtenerlos.
+COMPRAS
+Todos los insumos de seguridad web son comprados con facturas que son
+emitidas por la empresa china “SmartHome” y otras que son los proveedores,
+los cuales son registrados manualmente en una libreta de notas.
+Nosotros nos comunicamos con los proveedores regularmente en caso de que
+el stock de cierto insumo de seguridad se nos esté acabando para poder
+comprar más.
+VENTAS
+El cajero realiza dicha venta a los clientes emitiendo una nota de venta y
+factura si el cliente lo solicita.
+Anota las ventas en una libreta de notas con su respectiva fecha, productos,
+cantidad, precio total y datos del cliente. El tener libreta de notas para las
+ventas supone un gasto para la compra de la libreta y problemas en el
+resguardo de la información ya que es susceptible a varios riesgos como ser
+perderse, mojarse, hasta incluso quemarse.
+Existe un inadecuado control a los clientes y mal reporte en las ventas de los
+productos debido a que todos esos tipos de controles son manuales.
+Mucho tiempo de consumo a la hora de atender un cliente, lo cual genera
+pérdidas de clientes.
+Algunos productos se venden con instalación extra o se le solicita
+mantenimiento las cuales el encargado debe delegar esa tarea a un personal
+10
+
+técnico, por lo se tiene anotar en la libreta de notas quien lo ha solicitado, el
+producto y a que personal técnico se le delegó esa responsabilidad.
+CLIENTE
+No llevan un registro de los clientes por lo cual no tienen información sobre qué
+clientes son más frecuentes y poder darles un mejor servicio dándoles algunos
+descuentos o beneficios.
+PROVEEDORES
+Los contactos de los proveedores se almacenan en una agenda de contactos.
+De estos se registra el nombre, número de celular, Empresa del que proviene,
+tiempo estimado de entrega del producto. Un problema con tener una
+agenda física de contactos surge a la hora de buscar el contacto.
+
+1.5.
+
+FORMULACIÓN DEL PROBLEMA
+
+El problema principal en la Empresa SMARTPLUSSHOUSE es que el control de
+compra, ventas e inventario son realizados de forma manual que resulta
+morosa e insuficiente ante las necesidades de la empresa. Resulta complicado
+llevar un buen control de la información de las compras, las ventas diarias y la
+disposición de material ya que los mismos se anotan en planillas de Excel y a
+veces hay pérdida de información, lo cual hace que no se disponga de
+información exacta y oportuna al respecto. Es por esta forma de procesar la
+información, que la empresa tiene problema y dificultad al momento de la
+toma de decisiones.
+
+1.6.
+
+OBJETIVOS
+
+1.6.1. Objetivo General
+Desarrollar un sistema de información para administración de inventarios y
+gestiones de compra y venta en accesorios de seguridad web para la
+empresa SmartPlussHouse.
+
+11
+
+1.6.2. Objetivos Específicos
+● Obtener la información necesaria para desarrollar el proyecto, por
+medio de entrevistas al propietario de la tienda.
+● Diseñar un diagrama de clases adecuado.
+● Construir la base de datos en un SGBD.
+● Utilizar el lenguaje unificado de UML para los requerimientos del sistema
+a través de diagramas.
+● Implementar funciones y procedimientos necesarios.
+● Conectar la base de datos al servidor.
+● Diseñar la web interface para que sea user-friendly y cumpla todas las
+necesidades.
+● Desarrollar el software utilizando un frameworks
+
+1.7.
+
+ALCANCE
+
+Este proyecto está enfocado en un sistema de información que tiene como
+objetivo administrar la compra y venta de accesorios de domótica para la
+seguridad, SIP(cámaras, videoporteros, intercomunicadores, alarmas, etc.),
+también la verificación de inventarios (compra, venta, ítems, etc.),
+almacenamiento de compras y servicios realizados por el usuario(cliente),
+funciones de administrador de todas las ventas al contado de los accesorios,
+de tal manera que se pueda brindar un desarrollo óptimo para la empresa y
+así poder sofocar sus necesidades.
+Como primer paso procederemos en realizar las siguientes funciones:
+•
+Gestionar usuarios
+Se almacenan los usuarios como clientes y personal que participan en la
+empresa.
+-ID
+-Nombre
+-CI
+-Email
+-Contraseña
+-Estado
+-Telefono
+
+12
+
+•
+Administración de los productos
+Se almacenará datos de los productos como ser:
+ID del producto.
+Nombre.
+Stock
+Color.
+Descripción.
+Categoría.
+Costo unitario.
+Costo promedio.
+Precio.
+Stock.
+-
+
+Cantidad mínima en inventario.
+Estado.
+
+•
+Gestión de Venta
+Se registrarán las ventas de los accesorios a los clientes, la información que se
+necesitará almacenar es:
+Número de venta.
+Fecha de Venta.
+ID del cliente
+El ID del producto
+Monto total.
+Descuento
+Precio Unitario
+Cantidad
+Estado.
+En caso de que un cliente requiera que se le proporcione una factura por su
+compra realizada se generará una, de la cual igual se almacenará los datos
+de la factura:
+NIT de la empresa
+Nro. de factura
+Nro. de autorización
+Fecha
+Nit/CI (del cliente)
+Detalle de venta (nombre, cantidad y precio de cada producto).
+Monto total.
+13
+
+•
+Gestión de Compra
+Se registrará las compras de accesorios que realiza a la empresa china y
+coreana . Almacenaremos los siguientes datos:
+Nro de Compra
+Fecha de Compra
+Costo Total
+Costo Unitario
+•
+Detalle de la compra de accesorios
+Se detalla la compra de accesorios realizadas por la empresa SmartPlusHome:
+. Cantidad
+.Costo Unitario
+.Costo Total
+•
+Gestión de proveedores
+Los proveedores son las empresas a las cuales se realiza la compra de los
+distintos accesorios. Registraremos los siguientes datos:
+ID de proveedor.
+Nombre de proveedor.
+Ubicación.
+Correo electrónico.
+Tiempo de espera.
+Tiempo de espera es un atributo en el cual se registrará el tiempo aproximado
+en el cual demora en llegar el pedido realizado a los proveedores.
+•
+Gestión de números
+Aquí almacenamos los distintos teléfonos de nuestros proveedores :
+− ID del teléfono
+− Numero
+− ID del proveedor
+•
+Gestionar cliente
+Este proceso permitirá registrar los clientes, aquellos que interactúan con el
+sistema.
+ID cliente.
+CI
+Nombre.
+Teléfono.
+Email.
+14
+
+•
+Gestión de servicios
+En este proceso se gestionará los servicios que provee la empresa
+SmartPlusHouse
+Id del Servició
+Descripción
+Precio
+Id del tipo de servicio
+Nombre
+
+15
+
+1.8.
+
+ENTREVISTA
+
+Entrevista para obtención de requisitos.
+Objetivo: Conocer y entender el funcionamiento de cómo se maneja y opera
+el negocio de accesorios de seguridad “SmartPlussHouse”.
+Entrevista #1
+Lugar: 3er anillo interno y radial 26
+Duración: 15 minutos
+Datos de la Empresa
+Nombre: “SmartPlussHouse”
+(si)Privada () Estatal
+Datos del Entrevistado
+Nombre: Santiago Maldonado
+Cargo: jefe de ventas y socio copropietario
+Datos del Entrevistador
+Nombre: Esrom Obed Andrade Ortiz
+1. ¿De qué se encarga la empresa?
+R. Venta de productos inteligentes de domótica y productos inteligentes para
+el hogar y edificios.
+2. ¿Cuánto tiempo lleva funcionando el Negocio?
+R. El negocio lleva funcionando 3 años.
+3. ¿El negocio cuenta con un sistema de información para las operaciones de
+compra, venta y almacén?
+R. Si, en softwares aparte, pero sería interesante tener todo en uno solo.
+4. ¿Qué operaciones son las que más está necesitando?
+Marketing, publicidad y gestión de todo lo vendido y comprado a lo largo del
+mes.
+5. ¿En qué horario atienden?
+R. Desde las 9 hrs. hasta las 14 hrs.
+6. ¿Con cuántos trabajadores cuenta el negocio?
+R. El negocio cuenta con 6 trabajadores por motivo de que recién se está
+lanzando al mercado.
+16
+
+7. ¿Cómo es el manejo de ventas?
+R. Se realiza un contrato a un encargado de ventas y de las redes sociales, etc.
+8. ¿Cómo realiza sus operaciones de inventario?
+R. A la hora de comprar los productos se los va insertando o escribiendo uno
+por uno en la tabla de Excel.
+9. ¿Emite factura a la hora de realizar alguna venta?
+R. Si, se realiza factura aumentando el incremento del Iva y los costos del
+producto, de la aduana y transporte.
+10. ¿Existe incremento de ventas en algunas temporadas?
+R. Si, en las temporadas de fin de año
+
+Entrevista #2
+Lugar: 3er anillo interno y radial 26
+Duración: 15 minutos
+Datos de la Empresa
+Nombre: “SmartPlussHouse”
+(si)Privada () Estatal
+Datos del Entrevistado
+Nombre: Henry Rodríguez
+Cargo: Técnico de instalación.
+Datos del Entrevistador
+Nombre: Takeshi Sergio Kanashiro Aparicio
+1 ¿A qué se dedica este negocio?
+R. A la venta de dispositivos inteligentes para la seguridad del hogar.
+2 cuál es su función en la empresa?
+R. Técnico en instalación de los dispositivos
+2. ¿Cuál es la visión de este negocio?
+R. Poder otorgar una seguridad fiable a los clientes
+3. ¿Quién es la persona que administra la tienda?
+R. El Ing. Santiago Maldonado.
+17
+
+4. ¿En que lo beneficiaría a usted un SI?
+R. La organización de las instalaciones y saber cuáles hacer primero, o bueno
+el orden.
+5. ¿Cuántos trabajadores hay? ¿Cuáles son las funciones de ellos?
+R. Un total de 6, y administran, instalan y dan mantenimiento a los productos.
+6. ¿Cómo está organizada la tienda?
+R. Por jefe, vendedor e instalador y mantenimiento.
+7. ¿Cuáles son las actividades de administración más importante de la tienda?
+R. El vendedor y el jefe general.
+8. ¿Considera que un sistema de información facilita los procesos manuales de
+administración que se llevan en la tienda?
+R. Si de esa manera se podría tener con mayor rapidez y menos búsqueda los
+productos y una mejor venta.
+9. ¿Ya tiene una página web?
+R. No disponemos de una página web, solo softwares externos de ayuda.
+10. ¿Cuenta con un servicio delivery?
+R. Si, se trabaja con una empresa externa para el envío de productos.
+
+Entrevista #3
+Lugar: 3er anillo interno y radial 26
+Duración: 15 minutos
+Datos de la Empresa
+Nombre: “SmartPlussHouse”
+(si)Privada () Estatal
+Datos del Entrevistado
+Nombre: Arturo Dominguez
+Cargo: Técnico
+Datos del Entrevistador
+Nombre: Edilberto Huanaco Balvin
+1. ¿Qué tipo de reportes le gustaría que el sistema generará?
+R. Reporte de mantenimientos y la fecha y hora que lo solicitan.
+
+18
+
+2. ¿Le gustaría contar con un reporte de ventas diarias?
+R. Si, sería interesante e importante.
+3. Según los reportes que el cliente especifique ¿Qué datos le gustaría que el
+sistema mostrará en los reportes?
+R. Fecha, hora y caducidad.
+4. ¿Cree que el obtener un sistema de información le ayudaría en varias
+funciones en su negocio?
+R. Si por que llega a ser más ordenada y organizada la empresa, de modo que
+se pueda llevar el control total del negocio.
+5. A la hora de realizar una venta, ¿Tiene dificultades al momento de realizar la
+búsqueda de un producto?
+R. Cuesta por que se realiza una búsqueda en una planilla de Excel.
+6. ¿A qué se dedica usted en la empresa?
+R. Técnico de mantenimiento
+7. ¿Quién le provee su inventario?
+R. Se tiene un proveedor de corea para las cerraduras y proveedor chino de
+videoporteros.
+8. ¿Es rentable la empresa?
+R. Es rentable, pero hay temporadas como las de ahora en las cuales solo se
+cubren los costos.
+9. ¿Usted da factura en su empresa o es opcional?
+R. Se da factura y no es opcional por el miedo a denuncias y verificación de
+inventarios.
+10. ¿Cómo hace para vender al por mayor?
+R. Se ha creado una lista de diferentes descuentos dependiendo la cantidad
+que es solicitada.
+11. ¿Dónde queda su empresa?
+R. Se encuentra en el 3er anillo interno y radial 26, sobre la avenida, en la
+esquina.
+
+19
+
+2. ELEMENTOS DEL SISTEMA BASADO EN COMPUTADORAS
+2.1. HARDWARE
+2.1.1. Servidor
+Para el uso del sistema en la empresa es necesario implementar dos
+computadoras de escritorio de gama media ya que el software no consume
+recursos.
+2.1.2. Cliente
+Cualquier tipo de computadora ya sea de gama alta o baja que tenga
+(Microsoft Edge, Mozilla Firefox, Google Chrome, Yahoo!, etc.) para poder
+interactuar.
+2.1.3. Medios de comunicación
+Se necesitará una conexión a internet ya sea con datos móviles o cualquier
+tipo de router o red WI-FI.
+2.1.4. Otros dispositivos
+Se necesitará una impresora para reportes de precios y para las facturas
+emitidas, también se necesitará una fotocopia para sacar copias, etc.
+
+2.2. SOFTWARE
+Los distintos softwares que utilizaremos para el correcto funcionamiento del
+sistema de información.
+2.2.1. Servidor
+NOMBRE
+
+VERSION
+
+Gestor de Base de Datos
+
+MySQL Workbench 8.0
+
+Editor de Base de Datos
+
+PHP con Framework Laravel
+
+Programación Web
+
+PHP, HTML 5, CSS
+
+20
+
+2.2.2. Cliente
+NOMBRE
+
+VERSION
+
+Sistema Operativo
+
+Windows 10
+
+Navegador
+
+Google Chrome, Opera, Firefox, etc.
+
+Documentación del proyecto
+
+Opera Office, Office
+
+2.2.3. Otro software adicional
+NOMBRE
+
+VERSION
+
+Sistema Operativo
+
+Windows 10
+
+Navegador
+
+Google Chrome, Opera, Firefox, etc.
+
+Documentación del proyecto
+
+Opera Office, Office
+
+2.3. DATOS
+Venta. Cuando el cliente pide un determinado producto la persona que está
+atendiendo se realiza la búsqueda del producto en la tienda. Si el producto
+está disponible procede a llenar la factura.
+Facturación. Hay que tomar en cuenta que en las facturas se pueden ver todos
+los movimientos de dineros tanto, como entradas y salidas, también estas son
+un apoyo para los cálculos contable, una empresa debe de contar con el
+registro de todas las facturas ya que en estas están son el soporte claro de la
+contabilidad, por lo tanto, contar con un sistema de facturación se garantiza
+un registro exacto y no vulnerable a perdidas.
+−
+−
+−
+−
+−
+
+Generar factura de forma automatiza.
+Rapidez al hacer las facturas.
+Contabilizar montos de facturas.
+Registrar todas las ventas.
+Registrar diferentes tipos de pagos o servicios de mantenimiento que da
+la empresa “SMARTPLUSHOUSE”.
+
+Producto. Los nuevos productos se registran en el inventario, allí se escriben los
+datos más importantes de cada producto, como el costo, el precio de venta,
+la cantidad en existencia, y las características más relevantes de ese producto
+21
+
+como video porteros y todo lo que es en cuanto a accesorios de
+seguridad(domótica).
+Ventas. Facturación, Generar automáticamente el número de factura. Realizar
+ventas de productos al crédito con todos los datos correspondientes.
+Fecha, código del producto, monto, etc.
+Reportes. Generar un reporte de ventas diarias Debe contener los datos
+esenciales de cada venta.
+Total, de productos vendidos, monto total, etc.
+Factura. A través de esta entidad se podrá controlar todos los datos de las
+ventas realizadas. Conocer los datos más relevantes de una venta ya sea al
+contado o al crédito, se reflejará el producto vendido, el total, subtotal, IVA,
+descuentos y fecha de factura.
+Cliente. En esta entidad de la base de datos se guardarán todos los datos
+generales de los clientes.
+Ci, nombre, teléfono y email.
+Compra. Como ya sabemos tenemos proveedores tanto de china como de
+corea, los datos que maneja la empresa son:
+Nombre, dirección, teléfono, email, etc.
+
+2.4. PROCESOS
+Proceso de registro de nuevo cliente. Cada cliente nuevo, se le registrara sus
+datos personales para luego ser ingresado al sistema.
+Proceso de compra de producto. Se registra todos los productos en el
+momento de la compra del proveedor.
+Proceso de registro de nuevo proveedor. Una vez hecha la licitación de los
+productos y ser aceptado el nuevo proveedor, este se registrará en el sistema.
+
+22
+
+Proceso de almacenado. Los productos del almacén serán registrados en el
+sistema para un manejo del stock obtenido.
+Proceso de venta de producto. Toda venta de producto de cualquier forma
+de pago es registrada en el sistema, con todos los detalles de dicha venta.
+Proceso de registro de trabajador
+Todo trabajador será tomado sus datos personales, para ser registrados en el
+sistema.
+Proceso de registro de nuevo cliente. Cada cliente nuevo, se le registrara sus
+datos personales para luego ser ingresado al sistema.
+Proceso de compra de producto. Se registra todos los productos en el
+momento de la compra del proveedor.
+Proceso de registro de nuevo proveedor. Una vez hecha la licitación de los
+productos y ser aceptado el nuevo proveedor, este se registrará en el sistema.
+Proceso de almacenado. Los productos del almacén serán registrados en el
+sistema para un manejo del stock obtenido.
+Proceso de venta de producto. Toda venta de producto de cualquier forma
+de pago es registrada en el sistema, con todos los detalles de dicha venta.
+Proceso de registro de trabajador. Todo trabajador será tomado sus datos
+personales, para ser registrados en el sistema.
+
+2.5. GENTE/USUARIO
+El equipo humano que realizará el sistema está conformado por:
+−
+−
+−
+−
+−
+−
+
+Andrade Ortiz Esrom Obed
+Huanaco balvin ediberto
+Kanashiro Aparicio takeshi Sergio
+Mogiano Gutierrez Moises Leonardo
+Olmos Campos Heidy
+Oros Duran Oscar
+
+23
+
+2.6. DOCUMENTO
+La información que respalda al sistema es:
+− Manual de instalación.
+− Manual de usuario.
+
+3. TECNOLOGÍA PARA EL DESARROLLO DEL SOFTWARE
+3.1. ESTRATEGIA PARA EL DESARROLLO DEL SOFTWARE
+Para realizar el sistema utilizaremos el lenguaje unificado de modelado es decir
+el UML esto nos dará una idea a corto y largo plazo sobre cómo va ir nuestro
+sistema de información con los diseños conceptuales y así dándonos idea para
+el diseño físico que vendría ser ocupando algún sistema gestor de base de
+datos como es MySQL que es lo que nosotros utilizaremos para realizar nuestro
+proyecto en la materia.
+
+3.2. METODOLOGÍA PARA EL DESARROLLO DEL SOFTWARE
+3.2.1. Características del PUDS
+El Proceso Unificado de Desarrollo de Software es un proceso iterativo, un
+enfoque iterativo propone una comprensión incremental del problema a
+través de refinamientos sucesivos y un crecimiento incremental de una solución
+efectiva a través de varios ciclos.
+Es un proceso orientado a objetos guiado por casos de uso, centrado en la
+arquitectura con un ciclo de vida iterativo e incremental. Basado en el leguaje
+unificado modelado (UML)
+Las fases se dividen en sus conjuntos de iteraciones, en las que se desarrollan
+los flujos de trabajo: requerimientos, análisis, diseño, complementación y
+pruebas.
+Características:
+Iterativo e Incremental
+El Proceso Unificado es un marco de desarrollo iterativo e incremental
+compuesto de cuatro fases denominadas Inicio, Elaboración, Construcción y
+Transición.
+24
+
+Estas iteraciones ofrecen como resultado un incremento del producto
+desarrollado que añade o mejora las funcionalidades del sistema en desarrollo.
+Dirigido por los casos de uso
+En el Proceso Unificado los casos de uso se utilizan para capturar los requisitos
+funcionales y para definir los contenidos de las iteraciones.
+La idea es que cada iteración tome un conjunto de casos de uso o escenarios
+y desarrolle todo el camino a través de las distintas disciplinas.
+Centrado en la arquitectura
+El Proceso Unificado asume que no existe un modelo único que cubra todos
+los aspectos del sistema.
+Por dicho motivo existen múltiples modelos y vistas que definen la arquitectura
+de software de un sistema.
+Enfocado en los riesgos
+El Proceso Unificado requiere que el equipo del proyecto se centre en
+identificar los riesgos críticos en una etapa temprana del ciclo de vida.
+Los resultados de cada iteración, en especial los de la fase de Elaboración
+deben ser seleccionados en un orden que asegure que los riesgos principales
+son considerados primero.
+Etapas que cubre
+Es un proceso que cubre la etapa de desarrollo en la ingeniería del software:
+“conjunto de actividades necesarias para transformar los requisitos del usuario
+en un sistema software”.
+PUDS se basa en los siguientes principios de desarrollo:
+−
+−
+−
+−
+−
+−
+
+Desarrollo Iterativo del Software,
+Administración de Requerimientos,
+Uso de Arquitecturas Basadas en Componentes,
+Modelado Visual del Software,
+Verificación de la Calidad del Software,
+Control de Cambios.
+
+La arquitectura debe ser:
+− Flexible,
+− Fácil de modificar,
+− Intuitivamente comprensible,
+25
+
+− Promueve la reutilización de componentes.
+Objetivos
+Enfocando principalmente en el conjunto de actividades necesarias para
+transformar los requisitos de un cliente en un conjunto consistente de artefactos
+que representan un producto software y en punto posterior en el tiempo para
+transformar cambios en dichos requisitos en nuevas versiones del producto.
+3.2.2. Características de UML
+El Lenguaje Unificado de Modelado (UML), es un lenguaje de modelado visual
+de propósito general que se utiliza para especificar, visualizar, construir y
+documentar los artefactos de un sistema software. Captura decisiones y
+conocimientos sobre sistemas que deben ser construidos. Se usa para
+comprender, diseñar, ojear, configurar, mantener y controlar la información
+sobre tales sistemas. Está pensado para ser utilizado con todos los métodos de
+desarrollo, etapas del ciclo de vida, dominios de aplicación y medios.
+UML es más que una notación visual. Los modelos UML pueden ser utilizados
+para generar código y casos de prueba. Esto exige un perfil UML adecuado,
+el uso de herramientas que se correspondan con la plataforma destino y elegir
+entre varios componentes de implementación.
+UML es desordenado, impreciso, complejo y enmarañado. Esto es, tanto en un
+fallo, como una virtud. Cualquier cosa pensada para un uso general va a ser
+desordenado.
+UML necesita ser lo suficientemente expresivo para manejar todos los
+conceptos que surgen en un sistema moderno, como la concurrencia y la
+distribución.
+UML presenta una variedad de tipos de diagrama, donde las 2 principales son:
+− Estructurales: Diagramas de clase, componentes, despliegue, objetos,
+paquetes, perfiles y estructura compuesta.
+− De comportamiento: Diagrama de actividades, casos de uso, máquina
+de estados e interacción.
+
+26
+
+3.3. HERRAMIENTAS DE DESARROLLO
+3.3.1. Software
+− El Sistema operativo que utilizaremos para desarrollar nuestro sistema web
+será Windows 10 pro.
+− El lenguaje de programación a utilizar para nuestro sistema será JS o php
+dependiendo como vayamos a avanzar en nuestro proyecto para la
+empresa “SMARTPLUSHOUSE”
+− El lenguaje de etiquetas o nuestro esqueleto de nuestro sistema a utilizar
+será html5 y CSS en VSC.
+− El framework a utilizar para ayudarnos en php va ser Laravel.
+− El gestor de base de datos a utilizar para nuestro proyecto va ser MySQL.
+− Para podes trabajar el diseño conceptual de la base de datos (UML)
+utilizaremos ArgoUML o Enterprise Architect.
+3.3.2. Hardware
+Herramienta
+
+Descripción
+
+Impresora
+
+Se usará una impresora para probar la impresión de
+reportes funcionalidad del sistema.
+
+Computadoras
+
+Cada uno de los 6 miembros del equipo proveerá su
+computadora para desarrollar la aplicación y hacer
+las pruebas.
+
+Servidor
+
+Se utilizará un servidor en la nube para probar el
+despliegue en el entorno de producción y distribuir la
+aplicación.
+
+27
+
+4. POSIBLES COSTOS
+Costo de Desarrollo. Considerando el desarrollo del proyecto por 6 personas
+en 2 meses, se consideran los siguientes costos:
+Ítem
+
+Costo Bs. (2
+Meses)
+
+Conexión de Internet (6 Conexiones, 200Bs/Mes)
+
+2400.00
+
+GitHub Profesional (10Usd/Usuario/Mes)
+
+835.00
+
+Servidor en la Nube, Heroku (Gratuito para el desarrollo)
+Horas de Trabajo1 (4Usd/Hora/Desarrollador)
+
+2
+
+40089.00
+
+Material de Escritorio
+
+400.00
+
+Depreciación de Equipos de Computación del Equipo
+de Desarrollo2
+
+870.00
+
+Total
+1
+
+0.00
+
+44594.00
+
+6hrs * 20 días * 2 Meses * 6 Personas = 1440 Horas de Trabajo.
+Considerando un costo promedio de 500Usd para las 6 Computadoras del
+equipo, la depreciación mensual de cada uno de los equipos es 500Usd / 4
+Años / 12 Meses = 10.42 Usd /Mes.
+
+Costo de Implementación
+Ítem
+
+Costo Bs.
+(Anual)
+
+Dominio Web
+
+250.00
+
+Servidor en la Nube, Heroku (11Usd/Mes)
+
+918.72
+
+Total
+
+1168.72
+
+5. POSIBLES BENEFICIOS
+5.1. TIEMPO
+Al estar todos los datos almacenados en el sistema, el personal podrá buscar
+información de lo que necesite y obtener esa información en un tiempo muy
+corto de búsqueda, lo que hace que aumente la productividad en el servicio.
+28
+
+5.2. ESFUERZO
+Los esfuerzos que realiza el personal al momento de buscar alguna información
+o al gestionar el inventario, se verán reducido mediante el sistema, ya que
+permitirá al personal un manejo de información con bastante facilidad y
+eficiencia a la hora de registrar los pedidos, direcciones, inventario, fecha de
+instalación, materiales de instalación, costos de instalación etc.
+5.3. COSTOS
+Al registrarse la mayoría datos de manera digital, se reducen los costos en
+materiales de oficina, como ser hojas de papel, además de tener un mejor
+control contable al gestionar el inventario.
+
+6. POSIBLES CLIENTES
+Los posibles clientes son dueños de negocios que están iniciando, empresas
+pequeñas y medianas, o empresas que no tienen un buen manejo de la
+información de su inventario y una mala gestión en la compra y venta de
+artículos para la seguridad web.
+NOMBRE
+
+CONTACTO
+
+Security Networks Tarija
+
+71860332
+
+Tecnocam
+
+72105718
+
+29
+
+7. MODELO DE DOMINIO
+
+30
+
+8. MODELO DE NEGOCIO
+8.1. DIAGRAMA DE ACTIVIDAD
+− Proceso: venta
+
+31
+
+− Proceso: compra
+
+32
+
+− Proceso: registro de proveedor
+
+33
+
+− Proceso: inventario
+
+34
+
+− Proceso: servicio
+
+35
+
+9. MARCO TEORICO
+CAPÍTULO 1 MÉTODO DE ISHIKAWA
+1.1. Identificar problema
+
+1.1.1. Lista de problemas
+P1. Falta de publicidad y marketing.
+P2. Carece de nuevas tecnologías para lograr una estabilidad en el negocio.
+P3. Ineficiente proceso manual: las tareas rutinarias de recopilar, transmitir,
+registrar y revisar información en la tienda se llevan a cabo de forma manual.
+P4. Una deficiente organización en el inventario genera costos adicionales.
+P5. Desabastecimiento de algún producto: no se sabe con exactitud si hay
+productos disponibles, hasta que se revisa físicamente el inventario de la
+tienda.
+P6. Los registros en papel son propensos a perderse o dañarse.
+P7. Dificultad en la gestión de la información de la tienda.
+P8. No hay gestión de todo lo vendido por mes.
+P9. No hay gestión de todo lo comprado por mes.
+P10. Falta en la organización de los servicios (instalación y mantenimiento) que
+brinda la tienda.
+P11. Falta de reporte de mantenimiento y la fecha y hora que lo solicitan.
+P12. No existe un reporte diario de ventas.
+P13. Poca organización y desorden en la empresa.
+P14. Dificultad al momento de realizar la búsqueda de un producto
+(Actualmente se la realiza en una planilla de Excel)
+P15. Desequilibrio contable y difícil de corregir.
+
+36
+
+P16. No se conoce la cantidad total de los productos.
+P17. Falta de equipo de cómputo para la eficacia hacia la atención a nuestros
+clientes.
+P18. Los clientes no saben con exactitud la ubicación de la tienda.
+P19. Desconocimiento de los productos más requeridos por nuestros clientes.
+P20. Algunas veces la empresa no tiene estabilidad en el negocio (solo cubre
+los costos en ciertos meses) cada vez más pesa en el crecimiento de la tienda.
+P21. Poca información del control de los procesos de facturación (sumarlas una
+a una para poder obtener esa información, sin olvidar que en cualquier
+momento se puede pasar por alto una factura, produciendo datos erróneos).
+P22. Las estadísticas no son confiables, por la manipulación de la información
+y de su documentación durante los distintos procesos de negocio.
+
+1.1.2. Depurar problemas
+Los problemas a depurar son los siguientes:
+P1. Falta de publicidad y marketing.
+P2. Carece de nuevas tecnologías para lograr una estabilidad en el negocio.
+P13. Poca organización y desorden en la empresa.
+P15. Desequilibrio contable y difícil de corregir.
+P17. Falta de equipo de cómputo para la eficacia hacia la atención a nuestros
+clientes.
+P18. Los clientes no saben con exactitud la ubicación de la tienda.
+P20. Algunas veces la empresa no tiene estabilidad en el negocio (solo cubre
+los costos en ciertos meses) cada vez más pesa en el crecimiento de la tienda.
+
+37
+
+1.1.3. Lista final de problemas
+P1. Ineficiente proceso manual: las tareas rutinarias de recopilar, transmitir,
+registrar y revisar información en la tienda se llevan a cabo de forma manual.
+P2. Una deficiente organización en el inventario genera costos adicionales.
+P3. Desabastecimiento de algún producto: no se sabe con exactitud si hay
+productos disponibles, hasta que se revisa físicamente el inventario de la
+tienda.
+P4. Los registros en papel son propensos a perderse o dañarse.
+P5. Dificultad en la gestión de la información de la tienda.
+P6. No hay gestión de todo lo vendido por mes.
+P7. No hay gestión de todo lo comprado por mes.
+P8. Falta en la organización de los servicios (instalación y mantenimiento) que
+brinda la tienda.
+P9. Falta de reporte de mantenimiento y la fecha y hora que lo solicitan.
+P10. No existe un reporte diario de ventas.
+P11. Dificultad al momento de realizar la búsqueda de un producto
+(Actualmente se la realiza en una planilla de Excel).
+P12. No se conoce la cantidad total de los productos.
+P13. Desconocimiento de los productos más requeridos por nuestros clientes.
+P14. Poca información del control de los procesos de facturación (sumarlas una
+a una para poder obtener esa información, sin olvidar que en cualquier
+momento se puede pasar por alto una factura, produciendo datos erróneos).
+P15. Las estadísticas no son confiables, por la manipulación de la información
+y de su documentación durante los distintos procesos de negocio.
+
+38
+
+1.1.4. Propietarios de problemas
+PROPIETARIO
+ADMINISTRADOR
+
+PERSONAL
+
+CLIENTE
+
+PROVEEDOR
+
+PROBLEMA
+
+P1
+P2
+P3
+P4
+P5
+P6
+P7
+P8
+P9
+P10
+P11
+P12
+P13
+P14
+P15
+
+39
+
+1.1.5. Análisis de problemas
+
+40
+
+1.1.6. Estimación y cuantificación de problema
+
+ESTIMACIÓN DE PROBLEMAS
+
+CUANTITATIVO/CUALITATIVO.
+
+P1: Ineficiente proceso manual
+
+Las tareas rutinarias de recopilar, transmitir,
+registrar y revisar información en la tienda
+se llevan a cabo de forma manual.
+Es un proceso de búsqueda manual que
+consume tiempo.
+
+P2: Una deficiente organización
+en el inventario genera costos
+adicionales.
+
+ya que se debe asumir la perdida de
+realizar una venta cuando no se
+encuentran los productos a tiempo
+
+P3. Desabastecimiento de algún
+producto
+
+no se sabe con exactitud si hay productos
+disponibles, hasta que se revisa
+físicamente el inventario de la tienda.
+
+P4. Los registros en papel son
+Genera incertidumbre y obstaculiza la
+propensos a perderse o dañarse. toma de decisiones por parte del
+propietario.
+P5. Dificultad en la gestión de la
+información de la tienda.
+
+Ya que la mayor parte de los registros son
+en papel y esto hace que se pierda
+información y por lo tanto no es fidedigno
+
+P6. No hay gestión de todo lo
+vendido por mes.
+
+No se sabe con exactitud que fue lo mas
+vendido
+
+P7. No hay gestión de todo lo
+comprado por mes.
+
+No se sabe con exactitud que fue lo que
+mas requiere la empresa es decir la
+demanda de los accesorios
+
+41
+
+P8. Falta en la organización de los En instalación y mantenimiento que
+servicios
+brinda la tienda a los clientes que lo
+requieran.
+P9. Falta de reporte de
+mantenimiento
+
+Es decir la hora y la fecha que solicita el
+cliente.
+
+P10. No existe un reporte diario de Para ver cuantas ventas hizo al día la
+ventas.
+tienda y ver las ganancias
+P11. Dificultad al momento de
+realizar la búsqueda de un
+producto
+
+Ya que actualmente se la realiza en una
+planilla de Excel.
+
+P12. No se conoce la cantidad
+total de los productos.
+
+Existe dificultad en la gestión de la
+información de dicha tienda, esto genera
+deficiencia en la administración del
+inventario,
+
+P13. Desconocimiento de los
+productos más requeridos por
+nuestros clientes.
+
+Ya que no hay un reporte de lo mas
+vendido.
+
+P14. Poca información del control sumarlas una a una para poder obtener
+de los procesos de facturación
+esa información, sin olvidar que en
+cualquier momento se puede pasar por
+alto una factura, produciendo datos
+erróneos
+P15. Las estadísticas no son
+confiables
+
+Ya que no hay una fuente confiable para
+la información de la gestión de la tienda.
+Por la manipulación de la información y de
+su documentación durante los distintos
+procesos de negocio.
+
+42
+
+1.1.7. Alternativas de cambio
+P1. Ineficiente proceso manual: las tareas rutinarias de recopilar, transmitir,
+registrar y revisar información en la tienda se llevan a cabo de forma manual.
+-Implementar un sistema de información que guarde las tareas rutinarias de
+recopilar, transmitir, registrar y revisar información en la tienda para tener un
+registro más completo de aquellas.
+P2. Una deficiente organización en el inventario genera costos adicionales.
+-Implementar un sistema de información que clasifique el inventario por marca,
+color, tipo para así tener mayor accesibilidad al inventario y mayor
+organización de los mismos.
+P3. Desabastecimiento de algún producto: no se sabe con exactitud si hay
+productos disponibles, hasta que se revisa físicamente el inventario de la
+tienda.
+-Mediante la creación de un sistema de información podemos consultar
+rápidamente el stock de un producto para conocer la cantidad de un
+producto.
+P4. Los registros en papel son propensos a perderse o dañarse.
+-Habilitar una base de datos para almacenar los registros en papel y evitar la
+pérdida o el daño de los mismo.
+P5. Dificultad en la gestión de la información de la tienda.
+-Implementar un sistema de información para gestionar la información de la
+tienda así tener mayor accesibilidad de la hora buscar de la información.
+P6. No hay gestión de todo lo vendido por mes.
+-Creación de un sistema de información para gestionar los productos vendidos
+y hacer consultas al mismo, así se ahorra tiempo en la búsqueda
+P7. No hay gestión de todo lo comprado por mes.
+-Implementar un sistema de información para gestionar los productos
+comprados y hacer consultas al mismo para saber lo comprado por mes.
+P8. Falta en la organización de los servicios (instalación y mantenimiento) que
+brinda la tienda.
+-Implementando un sistema de información que clasifique y organice los
+servicios brinda la tienda así mismo poder consultar de la misma cuando se
+desee.
+43
+
+P9. Falta de reporte de mantenimiento y la fecha y hora que lo solicitan.
+-Con la creación de un sistema de información del mismo podríamos registrar
+de manera exacta la fecha y hora que son solicitadas a la vez de mayor
+accesibilidad de consultar los reportes.
+P10. No existe un reporte diario de ventas.
+-Registrar en un sistema de información de manera detallada el reporte de
+diario de ventas.
+P11. Dificultad al momento de realizar la búsqueda de un producto
+(Actualmente se la realiza en una planilla de Excel).
+-Implementar un sistema de información para controlar los productos y hacer
+consultas al mismo, así evitar contratiempos creados a la hora de la búsqueda.
+P12. No se conoce la cantidad total de los productos.
+-La creación de un sistema de información podemos consultar rápidamente el
+stock de un producto para conocer la cantidad de un producto.
+P13. Desconocimiento de los productos más requeridos por nuestros clientes.
+-Como el sistema de información guarda las notas de ventas con estos datos
+podemos obtener fácilmente una estadística de los productos más vendidos.
+P14. Poca información del control de los procesos de facturación (sumarlas una
+a una para poder obtener esa información, sin olvidar que en cualquier
+momento se puede pasar por alto una factura, produciendo datos erróneos).
+-Un sistema de información que almacene con detalle los registros de la
+facturación así mismo para tener un mayor control.
+P15. Las estadísticas no son confiables, por la manipulación de la información
+y de su documentación durante los distintos procesos de negocio.
+-Digitalización de datos para evitar la pérdida de datos y poder sacar mejores
+estadísticas en menor tiempo.
+
+44
+
+1.1.8. Conclusión y recomendación
+En Conclusión, se tiene problemas de organización de inventario, ineficiente
+proceso de registro de la información, contabilización y administración de los
+procesos de compra-venta y servicios los ocasionan la tardía de atención al
+cliente y por último deficiente identificación de productos más requeridos por
+los clientes.
+
+1.1.9. Diseñar el diagrama de Ishikawa
+
+1.2. Identificar las principales categorías
+
+45
+
+1.3. Identificar las causas
+1) Poca o nula inversión en tecnología
+2) Falta de asesoramiento para hacer procesos de manera automática y
+eficiente.
+3) Poca organización de inventarios
+4) No existe control de inventario
+5) Falta de capacitación al personal sobre el sistema de gestión del negocio
+6) Mala coordinación entre el equipo de ventas y el equipo de mantenimiento
+7) No cuenta con una base de datos (actualmente lo hacen en Excel)
+
+1.4. Analizar y discutir el diagrama
+Venta: este sistema nos ayudará a registrar las ventas de tal manera que
+podamos llevar un control de las ventas realizadas y podremos observar que
+productos se venden más y cuáles son nuestras ganancias, ver la cantidad
+exacta que contamos en el inventario y actualizar diariamente el inventario
+junto a los ingresos por venta.
+Compra: en el proceso de compra nuestro sistema nos ayudará a gestionar los
+productos obtenidos de nuestros proveedores y el costo de la mercancía
+comprada lo cual nos permitirá fijar un precio de venta a nuestros productos.
+Salida de productos: nuestro sistema registrara los accesorios que no han sido
+comprados, pero se descuentan del inventario por razones de daños al
+accesorio, robo o que hayan sido dados de manera gratis.
+Control de inventario: nuestro sistema gestionara la cantidad de productos
+existentes, la categorización de los accesorios y el precio de venta.
+Control de instalación: Implementar un sistema de información que almacene
+todos los pedidos de instalación.
+
+46
+
+CAPITULO 2 FLUJO DE TRABAJO: CAPTURA DE REQUISITOS
+2.1. Actores y casos de uso
+
+2.1.1. Actores
+A1. Administrador: dueño de la empresa, que se encarga de administrar
+la empresa y el sistema. Por medio del sistema el administrador puede
+obtener y modificar toda la información que se encuentra almacenada
+el mismo.
+A2. Cliente: persona que realiza una compra.
+A3. Proveedor: persona a la que se compra los productos o insumos.
+A4. Encargado: personas que trabajan en la empresa.
+
+2.1.2. Casos de uso
+CU1. Iniciar Sesión
+CU2. Cerrar Sesión
+CU3. Gestionar Usuario
+CU4. Gestionar Rol.
+CU5. Administrar Privilegios
+CU6. Gestionar Detalle de Venta.
+CU7. Gestionar Cliente.
+CU8. Gestionar Venta
+CU9. Realizar Factura
+CU10. Gestionar Servicio
+CU11. Administrar Bitácora
+CU12. Gestionar Proveedor.
+CU13. Gestionar Compra.
+CU14. Gestionar Categoría
+CU15. Gestionar Producto
+CU16. Gestionar Marca
+CU17. Gestionar Pedido
+CU18. Gestionar Ofertas
+CU19. Gestionar Detalle de Compra
+CU20. Gestionar Modelo
+CU21.Gestionar carrito de compra
+CU22.Validar Usuario
+CU23. Gestionar Geolocalización
+CU24. Gestionar WhatsApp empresarial
+
+47
+
+2.2 Priorizar casos de uso
+NRO
+
+NOMBRE DEL CU
+
+CU1
+
+Iniciar sesión
+
+CU2
+
+Cerrar sesión
+
+CU3
+
+Gestionar usuario.
+
+CU4
+
+Gestionar Rol.
+
+CU5
+CU6
+
+Administrar
+privilegios
+Gestionar detalle de
+venta.
+
+ACTOR
+
+ESTADO
+
+PRIORIDAD
+
+RIESGO
+
+Aprobado
+
+Alta
+
+Normal
+
+Aprobado
+
+Alta
+
+Normal
+
+A1
+
+Aprobado
+
+Alta
+
+Normal
+
+A1
+
+Aprobado
+
+Alta
+
+normal
+
+A1
+
+Aprobado
+
+Normal
+
+Normal
+
+A1
+
+Aprobado
+
+Normal
+
+Normal
+
+A1, A2,
+A4
+A1, A2,
+A4
+
+CU7
+
+Gestionar cliente
+
+A1, A2
+
+Aprobado
+
+Alta
+
+Normal
+
+CU8
+
+Gestionar venta.
+
+A2, A4
+
+Aprobado
+
+Alta
+
+Normal
+
+A2, A4
+
+Aprobado
+
+Normal
+
+Normal
+
+CU9
+
+Realizar factura
+
+CU10
+
+Gestionar servicio
+
+A2
+
+Aprobado
+
+Alta
+
+Normal
+
+CU11
+
+Administrar bitácora.
+
+A1
+
+Aprobado
+
+Normal
+
+Normal
+
+CU12
+
+Gestionar
+proveedor.
+
+A1, A3
+
+Aprobado
+
+Critico
+
+Normal
+
+CU13
+
+Gestionar compra
+
+A1, A3
+
+Aprobado
+
+Critico
+
+Critico
+
+CU14
+
+Gestionar categoría.
+
+A1
+
+Aprobado
+
+Alta
+
+Normal
+
+CU15
+
+Gestionar Producto.
+
+A1
+
+Aprobado
+
+Normal
+
+Administr
+ador
+
+CU16
+
+Gestionar marca.
+
+A1
+
+Aprobado
+
+Alta
+
+Normal
+
+CU17
+
+Gestionar pedido
+
+A2
+
+Propuesto
+
+Normal
+
+Normal
+
+CU18
+
+Gestionar Ofertas
+
+Propuesto
+
+Normal
+
+Normal
+
+CU19
+
+Gestionar detalle de
+compra
+
+A2
+
+Propuesto
+
+Normal
+
+Accesorio
+
+CU20
+
+Gestionar Modelo
+
+A1
+
+Aprobado
+
+Alta
+
+Critico
+48
+
+CU21
+
+Gestionar carrito de
+compra
+
+CU22
+
+Validar Usuario
+
+CU23
+CU24
+
+Gestionar
+Geolocalización
+Gestionar WhatsApp
+empresarial
+
+49
+
+2.3 Detallar casos de uso
+CU1. Iniciar Sesión
+
+Caso de uso
+
+Iniciar sesión.
+
+Propósito
+
+Conectarse a la web de la empresa SmartPlussHouse.
+
+Resumen
+
+Controlar el ingreso de usuarios al sistema.
+
+Actores
+
+Administrador, cliente, encargado.
+
+Actor iniciador
+
+Administrador, encargado, cliente.
+
+Precondiciones
+
+Ninguna.
+Iniciar sesión
+1. Se introduce el identificador de usuario o su nombre de usuario.
+2. Se introduce la contraseña.
+3. Obtiene el usuario de los datos guardados por el usuario
+ingresado.
+4. Si coinciden los datos con los de la base de datos se inicia
+sesión.
+
+Flujo principal
+
+Excepción
+
+En caso de que los datos no coincidan
+1. Error usuario o contraseña incorrectos
+
+Postcondiciones Ninguna.
+
+50
+
+CU2. Cerrar Sesión
+
+Caso de uso
+
+Cerrar Sesión.
+
+Propósito
+
+Permitirá cerrar sesión de la cuenta de un usuario.
+
+Resumen
+
+Elimina la sesión del usuario que previamente inicia la sesión.
+
+Actores
+
+Administrador, encargado, cliente.
+
+Actor iniciador
+
+Administrador, encargado, cliente.
+
+Precondiciones
+
+CU1: Iniciar Sesión.
+1. Seleccionar Cerrar Sesión
+1.1. Validar “Estas seguro que quieres cerrar sesión”: en caso de que la
+opción sea si, se cierra la sesión, caso contrario sigue abierta.
+Ninguna
+
+Flujo principal
+Excepción
+
+Postcondiciones Ninguna
+
+51
+
+CU3. Gestionar Usuario
+
+Caso de uso
+
+Gestionar Usuario
+
+Propósito
+
+Actores
+
+Registrar los usuarios que pueden manipular el sistema.
+El administrador creará usuarios para el resto de encargados en la
+empresa.
+Administrador
+
+Actor iniciador
+
+Administrador
+
+Precondiciones
+
+CU4: Gestionar Rol
+1. Registrar.
+1.1. Se extraen los datos de los respectivos encargados, técnicos (que
+se ocupan de los servicios).
+1.2. Se registran los datos del usuario.
+1.3. Se les asigna uno o varios roles con sus respectivos permisos.
+2. Modificar.
+2.1. Se busca por nombre en la lista de los usuarios registrados.
+2.2. Se adquieren los datos anteriormente registrados.
+2.3. Se incorporan las modificaciones.
+2.4. Si ingresamos mal los datos volvemos a repetir este procedimiento.
+3. Eliminar.
+3.1. Se busca por nombre en la lista de los usuarios registrados
+3.2. Si no existe el usuario se descarta este procedimiento
+3.3. Se elimina lógicamente al usuario.
+Ninguna
+
+Resumen
+
+Flujo principal
+
+Excepción
+
+Postcondiciones Ninguna
+
+52
+
+CU4. Gestionar Rol
+
+Caso de uso
+
+Gestionar Rol
+
+Propósito
+
+Asignar los respectivos roles para tener los permisos y acceso a los
+diversos módulos que ofrece el sistema.
+
+Actores
+
+Administrador
+
+Actor iniciador
+
+Administrador
+
+Precondiciones
+
+CU5: Administrar Privilegio
+1. Registrar
+1.1 Se incorpora el rol.
+1.2 Se añade los privilegios correspondientes para el rol.
+2. Actualizar.
+2.1 Se indaga el rol en la lista respectiva.
+2.2 Se modifican los atributos del rol.
+2.3 Se incorpora los datos actualizados.
+3. Eliminar.
+3.1. Se descarta los privilegios que tiene ese rol.
+
+Flujo principal
+
+Excepción
+
+Ninguna.
+
+Postcondiciones Ninguna.
+
+53
+
+CU5. Administrar Privilegios
+
+Caso de uso
+
+Administrar privilegios
+
+Propósito
+
+Registrar los privilegios que son el acceso a ciertas partes de sistema y
+los administra.
+
+Actores
+
+Administrador.
+
+Actor iniciador
+
+Administrador.
+
+Precondiciones
+
+Ninguna.
+
+Flujo principal
+
+1. Registrar.
+1.1. Ingresar los datos del nuevo privilegio.
+2. Actualizar.
+2.1 Seleccionar en el sistema el nombre del privilegio que quiere
+actualizar.
+2.2. El administrador obtiene los datos del privilegio buscado.
+2.3 El administrador ingresa los datos a modificar del privilegio.
+3. Eliminar.
+3.1 El administrador selecciona el privilegio que quiere eliminar.
+3.2 Se elimina lógicamente el privilegio.
+
+Excepción
+
+Ninguna.
+
+Postcondiciones Ninguna.
+
+54
+
+CU6. Gestionar Detalle de Venta
+
+Caso de uso
+
+Gestionar Grupos
+
+Propósito
+
+Gestionar los grupos que permitirán definir que ve y que no ve el
+usuario.
+
+Actores
+
+Administrador.
+
+Actor iniciador
+
+Administrador.
+
+Precondiciones
+
+Ninguna
+
+Flujo principal
+
+1. Crear grupo
+1.1 Se incorpora las secciones que serán visibles para ese grupo.
+2. Modificar Grupo
+2.1 Se modifican las secciones que serán visibles para ese grupo.
+3. Eliminar Grupo
+
+Excepción
+
+Ninguna.
+
+Postcondiciones Ninguna.
+
+55
+
+CU7. Gestionar Cliente
+
+Caso de uso
+
+Gestionar Cliente
+
+Propósito
+
+Gestionar todos los datos que se necesitan almacenar del cliente.
+
+Actores
+
+Encargado, cliente.
+
+Actor iniciador
+
+Cliente.
+
+Precondiciones
+
+Ninguna.
+1. Registrar
+1.1 Si el cliente no está registrado
+1.2 Obtener los datos del cliente
+1.3 Ingresar los datos del cliente al sistema
+1.4 Si ingresamos mal los datos podemos modificarlo posteriormente
+2. Modificar.
+2.1 Se busca por nombre en la lista de los clientes
+registrados
+2.2 Se adquiere los datos previamente registrados
+2.3 Se incorpora las modificaciones
+Ninguna
+
+Flujo principal
+
+Excepción
+
+Postcondiciones Ninguna
+
+56
+
+CU8. Gestionar Venta
+
+Caso de uso
+
+Gestionar Venta.
+
+Propósito
+
+Actores
+
+Gestionar todos los datos necesarios del proceso de venta.
+El encargado debe registrar los datos de los insumos que se están
+vendiendo.
+Encargado, Cliente.
+
+Actor iniciador
+
+Cliente.
+
+Precondiciones
+
+CU16: Gestionar Producto
+1. Registrar
+1.1. El cliente solicita el producto.
+1.2. El encargado verifica el stock del insumo solicitado.
+1.3. “Si hay Stock suficiente” registra la venta en una “Nota de venta”
+con su respectivo detalle.
+Ninguna.
+
+Resumen
+
+Flujo principal
+
+Excepción
+
+Postcondiciones Ninguna.
+
+57
+
+CU9. Realizar Factura
+
+Caso de uso
+
+Actores
+
+Realizar factura.
+Gestionar todos los datos que se necesita para la entrega de Factura,
+el encargado emite la factura de la venta que realizó al cliente.
+Encargado, Cliente.
+
+Actor iniciador
+
+Cliente.
+
+Precondiciones
+
+CU8. Gestionar Venta
+1. El Cliente realiza una compra
+2. Se solicita el NIT del cliente en caso de que así lo requiera.
+3. El encargado emite la factura después de la compra que realizo el
+Cliente
+4.El Cliente recibe la Factura
+Ninguna.
+
+Propósito
+
+Flujo principal
+
+Excepción
+
+Postcondiciones Ninguna.
+
+58
+
+CU10. Gestionar Servicio
+
+Caso de uso
+
+Gestionar servicio.
+
+Propósito
+
+Llevar un control de todos los servicios brindados.
+
+Resumen
+
+Permitirá ver, registrar, habilitar e inhabilitar los servicios.
+
+Actores
+
+Administrador.
+
+Actor iniciador
+
+Administrador.
+
+Precondiciones
+
+Ninguna.
+
+Flujo principal
+
+1. Creación
+1.1. Ingresar al formulario.
+1.2. Llenar datos.
+1.3. validar datos.
+1.4. guardar datos.
+2. Actualizar
+2.1. Ingresar a lista de servicios.
+2.2. Seleccionar actualizar.
+2.3 Actualizar los datos requeridos.
+2.4. Guardar Cambios
+3. Borrar
+3.1. Ingresar a lista de servicios.
+3.2. Seleccionar Borrar en la opción que desees, esto inhabilitará el
+servicio.
+
+Excepción
+
+Ninguna.
+
+Postcondiciones Ninguna.
+
+59
+
+CU11. Administrar Bitácora
+
+Caso de uso
+
+Actores
+
+Gestionar bitácora.
+Administrar y realizar consultas a la
+bitácora
+Muestra la bitácora que contiene las últimas operaciones realizadas
+en el sistema
+Administrador.
+
+Actor iniciador
+
+Administrador.
+
+Precondiciones
+
+Ninguna.
+1. Registrar
+1.1 Cada vez que se inserte, modifique o elimine un dato, se registra la
+acción y quien la realizo.
+- El administrador puede realizar consultas a la bitácora.
+Ninguna.
+
+Propósito
+Resumen
+
+Flujo principal
+Excepción
+
+Postcondiciones Ninguna.
+
+60
+
+CU12. Gestionar Proveedor
+
+Caso de uso
+
+Gestionar proveedor.
+
+Propósito
+
+Gestionar todos los datos que se registran del proveedor.
+
+Actores
+
+Administrador, Proveedor.
+
+Actor iniciador
+
+Proveedor.
+
+Precondiciones
+
+Ninguna.
+
+Flujo principal
+
+1. Registrar
+1.1 Si el proveedor no está registrado
+1.2 Obtener los datos del proveedor
+1.3 Ingresar los datos del proveedor al sistema
+1.4 Si ingresamos mal los datos podemos modificarlo posteriormente
+2. Modificar.
+2.1 Se busca por nombre en la lista de los proveedores
+registrados
+2.2 Se adquiere los datos previamente registrados
+2.3 Se incorpora las modificaciones
+3. Eliminar
+3.1 Se busca por nombre en la lista de los proveedores
+registrados
+3.2 Se adquiere los datos previamente registrados
+3.3 Se elimina a dicho proveedor
+
+Excepción
+
+Ninguna.
+
+Postcondiciones Ninguna.
+
+61
+
+CU13. Gestionar Compra
+
+Caso de uso
+
+Actores
+
+Gestionar compra.
+Gestionar todos los datos que se registran al momento de una
+compra.
+Administrador, proveedor.
+
+Actor iniciador
+
+Administrador.
+
+Precondiciones
+
+Ninguna.
+1. Registrar
+1.1. Seleccionar registrar compra.
+1.2. El administrador registrará los datos de los insumos comprados.’
+1.3. “Guardar compra”
+En caso de haberse equivocado en algún dato se lo podrá modificar
+luego.
+2. Modificar
+1.1. Buscar la respectiva compra.
+1.2. Modificar los datos de la compra.
+Ninguna.
+
+Propósito
+
+Flujo principal
+
+Excepción
+
+Postcondiciones Ninguna.
+
+62
+
+CU14. Gestionar Categoría
+
+Caso de uso
+
+Gestionar Categoría.
+
+Propósito
+
+Gestionar las categorías a la que cada producto pertenece.
+
+Actores
+
+Administrador.
+
+Actor iniciador
+
+Administrador.
+
+Precondiciones
+
+Ninguna.
+1. Registrar
+1.1. El administrador podrá registrar la categoría con sus respectivos
+datos.
+2. Modificar
+2.1. Buscar la categoría a modificar.
+2.2. Cambiar los datos necesarios.
+2.3. Se guardan las modificaciones.
+Ninguna.
+
+Flujo principal
+
+Excepción
+
+Postcondiciones Ninguna.
+
+63
+
+CU15. Gestionar Producto
+
+Caso de uso
+
+Gestionar producto.
+
+Propósito
+
+Gestionar todos los datos que se necesita del producto.
+
+Actores
+
+Administrador.
+
+Actor iniciador
+
+Administrador.
+
+Precondiciones
+
+CU14: Gestionar categoría, CU20: Gestionar modelo.
+1. Registrar
+1.1. Registrar un nuevo producto.
+1.2. Ingresar los datos necesarios del producto.
+1.3. Seleccionar la categoría y modelo al que pertenece.
+1.4. Guardar registro.
+2. Modificar
+2.1. Buscar el producto a modificar.
+2.2. Modificar los datos del producto.
+2.3. Guardar cambios.
+3. Eliminar
+3.1. Buscar el producto a eliminar.
+3.2. El producto se elimina lógicamente, es decir se deshabilita.
+Ninguna.
+
+Flujo principal
+
+Excepción
+
+Postcondiciones Ninguna.
+
+64
+
+CU16. Gestionar Marca
+
+Caso de uso
+
+Actores
+
+Gestionar Marca.
+Registrar todas las marcas de productos con las que trabaja la
+empresa.
+Administrador.
+
+Actor iniciador
+
+Administrador.
+
+Precondiciones
+
+Ninguna.
+1. Registrar.
+1.1. El administrador ingresa los datos de la nueva marca.
+1.2. Guardar los datos registrados.
+2. Modificar.
+2.1. Buscar la marca que se quiere modificar.
+2.2. Modificar los datos.
+2.3. Guardar las modificaciones.
+Ninguna.
+
+Propósito
+
+Flujo principal
+
+Excepción
+
+Postcondiciones Ninguna.
+
+65
+
+CU17. Gestionar Pedido
+
+Caso de uso
+
+Gestionar Pedido.
+
+Propósito
+
+Registrar la compra de productos para la tienda.
+
+Actores
+
+A3, A1
+
+Actor iniciador
+
+A1
+
+Precondiciones
+
+Producto agotándose o agotado.
+
+Flujo principal
+
+1.Recibir la nota de compra
+2. Registrar los datos de los productos comprados
+
+Excepción
+
+Ninguna.
+
+Postcondiciones Ninguna.
+
+66
+
+CU18. Gestionar Ofertas
+
+Caso de uso
+
+Gestionar ofertas.
+
+Propósito
+
+Vender productos al por mayor y los que no se venden
+
+Actores
+
+A1, A2
+
+Actor iniciador
+
+A1, A2
+
+Precondiciones
+
+Producto con poca venta
+1. Nota de compra
+
+Flujo principal
+
+1.1
+1.2
+1.3
+
+Registrar, monto de pago
+Registrar la persona que registro el pago
+Guardar dato
+
+Excepción
+
+Ninguna.
+
+Postcondiciones Ninguna.
+
+67
+
+CU19. Gestionar Detalle de Compra
+
+Caso de uso
+
+Gestionar Garantía.
+
+Propósito
+
+Dar una mayor confiabilidad en nuestros productos a los clientes
+
+Actores
+
+A1, A2, A3, A4
+
+Actor iniciador
+
+A3
+
+Precondiciones
+
+Producto comprado en nuestra tienda, Producto dañado de fabrica
+
+Flujo principal
+
+1 obtener sus datos.
+1.1
+registrar sus datos.
+1.2
+ingresar los datos.
+
+Excepción
+
+Producto dañado por el cliente.
+
+Postcondiciones
+
+Ninguna.
+
+68
+
+CU20. Gestionar Modelo
+
+Caso de uso
+
+Gestionar modelo.
+
+Propósito
+
+Registrar los modelos de cada marca.
+
+Actores
+
+Administrador.
+
+Actor iniciador
+
+Administrador.
+
+Precondiciones
+
+CU16: Gestionar Marca.
+1. Registrar.
+1.1. El administrador ingresa los datos del nuevo modelo.
+1.2. Guardar los datos registrados.
+2. Modificar.
+2.1. Buscar el modelo que se quiere modificar.
+2.2. Modificar los datos.
+2.3. Guardar las modificaciones.
+Ninguna.
+
+Flujo principal
+
+Excepción
+
+Postcondiciones Ninguna.
+
+69
+
+2.4 Prototipar interfaz de usuario
+
+70
+
+71
+
+72
+
+2.5. Estructurar modelo de caso de uso
+
+73
+
+CAPITULO 3 FLUJO DE TRABAJO: ANALISIS
+3.1. Análisis de arquitectura
+
+3.1.1. Identificar paquetes
+Se gestionará los usuarios: crear, modificar,
+eliminar. Se les asignará el rol al que pertenece
+y también se administrará los roles y los
+privilegios. Además, se registrarán las acciones
+que realice el usuario.
+
+Se administrarán las compras realizadas, gestión
+de los proveedores y las empresas a las cuales
+se les realiza la compra de los productos
+necesarios.
+
+Se administrará las ventas realizadas por el
+encargado, las facturas emitidas y los clientes.
+Además, los servicios que se venden.
+
+En este paquete se podrán visualizar los
+productos, marcas, modelo y categorías al que
+pertenecen.
+
+74
+
+3.1.2. Relacionar paquete y casos de uso
+
+75
+
+76
+
+77
+
+3.1.3. Vista de paquetes
+
+78
+
+79
+
+3.2. Análisis de un caso de uso
+
+3.2.1. Diagramas de comunicación.
+
+80
+
+81
+
+82
+
+83
+
+84
+
+85
+
+86
+
+3.3. Análisis de clase
+
+87
+
+88
+
+89
+
+90
+
+3.4. Análisis de paquete
+
+91
+
+4 FLUJO DE TRABAJO: DISEÑO
+4.1. Diseño de arquitectura
+
+4.1.1. Diseño físico (Diagrama de despliegue)
+
+92
+
+4.1.2. Diseño lógico (Diagrama organizado en capas)
+
+93
+
+5. DISEÑO DE DATOS
+5.1. Diseño de datos lógico
+
+5.1.1. Diagrama de clases
+
+94
+
+5.1.2. Mapeo
+
+Usuario
+PK
+id
+
+nombre
+
+ci
+
+email
+
+contraseña estado
+
+telefono
+
+Bitacora
+P.K.
+nro_bit
+
+F.K.
+accion
+
+tipo
+
+fecha
+
+id_u
+
+Factura
+P.K.
+nro_fac
+
+F.K.
+nro_aut
+
+nit_id_us
+
+fecha
+
+monto_tot nro_v
+
+Nota_Venta
+P.K.
+nro_v
+
+F.K.
+monto_tot fecha
+
+estado
+
+id_us
+
+Detalle_venta
+P.K./F.K.
+
+P.K./F.K.
+
+nro_venta
+
+id_prod
+
+cantidad precio_u precio_tot descuento
+
+Servicio
+P.K.
+id_servicio
+
+F.K.
+descripcion precio
+
+F.K.
+
+F.K.
+
+nro_venta id_u
+
+id_ts
+
+95
+
+Detalle_Servicio
+P.K./F.K.
+
+P.K./F.K.
+
+id_servicio
+
+nro_v
+
+precio_serv fecha_serv
+
+Tipo_Servicio
+P.K.
+id_ts
+
+nombre_ts descripcion
+
+Producto
+P.K
+id_p
+
+F.K.
+
+nombre_p stock color costo costo_prom precio_v minimo_inv estado id_cat id_mod
+
+Modelo
+P.K.
+id_mod
+
+F.K.
+nombre_mod id_marca
+
+Marca
+P.K.
+id_marca
+
+nombre_marca
+
+Categoria
+P.K.
+id_cat
+
+F.K.
+
+nombre_cat
+
+Detalle_Compra
+P.K./F.K.
+
+PK./F.K.
+
+id_p
+
+nro_c
+
+cantidad costo_u
+
+costo_tot
+
+96
+
+Nota_Compra
+P.K.
+
+F.K.
+
+nro_c
+
+costo_total fecha
+
+id_prov
+
+Proveedor
+P.K.
+id_prov
+
+nombre
+
+ubicación email
+
+t_espera
+
+Telefono
+P.K.
+
+F.K.
+
+id_telf
+
+numero
+
+id_prov
+
+5.1.3. Normalización
+
+5.2. Diseño de datos físico
+
+5.2.1. Tabla de volumen
+− USUARIO
+
+−
+
+Atributo
+
+Tipo de Dato
+
+Descripcion
+
+Tamaño
+
+Nulo
+
+Llave
+
+Id
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+No
+
+Primaria
+
+Carnet
+
+AlfaNumerico
+
+Nombre del
+privilegio
+
+40 caracteres
+
+No
+
+Nombre
+
+AlfaNumerico
+
+Nombre del
+Usuario
+
+30 caracteres
+
+No
+
+Email
+
+AlfaNumerico
+
+Correo del
+Usuario
+
+20 caracteres
+
+No
+
+Contraseña
+
+AlfaNumerico
+
+Contraseña del
+Usuario
+
+15 caracteres
+
+No
+
+Telefono
+
+Entero
+
+Número de
+teléfono del
+usuario
+
+4 bytes
+
+Si
+
+BITÁCORA
+97
+
+Atributo
+
+Tipo de Dato
+
+Descripcion
+
+Tamaño
+
+Nulo
+
+Llave
+
+Nro
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+No
+
+Primaria
+
+Fecha
+
+Fecha
+
+Fecha de la
+Nota de compra
+
+4 bytes
+
+No
+
+Tipo
+
+Alfanumerico
+
+Tipo de la nota
+de compra
+
+5 bytes
+
+si
+
+idUsuario
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+si
+
+Foránea de
+usuario
+
+Atributo
+
+Tipo de Dato
+
+Descripcion
+
+Tamaño
+
+Nulo
+
+Llave
+
+NroFac
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+No
+
+Primaria
+
+NroAut
+
+Entero
+
+Numero de
+Factura
+
+4 bytes
+
+No
+
+nit_id_us
+
+Entero
+
+Nit de Factura
+
+4 bytes
+
+Si
+
+Fecha
+
+Fecha
+
+Fecha de la
+Factura
+
+4 bytes
+
+No
+
+nro_v
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+No
+
+Foránea de
+notaVenta
+
+Atributo
+
+Tipo de Dato
+
+Descripcion
+
+Tamaño
+
+Nulo
+
+Llave
+
+Nro_V
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+No
+
+Primaria
+
+Monto_total
+
+flotante
+
+importe de la
+NotaVenta
+
+4 bytes
+
+No
+
+Fecha
+
+Fecha
+
+Fecha de la
+NotaVenta
+
+4 bytes
+
+No
+
+id_us
+
+AlfaNumerico
+
+Identificador de
+clase
+
+10
+caracteres
+
+si
+
+− FACTURA
+
+− NOTA_VENTA
+
+Foránea de
+Usuario
+
+− DETALLE_VENTA
+98
+
+Atributo
+
+Tipo de Dato
+
+Descripcion
+
+Tamaño
+
+Nulo
+
+Llave
+
+nroNotaVenta
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+No
+
+Primaria, foránea
+de NotaVenta
+
+idProd
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+No
+
+Primaria, foránea
+de Producto
+
+precio_u
+
+flotante
+
+Costo del
+DetalleVenta
+
+4 bytes
+
+No
+
+Cantidad
+
+Entero
+
+Cantidad de
+DetalleVenta
+
+4 bytes
+
+No
+
+Precio_Total
+
+flotante
+
+Importe Total de
+DetalleVenta
+
+4 bytes
+
+No
+
+Atributo
+
+Tipo de Dato
+
+Descripcion
+
+Tamaño
+
+Nulo
+
+Llave
+
+IdServ
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+No
+
+Primaria,
+foránea de
+NotaVenta
+
+Descripcion
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+No
+
+precio
+
+flotante
+
+Costo del
+DetalleVenta
+
+4 bytes
+
+No
+
+nro_venta
+
+AlfaNumerico
+
+Identificador de
+clase
+
+10
+caracteres
+
+si
+
+Foránea de
+Detalle
+Venta
+
+id_P
+
+AlfaNumerico
+
+Identificador de
+clase
+
+10
+caracteres
+
+si
+
+Foránea de
+Producto
+
+id_u
+
+AlfaNumerico
+
+Identificador de
+clase
+
+10
+caracteres
+
+si
+
+Foránea de
+Usuario
+
+id_t
+
+AlfaNumerico
+
+Identificador de
+clase
+
+10
+caracteres
+
+si
+
+Foránea de
+Tipo de
+Servicio
+
+− SERVICIO
+
+− DETALLE_SERVICIO
+99
+
+Atributo
+
+Tipo de Dato
+
+Descripcion
+
+Tamaño
+
+Nulo
+
+Llave
+
+Id_Servicio
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+No
+
+nroNotaVenta
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+No
+
+precio_serv
+
+flotante
+
+Costo del
+Servicio
+
+4 bytes
+
+No
+
+Fecha_Serv
+
+Fecha
+
+Fecha del
+Servicio
+
+4 bytes
+
+No
+
+Atributo
+
+Tipo de Dato
+
+Descripcion
+
+Tamaño
+
+Nulo
+
+Llave
+
+Id_t
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+No
+
+Primaria
+
+Nombre
+
+AlfaNumerico
+
+Nombre del
+Usuario
+
+30
+caracteres
+
+No
+
+Descripcion
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+No
+
+Atributo
+
+Tipo de Dato
+
+Descripcion
+
+Tamaño
+
+Nulo
+
+Llave
+
+id_P
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+No
+
+Primaria
+
+Nombre_P
+
+AlfaNumerico
+
+nombre del
+producto
+
+40
+caracteres
+
+No
+
+Color
+
+AlfaNumerico
+
+Color del
+Producto
+
+10
+caracteres
+
+No
+
+precio
+
+flotante
+
+Pracio mayor
+producto
+
+4 bytes
+
+No
+
+Costo
+
+flotante
+
+Costo parcial del
+producto
+
+4 bytes
+
+si
+
+CostoPromedio
+
+flotante
+
+Costo promedio
+de producto
+
+4 bytes
+
+si
+
+Primaria,
+foránea de
+Servicio
+Primaria,
+foránea de
+NotaVenta
+
+− TIPO SERVICIO
+
+− PRODUCTO
+
+100
+
+precio_v
+
+flotante
+
+Pracio mayor
+producto
+
+4 bytes
+
+No
+
+estado
+
+AlfaNumerico
+
+Estado del
+Producto
+
+20
+caracteres
+
+No
+
+id_cat
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+si
+
+Foránea de
+Categoria
+
+id_mod
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+si
+
+Foránea de
+Modelo
+
+Atributo
+
+Tipo de Dato
+
+Descripcion
+
+Tamaño
+
+Nulo
+
+Llave
+
+Id_mod
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+No
+
+Primaria
+
+Nombre_mod
+
+AlfaNumerico
+
+Nombre del
+Usuario
+
+30
+caracteres
+
+No
+
+id_marca
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+si
+
+Foránea de
+Marca
+
+Atributo
+
+Tipo de Dato
+
+Descripcion
+
+Tamaño
+
+Nulo
+
+Llave
+
+id_marca
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+No
+
+Primaria
+
+Nombre_marca
+
+AlfaNumerico
+
+Nombre del
+Usuario
+
+30
+caracteres
+
+No
+
+Atributo
+
+Tipo de Dato
+
+Descripcion
+
+Tamaño
+
+Nulo
+
+Llave
+
+id_marca
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+No
+
+Primaria
+
+Nombre_cat
+
+AlfaNumerico
+
+Nombre del
+Usuario
+
+30
+caracteres
+
+No
+
+− MODELO
+
+− MARCA
+
+− CATEGORÍA
+
+101
+
+− DETALLE_COMPRA
+Atributo
+
+Tipo de Dato
+
+Descripcion
+
+Tamaño
+
+Nulo
+
+Llave
+
+id_P
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+si
+
+nro_c
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+si
+
+Cantidad
+
+Entero
+
+Cantidad de
+Compras
+
+4 bytes
+
+No
+
+Costo_u
+
+flotante
+
+Costo de la
+compra
+
+4 bytes
+
+si
+
+Costo_tot
+
+flotante
+
+Costo promedio
+de producto
+
+4 bytes
+
+si
+
+Atributo
+
+Tipo de Dato
+
+Descripción
+
+Tamaño
+
+Nulo
+
+Llave
+
+nro_c
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+No
+
+Primaria
+
+Costo_total
+
+flotante
+
+Costo promedio
+de producto
+
+4 bytes
+
+si
+
+Fecha
+
+Fecha
+
+Fecha de la
+NotaCompra
+
+4 bytes
+
+No
+
+id_prov
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+si
+
+Foránea de
+Proveedor
+
+Atributo
+
+Tipo de Dato
+
+Descripcion
+
+Tamaño
+
+Nulo
+
+Llave
+
+id_prov
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+No
+
+Primaria
+
+nombre
+
+AlfaNumerico
+
+Nombre del
+Usuario
+
+30
+caracteres
+
+No
+
+Email
+
+AlfaNumerico
+
+Correo del
+Usuario
+
+20
+caracteres
+
+No
+
+Primaria,
+Foránea de
+Producto
+Primaria,
+Foránea de
+Nota de
+Compra
+
+− NOTA_COMPRA
+
+− PROVEEDOR
+
+102
+
+Direccion
+
+AlfaNumerico
+
+Correo del
+Usuario
+
+20
+caracteres
+
+No
+
+Ubicación
+
+AlfaNumerico
+
+Correo del
+Usuario
+
+20
+caracteres
+
+No
+
+t_espera
+
+Entero
+
+Tiempo de
+espera del
+proveedor
+
+4 bytes
+
+No
+
+Atributo
+
+Tipo de Dato
+
+Descripcion
+
+Tamaño
+
+Nulo
+
+Llave
+
+id_telf
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+No
+
+Primaria
+
+Numero
+
+AlfaNumerico
+
+Nombre del
+Usuario
+
+20
+caracteres
+
+No
+
+id_Propietario
+
+Entero
+
+Identificador de
+clase
+
+4 bytes
+
+si
+
+− TELÉFONO
+
+Foránea de
+Propietario
+
+5.2.2. Script
+create database BaseSmartPlusHouse;
+-- Establecer como Base de Datos de uso
+use BaseSmartPlusHouse;
+-- Crear la tabla de Usuario
+create table Usuario
+(
+id integer not null primary key AUTO_INCREMENT comment 'primary key',
+del Usuario
+nombre varchar(40) not null,
+-- Nombre del Usuario
+telefono int not null,
+-- Telf Usuario
+ci integer not null,
+-- CI del Usuario
+email varchar(50) not null,
+-- Correo del Usuario
+contrasena varchar(12) not null,
+-- Contrase�a del User
+estado bit
+-- Estado del User
+);
+
+-- Codigo
+
+-- Crear la tabla de Bitacora
+
+103
+
+create table Bitacora
+(
+nro_bit integer not null AUTO_INCREMENT comment 'primary key',
+Bitacora
+fecha datetime not null,
+-- Fecha
+tipo varchar(20) not null,
+-- Tipo de Usuario
+accion varchar(50) not null,
+-- Accion del Usuario
+id_u int not null,
+-- Id del Usuario (foranea)
+primary key(nro_bit),
+foreign key (id_u) references Usuario(id)
+on update cascade
+on delete cascade
+);
+-- Crear la tabla de Nota_Venta
+create table Nota_Venta
+(
+nro_v int not null primary key AUTO_INCREMENT comment 'primary key',
+de Nota de venta
+fecha_v datetime not null,
+-- Fecha de venta
+monto_tot float not null,
+-- Monto Total
+estado bit,
+-- Estado Carrito
+id_u int not null,
+-- Id del Usuario (foranea)
+foreign key (id_u) references Usuario(id)
+on update cascade
+on delete cascade
+);
+
+-- Nro de
+
+-- Nro
+
+-- Crear la tabla de Factura
+create table Factura
+(
+nro_fac int not null primary key,
+-- Nro de Nota de Factura
+nro_aut int not null,
+-- Nro de Autorizacion
+fecha datetime not null,
+-- Fecha
+nit_ci_cli int not null,
+-- Nit del Cliente
+monto_tot float not null,
+-- Monto Total
+nro_v int not null,
+-- Nro de Nota de venta
+foreign key (nro_v) references Nota_Venta(nro_v)
+on update cascade
+on delete cascade
+);
+-- Crear la tabla de Categoria
+create table Categoria
+(
+
+104
+
+id_cat int not null primary key AUTO_INCREMENT comment 'primary key',
+Categoria
+nombre_cat varchar(25) not null
+-- Nombre de Categoria
+);
+
+-- ID de
+
+-- Crear la tabla de Marca
+create table Marca
+(
+id_marca int not null primary key AUTO_INCREMENT comment 'primary key', -- ID de
+Marca
+nombre_marca varchar(25) not null
+-- Nombre de Marca
+);
+-- Crear la tabla de Modelo
+create table Modelo
+(
+id_mod int not null primary key AUTO_INCREMENT comment 'primary key',
+Modelo
+nombre_mod varchar(25) not null,
+-- Nombre de Modelo
+id_marca int not null,
+-- ID de Marca
+foreign key (id_marca) references Marca(id_marca)
+on update cascade
+on delete cascade
+);
+-- Crear la tabla de Producto
+create table Producto
+(
+id_p int not null primary key AUTO_INCREMENT comment 'primary key',
+producto
+nombre_p varchar(25) not null,
+-- Nombre de producto
+stock int not null,
+-- Stock del producto
+color varchar(16) not null,
+-- Nombre de producto
+costo float not null,
+-- Costo del producto
+costo_promedio float not null,
+-- Costo Promedio
+precio_v float not null,
+-- Precio Venta
+minimo_inv float not null,
+-estado bit not null,
+-- Estado de prodcto si hay
+id_mod int not null,
+-- ID de Modelo
+id_cat int not null,
+-- ID de Categoria
+foreign key (id_mod) references Modelo(id_mod)
+on update cascade
+on delete cascade,
+foreign key (id_cat) references Categoria(id_cat)
+on update cascade
+
+-- ID de
+
+-- Id de
+
+105
+
+on delete cascade
+);
+
+-- Crear la tabla de Detalle_Venta
+create table Detalle_Venta
+(
+nro_venta int not null,
+-- Nro de Nota de venta
+id_prod int not null,
+-- Id de producto
+cantidad int not null,
+-- Cantidad
+precio_u float null,
+-- Precio Unidad
+monto_tot float not null,
+-- Monto Total
+descuento float,
+-- Descuento Venta
+foreign key (id_prod) references Producto(id_p)
+on update cascade
+on delete cascade,
+foreign key (nro_venta) references Nota_Venta(nro_v)
+on update cascade
+on delete cascade,
+primary key (id_prod,nro_venta)
+);
+-- Crear la tabla Proveedor
+create table Proveedor
+(
+id_prov int not null primary key AUTO_INCREMENT comment 'primary key',
+Proveedor
+nombre varchar(40) not null,
+-- Nombre del Proveedor
+ubicacion varchar(50) not null,
+-- Ubicacion del proveedor
+email varchar(60) not null,
+-- Email del Proveedor
+t_espera time not null
+-- Tiempo de Espera
+);
+-- Crear la tabla Nota de Compra
+create table Nota_Compra
+(
+nro_c int not null primary key AUTO_INCREMENT comment 'primary key',
+de compra
+fecha_c datetime not null,
+-- Fecha de compra
+costo_total float not null,
+-- Costo total de compra
+id_prov int not null,
+-- Id Proveedor
+foreign key (id_prov) references Proveedor(id_prov)
+on update cascade
+on delete cascade
+);
+
+-- Id
+
+-- Nro
+
+106
+
+-- Crear la tabla Detalle_Compra
+create table Detalle_Compra
+(
+id_p int not null,
+-- Id de porducto
+nro_c int not null,
+-- Nro de compra
+cantidad int not null,
+-- Cantidad de compra
+costo_u float not null,
+-- Costo unitario
+costo_tot float not null,
+-- Costo_tot
+foreign key (id_p) references Producto(id_p)
+on update cascade
+on delete cascade,
+foreign key (nro_c) references Nota_Compra(nro_c)
+on update cascade
+on delete cascade,
+primary key (id_p,nro_c)
+);
+-- Crear la tabla de Telefono
+create table Telefono
+(
+id_telf int not null primary key AUTO_INCREMENT comment 'primary key',
+telefono(user)
+numero int not null,
+-- Numero del user
+id_prov int not null,
+-foreign key (id_prov) references Proveedor(id_prov)
+on update cascade
+on delete cascade
+);
+-- Crear la tabla de Tipo de Servicio
+create table Tipo_Servicio
+(
+id_ts int not null primary key AUTO_INCREMENT comment 'primary key',
+Id Tipo de servicio
+descripcion varchar(40) not null,
+-- Descripcion
+nombre_ts varchar(50) not null
+-- Nombre tipo servicio
+);
+-- Crear la tabla de Servicio
+create table Servicio
+(
+id_serv int not null primary key AUTO_INCREMENT comment 'primary key',
+servicio
+descripcion varchar(40) not null,
+-- Descripcion
+
+-- ID del
+
+--
+
+-- ID del
+
+107
+
+precio float not null,
+-- precio servicio
+nro_venta int not null,
+-- Nro de Nota de venta
+id_prod int not null,
+-- Id de producto
+id_u int not null,
+-- Codigo del Usuario
+id_ts int not null,
+-- Id Tipo de servicio
+foreign key (id_prod,nro_venta) references Detalle_Venta(id_prod,nro_venta)
+on update cascade
+on delete cascade,
+foreign key (id_u) references Usuario(id)
+on update cascade
+on delete cascade,
+foreign key (id_ts) references Tipo_Servicio(id_ts)
+on update cascade
+on delete cascade
+);
+-- Crear la tabla Detalle_Servicio
+create table Detalle_Servicio
+(
+id_serv int not null,
+-- Id de servicio
+nro_vent int not null,
+-- Nro de venta
+precio_serv float not null,
+-- precio de servicio
+fecha_serv datetime not null,
+-- Fecha de servicio
+foreign key (id_serv) references Servicio(id_serv)
+on update cascade
+on delete cascade,
+foreign key (nro_vent) references Nota_Venta(nro_v)
+on update cascade
+on delete cascade,
+primary key (id_serv,nro_vent)
+);
+
+108
+
+5.2.3. Diagrama relacional
+
+109
+
+5.2.4. Actualización de tuplas
+delete from Usuario where id="101";
+INSERT INTO Usuario values (101,"Julio
+Fuentes",75025364,1002,"lokitosexi@gmail.com","soyironman123",true);
+INSERT INTO Usuario values (102,"Julio
+Iglesias",75237951,1003,"julioiglesias@gmail.com","goxila11",false);
+INSERT INTO Usuario values (103,"Julio
+Farfan",76512348,1004,"julio_farfan@gmail.com","farfan123",false);
+INSERT INTO Usuario values (104,"Lapadula
+yotun",76325489,1005,"lapagol@gmail.com","lapa222",true);
+INSERT INTO Usuario values (null,"Takeshi
+Chacon",77896427,1006,"takeshil@gmail.com","lapa100",true);
+delete from bitacora where nro_bit="201";
+insert into bitacora values (201,"2021/10/26 18:44:00","cliente","compra",101);
+insert into bitacora values (301,"2021/11/03 15:30:00","cliente","compra",101);
+insert into bitacora values (401,"2021/11/25 13:45:00","cliente","compra",103);
+insert into bitacora values (501,"2021/12/22 17:47:00","cliente","compra",102);
+delete from nota_venta where nro_v="001";
+delete from nota_venta where nro_v="002";
+delete from nota_venta where nro_v="003";
+delete from nota_venta where nro_v="004";
+delete from nota_venta where nro_v="005";
+insert into Nota_venta values (001,"2021/10/26 15:30:00",250.5,true,101);
+insert into Nota_venta values (002,"2021/10/27 15:35:00",150,false,102);
+insert into Nota_venta values (003,"2021/10/27 16:30:00",120,true,103);
+insert into Nota_venta values (004,"2021/10/29 17:30:00",100.5,false,104);
+insert into factura values (1,111,"2021/10/29 17:30:00",8711805,100.5,004);
+insert into factura values (2,222,"2021/10/27 16:30:00",8622547,120,003);
+insert into factura values (3,333,"2021/10/27 15:35:00",8355627,150,002);
+insert into factura values (4,444,"2021/10/26 15:30:00",8512540,200.5,001);
+insert into categoria values(10,"accesorios de domótica");
+insert into categoria values(11,"videoportero");
+insert into categoria values(12,"cámara de seguridad");
+insert into Marca values (1000,"LOCPRO");
+insert into Marca values (1001,"KLOC");
+insert into Marca values (1002,"UNICOR");
+
+110
+
+insert into Marca values (1003,"SHP");
+insert into Marca values (1004,"SK");
+insert into Modelo values(50,"A7X ",1000);
+insert into Modelo values(51,"K300B3S ",1001);
+insert into Modelo values(52,"GR500-BW-CL",1002);
+insert into Modelo values(53,"SHP-13 GRISS",1003);
+insert into Modelo values(54,"SK-A803-02-NOS-GRIS",1004);
+INSERT INTO producto values
+(20,"videoportero",15,"marron",250,300,350,10,true,50,11);
+INSERT INTO producto values (21,"camara de
+seguridad",5,"negro",150,200,250,12,true,51,12);
+INSERT INTO producto values (22,"camara
+domo",20,"marron",200,250,300,10,true,52,12);
+INSERT INTO producto values (23,"camara
+bullet",10,"marron",250,300,350,10,true,53,12);
+INSERT INTO producto values
+(24,"PanelDeControlDomestico",20,"marron",250,300,350,10,true,54,10);
+insert into Detalle_Venta values (001,20,1,350,350,0);
+insert into Detalle_Venta values (002,21,1,250,250,null);
+insert into Detalle_Venta values (003,22,1,300,300,null);
+insert into proveedor values(70,"Juan carlos","barrio
+chino","elchino@gmail.com","10:00:00");
+insert into proveedor values(71,"Antonio carlos","barrio corea del
+norte","elchinito2@gmail.com","24:00:00");
+insert into nota_compra values (200,"2021/10/24 14:30:00",5000,70);
+insert into nota_compra values (201,"2021/10/25 08:30:00",1500,71);
+insert into Detalle_Compra values (20,200,20,250,5000);
+insert into Detalle_Compra values (21,201,10,150,1500);
+insert into telefono values (800,75265412,70);
+insert into telefono values (801,75263541,70);
+insert into telefono values (802,78265421,70);
+insert into telefono values (803,78521551,71);
+insert into telefono values (804,78215478,71);
+delete from tipo_servicio where id_ts="400";
+delete from tipo_servicio where id_ts="401";
+delete from tipo_servicio where id_ts="402";
+delete from tipo_servicio where id_ts="403";
+
+111
+
+insert into Tipo_servicio values(400,"servicio a domicilio","instalacion");
+insert into Tipo_servicio values(401,"servicio a domicilio","mantenimiento");
+insert into Tipo_servicio values (402,"servicio a domicilio","reparacion");
+insert into servicio values (900,"servicio a domicilio",150,001,20,101,400);
+insert into servicio values (901,"servicio a domicilio",150,002,21,102,402);
+insert into detalle_servicio values (900,001,150,"2021/10/26 15:30:00");
+insert into detalle_servicio values (901,002,150,"2021/10/27 15:35:00");
+
+5.2.5. Consultas
+1.
+
+2.
+
+3.
+
+112
+
+4.
+
+5.
+
+113
+
+6.
+
+7.
+
+8.
+
+114
+
+9.
+
+10.
+
+11.
+
+115
+
+12.
+
+13.
+
+14.
+
+116
+
+15.
+
+16.
+
+17.
+
+117
+
+18.
+
+19.
+
+20.
+
+118
+
+21.
+
+22.
+
+23
+
+119
+
+24.
+
+25.
+
+26.
+
+120
+
+27.
+
+28.
+
+29.
+
+121
+
+30.
+
+5.2.6. Procedimientos almacenados
+-- 1 pone el precio de venta unitario de un producto en el detalle de venta
+drop procedure pa_DV_PrecioU
+DELIMITER $$
+CREATE PROCEDURE pa_DV_PrecioU(in nro_vIN int, in id_prodIN int)
+BEGIN
+declare precioU float;
+set precioU = (select precio_v from producto where id_p = id_prodIN);
+update Detalle_Venta
+set precio_u = precioU
+where Detalle_Venta.nro_venta = nro_vIN and Detalle_Venta.id_prod = id_prodIN;
+END
+$$
+DELIMITER ;
+-- 2 pone el precio total de un producto en el detalle de venta
+drop procedure pa_DV_MontoTot
+DELIMITER $$
+CREATE PROCEDURE pa_DV_MontoTot(in nro_vIN int, in id_prodIN int)
+BEGIN
+declare precioU float;
+declare cant int;
+set precioU = (select precio_v from producto where id_p = id_prodIN);
+set cant = (select cantidad from Detalle_Venta where nro_venta = nro_vIN and
+id_prod = id_prodIN);
+update Detalle_Venta
+set monto_tot = precioU * cant
+
+122
+
+where Detalle_Venta.nro_venta = nro_vIN and Detalle_Venta.id_prod = id_prodIN;
+END
+$$
+DELIMITER ;
+
+-- 3 pone el monto total en la nota de venta
+drop procedure pa_NV_MontoTot
+DELIMITER $$
+CREATE PROCEDURE pa_NV_MontoTot(in nro_vIN int)
+BEGIN
+declare montoA float;
+set montoA = (select SUM(monto_tot) from Detalle_Venta where nro_venta =
+nro_vIN);
+update Nota_Venta
+set monto_tot = montoA
+where Nota_Venta.nro_v = nro_vIN;
+END
+$$
+DELIMITER ;
+-- 4 crea una nnueva nota de venta
+drop procedure nueva_NV
+DELIMITER $$
+CREATE PROCEDURE nueva_NV(in cliente int)
+BEGIN
+insert into nota_venta (fecha_v, monto_tot, estado, id_u) values(NOW(), 0,
+false, cliente);
+END
+$$
+DELIMITER ;
+-- 5 crea un nuevo detalle de venta
+drop procedure nueva_DV
+DELIMITER $$
+CREATE PROCEDURE nueva_DV(in nro_v int, in id_prod int, in cant int)
+BEGIN
+insert into detalle_venta values(nro_v, id_prod, cant, 0, 0, 0);
+call pa_DV_PrecioU(nro_v, id_prod);
+call pa_DV_MontoTot(nro_v, id_prod);
+call pa_NV_MontoTot(nro_v);
+END
+$$
+DELIMITER ;
+
+123
+
+-- 6 actualiza la cantidad y montos de un producto en un detalle de venta
+drop procedure modificar_DV
+DELIMITER $$
+CREATE PROCEDURE modificar_DV(in nro_ve int, in id_pro int, in cant int)
+BEGIN
+update detalle_venta set cantidad = cant where nro_venta = nro_ve and id_prod
+= id_pro;
+call pa_DV_MontoTot(nro_ve, id_pro);
+call pa_NV_MontoTot(nro_ve);
+END
+$$
+DELIMITER ;
+
+5.2.7. Disparadores (Triggers)
+1.
+delimiter $$
+create trigger actualizar_stock
+after
+insert
+on Detalle_Venta
+for each row
+begin
+update producto set producto.stock =producto.stock-new.cantidad where
+producto.id_p= new.id_prod;
+end$$
+delimiter $$;
+
+2.
+delimiter $$
+create trigger actualizar_stock_compra
+after
+insert
+on Detalle_Compra
+for each row
+begin
+update producto set producto.stock = producto.stock + new.cantidad where
+producto.id_p = new.id_p;
+end$$
+delimiter $$;
+
+124
+
+125
+
+5.3. Diseñar caso de uso
+
+13.2.1. Diagrama de Secuencia
+
+sd Secuencia Venta
+Vista Venta
+
+Venta Controller
+
+DetalleVenta
+
+NotaVenta
+
+Producto
+
+Cliente
+
+Personal
+
+Agregar()
+Registrar()
+obtener < id >()
+
+loop
+[se registrto la nota de venta]
+Registrar()
+
+Obtener ID()
+
+Obtener ID()
+
+Guardar()
+
+Buscar()
+Buscar()
+Obtener()
+
+Resultado()
+
+alt
+[solo si es administrador]
+Eliminar()
+Mostrar()
+
+<<destroy>>()
+
+126
+
+CU15. Gestionar Producto
+Objetivo:
+Permitir al usuario cliente listar productos según las preferencias y filtrados de
+información establecidas en el criterio de visualización.
+
+Descripción:
+El usuario solicita la visualización de los datos de productos y el sistema solicita las
+preferencias de búsqueda y los posibles filtros de información. El usuario establece
+unas determinadas preferencias y filtrados de información y el sistema recoge la
+petición y muestra una relación de productos, o categorías en su caso, que
+cumplen con las condiciones establecidas.
+
+127
+
+CU3. Gestionar Usuario
+
+Objetivo:
+Registrar como usuario cliente a un usuario no registrado y por lo tanto darle de alta
+en el sistema.
+
+Descripción:
+El usuario no registrado hace una petición de registro al sistema y el sistema solicita al
+usuario que introduzca los datos. El usuario introduce los datos requeridos y el sistema
+recoge los datos, previa validación y da de alta al usuario en el sistema.
+
+128
+
+CU7. Gestionar Cliente.
+Objetivo:
+Permitir al usuario cliente darse de baja del sistema.
+
+Descripción:
+El usuario registrado hace una petición para darse de baja del sistema como cliente
+y el sistema da de baja al cliente.
+
+129
+
+CU13. Gestionar Compra. (con el carrito)
+
+Objetivo:
+Permitir al usuario cliente añadir un producto a su carrito de la compra
+
+Descripción:
+El usuario añade los productos al carrito de la compra indicando el número de
+unidades que desea. El sistema añade la relación de productos al carrito de la
+compra.
+
+130
+
+CU21.Gestionar carrito de compra
+Objetivo:
+Permitir al usuario cliente visualizar el contenido actual del carrito en ese
+momento.
+
+Descripción:
+El usuario solicita al sistema ver el contenido de su carrito de la compra y e
+sistema muestra al usuario el contenido de su carrito.
+
+131
+
+CU21.Gestionar carrito de compra
+Objetivo:
+Permitir al usuario cliente eliminar un producto del carrito de la compra.
+Descripción:
+El usuario solicita al sistema eliminar de su carrito de la compra un producto, y
+el sistema lo elimina.
+
+132
+
+CU17. Gestionar Pedido
+
+Objetivo:
+Permitir al usuario cliente registrado realizar un pedido.
+
+Descripción:
+El usuario solicita al sistema realizar la compra de los productos existentes en
+su carrito de la compra. El sistema aplica los descuentos correspondientes y
+muestra el pedido actual con los datos del usuario y del carrito de la compra,
+después modifica si es necesario la categoría de cliente y genera un informe
+que será mandado al cliente con los datos de su pedido.
+
+133
+
+CU22.Validar Usuario
+
+Objetivo:
+Comprobar que el usuario cliente está registrado como tal en el sistema y por
+tanto tiene acceso a las operaciones propias de usuario cliente.
+Descripción:
+Un usuario realiza una petición de acceso al sistema. El sistema requiere la
+autentificación de este. El usuario se identifica ante el sistema y el sistema
+comprueba los datos, permitiendo su acceso al sistema.
+
+134
+
+CU15. Gestionar Producto
+
+Objetivo:
+Permitir al usuario administrador dar de alta un producto.
+
+Descripción:
+El usuario solicita al sistema realizar el alta de un nuevo producto, el sistema
+pide los datos referentes al producto y el usuario introduce los datos
+requeridos. El sistema recoge los datos, los valida y da de alta el producto en
+el sistema.
+
+135
+
+CU15. Gestionar Producto (también la parte de editar y eliminar en el sistema)
+
+Objetivo:
+Permitir al usuario administrador dar de baja un producto.
+Descripción:
+El usuario realiza la petición de baja al sistema para dar de baja un producto
+y el sistema da de baja el producto.
+
+136
+
+CU14. Gestionar Categoría
+
+Objetivo:
+Permitir al usuario administrador dar de baja una categoría en la categoría.
+
+Descripción:
+El usuario realiza la petición de baja al sistema para dar de baja una categoría
+y el sistema da de baja la categoría.
+
+137
+
+CU.23 Gestionar administrador
+
+Objetivo:
+Permitir al usuario administrador visualizar los datos personales que constan en
+el sistema acerca de él.
+
+Descripción:
+El usuario solicita al sistema realizar una consulta sobre sus datos. El sistema
+solicita las preferencias de visualización y los posibles filtros de información. El
+usuario establece unas determinadas preferencias y filtrados de información y
+el sistema recoge la petición y muestra la información requerida.
+
+138
+
+CU.24 Gestionar datos del administrador
+Todo lo que es crud en el apartado de la pagina(créate,read,update o editar
+y destroy o delete).
+Objetivo:
+Permitir al usuario administrador modificar sus datos personales.
+
+.
+
+139
+
+CU.25 Gestionar datos cliente
+
+Objetivo:
+Permitir al usuario cliente visualizar sus datos personales que constan en el
+sistema.
+
+Descripción:
+El usuario solicita al sistema realizar la consulta de sus datos personales y el
+sistema muestra los datos actuales del usuario.
+
+140
+
+CU.26 Gestionar Pago
+Objetivo:
+Permitir al usuario registrado, que va a llevar a cabo un pedido, elegir una
+forma de pago concreta.
+Descripción:
+El usuario solicita al sistema indicar el método de pago y el sistema solicita al
+usuario que indique el método de pago. El usuario establece el método de
+pago y el sistema guarda la forma de pago.
+
+141
+
+6. FLUJO DE TRABAJO: IMPLEMENTACION
+6.1 Elección de plataforma de desarrollo del Software
+
+6.1.1. Lenguaje de programación
+PHP (acrónimo recursivo de PHP: Hypertext Preprocessor) es un
+lenguaje de código abierto muy popular especialmente adecuado para el
+desarrollo web y que puede ser incrustado en HTML.
+6.1.2. Base de Datos
+MySQL es un sistema de gestión de base de datos relacional (RDBMS)
+de código abierto, basado en lenguaje de consulta estructurado (SQL).
+Este software se utilizó como motor de base de datos y utilizado como
+servidor para conectar el software administrador de base de datos
+DBEAVER que utiliza la interfaz de programación de aplicaciones (API)
+JDBC para interactuar con las bases de datos a través de un controlador
+JDBC.
+6.1.3. Sistemas Operativo
+Windows 8 y 10
+
+6.1.4. Otros
+Laravel es un framework de código abierto para desarrollar aplicaciones
+y servicios web con php 5.x. Tiene como objetivo ser un framework que
+permita el uso de una sintaxis elegante y expresiva para crear código de
+forma sencilla y permitiendo multitud de funcionalidades. Laravel
+propone en el desarrollo usar 'Routes with Closures', en lugar de un MVC
+tradicional con el objetivo de hacer el código más claro. Aun así
+permite el uso de MVC tradicional.
+Es una biblioteca multiplataforma o conjunto de herramientas de código
+abierto para diseño de sitios y aplicaciones web. Contiene plantillas de
+diseño con tipografía, formularios, botones, cuadros, menús de
+navegación y otros elementos de diseño basado en HTML y CSS, así
+como extensiones de JavaScript adicionales. A diferencia de muchos
+frameworks web, solo se ocupa del desarrollo front-end.
+142
+
+6.2. Implementación de la arquitectura del Sistema
+6.2.1. Diagrama de componente principal del sistema
+
+143
+
+6.3. Implementación de la arquitectura del subsistema
+6.3.1. Realizar diagrama de componente de cada paquete
+
+144
+
+145
+
+7. CONCLUSION
+Con este Proyecto para la empresa de compra y ventas de accesorios de
+seguridad “SMARTPLUSSHOUSE” pudimos detallar todos los aspectos
+necesarios para un página web de una tienda logrando cumplir todos los
+casos de usos dichos anteriormente.
+Asi mismo pudimos realizar el sistema web completo propuesto en la
+documentación pero para esto fue necesario las siguientes herramientas
+como: heroku para subir a un servidor(a la nuve) para la base de datos
+utilizamos postgresql, uso del esqueleto html, para la decoración y los
+aspectos detallados css, bootstap, js, también hemos utilizado para los
+diagramas de la documentación y el scipt
+ArgoUML para el diseño de los diagramas, para la documentación y los
+distintos diagramas hemos usado Enterprisearchitect como también
+LucidChartApp que nos facilito bastante al momento de realizar los distintos
+diagramas para la documentación.
+Hemos logrado concluir con éxito este proyecto propuesto por el equipo
+organizándonos bien respecto a la documentación y el sistema web, el grupo
+ha trabajado con sus respectivas tareas y así fue como pudimos completar el
+sistema web y la documentación propuesto en nuestra documentación.
+Queremos también agradecer a la Ing. Angélica Garzón C. por las
+oportunidades dada en el transcurso del proyecto, las indicaciones y las
+dudas para asi poder fulminar el proyecto propuesto al inicio de la materia.
+
+8. RECOMENDACIÓN
+Respecto al proyecto en general es recomendable tener conocimientos
+previos sobre los distintos lenguajes de programación web como también
+tener un grupo responsable para las tareas de documentación y la
+programación tanto como front-end y back-end del sistema web.
+
+146
+
+Hay que hacer las distintas actualizaciones al sistema web como la api de
+google, la geolocalización, etc. Para mantener nuestra pagina web en
+optimas condiciones para el usuario y no encontrar fallas al momento de
+hacer los pedidos de los distintos productos de la empresa
+“SMARTPLUSSHOUSE”
+
+9. BIBLIOGRAFIA
+https://www.lucidchart.com/pages/es/que-es-el-lenguaje-unificado-demodelado-uml
+https://laravel.com/docs/8.x/readme
+https://www.youtube.com/watch?v=pAH67tgEcpU
+https://www.youtube.com/watch?v=gkgaLqCySzg
+https://www.youtube.com/watch?v=0E3xJT1Qxic
+https://spatie.be/docs/laravel-activitylog/v4/introduction
+https://spatie.be/index.php/docs/laravel-permission/v5/introduction
+Enterprise Architect UML - Logic Studio Desarrollo Web, Móvil, Sharepoint
+
+ANEXOS
+
+SHP-13 GRISS
+Bs. 2714
+
+SK-A803-02-NOS-GRIS
+Bs. 245.00
+
+147
+
+CB100B2
+Bs. 1.500
+
+A7X
+Bs. 5.570
+
+GR500-BW-CL
+BS. 2.200
+
+K300B3S
+Bs. 2500
+
+148
+
+

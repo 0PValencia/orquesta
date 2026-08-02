@@ -1,0 +1,2936 @@
+﻿UNIVERSIDAD AUTÓNOMA GABRIEL RENÉ MORENO
+GRUPO “G”
+
+SISTEMA DE INFORMACION PARA EL REGISTRO E INSCRIPCION DE ESTUDIANTES, REGISTRO DE NOTAS BIMESTRALES Y ANUALES Y CONTROL DE MENSUALIDADES PARA LA UNIDAD EDUCATIVA “MATEO KULJIS ILLIC”
+GRUPO: G
+INTEGRANTES: 
+Laime Navia Carlos Alberto
+Choque Zacarias Henry Eddy
+Pérez Gómez Wilfredo
+
+MATERIA: Sistemas de Información l   
+SIGLA: INF 342   
+
+                          Santa Cruz – Bolivia
+Contenido
+1.- PERFIL	5
+1.1 ASPECTOS GENERALES	5
+1.1.1 INTRODUCCIÓN	5
+1.1.2 ANTECEDENTES	7
+1.1.3 JUSTIFICACIÓN	8
+1.1.4 DESCRIPCIÓN DEL PROBLEMA	8
+1.1.5 FORMULACIÓN DEL PROBLEMA	10
+1.1.6 OBJETIVOS	10
+1.6.1.- OBJETIVO GENERAL	10
+1.6.2.- OBJETIVOS ESPECÍFICOS	10
+1.2 ELEMENTOS DEL SISTEMA BASADO EN COMPUTADORAS	15
+1.2.1 HARDWARE	15
+1.2.1.1 SERVIDOR	15
+1.2.1.2 CLIENTE	16
+1.2.1.3 MEDIOS DE COMUNICACIÓN	16
+1.2.1.4 OTROS DISPOSITIVOS	16
+1.2.2 SOFTWARE	16
+1.2.2.1 SERVIDOR	16
+1.2.2.2 CLIENTE	16
+1.2.2.3 OTRO SOFTWARE ADICIONAL	16
+1.2.3 DATOS	17
+1.2.4 PROCESOS	17
+1.2.5 GENTE/USUARIO	18
+1.2.6 DOCUMENTO	18
+1.3 TECNOLOGÍA PARA EL DESARROLLO DEL SOFTWARE	18
+1.3.1 Estrategia para el desarrollo de software	18
+1.3.2 Metodología para el desarrollo del Software	19
+1.3.2.1 CARACTERÍSTICAS DEL PUDS	19
+1.3.2.2 CARACTERÍSTICAS DE UML	22
+1.3.3 HERRAMIENTAS DE DESARROLLO	23
+1.3.3.1 SOFTWARE	23
+1.3.3.2 HARDWARE	23
+1.4 POSIBLES COSTOS	23
+1.5 POSIBLES BENEFICIOS	24
+1.5.1 TIEMPO	24
+1.5.2 ESFUERZO	24
+1.5.3 COSTOS	24
+1.6 POSIBLES CLIENTES	24
+2 MODELO DE DOMINIO	25
+2.1IDENTIFICAR LAS CLASES	25
+2.2 IDENTIFICAR LAS RELACIONES ENTRE CLASES	34
+2.3 DIAGRAMA DE CLASES	39
+3. MODELO DE NEGOCIO	41
+4. METODO DE ISHIKAWA	45
+4.1 IDENTIFICAR PROBLEMAS	45
+4.1.1 LISTA DE PROBLEMAS	46
+4.1.2 DEPURAR PROBLEMAS	46
+4.1.3 LISTA DE PROBLEMAS FINALES	47
+4.1.4 PROPIETARIOS DE PROBLEMAS	47
+4.1.5 ANÁLISIS DE PROBLEMAS	49
+4.1.6 ESTIMACIÓN Y CUANTIFICACIÓN DEL PROBLEMA	49
+4.1.7 ALTERNATIVAS DE CAMBIO	51
+4.1.8 CONCLUSIÓN Y RECOMENDACIÓN	52
+4.1.9 DISEÑAR EL DIAGRAMA DE ISHIKAWA	52
+4.2 IDENTIFICAR PRINCIPALES CATEGORÍAS	53
+4.2.1 DESCRIBIR CADA CATEGORÍA	53
+4.3 IDENTIFICAR LAS CAUSAS	54
+5 FLUJO DE TRABAJO: CAPTURA DE REQUISITOS	55
+5.1 ENCONTRAR ACTORES Y CASOS DE USO	55
+Lista de casos de uso	56
+5.2 PRIORIZAR CASOS DE USO	57
+5.3 DETALLAR UN CASO DE USO	58
+5.3.1 CU1: GESTIONAR USUARIO	58
+5.3.2 CU2: GESTIONAR DOCENTE	60
+5.3.3 CU3: GESTIONAR ESTUDIANTE	62
+5.3.4 CU4: INICIAR SESIÓN	64
+5.3.5 CU5: CERRAR SESIÓN	65
+5.3.6 CU6: GESTIONAR MODULOS	66
+5.3.7 CU7: GESTIONAR AULAS	68
+5.3.8 CU8: GESTIONAR HORAS	69
+5.3.9 CU9: GESTIONAR TURNOS	70
+5.3.10 CU:10: GESTIONAR NIVELES	71
+5.3.11 CU11: GESTIONAR ÁREA DE CONOCIMIENTOS	72
+5.3.12 CU12: GESTIONAR FUNCIONALIDADES	73
+5.3.13 CU:13 GESTIONAR PERSONAS.	75
+5.3.14 CU14: GESTIONAR GESTIONES.	76
+5.3.15 CU15: GESTIONAR PERIODOS.	78
+5.3.16 CU16: GESTIONAR MATERIAS.	80
+5.3.17 CU17: GESTIONAR GRADOS.	81
+5.3.18 CU18: GESTIONAR INSCRIPCIÓN.	82
+5.3.19 CU19: GESTIONAR NOTAS.	83
+5.3.20 CU20: GESTIONAR HORARIOS	84
+5.3.21 CU21: GESTIONAR PERFILES.	85
+5.3.22 CU22: GESTIONAR GRUPOS.	86
+5.4 PROTOTIPAR INTERFAZ DE USUARIO	87
+5.5 ESTRUCTURAR MODELO DE CASOS DE USO	87
+6 FLUJO DE TRABAJO: ANALISIS	88
+6.1 ANÁLISIS DE LA ARQUITECTURA	88
+6.2 ANALIZAR UN CASO DE USO	88
+6.3 ANÁLISIS DE CLASE	88
+6.4 ANÁLISIS DE PAQUETE	88
+7 FLUJO DE TRABAJO: DISEÑO	88
+7.1 DISEÑO DE ARQUITECTURA	88
+7.1.1 DISEÑO FÍSICO (DIAGRAMA DE DESPLIEGUE)	88
+7.1.1 DISEÑO LÓGICO (DIAGRAMA ORGANIZADO EN CAPAS)	88
+7.2 DISEÑO DE DATOS	89
+7.2.1 DISEÑO DE DATOS LÓGICO	89
+7.2.2 DISEÑO DE DATOS FÍSICO	92
+7.3 DISEÑAR CASO DE USO	103
+8 FLUJO DE TRABAJO: IMPLEMENTACION	103
+8.1 ELECCIÓN DE PLATAFORMA DE DESARROLLO DEL SOFTWARE	103
+8.2 IMPLEMENTACIÓN DE LA ARQUITECTURA DEL SISTEMA	103
+8.3 IMPLEMENTACIÓN DE LA ARQUITECTURA DEL SUBSISTEMA	103
+9 CONCLUSION	103
+10 RECOMENDACIÓN	103
+11BIBLIOGRAFIA	103
+A)	ENTREVISTAS	103
+
+
+1.- PERFIL
+1.1 ASPECTOS GENERALES
+1.1.1 INTRODUCCIÓN
+Vivimos en la sociedad de la información. Las tecnologías de la información (TICs) están por todas partes. En el ámbito educativo, las asociamos principalmente con su presencia en el aula o en los hogares de los estudiantes. Computadoras, impresoras, pizarrones interactivos, internet y contenidos pedagógicos digitales son manifestaciones de esa omnipresencia.
+Paradojalmente, los sistemas de información educativos en Bolivia carecen de la información necesaria para priorizar y focalizar sus inversiones educativas, debido a que no se aprovechan plenamente las TICs a la hora de ejecutar los procesos administrativos del sistema y de organizar la información que diariamente se genera y que debería nutrir la toma de decisiones, tanto tácticas como estratégicas.
+Los procesos y herramientas con las que actualmente se gestiona la información tienen un grado de automatización muy bajo, lo cual redunda en una muy baja eficiencia y efectividad, a la vez que no permiten el monitoreo de los indicadores de desempeño por parte de los gestores del sistema.
+Los sistemas educativos exitosos aseguran la disponibilidad de la información necesaria para identificar oportunidades de mejora, mediante un tipo de herramientas conocidas como EMIS: Education Management Information System. Este tipo de sistemas permiten gestionar (capturar, procesar, analizar y reportar) toda la información relativa a los estudiantes (registro, evaluaciones formativas, calificaciones periódicas, exámenes, datos de los padres), escuelas (ubicación, tipo, infraestructuras disponibles, programas brindados, etc.), clases, planes de estudio y docentes.
+En este contexto nosotros apuntamos a mejorar la calidad del sistema de gestión educativa del Colegio Mateo kuljis ilic. Esta institución se encarga de formar jóvenes cristianos, inculcando valores y principios para llevar una relación social basada en la sencillez, serenidad, confianza y perdón. Unifica la eficiencia educativa en la participación de todos en actividades religiosas, artísticas, culturales, recreativas y sociales, como expresión y desarrollo de sus posibilidades.
+La unidad educativa cuenta con 3 niveles:
+Kínder, Primaria y Secundaria.
+Los cuales cada nivel tiene su propia instalación y personal con dos turnos distintos: mañana y tarde, Cada instalación cuenta con su propio portero y guardia de seguridad para mantener limpia y segura para los alumnos y profesores.
+Nuestro grupo de trabajo llevará la tarea de desarrollar un Sistema de Información propio y autónomo de esta Institución, que permitirá facilitar el trabajo de matriculación de los estudiantes en la Unidad Educativa, organizar y modificar los horarios para las materias de cada curso, proceso que se llevaba de forma manual y desordenada, registrar notas y llevar un control más correcto de estas mismas a través de las consultas a las bases de datos.
+Los padres de familia y estudiantes podrán realizar un seguimiento de sus notas a través del primer sitio web oficial de la Unidad Educativa además tendrán la posibilidad de tener mejor cercanía y compromiso con la institución, enterarse de las novedades y actividades que se desarrollarán en el colegio. Por esto proponemos el desarrollo de este proyecto, teniendo en cuenta todos los procesos que conllevan en un sistema de información educativa. 
+
+1.1.2 ANTECEDENTES
+En 1985 nace la Unidad Educativa “Mateo Kuljis Ilic” gracias a la iniciativa de la comunidad de Campo Rosa y el apoyo de las autoridades educativas de aquel entonces y la solidaridad del Sr. Mateo Kuljis Ilic, respondiendo a la necesidad sentida de contar con ambientes educativos. Poco a poco se fueron construyendo las aulas que iban cubriendo los requerimientos de la población estudiantil.
+En abril de 1999, la Parroquia “Cristo mensajero de la paz” asume la administración de la unidad educativa en convenio entre la iglesia y el estado, iniciando un trabajo más organizado que permita elevar el nivel de enseñanza aprendizaje bajo la orientación del proyecto educativo institucional y la mejora de la infraestructura, llegando a inaugurar las nuevas instalaciones para el nivel inicial en octubre de 2001, en julio del 2002 para el nivel secundario Técnico-Humanístico y en septiembre del 2006 para el nivel primario con la administración de la parroquia y los “Médicos alemanes para el tercer mundo”.
+Con la finalidad de seguir mejorando el nivel educativo se llevó a acabo el 2005 una autoevaluación institucional que permitió reflexionar sobre nuestra práctica, reconociendo las fortalezas y debilidades, abriendo el camino para la reformulación del PEI(Proyecto Educativo Institucional).
+MISIÓN. – Ser un centro educativo de prioridad para la comunicación de la zona parroquial, capaz de desarrollar el pensamiento analítico, crítico y creativo de lecto escritura, cálculo y técnica nivel medio, que fomente la cultura, la capacitación especializada y la democracia participativa con la identidad cristiana.
+VISIÓN. - Formar integrantes a niños y jóvenes desarrollando conocimientos sólidos, basados en principios y valores cristianos capaces de resolver sus propios problemas y enfrentar las exigencias del avance de la ciencia y la tecnología, aportando en la construcción de una sociedad justa y solidaria.
+
+1.1.3 JUSTIFICACIÓN
+Nuestro grupo de trabajo desarrollará el Sistema de Información Educativa del Colegio Mateo Kuljis Ilic luego de haber estudiado los siguientes motivos:
+El actual Sistema de Información Educativa “SIE” (Sistema de Información Educativa) el cual es administrado y regulado por el Ministerio de Educación, presenta restricciones y limitaciones en los procesos de inscripción al iniciar la gestión escolar y en el registro de notas de los estudiantes al culminar cada trimestre y gestión escolar. 
+La recolección de estos datos debe darse de manera organizada, segura y concretarse con la mayor rapidez posible. Estos aspectos son el punto débil en esta Unidad Educativa ya que la obtención de los mismos se lleva a cabo con el programa “Excel” el cual definitivamente no es la opción más óptima y estable para almacenar grandes cantidades de información.
+
+1.1.4 DESCRIPCIÓN DEL PROBLEMA
+Un Sistema de información es desarrollado para ayudar a una institución a mejorar, organizarse y sobresalir en diferentes aspectos.  Para comenzar a desarrollar un sistema de información debe existir una razón o problemática que ayude a entender mejor el fin al que se quiere llegar.
+El Sistema de Información para la matriculación de estudiantes de la Unidad Educativa Mateo Kuljis Ilic, ha estado en gestión por varios años. Al pasar el tiempo la tecnología ha ido avanzando exponencialmente y por lo tanto requiere que el sistema se implementen nuevas tecnologías para evitar que se vuelvan obsoletos y poco eficaz para su operación.
+De tal manera se observó muchas de las falencias y fallas operativas por las cuales están atravesando diversas U.E, las mismas que necesitan la implementación de un sistema de información, todo su flujo de información y recolección de datos es manual, el procedimiento del manejo de la información que hasta ahora se viene ejecutando trae consigo la dificultad en cuanto a proceso: de administración, control y seguimiento de la información, los procesos también se realizan de forma manual o en caso migrados a hojas electrónicas de Excel, que tampoco están bien organizadas y guardadas de manera correcta.
+A pesar de los beneficios presentados que podrían servir como una alternativa para mitigar el problema, la U.E aún no dispondría de un sistema que ayude en la organización de sus principales procesos. De este modo, en base a la entrevista realizada, se halló que la dificultad que presenta su actual estado tendría entre sus efectos inmediatos, los retrasos y complicaciones en los procesos de inscripción.
+
+* Proceso de administración. - El objetivo de este requerimiento es administrar los permisos que tendrán los usuarios y controlar su acceso a cada una de las ventanas del sistema.
+*Proceso de alumnos. - Se ingresarán los datos personales de los estudiantes, para posterior asignación de grados y distribución de paralelos. Se ingresarán los datos personales de los estudiantes, para posterior asignación de grados y distribución de paralelos.
+*Proceso de Docentes. - Se ingresarán los datos personales de los profesores, para posterior asignación de grados.
+*Proceso de calendarios y horarios. - Se encargará de generar y administrar los grados con sus horarios, durante los periodos académicos.
+*Proceso de Gestión Escolar. - Dentro de este Proceso el sistema permitirá realizar las inscripciones de los alumnos
+*Proceso de informes y consultas. - Generará la impresión de reportes solicitados por la institución.
+
+1.1.5 FORMULACIÓN DEL PROBLEMA
+Desarrollar un sistema de información del colegio que permita la inscripción de los estudiantes en su respectivo grado, turno y gestión escolar, el registro de sus notas para cada asignatura que cursen, registro del plantel docente, generar el horario escolar para cada curso del nivel primario y secundario de la Unidad Educativa Mateo Kuljis Ilic.
+
+1.1.6 OBJETIVOS
+        	1.6.1.- OBJETIVO GENERAL
+Desarrollar un sistema de información para gestionar la inscripción y el registro de las notas de los estudiantes del colegio Mateo Kuljis Ilic.
+
+1.6.2.- OBJETIVOS ESPECÍFICOS
+·         	Recolectar información sobre el Colegio Mateo Kuljis Ilic, mediante la entrevista al director de esta prestigiosa unidad educativa, para poder comenzar el desarrollo del sistema.
+    • Analizar minuciosamente la información recolectada para detectar los elementos, características, funciones y el modelo que tendrá nuestro sistema.
+    • Diseñar el sistema apropiado que satisfaga las necesidades expuestas en los anteriores puntos, se realizará utilizando el Lenguaje Unificado de Modelado (UML).
+·   Implementar la interfaz del software acorde a los requerimientos de los usuarios, para esto se desarrollará una página web con las herramientas de desarrollo principales del Front End (HTML, CSS y JAVASCRIPT).
+·    Implementar la base de datos, ésta se realizará en el gestor de base de datos MySQL.
+·   Para conectar la página web y la base de datos utilizaremos php con el framework “Laravel”.
+ 
+ 1.7.- ALCANCE
+El sistema tiene como finalidad llevar a cabo el proceso de inscripción de los estudiantes, guardar y respaldar la información de los datos personales de docentes y estudiantes, notas trimestrales y gestionar la información en cada nuevo ciclo escolar. Es por eso que en el sistema se implementarán los siguientes módulos:
+    • Módulo Usuario 
+Estos son los usuarios que tendrán acceso al sistemas de los cuales se almacenarán los siguientes datos: cédula de identidad ,  nombres ,primer apellido, segundo apellido , direccion , numero de celular 
+    • Registrar Usuario: Registrará nuevos usuarios administradores del sistema a los cuales se les asignará un nombre de usuario y contraseña para poder acceder y tener control del sistema.
+    • Modificar Usuario: Permitirá modificar los datos personales y contraseñas de los usuarios administradores registrados.
+    • Eliminar Usuario: Con esta función se darán de baja del sistema a los usuarios.
+
+    • Módulo Docente
+Con este módulo se gestionarán a los docentes antiguos y nuevos que acompañen la gestión escolar.
+    • Registrar Docente: De los docentes se almacenarán los siguientes datos: cédula de identidad , el nombre ,primer apellido, segundo apellido , dirección , número de celular y su Código RDA.
+    • Modificar Usuario: En caso de algún error en el registro de datos, este procedimiento podrá alterar la información de los datos personales.
+    • Eliminar Docente: Con esta función se darán de baja del sistema a los docentes.
+    • Gestionar Perfil/Docente: Permitirá asignar a los docentes un nombre de usuario y una contraseña para que puedan tener acceso a ciertos módulos y funcionalidades del sistema (registro de notas).
+    • Módulo Estudiante
+Con este módulo se gestionan a los estudiantes antiguos y nuevos en una gestión escolar.
+    • Registrar Estudiante: De los estudiantes se almacenarán los siguientes datos como la cédula de identidad , el nombre ,primer apellido, segundo apellido , dirección , número de celular ,y el Código Rude de cada estudiante en particular.
+    • Modificar Estudiante: En caso de algún error en el registro de datos, este procedimiento podrá alterar la información de los datos personales.
+    • Eliminar Estudiante: Con esta función se darán de baja del sistema a los estudiantes.
+    • Gestionar Perfil/Estudiante: Permitirá asignar a los estudiantes un nombre de usuario y una contraseña para que puedan tener acceso a ciertos módulos y funcionalidades del sistema (consultar notas trimestrales y finales).
+    • Módulo Inscripción
+Este módulo tendrá la función inscribir a los estudiantes en un curso dentro de una gestión escolar vigente.
+El sistema detectará los cursos que se ofertan y también a los estudiantes registrados en el sistema. Se buscará a los estudiantes por su carnet de identidad o RUDE y a las materias por su código para poder relacionar la información de estas dos fuentes y procesar la inscripción.
+    • Módulo Área de Saberes y Conocimientos
+Permitirá el registro de los Campos de Saber y sus Áreas (Materias) pertenecientes, de acuerdo a lo establecido a la actual Ley de Educación Vigente.
+    • Gestionar Campo de Saber: Con esta función se podrán agregar, modificar o eliminar Campos de Saber.
+    • Gestionar Área: Con esta función se podrán agregar, modificar o eliminar las materias que se dictan en la Unidad Educativa.
+        ◦ Asignar Docente: Asignaremos a las materias los docentes registrados en el sistema que dictarán las mismas.
+    • Modulo Boleta de Horario
+Se les dará un horario a todos los cursos del colegio y los estudiantes que contará con toda esta información:
+    • Estudiante: Se mostrará el nombre completo del estudiante.
+    • Grado: Se mostrará el Grado del estudiante (Ejemplo: Primero).
+    • Nivel:  Se mostrará junto al grado del estudiante (Ejemplo: Secundaria).
+    • Turno: Se mostrará el turno del estudiante (Ejemplo: Tarde).
+    • Gestión: Se mostrará para identificar que los datos sean del año que quiera ver el estudiante (Ejemplo: 2020).	
+    • Periodo de clase: Se mostrarán periodos con horas definidas para que se muestre un horario en orden (Ejemplo: 7:00-8:30).
+    • Horario: Se mostrarán las materias ordenadas por día, período y receso si la unidad educativa lo desea.
+    • Módulo Notas
+En este módulo se realiza el registro de notas de todos los estudiantes inscritos en los diferentes turnos y niveles. En este módulo los docentes, estudiantes o usuarios del sistema acceden a ciertas funciones dependiendo del perfil que tengan.
+    • Habilitar/Deshabilitar registro de Notas: Esta función es exclusiva de los usuarios administradores del sistema en la cual podrán habilitar y deshabilitar el proceso de subir notas trimestrales.
+    • Ingresar/Modificar Notas: Los docentes tienen acceso a esta funcionalidad en la cual ingresarán o modificarán las notas de los estudiantes que se encuentren inscritos en un curso. El ingreso de notas en un trimestre se realizará siempre y cuando los usuarios del sistema hayan habilitado la funcionalidad para subir notas en dicho trimestre. Un docente puede enseñar en más de un curso, por lo cual tendrá un listado de cursos y el docente elegirá en cuál de ellos ingresará notas al sistema.
+    • Consultar Notas: Los estudiantes podrán visualizar un boletín de sus notas trimestrales y anuales agrupados por materias.
+    • Módulo Materias
+Este módulo tendrá las siguientes funcionalidades: 
+    • Asignar Docente: Asignaremos a las materias los docentes registrados en el sistema que dictarán las mismas.
+    • Asignar Cursos: Permitirá relacionar las materias que un curso debe llevar.
+
+
+    • Módulo Gestión de Año Escolar
+Almacenará todos los registros de los pasados ciclos escolares en la Unidad Educativa
+    • Mostrar Año: Permitirá consultar el año de la gestión escolar del cual se desea revisar la información almacenada con respecto a las siguientes funciones:
+        ◦ Mostrar Áreas de Conocimiento: Mostrará la información de los Campos de Saber y sus Áreas de Conocimiento que se cursaron en dicho año escolar.
+        ◦ Mostrar Docentes: La función devolverá un listado de los docentes que ejercieron su labor en aquel año y la o las materias que enseñaron.
+        ◦ Mostrar Cursos: La función devolverá la información ligada a cada uno de los cursos que se registraron en el año establecido. Dentro de cada curso se podrán realizar las siguientes consultas:
+            ▪ Mostrar Estudiantes: Se mostrará el listado de los estudiantes inscritos en ese curso.
+            ▪ Mostrar Notas: Se devolverá un registro de las notas trimestrales y anuales de los estudiantes de dicho curso.
+
+
+
+                                           	
+1.2 ELEMENTOS DEL SISTEMA BASADO EN COMPUTADORAS
+1.2.1 HARDWARE
+1.2.1.1 SERVIDOR
+Configuraciones de hardware mínima
+    • Windows 7 Ultímate
+    • Procesador Core i3
+    • Memoria RAM 2 GB
+    • Espacio de Disco 500 GB.
+    • Conexión a internet 1MB.
+ 1.2.1.2 CLIENTE
+    • Procesador 2.5 (GHz) recomendado procesadores duales con una velocidad de 3 GHz.
+    • Memoria RAM 2 GB recomendado 4 GB o más.
+    • Disco con partición formateada con 3 GB de espacio disponible en disco como mínimo.
+    • Tarjeta de Red con conector RJ45.
+1.2.1.3 MEDIOS DE COMUNICACIÓN
+    • Router o Datos Móviles para el uso de Datos
+    • Un navegador Web
+ 1.2.1.4 OTROS DISPOSITIVOS
+    • Mouse
+    • Teclado
+1.2.2 SOFTWARE
+1.2.2.1 SERVIDOR 
+    • Servidor Web: Apache
+    • Motor de base datos: MySQL.
+    • Editor de Base de Datos: PHP con Framework Laravel.
+    • Programación Web: PHP, HTML5, CSS
+
+1.2.2.2 CLIENTE
+    • Sistema Operativo: Windows 10
+    • Navegador: Google Chrome/Firefox/Opera/etc.
+    • Documentación del Proyecto: Opera Office/Office										
+1.2.2.3 OTRO SOFTWARE ADICIONAL 
+Algún software que realice copias de seguridad programadas según el uso del programa.
+Entre estos se encuentran: Cobian Backup, Nero BackItUp 11 y otros más que podemos encontrar.
+1.2.3 DATOS
+Todo sistema de información tiene como objetivo manejar datos, para este caso los datos a manejar serán:
+
+Persona. - (Carnet de Identidad, Nombre Completo, Dirección, Número de Celular)
+Docente. - (Código RDA)
+Alumno. - (Código RUDE, ID curso)
+Usuario. - (Usuario, Contraseña)
+Pago. - (Matrícula y Mensualidades)
+Grupo /Curso. - (ID del Curso, Nombre del Grado, Turno, Nro de Aula 
+Gestión, Horario)
+1.2.4 PROCESOS
+Registro: En este proceso se registran a las personas como estudiante, docente o usuario (secretarias y administradores del sistema). Todos los estudiantes, docentes y usuarios se los registrará con sus datos personales más relevantes (nombres y apellidos paterno y materno, carnet de identidad, certificado de nacimiento, código RUDE (en el caso de los estudiantes), código RDA (en el caso de los docentes), dirección de su domicilio y número de teléfono o celular. El encargado de gestionar este proceso son las secretarias y administradores (usuario) que podrán registrar, eliminar o modificar los registros. Ellos también asignarán el nombre de usuario y contraseña de los docentes y estudiantes para el ingreso al portal del colegio.
+Asignación Docente/Materia: Los administradores del sistema asignarán uno o más docentes a una materia dentro de una gestión escolar activa. 
+Subir Notas: Los docentes de cada materia se encargarán de subir las notas bimestrales y finales de sus estudiantes en los cursos que ellos imparten clases dentro de una gestión escolar.
+Gestión: Es la administración de los anteriores procesos tomando en cuenta el año en el que se llevan a cabo. El registro de estudiantes y docentes y el proceso de subir notas varían en el transcurso de los años ya que los datos son alterados constantemente al finalizar y empezar un nuevo año escolar.
+Login: Los estudiantes, docentes y usuarios ingresarán al sistema con un nombre de usuario y una contraseña asignados por los administradores del sistema. Este sistema está clasificado por perfiles de acuerdo al tipo de usuario que ingrese (estudiante, docente o usuario), cada perfil tiene diferentes funcionalidades. 
+1.2.5 GENTE/USUARIO
+El equipo que desarrolla este sistema de información está conformado por:
+    • Carlos Alberto Laime Navia
+    • Wilfredo Perez Gomez	
+    • Henry Eddy Choque Zacarias
+1.2.6 DOCUMENTO
+El sistema debe generar: 
+    • Una boleta de inscripción de cada estudiante.
+    • Un boletín de notas bimestral de cada estudiante.
+    • Una nota de asignación docente - materia.
+1.3 TECNOLOGÍA PARA EL DESARROLLO DEL SOFTWARE 
+Se utilizará el proceso unificado de desarrollo de software (PUDS), el cual es el conjunto de actividades necesarias para transformar los requisitos de un usuario en un sistema de software, el proceso unificado es más que un simple proceso, es un marco de trabajo genérico que puede utilizarse para una gran variedad de sistemas software, para diferentes áreas de aplicación, diferentes tipos de organizaciones. Diferentes niveles de aptitud y diferentes tamaños de proyectos.
+1.3.1 Estrategia para el desarrollo de software
+Habiendo recolectado la documentación requerida para el conocimiento de funcionamiento de la Entidad a la cual se aplica el Sistema, y así lograr la creación del producto; el desarrollo de este Sistema de Información tendrá un enfoque centrado en dos herramientas de análisis y diseño: El Proceso Unificado de Desarrollo de Software (PUDS) y el Lenguaje Unificado de Modelado (UML).  
+1.3.2 Metodología para el desarrollo del Software 
+1.3.2.1 CARACTERÍSTICAS DEL PUDS
+EL PROCESO UNIFICADO ESTA DIRIGIDO POR CASOS DE USO
+Para construir un sistema con éxito debemos conocer lo que sus futuros usuarios necesitan y desean.
+El termino usuario no solo hace referencia a usuarios humanos sino a otros sistemas. En este sentido, el termino usuario representa alguien o algo que interactúa con el sistema que estamos desarrollando.
+Un caso de uso es un fragmento de funcionalidad del sistema que proporciona al usuario un resultado importante. Los casos de uso representan los requisitos funcionales. Todos los casos de uso juntos constituyen el modelo de casos de uso el cual describe la funcionalidad total del sistema.
+EL PROCESO UNIFICADO ESTA CENTRADO EN LA AQUITECTURA
+El concepto de arquitectura software incluye los aspectos estáticos y dinámicos más significativos del sistema. La arquitectura surge de las necesidades de la empresa, como las perciben los usuarios, y los inversores, y se refleja en los casos de uso. Sin embargo, también se ve influida por muchos otros factores, como la plataforma en la que funcionar el software. El proceso ayuda al arquitecto a centrarse en los objetivos adecuados, como la compresibilidad, la capacidad de adaptación al cambio, y la reutilización.
+Debe haber interacción entre los casos de uso y la arquitectura.
+Tanto la arquitectura como los casos de uso deben evolucionar en  paralelo.
+Los arquitectos moldean el sistema para darle una forma, podemos decir que el arquitecto:
+·       Crea un esquema en borrador de la arquitectura, comenzando por la parte de la arquitectura que no es especifica de los casos de uso
+·       A continuación, el arquitecto trabaja con un subconjunto de los casos de uso especificados, con aquellos que representen las funciones clave del sistema en desarrollo
+·       A medida que los casos de uso se especifican y maduran, se descubre más de la arquitectura. Esto, a su vez, lleva a la maduración de más casos de uso.
+Este proceso continua hasta que se considere que la arquitectura es estable.
+EL PROCESO UNIFICADO ES ITERATIVO E INCREMENTAL
+El desarrollo de un producto software comercial supone un gran esfuerzo que puede durar entre varios meses hasta posiblemente un año o más. Es práctico dividir el producto en partes más pequeñas o mini proyectos. Cada mini proyecto es una iteración que resulta en un incremento. Las iteraciones hacen referencia a pasos en el flujo, y en los incrementos, al crecimiento del producto.
+En cada iteración, los desarrolladores identifican y especifican los casos de uso relevantes, crean un diseño utilizando la arquitectura seleccionada como guía, implementan el diseño mediante componentes, y verifican que los componentes satisfacen los casos de uso.
+Los beneficios de un proceso iterativo controlado:
+·       La iteración controlada reduce el coste del riesgo a los costes de un solo incremento.
+·       La iteración controlada reduce el riesgo de no sacar al mercado el producto en el calendario previsto.
+·       La iteración controlada acelera el ritmo del esfuerzo de desarrollo en su totalidad debido a que los desarrolladores trabajan de manera más eficiente para obtener resultados claros a corto plazo.
+·       La iteración controlada reconoce una realidad que a menudo se ignora que las necesidades del usuario y sus correspondientes requisitos no pueden definirse completamente al principio.
+FLUJOS DE TRABAJO
+CAPTURA DE LOS REQUISITOS Es el proceso de averiguar, normalmente en circunstancias difíciles, lo que se debe construir.
+ANALISIS
+Analizamos los requisitos que se describieron en la captura de requisitos, refinándolos y estructurándolos. El objetivo de hacerlo es conseguir una comprensión mas precisa de los requisitos y una descripción de los mismos que sea fácil de mantener y que nos ayude a estructurar el sistema entero.
+DISEÑO
+En el diseño modelamos el sistema y encontramos su forma para que soporte todos los requisitos incluyendo los requisitos no funcionales y otras restricciones que se le suponen.
+IMPLEMENTACION
+El propósito principal de la implementación es desarrollar la arquitectura y el sistema como un todo.
+PRUEBA
+Verificamos el resultado de la implementación probando cada construcción, incluyendo tanto construcciones internas como intermedias, así como las versiones finales del sistema a ser entregadas a terceros.
+FASES
+INICIO
+Se desarrolla una descripción del producto final a partir de una buena idea y se presenta el análisis de negocio para el producto. Esencialmente, esta fase responde a las siguientes preguntas:
+ELABORACION
+Se especifican en detalle la mayoría de los casos de uso del producto y se diseña la arquitectura del sistema.
+Al final de la fase de elaboración, el director de proyecto esta en disposición de planificar las actividades y estimar los recursos necesarios para terminar el proyecto.
+TRANSICION
+Cubre el periodo durante el cual el producto se convierte en versión beta. En la versión beta un número reducido de usuarios con experiencia prueba el producto e informa de defectos y deficiencias. La fase de transición conlleva actividades como la fabricación, formación del cliente, el proporcionar una línea de ayuda y asistencia y la corrección de los defectos que se encuentren tras la entrega. El equipo de mantenimiento suele dividir esos defectos en dos categorías: los que tienen suficiente impacto en la operación para justificar una versión incrementada (versión delta) y los que pueden corregirse en la siguiente versión normal. 
+CONSTRUCCION
+Se crea el producto. Es esta fase, la línea base de la arquitectura crece hasta convertirse en el sistema completo.
+Al final de esta fase, el producto contiene todos los casos de uso que la dirección y el cliente ha acordado para el desarrollo de esta versión.
+1.3.2.2 CARACTERÍSTICAS DE UML
+UML es un lenguaje para visualizar, especificar, construir y documentar los artefactos (modelos) de un sistema que involucra una gran cantidad de software, desde una perspectiva orientada a objetos
+Ø 	UML es una notación, no es un proceso
+Ø 	Se han definido muchos procesos para UML.
+Ø 	Racional ha ideado RUP, el “proceso unificado”. Utilizable para sistemas que no sean software
+} Bloques básicos de construcción
+◦      Elementos
+  	Estructurales, Comportamiento, Agrupación, Anotación
+◦      Relaciones
+◦      Diagramas
+}  Reglas para combinar bloques
+◦      Establecen qué es un modelo bien formado
+}  Mecanismos comunes
+Especificaciones, Extensibilidad, Dicotomía interfaz-relación
+}  El Lenguaje Unificado de Modelado (UML) es una notación que combina elementos de tres importantes estándares de diseño OO:
+◦      OMT de Rumbaugh
+◦      Análisis y diseño OO de Booch y
+◦      El modelo de Jacobson
+}  Ha tenido varias modificaciones desde su creación siendo la última versión la 2.0
+1.3.3 HERRAMIENTAS DE DESARROLLO
+Las herramientas que usaremos:
+1.3.3.1 SOFTWARE 
+    • Servidor Apache
+    • Motor de base de datos MySQL
+    • Repositorio remote GitHub
+    • Editor de Código Visual Studio Code
+    • Software para gestión de base de datos y servidor XAMPP
+    • Editor de base de datos DBeaver
+1.3.3.2 HARDWARE
+    • Procesador Core i3, A9 o superiores.
+    • Memoria RAM 2 GB o superior.
+    • Disco Duro 120 GB o superior.
+    • Conexión a Internet 1 MB o superior. 
+1.4 POSIBLES COSTOS 
+
+Hardware	Costos $
+PROC. CORE 2 DUO E8200 2.66 GHz /6Mb FSB1333	136.7
+
+Memoria SURE DDR2 2 GB 800 PC 6400  100 % testeadas	43.5
+DISCO HITACHI 320GB SATA II 7200 RPM	56.2
+Switch T-link  8 Puertos	47.7
+MB ASROCK G965M-S Core2Quad BUS 1066 VGA 256mb DDR2 800 hasta 8GB	47.7
+Combo Model SURE-  809 Teclado Multimedia,mouse óptico + parlantes  650W /SATA	43.3
+Monitor SURE SR-L19W 19”  LCD	132.5
+Costo Total	507.6
+
+
+
+1.5 POSIBLES BENEFICIOS 
+1.5.1 TIEMPO 
+    • Búsqueda de datos, obtención de los reportes con mayor velocidad.
+    • Procesar las notas con mayor rapidez.
+1.5.2 ESFUERZO 
+    • Facilita el manejo de la información.
+    • Facilita la verificación de notas.
+    • Llenado de cuaderno de boletines (centralizar notas).
+1.5.3 COSTOS 
+Reduce el costo en:
+    • Material de Inscripción.
+    • Registro de alumnos (Folder por cada alumno) Cuaderno de boletines.
+
+1.6 POSIBLES CLIENTES 
+Este Software está diseñado para que entre en el mercado de los Sistemas de información, por lo tanto, los posibles clientes son: toda Unidad Educativa Dedicada al control del alumnado como, por ejemplo:
+    • Colegios
+    • Institutos
+    • Centros Educativos
+
+
+
+
+
+
+
+
+
+
+
+
+2 MODELO DE DOMINIO
+2.1IDENTIFICAR LAS CLASES
+Clase: Persona
+Es la clase padre de las clases: Estudiante, Docente y Usuario la cual almacena la información personal de estos actores.
+Atributos:
+    • ID: Es el identificador y llave primaria de la clase.
+    • CI: Carnet de Identidad de la persona.
+    • Primer Nombre: Primer Nombre de la persona.
+    • Segundo Nombre: Segundo Nombre de la persona.
+    • Primer Apellido: El primer apellido de la persona.
+    • Segundo Apellido: El segundo apellido de la persona.
+    • Fecha de Nacimiento: Día, mes y año en qué la persona nació.
+    • Celular: Número de celular de la persona.
+    • Teléfono: Número de teléfono fijo de la persona.
+    • Dirección: Ubicación del domicilio de la persona.
+    • Correo: Correo electrónico de la persona.
+
+
+
+Clase: Estudiante
+Esta es una de las clases hija de la Clase Persona. En esta se almacenan datos exclusivos del estudiante.
+Atributos: 
+    • ID: Es una llave foránea que hace referencia la llave primaria ID de la Clase Persona.
+    • Login: Es el nombre de usuario que se le asigna al estudiante para loguearse en el sistema.
+    • Password: Es la contraseña que se le asigna al estudiante para que tenga acceso al sistema.
+    • Perfil_ID: Es una llave foránea que hace referencia a la llave primaria ID de la Clase Perfil.
+    • Codigo_RUDE: Es el código de Registro Único de Estudiantes.
+Clase: Docente
+Esta es una de las clases hija de la Clase Persona. En esta se almacenan datos exclusivos del docente.
+Atributos:
+    • CodigoRDA: Es el código único del docente.
+    • ID: Es una llave foránea que hace referencia a la llave primaria de la Clase Persona.
+    • Login: Es el nombre de usuario que se le asigna al docente para loguearse en el sistema.
+    • Password: Es la contraseña que se le asigna al estudiante para que tenga acceso al sistema.
+    • Perfil_ID: Es una llave foránea que hace referencia a la llave primaria ID de la Clase Perfil.
+
+Clase: Usuario
+Esta es una de las clases hija de la Clase Persona. En esta se almacenan datos de un usuario administrador del sistema.  
+Atributos:
+    • ID: Es una llave foránea que hace referencia a la llave primaria de la Clase Persona.
+    • Login: Es el nombre de usuario que se le asigna al usuario administrador para loguearse en el sistema.
+    • Password: Es la contraseña que se le asigna al usuario administrador para que tenga acceso al sistema.
+    • Perfil_ID: Es una llave foránea que hace referencia a la llave primaria ID de la Clase Perfil.
+
+Clase: Perfil
+Esta clase se utiliza para clasificar a los docentes, estudiantes y usuarios administradores por perfiles. Cada perfil es distinto y tienen diferentes funcionalidades y permisos.
+Atributos: 
+    • ID: Es el identificador y llave primaria de la clase.
+    • Nombre: Es el nombre que se le asigna al perfil, va ligado al nombre de la entidad que se relaciona con esta clase (estudiante, docente o usuario).
+
+Clase: Funcionalidad
+En esta clase se definen y establecen las funcionalidades que tiene cada perfil. Existen muchas funcionalidades y un perfil puede tener acceso a una o más dependiendo del perfil y los permisos que tenga.
+Atributos:
+    • ID: Es el identificador y llave primaria de la clase.
+    • Título: Es el nombre de la funcionalidad.
+    • Ruta: Guarda el nombre de la ruta de la funcionalidad.
+    • Acción: Almacena una dirección de la funcionalidad.
+    • Orden: Guarda el número que referencia al orden de visualización.
+    • Modulo_ID: Es la llave foránea que hace referencia a la llave primaria ID de la Clase Módulo.
+
+
+Clase: Permiso
+Es la clase intermedia entre las Clases Perfil y Funcionalidad. Es un registro de las funcionalidades que tendrá cada perfil.
+Atributos:
+    • Funcionalidad_ID: Es una llave foránea que hace referencia a la llave primaria ID de la Clase Funcionalidad.
+    • ID: Es el identificador y llave primaria de esta clase.
+    • Perfil_ID: Es una llave foránea que hace referencia a la llave primaria ID de la Clase Perfil.
+
+
+Clase: Modulo
+Se almacena la información sobre el conjunto de tareas dentro del sistema.
+Atributos:
+    • Código: Guarda el código del módulo.
+    • ID: Es el identificador y llave primaria de esta clase.
+    • Orden: Almacena el número que referencia el orden de visualización en la pantalla.
+    • Titulo: Es el nombre del módulo.
+
+Clase: GrupoMateria
+Es una clase de relación que establece la asignación de un docente con la materia que enseña y el o los cursos en el que ejercerá su función.
+Atributos:
+    • Docente_ID: Es la llave foránea que hace referencia a la llave primaria ID de la Clase Docente.
+    • Grupo_ID: Es la llave foránea que hace referencia a la llave primaria ID de la Clase Grupo (Curso).
+    • ID: Es el identificador y llave primaria de esta clase.
+    • Materia_ID: Es la llave foránea que hace referencia a la llave primaria ID de la Clase Materia.
+
+Clase: Materia
+Esta clase proporciona el listado de materias que se cursan en este colegio. Una o muchas materias pertenecen a un Área de Conocimiento.
+Atributos:
+    • Area_conocimientos_id: Es la llave foránea que hace referencia a la llave primaria ID de la Clase AreaConocimientos.
+    • ID: Es el identificador y llave primaria de esta clase.
+    • Nombre: Es el nombre de la asignatura.
+    • Sigla: La sigla que identifica a la asignatura.
+
+
+Clase: AreaConocimiento
+Proporciona el listado de Áreas de Conocimientos al que pertenecen las materias que se cursan en el colegio.
+Áreas de Conocimientos surge de acuerdo al modelo educativo vigente.
+Atributos:
+    • ID: Es el identificador y llave primaria de esta clase.
+    • Nombre: Es el nombre asignado al Área de Conocimiento.
+
+
+
+
+
+Clase: Grupo
+Guarda la información sobre los cursos existentes en esta unidad educativa en los distintos niveles y turnos.
+Atributos:
+    • ID: Es el identificador y llave primaria de esta clase.
+    • Código: Es el código con el que se identifica al curso.
+    • Nombre: Es el nombre del curso (primero, segundo, tercero…).
+    • Gestion_Id: Es una llave foránea que hace referencia a la llave primaria ID de la Clase Gestión.
+    • Turno_Id: Es una llave foránea que hace referencia a la llave primaria ID de la Clase Turno.
+    • Grado_Id: Es una llave foránea que hace referencia a la llave primaria ID de la Clase Grado.
+    • Aula_Id: Es una llave foránea que hace referencia a la llave primaria ID de la Clase Aula.
+
+Clase: Horario
+En esta clase se conforma el horario de cada curso, haciendo la relación entre el curso y los periodos de clases de cada materia.
+Atributos:
+    • Grupo_Id: Es una llave foránea que hace referencia a la llave primaria ID de la Clase Grupo.
+    • ID: Es el identificador y llave primaria de esta clase.
+
+Clase: PeriodoClase
+Se establecen periodos de clases para conformar el horario de un curso.
+Atributos:
+    • ID: Es el identificador y llave primaria de esta clase.
+    • Nombre: El nombre que se le asigna al periodo de clase (primer, segundo, tercer).
+    • Grupo_materia_Id: Es una llave foránea que hace referencia a la llave primaria ID de la Clase GrupoMateria.
+    • Horario_id: Es una llave foránea que hace referencia a la llave primaria ID de la Clase Horario.
+    • Hora_id: Es una llave foránea que hace referencia a la llave primaria ID de la Clase Hora.
+
+Clase: Hora
+Se almacena el horario de inicio y fin definidos para cada periodo de clase.
+Atributos:
+    • Hora_ini: Hora de inicio del periodo.
+    • Hora_fin: Hora del fin del periodo.
+    • ID: Es el identificador y llave primaria de esta clase.
+
+Clase: Aula
+En esta clase almacenamos datos sobre las aulas definidas para cada curso.
+Atributos:
+    • ID: Es el identificador y llave primaria de esta clase.
+    • Nombre: El nombre del aula.
+
+Clase: Turno
+En esta clase se define el horario de entrada y salida para el turno mañana y tarde.
+Atributos:
+    • Hora_ini: Hora de entrada.
+    • Hora_fin: Hora de salida.
+    • ID: Es el identificador y llave primaria de esta clase.
+    • Nombre: El nombre del turno (mañana o tarde).
+
+Clase: Gestión
+Se almacena la información correspondiente al año escolar: fechas de inicio y fin de clases, año y se establece la modalidad de periodos según el Ministerio de Educación (bimestral o trimestral).
+Atributos:
+    • ID: Es el identificador y llave primaria de esta clase.
+    • Anio: El año de la presente gestión escolar.
+    • Fecha_inicio_clases: La fecha del inicio de clases.
+    • Fecha_final_clases: La fecha de finalización de clases.
+    • Números_periodos: El número de periodos que tendrá la gestión escolar
+    • Tipos_periodos: La agrupación de dichos periodos (bimestral, trimestral…).
+
+
+Clase: Periodos
+En esta clase se define la duración de los periodos académicos en una gestión escolar.
+Atributos:
+    • ID: Es el identificador y llave primaria de esta clase.
+    • Fecha_inicio: Se establece el inicio de un periodo académico.
+    • Fecha_fin: Se establece la culminación de un periodo académico.
+    • Número: El número que se le asigna al periodo para organizar el orden de estos.
+    • Gestión_Id: Es una llave foránea que hace referencia a la llave primaria ID de la Clase Gestión.
+
+
+
+Clase: Nivel
+Se registran los niveles de educación al que pertenecen los cursos.
+Atributos:
+    • ID: Es el identificador y llave primaria de esta clase.
+    • Nombre: Es el nombre del nivel de educación (inicial, primaria o secundaria).
+    • Número: El número que se asigna al nivel para organizar el orden de estos.
+
+
+Clase: Grado
+Se registra el grado del curso dentro de un nivel de educación.
+Atributos:
+    • ID: Es el identificador y llave primaria de esta clase.
+    • Nivel_Id: Es la llave foránea que hace referencia a la llave primaria ID de la Clase Nivel.
+    • Nombre: Almacena el nombre del grado (Primero, Segundo…).
+
+
+
+
+Clase: Matricula
+Se almacenan los datos correspondientes a la inscripción de un estudiante al inicio de una nueva gestión escolar.
+Atributos:
+    • ID: Es el identificador y llave primaria de esta clase.
+    • Fecha: Registrará la fecha de la inscripción del estudiante.
+    • Monto: El costo de la inscripción.
+    • Estudiante_Id: Es la llave foránea que hace referencia a la llave primaria ID de la Clase Estudiante.
+    • Grupo_Id: Es la llave foránea que hace referencia a la llave primaria ID de la Clase Grupo. Relacionará al estudiante con el grupo o curso en el que fue inscrito.
+    • Observación: Almacenará un texto si existiera alguna observación, transacción pendiente, etc.
+
+Clase: Nota
+Almacenará la valoración de un estudiante en una materia al finalizar un periodo académico.
+Atributos:
+    • ID: Es el identificador y llave primaria de esta clase.
+    • Valor: La valoración numérica al finalizar un periodo académico.
+    • Grupo_materia_id: Es la llave foránea que hace referencia a la llave primaria ID de la Clase Materia. Hace relación a la nota del estudiante con la materia a la cual enlaza este atributo.
+    • Periodo_Id: Es la llave foránea que hace referencia a la llave primaria ID de la Clase Periodo. Establece aquella valoración en un periodo académico.
+    • Matricula_Id: Es la llave foránea que hace referencia a la llave primaria ID de la Clase Matricula. Hace referencia al estudiante al que le pertenece la valoración.
+
+Clase: ValoraciónCuantitativa
+Almacena un texto en el que se refleja el rendimiento de un estudiante al finalizar un periodo académico.
+Atributos:
+    • ID: Es el identificador y llave primaria de esta clase.
+    • Valoración: Un comentario sobre el rendimiento de un estudiante.
+    • Matricula_Id: Es la llave foránea que hace referencia a la llave primaria ID de la Clase Matricula. Relaciona a un estudiante con su valoración cuantitativa mediante su matrícula.
+    • Periodo_Id: Es la llave foránea que hace referencia a la llave primaria ID de la Clase Periodo. Define que la relación cuantitativa pertenece al periodo el cual hace referencia el ID.
+
+Clase: Mensualidad
+Esta clase almacena la información y permite el control correspondiente a las mensualidades pendientes o canceladas de un estudiante.
+Atributos:
+    • ID: Es el identificador y llave primaria de esta clase.
+    • FechaVencimiento: Guarda la fecha plazo a pagar la mensualidad.
+    • Mes: Define el mes al que le corresponde la mensualidad.
+    • Monto: El costo en Bs de la mensualidad.
+    • Matricula_Id: Es la llave foránea que hace referencia a la llave primaria ID de la Clase Matricula. Relaciona al estudiante al cual le corresponde pago de la mensualidad.
+    • Pagado: Atributo binario que permite la identificación de aquellas matriculas que realizaron o no realizaron el pago.
+
+Clase: Pago
+Es el detalle de la transacción correspondiente al pago de una mensualidad.
+Atributos:
+    • ID: Es el identificador y llave primaria de esta clase.
+    • Fecha: Registra la fecha en la cual se hizo efectivo el pago de la mensualidad
+    • Monto: Registra el monto en Bs del pago.
+    • Mensualidad_Id: Es la llave foránea que hace referencia a la llave primaria ID de la Clase Mensualidad. Permite identificar al mes al que le corresponde el pago.
+
+
+
+
+
+2.2 IDENTIFICAR LAS RELACIONES ENTRE CLASES
+
+Docente – Persona, Estudiante – Persona, 
+Usuario – Persona.
+
+Existe una relación de herencia donde Docente, Estudiante y Usuario heredan los atributos de la clase Persona. Los atributos en común son almacenados en la Clase Persona, las clases hijas tienen atributos que las diferencian de otras, en la clase docente el atributo identificador será el Código RDA, en la clase Estudiante el atributo identificador es su Código RUDE y en el Usuario será su User name.  
+
+Estudiante – Perfil, 
+Docente – Perfil, 
+Usuario – Perfil.
+
+Uno o muchos Estudiantes, uno o muchos Docentes y un o muchos Usuario tienen un perfil en el Sistema.
+El perfil es distinto para cada entidad y a este accederán mediante un nombre de usuario y una contraseña.
+
+Perfil – Funcionalidad
+
+Uno o muchos perfiles tienen acceso a una o muchas funcionalidades dentro del sistema. Una o muchas funcionalidades están disponibles para uno o muchos perfiles. La clase permiso permite revisar que perfiles tienen acceso a las funcionalidades.
+
+Funcionalidad – Modulo
+
+Una o muchas funcionalidades se encuentran dentro de un Módulo. Un módulo tiene una o muchas funcionalidades.
+
+
+Área Conocimiento – Materia
+
+Un área de conocimiento tiene una o muchas materias. Una o muchas materias pertenecen a un Área de Conocimiento.
+
+
+
+Periodo Clase – Hora
+
+Uno o muchos periodos tienen una Hora en la cual se establece la hora inicio y fin. 
+
+
+Horario – Periodo Clase
+
+Un horario tiene uno o muchos periodos de clases. Uno o muchos periodos de Clases están presentes en un horario.
+
+
+Estudiante – Matricula
+
+Un estudiante tiene una o muchas matriculas (depende de cuantas gestiones escolares estuvo presente). Una o muchas matriculas le corresponde a un estudiante
+
+
+
+
+Matricula – Mensualidad
+
+Una matricula se paga en una o muchas mensualidades. El pago de una o muchas mensualidades le corresponde a una matrícula.
+
+
+
+Mensualidad – Pago
+
+Una mensualidad se cancela en un pago. El concepto de pago le corresponde a una sola matrícula.
+
+
+
+Grado – Nivel
+
+Uno o muchos grados se encuentran dentro de un solo nivel de educación. Un nivel de educación tiene uno o muchos grados.
+
+
+Grupo – Grado 
+
+Uno o muchos grupos les corresponde un solo grado.
+Un grado puede tener uno o muchos grupos.
+
+
+
+Turno – Grupo
+
+En un turno pueden pasar clases uno o muchos grupos. Uno o muchos grupos pasan clases en un turno.
+
+Grupo – Aula 
+
+Un grupo pasa clases en un aula. En un aula pasa clases un grupo.
+
+
+
+Gestión – Grupo
+
+En una gestión pasan clases uno o muchos grupos. Uno o muchos grupos pasan clases en una gestión.
+
+
+Periodos – Gestión
+
+Uno o muchos periodos académicos conforman una gestión escolar. Una gestión escolar esta conformada por uno o muchos periodos académicos.
+
+
+Periodos – Valoración Cuantitativa – Matricula
+
+En un periodo académico puede haber una o muchas valoraciones cuantitativas para un estudiante. Un estudiante recibe una o muchas valoraciones cuantitativas dentro de un periodo académico.
+
+
+Grupo Materia – Nota – Periodos 
+
+Un Docente registra las notas finales de un curso al finalizar un periodo académico.
+Al finalizar un periodo académico las notas de un curso son registradas por un docente.
+
+
+
+Docente – Grupo Materia
+
+Un docente enseña una o más materias en uno o muchos cursos.  
+Uno o muchos cursos tienen un docente que les imparte una o muchas materias.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2.3 DIAGRAMA DE CLASES
+
+
+
+
+
+
+
+3. MODELO DE NEGOCIO
+3.1 Inscripción estudiante
+3.2 Registrar Estudiante
+
+
+
+
+
+	
+
+
+
+3.3 Registrar Notas Bimestrales
+
+
+
+
+
+
+
+
+
+
+
+3.4 Actualizar Datos del Estudiante
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4. METODO DE ISHIKAWA
+4.1 IDENTIFICAR PROBLEMAS
+
+P1. Deficiencia en la Administración académica de forma manual. 
+P2. Infraestructura de trabajo no adecuada.
+P3. Búsqueda morosa en encontrar información.
+P4. Inadecuada infraestructura del establecimiento. 
+P5. Ambiente no adecuado de estudio como, una biblioteca ineficiente.
+P6. Mantenimiento inadecuado en las computadoras.
+P7. Deficiencia en la asignación de: Materias, Docentes, Aulas y Horarios.
+P8. Demora en la realización de reportes.
+P9. Información poco concreta de Padres o apoderados.
+P10. Información poco concreta de Estudiante.
+P11. Deficiencia y demora en el proceso de inscripción.
+P12. Deficiencia en el cálculo erróneo de planilla de mensualidades.
+P13. Deficiencia en el control de alumnos deudores.
+P14. Inadecuado control de la emisión de los recibos de pago.
+P15. Deficiencia en el registro de Notas
+P16. Lenta elaboración de Boletines.
+P17. Inadecuada elaboración de notas por alumno, por parte del docente.
+P18. Morosa trascripción de notas hacia los boletines bimestrales ya que estos se los realizan de forma manual.
+P19.- Registro moroso de docentes.
+P20.- Morosa trascripción de notas hacia los boletines bimestrales y libretas ya que estos se los realizan de forma manual.	
+P21.- Computadoras obsoletas.
+P22.-Ineficiencia en la asignación de útiles para cada materia.
+P23.-Morosa asignación de tutores a cada grado.
+P24.-Lentitud al asignar becas de caridad a los alumnos que la solicitan.
+P25.-Lentitud en el proceso de pagos de mensualidades.
+P26.- Gestión inadecuado al asignar una materia a cada profesor.
+P27.-Deficiencia en la seguridad de acceso en los datos.
+P28.-Perdida de tiempo en búsqueda de datos del estudiante
+P29.-Exceso en la documentación de notas de los estudiantes.
+P30.-Demora en la verificación de cupos.
+P31.-Redundancia en el rellenado del formulario RUDE.
+
+4.1.1 LISTA DE PROBLEMAS
+
+P1. Deficiencia en la Administración académica de forma manual.
+P2. Búsqueda morosa en encontrar información.
+P3. Deficiencia en la asignación de: Materias, Docentes, Aulas y Horarios.
+P4. Demora en la realización de reportes.
+P5. Información poco concreta de Padres o apoderados.
+P6. Información poco concreta de Estudiante.
+P7. Deficiencia y demora en el proceso de inscripción.
+P8. Deficiencia en el cálculo erróneo de planilla de mensualidades.
+P9. Deficiencia en el control de alumnos deudores.
+P10. Inadecuado control de la emisión de los recibos de pago.
+P11. Deficiencia en el registro de Notas
+P12. Deficiencia en el seguimiento de las entregas de Boletines.
+P13. Inadecuada elaboración de notas por alumno, por parte del docente.
+P14. Morosa transcripción de notas hacia los boletines bimestrales ya que estos se los realizan de forma manual.
+P15.- Registro moroso de docentes.
+P16.-Morosa asignación de tutores a cada grado.
+P17.-Lentitud en el proceso de pagos de mensualidades.
+P18.- Gestión inadecuado al asignar una materia a cada maestro.
+P19.-Deficiencia en la seguridad de acceso en los datos.
+P20.-Exceso en la documentación de notas de los estudiantes.
+P21.-Demora en la verificación de cupos.
+P22.-Redundancia en el rellenado del formulario RUDE.
+
+4.1.2 DEPURAR PROBLEMAS
+P1. Deficiencia en la Administración académica de forma manual.
+P3. Deficiencia en la asignación de: Materias, Docentes, Aulas y Horarios.
+P7. Deficiencia y demora en el proceso de inscripción.
+P8. Deficiencia en el cálculo erróneo de planilla de mensualidades.
+P9. Deficiencia en el control de alumnos deudores.
+P10. Inadecuado control de la emisión de los recibos de pago.
+P11. Deficiencia en el registro de Notas
+P12. Deficiencia en el seguimiento de las entregas de Boletines.
+P13. Inadecuada elaboración de notas por alumno, por parte del docente.
+P14. Morosa transcripción de notas hacia los boletines bimestrales ya que estos se los realizan de forma manual.
+P15.- Registro moroso de docentes.
+P16.-Morosa asignación de tutores a cada grado.
+P17.-Lentitud en el proceso de pagos de mensualidades.
+P18.- Gestión inadecuado al asignar una materia a cada maestro.
+P19.-Deficiencia en la seguridad de acceso en los datos.
+P20.-Exceso en la documentación de notas de los estudiantes.
+
+
+4.1.3 LISTA DE PROBLEMAS FINALES
+
+P2. Infraestructura de trabajo no adecuada.
+P4. Inadecuada infraestructura del establecimiento.
+P5. Ambiente no adecuado de estudio como, una biblioteca ineficiente.
+P6. Mantenimiento inadecuado en las computadoras.
+P21.- Computadoras obsoletas.
+P22.-Ineficiencia en la asignación de útiles para cada materia.
+P24.-Lentitud al asignar becas de caridad a los alumnos que la solicitan.
+
+4.1.4 PROPIETARIOS DE PROBLEMAS
+
+Propietario1. Director
+Propietario2. Secretaria
+Propietario3. Maestro
+Propietario4. Apoderado
+Propietario5. Estudiante
+
+
+	DIRECTOR	SECRETARIA	MAESTRO	APODERADO	ESTUDIANTE
+P1	X	X	X	X	X
+P2	X	X	X		
+P3	X	X			
+P4	X	X			
+P5		X		X	X
+P6		X		X	X
+P7		X		X	X
+P8		X			
+P9		X			
+P10	X	X			
+P11		X	X		
+P12	X	X	X		
+P13			X		
+P14		X			
+P15	X	X			
+P16	X	X			
+P17		X		X	X
+P18	X	X			
+P19	X	X	X		
+P20	X	X			
+P21	X	X			
+P22		X		X	X
+4.1.5 ANÁLISIS DE PROBLEMAS
+4.1.6 ESTIMACIÓN Y CUANTIFICACIÓN DEL PROBLEMA
+4.1.7 ALTERNATIVAS DE CAMBIO
+
+A1: Almacenar toda la información en una base de datos para tener una mejor rapidez y acceso para dicha información. 
+A2: Realizar una buena gestión del año escolar (docentes, materias, aulas, horarios) para no tener problemas más adelante.
+A3: Pedir como requisito la información completa al padre o apoderado en el momento de inscripción.
+A4: Pedir como requisito la información completa al estudiante en el momento de inscripción.
+A5: Rapidez en el procesamiento y almacenamiento  de los datos, para mejorar las inscripciones.
+A6: Tener un mejor acceso y procesamiento de datos para poder ver si el alumno cumple todos los requisitos y después inscribirlo. 
+A7: Tener un mejor acceso y procesamiento de datos para actualizar los datos del alumno antiguo para inscribirlo.
+A8: Optimizar la información en una base de datos en lo referente al pago de mensualidades se reduciría la probabilidad de cometer errores.
+A9: Organizar la información del pago de mensualidades para tener un mejor manejo de la información de pagos.
+A10: Hacer una interfaz más simple y completa para que el usuario no tenga complicaciones a la hora de usar el sistema.
+A11: Optimizar el almacenamiento de los datos personales del maestro de manera eficaz para no tener problemas en la gestión del año escolar.
+A12: Realizar un mejor gestión  a la hora de asignar un tutor a cada curso.
+A13: Organizar los datos de los pagos de mensualidades en una base de datos.
+A14: Mejorar la gestión para que sea más eficaz al momento de asignarle una materia a cada profesor.
+A15: Optimizar la seguridad en el acceso y manipulación de datos.
+
+
+
+4.1.8 CONCLUSIÓN Y RECOMENDACIÓN
+
+    • Gestión de evaluaciones: Presenta muchoS problemas, debido que no tiene una buena base de datos que almacene adecuadamente su información la búsqueda se hace morosa, se pierde mucho tiempo en el registro de los profesores, se complica mucho la asignatura de profesores para cada paralelo, se presenta problemas en asignarle profesor a cada materia, también en asignarle horario a cada materia. Estos problemas complican la gestión del año escolar y perjudican el buen funcionamiento de la unidad educativa.
+    • Inscripciones: Esta categoria se muestra afectada por muchos problemas entre ellos estan : deficiencia al momento de inscribir, falta de informacion  sobre los datos de los apoderados y de los alumnos, perdida de tiempo al registrar datos de alumnos nuevos y antiguos.Esto causa deficiencias en el periodo de inscripcion ademas de afectar al funcionamiento de la Unidad Educativa.
+    • Pago de mensualidades: Los problemas que presenta esta área se ven relacionados con una mala adiministracion y registros en los pagos mensuales  los cuales  causan problemas financieros a la Unidad Educativa, afectando tambien  a algunos estudiantes al momento de verificar si cuentan con una beca o un descuento.
+A través del análisis de los problemas identificados, se concluye que el ineficiente manejo en la gestión del año de evaluación, inscripción, y pago de mensualidades en la unidad educativa “ANGLOAMERICANO” traen una gama de problemas consecuentes, que deben ser solucionados de una manera más organizada a través de un sistema de información.
+
+4.1.9 DISEÑAR EL DIAGRAMA DE ISHIKAWA
+
+
+
+
+
+
+
+4.2 IDENTIFICAR PRINCIPALES CATEGORÍAS 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4.2.1 DESCRIBIR CADA CATEGORÍA
+
+    • C1: GESTION DE EVALUCIONES 
+Poder registrar todo el sistema de evaluaciones como ser curso, grado, maestro, notas y asignarles un correspondiente código o ID 
+
+    • C2: INSCRIPCIONES
+Tener un buen registro con todos los datos de los estudiantes, para poder tener un buen proceso de inscripción de los estudiantes a la gestión.
+
+    • C3: PAGO DE MENSUALIDADES
+Sistematizar el pago de mensualidades, para poder tener un buen registro de los pagos, y solucionar el problema de recibos.
+
+
+
+
+
+
+
+
+4.3 IDENTIFICAR LAS CAUSAS
+
+
+
+
+
+
+
+
+
+
+5 FLUJO DE TRABAJO: CAPTURA DE REQUISITOS
+5.1 ENCONTRAR ACTORES Y CASOS DE USO 
+Lista de Actores
+
+ Usuario: Es aquella persona que se encargara de habilitar o deshabilitar módulos que sean convenientes e inscribir docente y alumnos, en este actor puede participar tanto la secretaria como el director del colegio.
+
+ Estudiante Es aquella persona que tendrá un perfil en la página para acceder a sus datos y horarios de clases.
+
+ Docente Es aquella persona que se le gestionara la lista de sus estudiantes a tiempo real, y poner las notas del alumno en el sistema mediante la página web.
+
+
+
+
+
+
+
+
+
+Lista de casos de uso
+
+    1.        Gestionar Usuario
+    2.        Gestionar Docente
+    3.        Gestionar Estudiante
+    4.        Iniciar Sesión
+    5.        Cerrar Sesión
+    6.        Gestionar Módulos
+    7.        Gestionar Aulas
+    8.        Gestionar Horas
+    9.        Gestionar Turnos
+    10. Gestionar Niveles
+    11. Gestionar Área Conocimientos
+    12. Gestionar Funcionalidades
+    13. Gestionar Personas
+    14. Gestionar Gestiones
+    15. Gestionar Periodos
+    16. Gestionar Materias
+    17. Gestionar Grados
+    18. Gestionar Inscripción
+    19. Gestionar Notas
+    20. Gestionar Perfiles
+    21. Gestionar Grupos
+    22. Gestionar Mensualidades
+    23. Gestionar Pagos
+
+
+
+
+
+
+
+
+5.2 PRIORIZAR CASOS DE USO 
+N.º	NOMBRE	ESTADO	PRIORIDAD	RIESGO
+1	Gestionar Usuario	APROBADO	CRITICO	CRITICO
+2	Gestionar Docente	APROBADO	ACCESORIA	CRITICO
+3	Gestionar Estudiante	APROBADO	ACCESORIA	NORMAL
+4	Iniciar Sesión	APROBADO	CRITICO	CRITICO
+5	Cerrar sesión	APROBADO	CRITICO	CRITICO
+6	Gestionar Módulos	APROBADO	SIGNIFICATIVO	ACCESORIA
+7	Gestionar Aulas	APROBADO	NORMAL	ACCESORIA
+8	Gestionar Horas	APROBADO	NORMAL	NORMAL
+9	Gestionar Turnos	APROBADO	SIGNIFICATIVO	NORMAL
+10	Gestionar Niveles
+	APROBADO	SIGNIFICATIVO	NORMAL
+11	Gestionar Área Conocimientos
+	APROBADO	NORMAL	NORMAL
+12	Gestionar Funcionalidades
+	APROBADO	SIGNIFICATIVO	CRITICO
+13	Gestionar Personas
+	INCLUIDO	SIGNIFICATIVO	NORMAL
+14	Gestionar Gestiones
+	APROBADO	CRITICO	CRITICO
+15	Gestionar Periodos
+	APROBADO	NORMAL	NORMAL
+16	Gestionar Materias
+	APROBADO	NORMAL	NORMAL
+17	Gestionar Grados
+	APROBADO	SIGNIFICATIVO	NORMAL
+18	Gestionar Inscripción
+	INCLUIDO	SIGNIFICATIVO	CRITICO
+19	Gestionar Notas
+	PROPUESTO	CRITICO	CRITICO
+				
+21	Gestionar Perfiles
+	APROBADO	CRITICO	CRITICO
+22	Gestionar Grupos	APROBADO	CRITICO	CRITICO
+
+5.3 DETALLAR UN CASO DE USO 
+5.3.1 CU1: GESTIONAR USUARIO
+
+Nombre del Caso de Uso	CU1: Gestionar Usuario
+Propósito	Visualizar todos los usuarios administradores existentes en el sistema
+Resumen	El sistema permite buscar, actualizar, registrar, nuevos usuarios o darles de baja del sistema.
+Actores	Administrador, Usuario nuevo
+Actor Iniciador	Administrador
+Precondiciones	Para registrar un nuevo usuario, este no debe existir en el sistema. Para actualizar o dar de baja un usuario, este debe existir en el sistema.
+Post Condiciones	Ninguno
+Flujo Principal	1. Buscar
+1.1 En el módulo de gestión de usuarios el administrador selecciona la lupa para realizar la búsqueda por código de usuario o nombre.
+
+2. Registrar
+2. En el módulo de gestión de usuarios el administrador, solicita registrar un nuevo usuario.
+2.2 El sistema muestra en la pantalla los campos para registrar el nuevo usuario.
+2.3 El administrador rellena los campos y solicita guardar la información.
+2.4 El sistema guarda los cambios
+
+3. Actualizar
+3.1 El administrador realiza la acción 1. Buscar.
+3.2 El sistema muestra al usuario buscado.
+3.3 El administrador selecciona la opción de actualizar datos.
+3.4 El administrador realiza los cambios en los campos y solicita guardar la información
+3.5 El sistema guarda los cambios
+
+4. Dar de Baja
+4.1 El administrador realiza la acción 1. Buscar.
+4.2 El sistema muestra al usuario buscado.
+4.3 El administrador selecciona la opción de dar de baja.
+4.4 El sistema muestra en pantalla la opción para confirmar la acción de dar de baja.
+4.5 El administrador selecciona la opción “aceptar”.
+4.6 El sistema da de baja al usuario y actualiza la lista de usuarios.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5.3.2 CU2: GESTIONAR DOCENTE
+
+Nombre del Caso de Uso	CU2: Gestionar Docente
+Propósito	Visualizar todos los docentes existentes en el sistema
+Resumen	El sistema permite buscar, actualizar, registrar, nuevos docentes o darles de baja del sistema.
+Actores	Administrador, Docente
+Actor Iniciador	Administrador
+Precondiciones	Para registrar un docente, este no debe existir en el sistema. Para actualizar o dar de baja un docente, este debe existir en el sistema.
+Post Condiciones	Al registrar un nuevo docente, se le debe asignar la materia que enseñará.
+Flujo Principal	1. Buscar
+1.1 En el módulo de gestión de docentes el administrador, puede realizar la búsqueda por código de docente o nombre.
+
+2. Registrar
+2.1 En el módulo de gestión de docentes el administrador, solicita registrar un nuevo docente.
+2.2 El sistema muestra en la pantalla los campos para registrar el nuevo docente.
+2.3 El administrador rellena los campos y solicita guardar la información.
+2.4 El sistema guarda los cambios
+
+3. Actualizar
+3.1 El administrador realiza la acción 1. Buscar.
+3.2 El sistema muestra al docente buscado.
+3.3 El administrador selecciona la opción de actualizar datos.
+3.4 El administrador realiza los cambios en los campos y solicita guardar la información
+3.5 El sistema guarda los cambios
+
+4. Dar de Baja
+4.1 El administrador realiza la acción 1. Buscar.
+4.2 El sistema muestra al docente buscado.
+4.3 El administrador selecciona la opción de dar de baja.
+4.4 El sistema muestra en pantalla la opción para confirmar la acción de dar de baja.
+4.5 El administrador selecciona la opción “aceptar”.
+4.6 El sistema da de baja al usuario y actualiza la lista de docentes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5.3.3 CU3: GESTIONAR ESTUDIANTE
+
+Nombre del Caso de Uso	CU3: Gestionar Estudiante
+Propósito	Visualizar todos los estudiantes existentes en el sistema
+Resumen	El sistema permite buscar, actualizar, registrar, nuevos estudiantes o darles de baja del sistema.
+Actores	Administrador, Estudiante
+Actor Iniciador	Administrador
+Precondiciones	Para registrar un estudiante, este no debe existir en el sistema. Para actualizar o dar de baja un estudiante, este debe existir en el sistema.
+Post Condiciones	Al registrar un nuevo estudiante, se le debe asignar un grupo.
+Flujo Principal	1. Buscar
+1.1 En el módulo de gestión de estudiantes el administrador, puede realizar la búsqueda por código RUDE del estudiante o nombre.
+
+2. Registrar
+2.1 En el módulo de gestión de estudiantes el administrador, solicita registrar un nuevo estudiante.
+2.2 El sistema muestra en la pantalla los campos para registrar el nuevo estudiante.
+2.3 El administrador rellena los campos y solicita guardar la información.
+2.4 El sistema guarda los cambios
+
+3. Actualizar
+3.1 El administrador realiza la acción 1. Buscar.
+3.2 El sistema muestra al estudiante buscado.
+3.3 El administrador selecciona la opción de actualizar datos.
+3.4 El administrador realiza los cambios en los campos y solicita guardar la información
+3.5 El sistema guarda los cambios
+
+4. Dar de Baja
+4.1 El administrador realiza la acción 1. Buscar.
+4.2 El sistema muestra al estudiante buscado.
+4.3 El administrador selecciona la opción de dar de baja.
+4.4 El sistema muestra en pantalla la opción para confirmar la acción de dar de baja.
+4.5 El administrador selecciona la opción “aceptar”.
+4.6 El sistema da de baja al usuario y actualiza la lista de estudiantes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5.3.4 CU4: INICIAR SESIÓN
+
+Nombre del Caso de Uso	CU4: Iniciar Sesión
+Propósito	Permitir el acceso de usuarios, docentes y estudiantes al sistema mediante el Login en sus correspondientes perfiles.
+Resumen	El sistema concede el acceso de los usuarios, docentes y estudiantes a sus correspondientes perfiles y a sus funcionalidades definidos por el sistema.
+Actores	Usuario, Docente o Estudiante
+Actor Iniciador	Usuario, Docente o Estudiante
+Precondiciones	Los actores deben existir, tener un perfil activo dentro del sistema y conocer su nombre de usuario y contraseña para iniciar sesión.
+Post Condiciones	El sistema debe redirigir al usuario a su perfil del sistema.
+Flujo Principal	1. El actor ingresa a la página en la que se encuentra el sistema.
+2. Coloca su nombre de usuario y su contraseña y presiona el botón de iniciar sesión.
+3. El sistema valida los datos ingresados y concede el acceso al perfil del actor.
+
+5.3.5 CU5: CERRAR SESIÓN
+
+Nombre del Caso de Uso	CU5: Cerrar Sesión
+Propósito	Finalizar la sesión de usuarios, docentes y estudiantes del sistema.
+Resumen	El sistema finaliza la sesión cortando el acceso de los usuarios, docentes y estudiantes a sus correspondientes perfiles y a sus funcionalidades definidos por el sistema.
+Actores	Usuario, Docente o Estudiante
+Actor Iniciador	Usuario, Docente o Estudiante
+Precondiciones	Los actores deben tener una sesión en curso dentro del sistema.
+Post Condiciones	El sistema debe redirigir al usuario a la página de Inicio de Sesión.
+Flujo Principal	1. El actor se dirige a la opción “Cerrar Sesión”
+2. El sistema recibe la instrucción y redirige al usuario a la página de inicio de sesión del sistema.
+
+
+
+
+
+
+
+5.3.6 CU6: GESTIONAR MODULOS
+
+Nombre del Caso de Uso	CU6: Gestionar Módulos
+Propósito	Visualizar los módulos creados y existentes en el sistema.
+Resumen	Permite agregar, modificar y activar y desactivar módulos en el sistema.
+Actores	Administrador
+Actor Iniciador	Administrador
+Precondiciones	Para agregar un nuevo módulo el nombre de este no debe existir en el sistema. Para modificar y dar de baja un módulo, este debe existir en el sistema.
+Post Condiciones	Ninguno.
+Flujo Principal	1. Agregar
+1.1 El administrador se dirige a la opción de gestión de módulos.
+1.2 El administrador selecciona el signo “+” para agregar un nuevo módulo.
+1.3 El administrador rellena todos los campos para crear un nuevo módulo y luego solicita guardar la información.
+1.4 El sistema valida los datos ingresados, guarda la información y crea el nuevo módulo.
+1.5 El sistema actualiza la lista de los módulos.
+
+2. Modificar
+2.1 El administrador se dirige a la opción de gestión de módulos.
+2.2 El administrador escoge el módulo que modificará y realiza un click en el signo del lápiz.
+2.3 El sistema devuelve en la pantalla el formulario del módulo para que el administrador realice los cambios correspondientes.
+2.4 El administrador realiza los cambios correspondientes y solicita guardar la información.
+2.5 El sistema valida los datos y guarda la información.
+2.6 El sistema actualiza la lista de los módulos.
+3. Activar/Desactivar
+3.1 El administrador se dirige a la opción de gestión de módulos.
+3.2 El administrador escoge el módulo que desea activar o desactivar y realiza un click en el signo del lápiz.
+3.3 El sistema devuelve en la pantalla el formulario del módulo para que el administrador realice los cambios correspondientes.
+3.4 El administrador se sitúa en la parte de “activo” y selecciona “si” para activar o “no” para desactivar, posteriormente solicita guardar la información.
+3.5 El sistema valida los datos y guarda la información.
+3.6 El sistema actualiza la lista de los módulos.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5.3.7 CU7: GESTIONAR AULAS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5.3.8 CU8: GESTIONAR HORAS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5.3.9 CU9: GESTIONAR TURNOS
+
+
+
+
+5.3.10 CU:10: GESTIONAR NIVELES
+
+
+
+
+
+
+
+
+
+5.3.11 CU11: GESTIONAR ÁREA DE CONOCIMIENTOS
+
+
+
+
+
+
+
+
+
+
+
+
+
+5.3.12 CU12: GESTIONAR FUNCIONALIDADES
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+5.3.13 CU:13 GESTIONAR PERSONAS.
+
+
+
+
+
+5.3.14 CU14: GESTIONAR GESTIONES.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5.3.15 CU15: GESTIONAR PERIODOS.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5.3.16 CU16: GESTIONAR MATERIAS.
+
+
+
+
+
+
+
+5.3.17 CU17: GESTIONAR GRADOS.
+
+Caso de Uso	CU17: GESTIONAR GRADOS
+Propósito:	Asignar o anular una Grado (Ej.; Prekínder, Kínder, Primero, Segundo, etc.)
+Resumen:	Poder controlar los grados desde la página, sin tener que tocar desde la base de datos.
+Actores:	Administrador
+Actor Iniciador:	Administrador
+Precondiciones:	Gestionar Nivel: cada grado estará ligado a un nivel. (Ej: Primaria, Secundaria)
+Post condiciones	Ninguna
+Flujo Principal:	    1. Registrar Grados
+    • Click en grados.
+    • Click en agregar.
+    • Escribir el nombre del grado y Seleccionar nivel
+    • Seleccionar Activo.
+    • Click en guardar.
+
+    2. Anular Grados
+    • Click en Grados.
+    • Buscar el grado.
+    • Después de encontrar el grado, click en anular que está en la misma fila.
+    • Click en guardar.
+Excepción:	Ninguna.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5.3.18 CU18: GESTIONAR INSCRIPCIÓN.
+
+Caso de Uso	CU18: GESTIONAR INSCRIPCIÓN.
+Propósito:	Registrar a los alumnos a un curso.
+Resumen:	El sistema permitirá que registren alumnos a los cursos si es que cumplen ciertos requisitos.
+Actores:	Administrador y estudiante
+Actor Iniciador:	Estudiante
+Precondiciones:	Gestionar Notas
+Gestionar Estudiante
+Gestionar Grupos
+Post condiciones	Ninguna
+Flujo Principal:	1. Registrar
+    • dar click en agregar
+    • buscar el alumno
+    • seleccionar el alumno
+    • verificar si notas
+    • seleccionar nivel
+    • seleccionar grupo disponible del nivel correspondiente
+    • dar click en guardar
+2. Anular
+    • buscar estudiante
+    • seleccionar inscripción
+    • click en anular
+    • confirmar si desea anular la inscripción
+
+Excepción:	
+
+
+5.3.19 CU19: GESTIONAR NOTAS.
+
+Caso de Uso	CU19: GESTIONAR NOTAS
+Propósito:	Ingresar las notas al sistema
+Resumen:	El docente podrá ingresar las notas de cada alumno de forma digital y podrá guardarlas.
+Actores:	Docente
+Actor Iniciador:	Docente
+Precondiciones:	18.- Inscripción: Solo se podrán registrar las notas de los alumnos que estén inscritos.
+Post condiciones	Ninguna
+Flujo Principal:	1. Registrar Notas
+    • dar click Lista de alumnos
+    • dar click en “Ingresar notas”
+    • seleccionar el alumno
+    • Ingresar la nota en la sección de notas.
+    • dar click en guardar
+Excepción:	No se permite editar las notas después del periodo terminado.
+
+
+
+
+
+
+
+
+5.3.21 CU21: GESTIONAR PERFILES.	
+
+
+Caso de Uso	CU21: GESTIONAR PERFILES
+Propósito:	Asignar un perfil a cada Estudiante, docente y administrador.
+Resumen:	El perfil le permitirá poder ingresar a la página web mediante un Login.
+Actores:	Administrador
+Actor Iniciador:	Administrador
+Precondiciones:	Gestionar Personas
+Post condiciones	Ninguna
+Flujo Principal:	    3. Registrar Perfiles
+    • Click en asignar perfil.
+    • Seleccionar una persona
+    • Click en el rol que desea darle (Administrador, Docente, Estudiante)
+    • Click en guardar.
+
+Excepción:	Ninguna.
+
+
+
+
+
+
+
+
+5.3.22 CU22: GESTIONAR GRUPOS.
+
+Caso de Uso	CU22: GESTIONAR GRUPOS
+Propósito:	Asignar los datos de un grupo (Primero, Segundo) para cada gestión.
+Resumen:	
+Actores:	Administrador
+Actor Iniciador:	Administrador
+Precondiciones:	Gestionar Gestiones
+Gestionar Turnos
+Gestionar Grados
+Gestionar Aulas
+Post condiciones	Ninguna
+Flujo Principal:	      1.- Registrar Grupo
+    • Click en agregar grupo.
+    • Rellenar todos los datos que se muestre en el formulario.
+    • Click en guardar.
+
+      4.- Modificar grupo
+    • Click en modificar grupo.
+    • Actualizar todos los datos que se desee modificar en el formulario.
+    • Click en guardar.
+
+Excepción:	Ninguna.
+
+
+5.4 PROTOTIPAR INTERFAZ DE USUARIO 
+5.4.1 CU1: GESTIONAR USUARIO	
+
+5.4.2 CU2: GESTIONAR DOCENTE
+5.4.3 CU3: GESTIONAR ESTUDIANTE	
+
+5.4.4 CU4: INICIAR SESIÓN
+5.4.5 CU5: CERRAR SESIÓN	
+
+5.4.6 CU6: GESTIONAR MODULOS	
+
+
+
+
+
+
+
+
+
+5.4.7 CU7: GESTIONAR AULAS	
+
+
+
+5.4.8 CU8: GESTIONAR HORAS	
+
+
+5.4.9 CU9: GESTIONAR TURNOS	
+
+5.4.10 CU:10: GESTIONAR NIVELES	
+
+5.4.11 CU11: GESTIONAR ÁREA DE CONOCIMIENTOS
+
+5.4.12 CU12: GESTIONAR FUNCIONALIDADES	
+
+5.4.13 CU:13 GESTIONAR PERSONAS.	
+
+5.4.14 CU14: GESTIONAR GESTIONES.	
+
+5.4.15 CU15: GESTIONAR PERIODOS.	
+
+5.4.16 CU16: GESTIONAR MATERIAS.	
+
+5.4.17 CU17: GESTIONAR GRADOS.	
+
+5.4.18 CU18: GESTIONAR INSCRIPCIÓN.	
+
+5.4.19 CU19: GESTIONAR NOTAS.	
+5.4.20 CU20: GESTIONAR HORARIOS	
+
+
+5.4.21 CU21: GESTIONAR PERFILES.	
+
+
+
+
+
+
+5.4.22 CU22: GESTIONAR GRUPOS.	
+
+
+
+
+5.5 ESTRUCTURAR MODELO DE CASOS DE USO
+
+6 FLUJO DE TRABAJO” ANALISIS “
+6.1 ANÁLISIS DE LA ARQUITECTURA
+
+6.1.1 Identificar Paquetes
+
+    • Paquete de Seguridad
+
+    • Paquete de Académico
+
+    • Paquete de Inscripción
+
+
+    • Paquete de Informes
+
+
+
+
+
+
+
+
+
+6.1.2 Relacionar Paquetes
+
+    • Paquete de Seguridad
+
+Gestionar Modulo
+Gestionar Funcionalidades
+Gestionar Personas
+Gestionar Perfiles
+Gestionar Usuario
+Iniciar Sesión
+Cerrar Sesión
+
+    • Paquete de Académico
+
+Gestionar Área Conocimientos
+Gestionar Docente
+Gestionar Estudiante
+Gestionar Grupos
+Gestionar Horas
+Gestionar Niveles
+Gestionar Gestiones
+Gestionar Grados
+Gestionar Periodos
+Gestionar Aulas
+Gestionar Turnos
+Gestionar Materias
+Gestionar Notas
+
+    • Paquete de Inscripción
+
+Gestionar Inscripción
+Gestionar Mensualidades
+
+
+
+
+
+
+6.1.3 Relacionar paquetes con casos de uso
+
+
+
+
+
+
+6.2 ANALISIS DE CASO DE USO Y DE CLASE
+
+
+
+Análisis de Caso uso 1: Gestionar Áreas de Conocimientos
+
+
+Análisis de Clases 1: Gestionar Áreas de Conocimientos
+
+Análisis de Caso uso 2: Gestionar Personas
+
+
+
+
+Análisis de Clases 2: Gestionar Personas
+
+
+
+
+Análisis de Caso uso 3: Gestionar Turnos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Análisis de Clases 3: Gestionar Turnos
+
+
+Análisis de Caso uso 4: Gestionar Aulas
+
+
+Análisis de Clases 4: Gestionar Aulas
+
+
+
+Análisis de Caso uso 5:Gestionar Nivel
+
+
+Análisis de Clases 5: Gestionar Nivel
+
+
+
+
+Análisis de Caso uso 6: Gestionar Funcionalidades
+
+
+
+
+
+Análisis de Clases 6: Gestionar Funcionalidades
+
+
+
+Análisis de Caso uso 7: Gestionar Grados
+
+
+
+
+Análisis de Clases 7: Gestionar Grados
+
+
+
+Análisis de Caso uso 8: Gestionar Periodos
+
+
+
+Análisis de Clases 8: Gestionar Periodos
+
+
+
+
+
+
+
+
+
+
+
+
+Análisis de Caso uso 9: Gestionar Gestiones
+
+
+
+
+
+
+Análisis de Clases 9: Gestionar Gestiones
+
+
+
+
+
+
+
+
+
+
+
+ Análisis de Caso uso 10: Gestionar Horas
+
+
+
+
+Análisis de Clases10: Gestionar Horas
+
+
+
+
+
+
+
+
+
+Análisis de Caso uso 11: Gestionar Materias
+
+
+
+
+Análisis de Clases 11: Gestionar Materias
+
+
+Análisis de Caso uso 12: Gestionar Perfiles
+
+
+
+
+Análisis de Clases 12: Gestionar Perfiles
+
+
+
+
+Análisis de Caso uso 13:  Gestionar Módulos
+
+
+
+
+
+
+
+
+
+
+Análisis de Clases13:  Gestionar Módulos
+
+
+
+Análisis de Caso uso 14: Gestionar Usuarios
+
+
+
+Análisis de Clases 14: Gestionar Usuarios
+
+
+
+
+
+
+Análisis de Caso uso 15: Gestionar Grupo
+
+
+
+Análisis de Clase 15: Gestionar Grupo
+
+
+
+
+
+
+
+
+Análisis de Caso uso 16: Gestionar Materia
+
+
+ Análisis de Clases 16: Gestionar Materia
+
+
+
+Análisis de Caso uso 17: Gestionar Notas
+
+
+
+
+
+ Análisis de Clases 17: Gestionar Notas
+
+
+
+
+
+Análisis de Caso uso 18: Gestionar Docente
+
+
+
+
+
+
+
+
+
+
+Análisis de Clases 19: Gestionar Docente
+
+
+Análisis de Caso uso 20: Gestionar Estudiante
+
+
+Análisis de Clases 20: Gestionar Estudiante
+
+
+Análisis de Caso uso 21: Gestionar Iniciar Sesion
+
+
+Análisis de Clases 21: Gestionar Iniciar Sesion
+
+
+
+Análisis de Caso uso 22: Gestionar Cerrar Sesion
+
+
+Análisis de Clases 22: Gestionar Cerrar Sesión
+
+
+
+Análisis de Caso uso 23: Gestionar Inscripción
+
+
+
+Análisis de Clases 23: Gestionar Inscripción
+
+
+
+
+
+
+Análisis de Caso uso 24: Gestionar Mensualidad
+
+
+Análisis de Clases 24: Gestionar Mensualidad
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6.4 ANÁLISIS DE PAQUETE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+               7 FLUJO DE TRABAJO: DISEÑO
+7.1 DISEÑO DE ARQUITECTURA
+7.1.1 DISEÑO FÍSICO (DIAGRAMA DE DESPLIEGUE)
+
+
+
+
+7.1.1 DISEÑO LÓGICO (DIAGRAMA ORGANIZADO EN CAPAS)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7.2 DISEÑO DE DATOS
+ 7.2.1 DISEÑO DE DATOS LÓGICO
+Diagrama de Clase
+
+Mapeo
+
+7.2.2 DISEÑO DE DATOS FÍSICO 
+TABLA DE VOLUMEN
+SCRIPT
+create database bd_mki;
+use bd_mki;
+
+create table aulas(
+	id int auto_increment,
+	nombre varchar(20),
+	activo bit not null default 1,
+	eliminado bit not null default 0,
+	created_at datetime null,
+	updated_at datetime null,
+	primary key(id)
+)engine=innodb;
+
+create table horas(
+	id int auto_increment,
+	hora_ini time not null,
+	hora_fin time not null,
+	activo bit not null default 1,
+	eliminado bit not null default 0,
+	created_at datetime null,
+	updated_at datetime null,
+	primary key(id)
+)engine=innodb;
+
+create table turnos(
+	id int auto_increment,
+	nombre varchar(40) not null,
+	hora_ini time not null,
+	hora_fin time not null,
+	activo bit not null default 1,
+	eliminado bit not null default 0,
+	created_at datetime null,
+	updated_at datetime null,
+	primary key(id)
+)engine=innodb;
+
+
+create table areas_conocimientos(
+	id int auto_increment,
+	nombre varchar(50) not null,
+	activo bit not null default 1,
+	eliminado bit not null default 0,
+	created_at datetime null,
+	updated_at datetime null,
+	primary key(id)
+)engine=innodb;
+
+create table materias(
+	id int auto_increment,
+	nombre varchar(50) not null,
+	sigla varchar(20) null,
+	area_conocimiento_id int not null,
+	activo bit not null default 1,
+	eliminado bit not null default 0,
+	created_at datetime null,
+	updated_at datetime null,	
+	primary key(id),
+	foreign key (area_conocimiento_id) references areas_conocimientos(id) on update cascade on delete no action
+)engine=innodb;
+
+create table modulos(
+	id int auto_increment,
+	titulo varchar(50) not null,
+	codigo varchar(20) null,
+	icono varchar(50) null,
+	orden int null ,
+	activo bit not null default 1,
+	eliminado bit not null default 0,
+	created_at datetime null,
+	updated_at datetime null,
+	primary key(id)
+)engine=innodb;
+
+create table Funcionalidades(
+	id int auto_increment,
+	titulo varchar(50) not null,
+	ruta varchar(50) not null,
+	accion varchar(50) null,
+	orden int null ,
+	visible_menu bit null default 1,
+	modulo_id int not null,
+	activo bit not null default 1,
+	eliminado bit not null default 0,
+	created_at datetime null,
+	updated_at datetime null,
+	primary key(id),
+	foreign key (modulo_id) references modulos(id) on update cascade
+)engine=innodb;
+
+create table perfiles(
+	id int auto_increment,
+	nombre varchar(50) not null,
+	activo bit not null default 1,
+	eliminado bit not null default 0,
+	created_at datetime null,
+	updated_at datetime null,
+	primary key(id)
+)engine=innodb;
+
+create table permisos(
+	id int auto_increment,
+	perfil_id int not null,
+	funcionalidad_id int not null,
+	created_at datetime null,
+	primary key(id),
+	foreign key (perfil_id) references perfiles(id) on update cascade,
+	foreign key (funcionalidad_id) references funcionalidades(id) on update cascade
+)engine=innodb;
+
+
+create table personas(
+	id int auto_increment,
+	nombres varchar(100) not null,
+	primer_apellido varchar(100) null,
+	segundo_apellido varchar(100) null,
+	ci varchar(30) null,
+	ci_exp varchar(10) null,
+	fecha_nacimiento date null,
+	celular varchar(30) null,
+	telefono varchar(30) null,
+	direccion varchar(250),
+	correo varchar(100),
+	activo bit not null default 1,
+	eliminado bit not null default 0,
+	created_at datetime null,
+	updated_at datetime null,
+	primary key(id)
+)engine=innodb;
+
+create table usuarios(
+	id int not null,
+	login varchar(40),
+	pass varchar(250),
+	perfil_id int null,
+	activo bit not null default 1,
+	eliminado bit not null default 0,
+	created_at datetime null,
+	updated_at datetime null,
+	primary key(id),
+	foreign key (id) references personas(id) on update cascade,
+	foreign key (perfil_id) references perfiles(id) on update cascade
+)engine=innodb;
+
+create table estudiantes(
+	id int not null,
+	login varchar(40),
+	pass varchar(250),
+	perfil_id int null,
+	codigo_rude varchar(20) not null,
+	activo bit not null default 1,
+	eliminado bit not null default 0,
+	created_at datetime null,
+	updated_at datetime null,
+	primary key(id),
+	foreign key (id) references personas(id) on update cascade,
+	foreign key (perfil_id) references perfiles(id) on update cascade
+)engine=innodb;
+
+create table docentes(
+	id int not null,
+	login varchar(40),
+	pass varchar(250),
+	perfil_id int null,
+	codigo_docente varchar(20) not null,
+	activo bit not null default 1,
+	eliminado bit not null default 0,
+	created_at datetime null,
+	updated_at datetime null,
+	primary key(id),
+	foreign key (id) references personas(id) on update cascade,
+	foreign key (perfil_id) references perfiles(id) on update cascade
+)engine=innodb;
+
+create table gestiones(
+	id int auto_increment,
+	anio int not null,
+	fecha_inicio_clases date not null,
+	fecha_final_clases date not null,
+	numeros_periodos int not null,
+	tipos_periodos char(5) not null,
+	activo bit not null default 1,
+	eliminado bit not null default 0,
+	created_at datetime null,
+	updated_at datetime null,
+	primary key(id)
+)engine=innodb;
+
+
+create table periodos(
+	id int auto_increment,
+	fecha_inicio date not null,
+	fecha_fin date not null,
+	numero int not null,
+	gestion_id int not null,
+	activo bit not null default 1,
+	eliminado bit not null default 0,
+	created_at datetime null,
+	updated_at datetime null,
+	primary key(id),
+	foreign key (gestion_id) references gestiones(id) on update cascade
+)engine=innodb;
+
+create table niveles(
+	id int auto_increment,
+	nombre varchar(30) not null,
+	numero int not null,
+	activo bit not null default 1,
+	eliminado bit not null default 0,
+	created_at datetime null,
+	updated_at datetime null,
+	primary key(id)
+)engine=innodb;
+
+create table grados(
+	id int auto_increment,
+	nombre varchar(15) not null,
+	numero int not null,
+	nivel_id int not null,
+	activo bit not null default 1,
+	eliminado bit not null default 0,
+	created_at datetime null,
+	updated_at datetime null,	
+	primary key(id),
+	foreign key (nivel_id) references niveles(id) on update cascade
+)engine=innodb;
+
+
+create table grupos(
+	id int auto_increment,
+	codigo varchar(30) not null,
+	nombre varchar(30) not null,
+	cupos int not null,
+	gestion_id int not null,
+	turno_id int not null,
+	grado_id int not null,
+	aula_id int not null,
+	activo bit not null default 1,
+	eliminado bit not null default 0,
+	created_at datetime null,
+	updated_at datetime null,
+	primary key(id),
+	foreign key (gestion_id) references gestiones(id) on update cascade,
+	foreign key (turno_id) references turnos(id) on update cascade,
+	foreign key (grado_id) references grados(id) on update cascade,
+	foreign key (aula_id) references aulas(id) on update cascade
+)engine=innodb;
+
+
+create table grupos_materias(
+	id int auto_increment,
+	docente_id int not null,
+	materia_id int not null,
+	grupo_id int not null,
+	activo bit not null default 1,		
+	eliminado bit not null default 0,
+	created_at datetime null,
+	updated_at datetime null,
+	primary key(id),
+	foreign key (docente_id) references docentes(id) on update cascade,
+	foreign key (materia_id) references materias(id) on update cascade,
+	foreign key (grupo_id) references grupos(id) on update cascade
+)engine=innodb;
+
+create table matriculas(
+	id int auto_increment,
+	fecha date not null,
+	monto decimal(10,2) null default 0,		
+	estudiante_id int not null,
+	grupo_id int not null,
+	observacion varchar(250),
+	anulado bit not null default 1,
+	created_at datetime null,
+	updated_at datetime null,
+	primary key(id),
+	foreign key (estudiante_id) references estudiantes(id) on update cascade,
+	foreign key (grupo_id) references grupos(id) on update cascade
+)engine=innodb;
+
+create table notas(
+	id int auto_increment,
+	valor decimal(5,2) not null default 0,
+	grupo_materia_id int not null,
+	periodo_id int not null,
+	matricula_id int not null,
+	eliminado bit not null default 0,
+	created_at datetime null,
+	updated_at datetime null,
+	primary key(id),
+	foreign key (grupo_materia_id) references grupos_materias(id) on update cascade,
+	foreign key (periodo_id) references periodos(id) on update cascade,
+	foreign key (matricula_id) references matriculas(id) on update cascade
+)engine=innodb;
+
+create table mensualidades(
+	id int auto_increment,
+	fecha_vencimiento date null,
+	mes int null,
+	monto decimal(10,2) not null default 0,
+	matriculas_id int not null,
+	pagado bit not null default 0,
+	eliminado bit not null default 0,
+	created_at datetime null,
+	updated_at datetime null,
+	primary key(id),
+	foreign key (matriculas_id) references matriculas(id) on update cascade
+)engine=innodb;
+
+create table pagos(
+	id int auto_increment,
+	fecha date not null,
+	monto decimal(10,2) not null,
+	mensualidad_id int not null,
+	anulado bit not null default 0,
+	created_at datetime null,
+	updated_at datetime null,
+	primary key(id),
+	foreign key (mensualidad_id) references mensualidades(id) on update cascade
+)engine=innodb;
+
+create table valoraciones_cualitativas(
+	id int auto_increment,
+	valoracion varchar(300) not null,
+	matricula_id int not null,
+	periodo_id int not null,
+	anulado bit not null default 0,
+	created_at datetime null,
+	updated_at datetime null,
+	primary key(id),
+	foreign key (matricula_id) references matriculas(id) on update cascade,
+	foreign key (periodo_id) references periodos(id) on update cascade
+)engine=innodb;
+
+create table horarios(
+	id int auto_increment,
+	grupo_id int null,
+	activo bit not null default 1,
+	eliminado bit not null default 0,
+	created_at datetime null,
+	updated_at datetime null,	
+	primary key(id),
+	foreign key (grupo_id) references grupos(id) on update cascade
+)engine=innodb;
+
+create table periodos_clases(
+	id int auto_increment,
+	nombre varchar(15) not null,
+	grupo_materia_id int not null,
+	horario_id int not null,
+	hora_id int not null,
+	eliminado bit not null default 0,
+	created_at datetime null,
+	updated_at datetime null,
+	primary key(id),
+	foreign key (grupo_materia_id) references grupos_materias(id) on update cascade,
+	foreign key (horario_id) references horarios(id) on update cascade,
+	foreign key (hora_id) references horas(id) on update cascade
+)engine=innodb;
+
+DIAGRAMA RELACIONAL
+
+ACTUALIZACIÓN DE TUPLAS (POBLACIÓN DE DATOS)
+
+INSERT INTO `areas_conocimientos` (`id`, `nombre`, `activo`, `eliminado`, `created_at`, `updated_at`) VALUES
+(1, 'Comunidad y Sociedad', b'1', b'0', '2021-01-16 23:40:18', '2021-01-16 23:40:18'),
+(2, 'Ciencia Tecnologia y Produccion', b'1', b'0', '2021-01-16 23:40:18', '2021-01-16 23:40:18'),
+(3, 'Vida Tierra Territorio', b'1', b'0', '2021-01-16 23:40:18', '2021-01-16 23:40:18');
+
+--
+-- Volcado de datos para la tabla `aulas`
+--
+
+INSERT INTO `aulas` (`id`, `nombre`, `activo`, `eliminado`, `created_at`, `updated_at`) VALUES
+(1, '01', b'1', b'0', '2021-01-16 18:53:00', NULL),
+(2, '02', b'1', b'0', '2021-01-16 18:53:00', NULL),
+(3, '03', b'1', b'0', '2021-01-16 18:53:00', NULL);
+
+--
+-- Volcado de datos para la tabla `estudiantes`
+--
+
+INSERT INTO `estudiantes` (`id`, `login`, `pass`, `perfil_id`, `codigo_rude`, `activo`, `eliminado`, `created_at`, `updated_at`) VALUES
+(2, '45457124', '70536549e1a9c04cb68bf3f9db013528', NULL, '45454545', b'1', b'0', '2021-01-16 23:59:00', NULL),
+(3, '78787878', '11df1ae29d6893e69b5eb99e224d4a21', NULL, '56565656', b'1', b'0', '2021-01-16 23:59:00', NULL),
+(4, '89898989', 'dfc3be9ec93ee1aaac492925ef4e8924', NULL, '96969696', b'1', b'0', '2021-01-16 23:59:00', NULL),
+(5, '12121212', '8ce87b8ec346ff4c80635f667d1592ae', NULL, '85858585', b'1', b'0', '2021-01-16 23:59:00', NULL),
+(6, '36363636', 'a00448b0265bc09b234f3a3be4857f5f', NULL, '25252525', b'1', b'0', '2021-01-16 23:59:00', NULL),
+(7, '74747474', '1451f2a4e2ff3852c594c0ea45bb5c91', NULL, '54545454', b'1', b'0', '2021-01-16 23:59:00', NULL);
+
+--
+-- Volcado de datos para la tabla `gestiones`
+--
+
+INSERT INTO `gestiones` (`id`, `anio`, `fecha_inicio_clases`, `fecha_final_clases`, `numeros_periodos`, `tipos_periodos`, `activo`, `eliminado`, `created_at`, `updated_at`) VALUES
+(1, 2020, '2020-02-10', '2020-12-05', 4, 'BI', b'1', b'0', '2021-01-16 19:18:00', NULL);
+
+--
+-- Volcado de datos para la tabla `grados`
+--
+
+INSERT INTO `grados` (`id`, `nombre`, `numero`, `nivel_id`, `activo`, `eliminado`, `created_at`, `updated_at`) VALUES
+(1, 'Pre Kinder', 1, 1, b'1', b'0', '2021-01-16 18:48:00', NULL),
+(2, 'Kinder', 2, 1, b'1', b'0', '2021-01-16 18:48:00', NULL),
+(3, 'Primero', 3, 2, b'1', b'0', '2021-01-16 18:48:00', NULL),
+(4, 'Segundo', 4, 2, b'1', b'0', '2021-01-16 18:48:00', NULL);
+
+--
+-- Volcado de datos para la tabla `grupos`
+--
+
+INSERT INTO `grupos` (`id`, `codigo`, `nombre`, `cupos`, `gestion_id`, `turno_id`, `grado_id`, `aula_id`, `activo`, `eliminado`, `created_at`, `updated_at`) VALUES
+(1, '1A', 'Primero A', 30, 1, 1, 3, 1, b'1', b'0', '2021-01-16 19:31:00', NULL),
+(2, '1B', 'Primero B', 30, 1, 1, 3, 2, b'1', b'0', '2021-01-16 19:31:00', NULL);
+
+--
+-- Volcado de datos para la tabla `horas`
+--
+
+INSERT INTO `horas` (`id`, `hora_ini`, `hora_fin`, `activo`, `eliminado`, `created_at`, `updated_at`) VALUES
+(1, '07:30:00', '09:00:00', b'1', b'0', '2021-01-16 19:13:15', NULL);
+
+--
+-- Volcado de datos para la tabla `materias`
+--
+
+INSERT INTO `materias` (`id`, `nombre`, `sigla`, `area_conocimiento_id`, `activo`, `eliminado`, `created_at`, `updated_at`) VALUES
+(1, 'MatemÃ¡ticas', 'MAT', 2, b'1', b'0', '2021-01-16 23:40:21', '2021-01-16 23:40:21'),
+(2, 'Lenguaje', 'LEN', 1, b'1', b'0', '2021-01-16 23:40:21', '2021-01-16 23:40:21'),
+(3, 'Educacion Musical', 'MUS', 1, b'1', b'0', '2021-01-16 23:40:21', '2021-01-16 23:40:21'),
+(4, 'Ciencias Sociales', 'CISO', 1, b'1', b'0', '2021-01-16 23:40:21', '2021-01-16 23:40:21');
+
+--
+-- Volcado de datos para la tabla `matriculas`
+--
+
+INSERT INTO `matriculas` (`id`, `fecha`, `monto`, `estudiante_id`, `grupo_id`, `observacion`, `anulado`, `created_at`, `updated_at`) VALUES
+(1, '2020-01-15', '20.00', 2, 1, 'todo ok', b'0', '2020-01-15 12:00:00', NULL),
+(2, '2020-01-16', '20.00', 3, 1, 'todo ok', b'0', '2020-01-15 12:00:00', NULL),
+(3, '2020-01-17', '20.00', 4, 1, 'todo ok', b'0', '2020-01-15 12:00:00', NULL),
+(4, '2020-01-15', '20.00', 5, 2, 'todo ok', b'0', '2020-01-15 12:00:00', NULL),
+(5, '2020-01-16', '20.00', 6, 2, 'todo ok', b'0', '2020-01-15 12:00:00', NULL),
+(6, '2020-01-17', '20.00', 7, 2, 'todo ok', b'0', '2020-01-15 12:00:00', NULL);
+
+--
+-- Volcado de datos para la tabla `modulos`
+--
+
+INSERT INTO `modulos` (`id`, `titulo`, `codigo`, `icono`, `orden`, `activo`, `eliminado`, `created_at`, `updated_at`) VALUES
+(1, 'Seguridad', 'seguridad', 'fa-th-large', 1, b'1', b'0', '2020-12-28 09:02:15', NULL),
+(2, 'Academico', 'academico', 'fa-table', 2, b'1', b'0', '2020-12-28 09:02:15', NULL),
+(3, 'Inscripcion', 'inscripcion', 'fa-edit', 3, b'1', b'0', '2020-12-28 09:02:15', NULL),
+(4, 'Informes', 'informes', 'fa-bar-chart-o', 4, b'1', b'0', '2020-12-28 09:02:15', NULL);
+
+--
+-- Volcado de datos para la tabla `niveles`
+--
+
+INSERT INTO `niveles` (`id`, `nombre`, `numero`, `activo`, `eliminado`, `created_at`, `updated_at`) VALUES
+(1, 'Inicial', 1, b'1', b'0', '2021-01-16 18:45:00', NULL),
+(2, 'Primaria', 2, b'1', b'0', '2021-01-16 18:45:00', NULL),
+(3, 'Secundaria', 3, b'1', b'0', '2021-01-16 18:45:00', NULL);
+
+--
+-- Volcado de datos para la tabla `periodos`
+--
+
+INSERT INTO `periodos` (`id`, `fecha_inicio`, `fecha_fin`, `numero`, `gestion_id`, `activo`, `eliminado`, `created_at`, `updated_at`) VALUES
+(1, '2020-02-10', '2020-03-30', 1, 1, b'1', b'0', NULL, NULL),
+(2, '2020-04-01', '2020-05-31', 2, 1, b'1', b'0', NULL, NULL);
+
+--
+-- Volcado de datos para la tabla `personas`
+--
+
+INSERT INTO `personas` (`id`, `nombres`, `primer_apellido`, `segundo_apellido`, `ci`, `ci_exp`, `fecha_nacimiento`, `celular`, `telefono`, `direccion`, `correo`, `activo`, `eliminado`, `created_at`, `updated_at`) VALUES
+(1, 'Administrador', 'Sistema', NULL, '000001', 'SC', '2020-12-28', NULL, NULL, NULL, NULL, b'1', b'0', '2020-12-28 09:27:00', NULL),
+(2, 'Pedro', 'Lopez', 'Castro', '45457124', 'SC', '2000-05-20', '74859612', '34474774', 'calle1', 'pedro@gmail.com', b'1', b'0', '2020-12-28 09:27:00', NULL),
+(3, 'Jose', 'Peredo', 'Rios', '78787878', 'SC', '2000-05-20', '74859612', '34474774', 'calle2', 'jose@gmail.com', b'1', b'0', '2020-12-28 09:27:00', NULL),
+(4, 'Miguel', 'Calle', 'Gonzales', '89898989', 'SC', '2000-05-20', '74859612', '34474774', 'calle3', 'miguel@gmail.com', b'1', b'0', '2020-12-28 09:27:00', NULL),
+(5, 'Manuel', 'Castro', 'MontaÃ±o', '12121212', 'SC', '2000-05-20', '74859612', '34474774', 'calle1', 'manuel@gmail.com', b'1', b'0', '2020-12-28 09:27:00', NULL),
+(6, 'Simon', 'Mercado', 'Peredo', '36363636', 'SC', '2000-05-20', '74859612', '34474774', 'calle2', 'simon@gmail.com', b'1', b'0', '2020-12-28 09:27:00', NULL),
+(7, 'Wilson', 'Rodriguez', 'Farel', '74747474', 'SC', '2000-05-20', '74859612', '34474774', 'calle3', 'wilson@gmail.com', b'1', b'0', '2020-12-28 09:27:00', NULL);
+
+--
+-- Volcado de datos para la tabla `turnos`
+--
+
+INSERT INTO `turnos` (`id`, `nombre`, `hora_ini`, `hora_fin`, `activo`, `eliminado`, `created_at`, `updated_at`) VALUES
+(1, 'MaÃ±ana', '07:30:00', '12:30:00', b'1', b'0', NULL, NULL);
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `login`, `pass`, `perfil_id`, `activo`, `eliminado`, `created_at`, `updated_at`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', NULL, b'1', b'0', '2020-12-28 09:29:00', NULL);
+COMMIT;
+CONSULTAS SIMPLES
+
+-- 1) Mostrar todas las areas de conocimientos activas actualmente
+
+select * 
+from areas_conocimientos 
+where activo = 1;
+
+-- 2) Mostrar los turnos activos actualmente
+
+select *
+from turnos 
+where activo = 1;
+
+-- 3) Mostrar todas las aulas activas actualmente
+select *
+from aulas 
+where activo = 1;
+
+/* 4) Mostrar todas las aulas activas que tengan 
+capacidad mayor a 30 estudiantes */
+
+select *
+from aulas  
+where activo = 1 and capacidad > 30;
+
+/* 5) Mostrar los niveles activos actualmente */
+
+select *
+from niveles 
+where activo = 1;
+
+/* 6) Mostrar todas las horas de clase activas */
+
+select *
+from horas 
+where activo = 1;
+
+/* 7) Mostrar todas las horas de clases cuya hora de inicio
+sea menor a las 12 pm */
+
+select *
+from horas 
+where hora_ini < '12:00:00';
+
+/* 8) Mostrar todas las horas de clases cuya hora de inicio 
+sea mayor o igual a las 13:30 pm */
+
+select *
+from horas 
+where hora_ini >= '13:30:00';
+
+/* 9) Mostrar todas las materias activas actualmente*/
+
+select *
+from materias 
+where activo = 1;
+
+/* 10) Mostrar todas las siglas de las materias */
+
+select sigla 
+from  materias
+
+/* 11) Mostrar todos los grados activos actualmente */
+
+select *
+from grados 
+where activo = 1;
+
+/* 12) Mostrar todos los periodos vigentes */
+
+select *
+from periodos 
+where activo = 1;
+
+/* 13) Mostrar la cantidad de periodos vigentes actualmente */ 
+
+select count(*) as N°Periodos
+from periodos 
+where activo = 1;
+
+/* 14) Mostrar la fecha de finalización del segundo periodo */
+
+select fecha_fin 
+from periodos 
+where numero = 2;
+
+/* 15) Mostrar la fecha de inicio del segundo periodo */ 
+
+select fecha_inicio 
+from periodos 
+where numero = 2;
+
+/* 16) Mostrar la fecha de finalización del primer periodo */
+
+select fecha_fin 
+from periodos 
+where numero = 1;
+
+/* 17) Mostrar la fecha de inicio del primer periodo */ 
+
+select fecha_inicio 
+from periodos 
+where numero = 1;
+
+/* 18) Mostrar todos los módulos activos */
+
+select * 
+from modulos 
+where activo = 1;
+
+/* 19) Mostrar todas las funcionalidades activas */
+
+select *
+from funcionalidades 
+where activo = 1;
+
+/* 20) Mostrar todas las personas activas en el sistema */
+
+select *
+from personas 
+where activo = 1;
+
+/* 21) Mostrar las personas cuyo género es Femenino */
+
+select *
+from personas 
+where genero = 'F';
+
+/* 22) Mostrar las personas cuyo género es masculino */
+
+select *
+from personas 
+where genero = 'M';
+
+/* 23) Mostrar el primer apellido, nombre y CI de las personas activas */
+
+select primer_apellido, nombres, ci 
+from personas 
+where activo = 1;
+
+/* 24) Mostrar todas las personas cuyo CI fue expedido en SC */
+
+select *
+from personas 
+where ci_exp = 'SC';
+
+/* 25) Contar cuantas personas son mujeres */ 
+
+select count(*) 
+from personas 
+where genero = 'F';
+
+/* 26) Contar cuantas personas son hombres */ 
+
+select count(*) 
+from personas 
+where genero = 'M';
+
+/* 27) Contar cuantas personas tienen telefono */ 
+
+select count(*) 
+from personas 
+where telefono is not null;
+
+/* 28) Contar cuantas personas no tienen telefono */ 
+
+select count(*) 
+from personas 
+where telefono is null;
+
+/* 29) Contar cuantos hombres tienen telefono */ 
+
+select count(*) 
+from personas 
+where genero = 'M' and telefono is not null;
+
+/* 30) Contar cuantas mujeres tienen telefono */ 
+
+select count(*) 
+from personas 
+where genero = 'F' and telefono is not null;
+
+CONSULTAS MÚLTIPLES
+
+SUBCONSULTAS
+
+PROCEDIMIENTOS ALMACENADOS
+
+TRIGGERS (DISPARADORES)
+
+7.3 DISEÑAR CASO DE USO
+DIAGRAMA DE SECUENCIA
+
+8 FLUJO DE TRABAJO: IMPLEMENTACION
+8.1 ELECCIÓN DE PLATAFORMA DE DESARROLLO DEL SOFTWARE
+LENGUAJE DE PROGRAMACIÓN
+
+PHP (acrónimo recursivo de PHP: Hypertext Preprocessor) es un lenguaje de código abierto muy popular especialmente adecuado para el desarrollo web y que puede ser incrustado en HTML.
+
+BASE DE DATOS
+
+MySQL es un sistema de gestión de base de datos relacional (RDBMS) de código abierto, basado en lenguaje de consulta estructurado (SQL).
+Este software se utilizó como motor de base de datos y utilizado como servidor para conectar el software administrador de base de datos DBEAVER que utiliza la interfaz de programación de aplicaciones (API) JDBC para interactuar con las bases de datos a través de un controlador JDBC.
+
+SISTEMAS OPERATIVO
+
+OTROS
+
+FRAMEWORK: LARAVEL
+
+Laravel es un framework de código abierto para desarrollar aplicaciones y servicios web con php 5.x. Tiene como objetivo ser un framework que permita el uso de una sintaxis elegante y expresiva para crear código de forma sencilla y permitiendo multitud de funcionalidades. Laravel propone en el desarrollo usar 'Routes with Closures', en lugar de un MVC tradicional con el objetivo de hacer el código más claro. Aun así
+permite el uso de MVC tradicional.
+LIBRERÍA: BOOTSTRAP
+
+Es una biblioteca multiplataforma o conjunto de herramientas de código abierto para diseño de sitios y aplicaciones web. Contiene plantillas de diseño con tipografía, formularios, botones, cuadros, menús de navegación y otros elementos de diseño basado en HTML y CSS, así como extensiones de JavaScript adicionales. A diferencia de muchos frameworks web, solo se ocupa del desarrollo front-end.
+8.2 IMPLEMENTACIÓN DE LA ARQUITECTURA DEL SISTEMA
+DIAGRAMA DE COMPONENTE PRINCIPAL DEL SISTEMA
+
+8.3 IMPLEMENTACIÓN DE LA ARQUITECTURA DEL SUBSISTEMA 
+REALIZAR DIAGRAMA DE COMPONENTE DE CADA PAQUETE
+
+
+
+
+
+
+	
+
+
+
+
+
+
+9 CONCLUSION
+A través de la presente documentación, plasmamos el avance que ha logrado nuestro proyecto a lo largo de este semestre. Cabe mencionar que se ha logrado cumplir con los objetivos y motivaciones que nos habíamos marcado al iniciar el desarrollo del mismo.
+
+Hemos podido desarrollar este sistema de información orientado a los procesos de registro e inscripción de estudiantes y docentes, asimismo contribuir al gestionamiento de materias, aulas y cursos. 
+
+Tuvimos complicaciones al inicio de la codificación debido a que no teníamos experiencia al codificar bajo la arquitectura de software “Modelo – Vista – Controlador” y el manejo de Laravel como framework de desarrollo, esto implicó a que estudiemos la documentación de este framework para adaptarnos a los requisitos y parámetros que debíamos seguir para organizar y codificar correctamente.
+
+El desarrollo del proyecto estuvo marcado por fases, adaptándose a la metodología de desarrollo de software “PUDS” recomendada por la Ing. Angélica Garzón C. tutora de la materia de Sistemas de Información de la UAGRM. 
+
+10 RECOMENDACIÓN
+Recomendamos la pronta ejecución y utilización de este sistema de información debido a los problemas e inconvenientes que tuvo la Unidad Educativa Mateo Kuljis Ilic en anteriores gestiones escolares, los cuáles motivaron el desarrollo de este proyecto.
+
+Sugerimos la previa capacitación al personal que manejará el sistema de información para que este pueda funcionar correctamente y no se generen congruencias e inconsistencias en los registros de la base de datos.
+11 BIBLIOGRAFIA
+    • Colegio Mateo Kuljis Ilic (agradecer información dada)
+    • https://www.lucidchart.com/pages/es/que-es-el-lenguaje-unificado-de-modelado-uml
+    • EL LENGUAJE UNIFICADO DE MODELADO - BOOCH - RUMBAUGH - JACOBSON
+    • Enterprise Architect UML - Logic Studio Desarrollo Web, Móvil, Sharepoint
+    • Lenguaje unificado de modelado - Wikipedia, la enciclopedia libre
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ANEXOS
+        A) ENTREVISTAS
+
+Entrevista para la obtención de requisitos
+Nombre del colegio: Unidad Educativa Mateo Kuljis Ilic
+Lugar: Barrio Campo Rosa / Distrito 10/ Calle 24 de septiembre   Duración: 30 min
+Datos de la Empresa
+ (  ) Privada           	( x ) Estatal (De convenio)
+Datos del Entrevistado
+Nombre: Félix Choque Quispe
+Cargo: Director de la Unidad Educativa.
+Datos del Entrevistador:
+Nombre: Henry Eddy Choque Zacarias
+1. ¿La unidad educativa es pública o privada?
+      	- Publica (de convenio)
+2. ¿Cuáles son las líneas morales, religiosas e ideológicas del centro?
+- Somos una institución educativa católica, administrativa por la parroquia cristo mensajero de la paz, dentro del convenio y marco entre la iglesia y el estado.
+3. ¿Cuál es tipo de educación, método de aprendizaje que sigue?
+-La Unidad educativa se identifica y se caracteriza por la vivencia cotidiana de valores humanos cristianos, como ser:
+      	*Responsabilidad
+      	*Justicia
+      	*Respeto
+      	*Amor
+      	*Fe
+ 
+
+
+4. ¿Cuenta el colegio con una logística y servicios esenciales viables para nuestro hijo?
+-Cuenta con todos los servicios básicos, Transporte sobre avenida, Cámaras de seguridad, iluminación alrededor de la unidad educativa, Coliseo a 2 cuadras y una Plaza alado del colegio.
+ 
+5. ¿En qué idiomas se imparten las clases? ¿Cuántos Turnos tiene? ¿Son los profesores nativos?
+- Todas las clases se imparten en español, con turno tarde y mañana y  todos los profesores son bolivianos.
+ 
+6. ¿Cuál es el uso que se hace en el colegio de las nuevas tecnologías? ¿Está preparado para impartir clases a distancia?
+- Contiene las tecnologías correspondientes para la educación, las clases a distancia esta en proceso, como en todos los colegios, aun no es muy eficiente pero estamos trabajando para hacer de ella una herramienta importante en el futuro.
+7. ¿Cómo son las instalaciones? ¿Están bien cuidadas?
+- Las instalaciones están en buen estado, Cuidadas por una portera y su familia, las estructuras no presentan fallas hasta el momento.
+
+        B) DOCUMENTOS
+
+
+
+
+
+
+
+
+
+
+	
+

@@ -1,0 +1,5816 @@
+UNIVERSIDAD AUTÓNOMA GABRIEL RENÉ MORENO
+FACULTAD DE INGENIERÍA Y CIENCIAS DE LA
+COMPUTACIÓN Y TELECOMUNICACIONES
+
+Sistemas De Información para gestionar la asistencia, reportes, mensajería, asignación de
+aulas, matrículas del Colegio Don Bosco
+Grupo de Proyecto:
+
+6
+
+Materia: Sistemas De Información I
+Grupo De La Materia:
+
+SA
+
+Docente: MSc. Ing. Angélica Garzón Cuéllar
+Fecha: 21/04/2025
+Integrantes:
+
+Arze Kao Luis Angel
+Calero Suyo Trevor Félix
+Garnica Valda Oliver Santos
+Guzman Rojas Luis David
+Mejia Zarate Alimbert
+Ponce Cardenas David Israel
+
+Gestión:
+
+1/2025
+
+Contenido
+1. PERFIL ................................................................................................................................ 1
+1.1. Introducción .................................................................................................................. 1
+1.2. Antecedentes ................................................................................................................. 2
+1.2.1. Misión .................................................................................................................... 3
+1.2.2. Visión ..................................................................................................................... 3
+1.2.3. Objetivo.................................................................................................................. 4
+1.3 Justificación ................................................................................................................... 4
+1.3.1. Comunicación ineficiente con padres de familia ..................................................... 4
+1.3.2. Gestión manual de la asistencia .............................................................................. 5
+1.3.3. Falta de control en el ingreso y salida de estudiantes .............................................. 5
+1.3.4. Asignación ineficiente de espacios físicos .............................................................. 5
+1.4 Descripción Del Problema .............................................................................................. 5
+1.4.1. Registro de Asistencia Ineficiente........................................................................... 6
+1.4.2. Falta De Control En El Control Estudiantil ............................................................. 7
+1.4.3. Problemas En La Asignación De Horarios y Aulas ................................................. 7
+1.4.4. Comunicación Ineficiente con Padres de Familia ................................................... 8
+1.4.5. Gestión Académica Descentralizada ....................................................................... 8
+1.4.6. Ineficiencia en la Gestión de Matrículas y Finanzas Escolares ............................... 9
+1.5 Formulación Del Problema............................................................................................10
+1.6 Objetivos .......................................................................................................................10
+1.6.1 Objetivo General ....................................................................................................10
+1.6.2 Objetivos Específicos .............................................................................................10
+1.7 Alcance .........................................................................................................................11
+1..7.1. Módulo de Gestión Académica .............................................................................11
+1.7.1.1 RF1: Inscripción de Estudiantes.......................................................................11
+1.7.1.2 RF2: Matrícula y Asignación de Cursos ..........................................................11
+1.7.1.3 RF3: Gestión de Planificación Académica .......................................................11
+1.7.1.4 RF4: Historial Académico ...............................................................................12
+1.7.2 Módulo de Asistencia .............................................................................................12
+1.7.2.1 RF5: Registro Digital de Asistencia .................................................................12
+1.7.2.2 RF6: Notificación Automática de Faltas ..........................................................12
+1.7.2.3 RF7: Justificación de Faltas .............................................................................12
+1.7.2.4 RF8: Reportes Analíticos de Asistencia ...........................................................12
+
+1.7.3 Módulo de Evaluación ............................................................................................13
+1.7.3.1 RF9: Registro de Calificaciones.......................................................................13
+1.7.3.2 RF10: Generación de Boletines .......................................................................13
+1.7.3.3 RF11: Análisis de Rendimiento .......................................................................13
+1.7.4 Módulo de Comunicación.......................................................................................13
+1.7.4.1 RF12: Portal de Noticias ..................................................................................13
+1.7.4.2 RF13: Mensajería Interna ................................................................................14
+1.7.5 Módulo de Seguridad .............................................................................................14
+1.7.5.1 RF14: Control de Accesos ...............................................................................14
+1.7.5.2 RF15: Auditoría del Sistema ............................................................................14
+1.7.6. Módulo de Gestión Docente ..................................................................................14
+1.7.6.1. RF16: Perfiles Docentes .................................................................................14
+1.7.6.2. RF17: Asignación de Cargas Horarias ............................................................14
+1.7.7. Módulos de Licencias y Permisos ..........................................................................15
+1.7.7.1. RF18: Gestión de licencias estudiantiles. ........................................................15
+1.7.8. Módulo de Gestión de Aulas .................................................................................15
+1.7.8.1. RF19: Asignación inteligente de espacios. ......................................................15
+2. Elementos del Sistema Basado en Computadoras ................................................................15
+2.1 Hardware.......................................................................................................................15
+2.1.1 Servidor ..................................................................................................................15
+2.1.2 Cliente ....................................................................................................................15
+2.1.3 Medios de Comunicación .......................................................................................16
+2.1.4 Otros Dispositivos ..................................................................................................16
+2.2 Software ........................................................................................................................16
+2.2.1 Servidor ..................................................................................................................16
+2.2.2 CLIENTE ...............................................................................................................16
+2.2.3 Otros Software Adicional ...........................................................................................17
+2.3. Datos ............................................................................................................................17
+2.4 PROCESOS ..................................................................................................................18
+2.5 GENTE/USUARIO .......................................................................................................18
+2.6 DOCUMENTOS GENERADOS ..................................................................................19
+3. TECNOLOGÍA PARA EL DESARROLLO DEL SOFTWARE ........................................19
+3.1. Estrategia para el desarrollo de software ......................................................................19
+3.2 Metodología para el desarrollo del Software .................................................................19
+
+3.2.1. Características del PUDS .......................................................................................19
+3.2.2 CARACTERÍSTICAS DE UML ............................................................................20
+3.3 Herramientas de desarrollo ............................................................................................21
+3.3.1 SOFTWARE ..........................................................................................................21
+3.3.2 HARDWARE .........................................................................................................21
+4. Posibles costos ....................................................................................................................22
+5 Posibles beneficios ...............................................................................................................22
+5.1. TIEMPO ......................................................................................................................22
+5.2. ESFUERZO .................................................................................................................23
+5.3. COSTOS ......................................................................................................................23
+6. Posibles clientes ..................................................................................................................23
+7. Marco Teórico.....................................................................................................................24
+7.1. Capitulo 1 Método Ishikawa.........................................................................................24
+7.1.1. Identificar Problemas.............................................................................................24
+7.1.1.1. Lista de Problemas..........................................................................................24
+7.1.1.2. Depurar problemas .........................................................................................24
+7.1.1.3. Lista Final de Problemas .................................................................................26
+7.1.1.4. Propietarios de los Problemas. ........................................................................26
+7.1.1.5. Análisis de Problemas .....................................................................................28
+7.1.1.6. Estimación y Cuantificación del Problema .....................................................29
+7.1.1.7. Alternativas de Cambio ..................................................................................30
+7.1.1.8. Conclusión y Recomendaciones .....................................................................31
+7.1.1.9. Diseñar el Diagrama de Ishikawa....................................................................33
+7.1.2. Identificar las Principales Categorías .....................................................................34
+7.1.3. Identificar las Causas .............................................................................................35
+7.1.4. Analizar y Discutir el Diagrama. ...........................................................................37
+7.2 MODELO DE NEGOCIO .............................................................................................40
+7.2.1 Diagrama de Actividades ........................................................................................40
+7.2.1.1 Proceso de Inscripción/Matrícula de Estudiantes .............................................40
+7.2.1.2 Proceso de Registro de Asistencia ...................................................................41
+7.2.1.3 Proceso de Registro de Calificaciones y Generación de Boletines ...................42
+7.2.1.4 Proceso de Gestión de Planificación Académica ..............................................42
+7.2.1.4 Proceso de Comunicación Interna ....................................................................43
+7.2.1.4 Proceso de Solicitud y Aprobación de Licencias (Permisos) ............................43
+
+7.3 Capitulo 2: Captura de requisitos ..................................................................................44
+7.3.1 Encontrar actores y casos de uso ............................................................................44
+7.3.2 PRIORIZAR CASOS DE USO ..............................................................................46
+7.3.3 DETALLE DE UN CASO DE USO .......................................................................47
+7.3.3.1 CU1: Iniciar sesión ..........................................................................................47
+7.3.3.2 CU2: Cerrar Sesión ..........................................................................................48
+7.3.3.3 CU3: Registrar Usuarios ..................................................................................49
+7.3.3.4 CU4: Registrar Colegio ...................................................................................51
+7.3.3.5 CU5: Registrar Unidad Educativa ....................................................................52
+7.3.3.6 CU6: Asignar Calendario y División del año escolar .......................................53
+7.3.3.7 CU7: Registrar Módulos ..................................................................................54
+7.3.3.8 CU8: Registrar Aulas .......................................................................................55
+7.3.3.9 CU9: Registrar Grados ....................................................................................56
+7.3.3.10 CU10: Registrar Cursos .................................................................................57
+7.3.3.11 CU11: Registrar Materias – Curso .................................................................58
+7.3.3.12 CU12: Registrar Profesores ...........................................................................59
+7.3.3.13 CU13: Inscripción de Estudiante....................................................................60
+7.3.3.14 CU14: Asignar Materias a un Curso ..............................................................61
+7.3.3.15 CU15: Asignar Cargas Horarias .....................................................................62
+7.3.3.16 CU16: Asignar Aulas .....................................................................................63
+7.3.3.17 CU17: Registrar asistencia digital ..................................................................64
+7.3.3.18 CU18: Registrar calificaciones ......................................................................65
+7.3.3.19 CU19: Generar Boletines ...............................................................................66
+7.3.3.20 CU20: Analizar Rendimiento Académico ......................................................67
+7.3.3.21 CU21: Gestionar Licencias Estudiantiles .......................................................69
+7.3.4 PROTOTIPAR INTERFAZ DE USUARIO ...........................................................70
+7.3.5 ESTRUCTURAR MODELOS DE CASOS DE USO .............................................74
+7.3.5.1 Diagrama General de Casos de uso ..................................................................74
+7.4 FLUJO DE TRABAJO: ANALISIS ..............................................................................75
+7.4.1 ANÁLISIS DE LA ARQUITECTURA ..................................................................75
+7.4.1.1 Identificar Paquetes .........................................................................................75
+7.4.1.2 Relacionar Paquetes .........................................................................................76
+7.4.1.3 Vista de paquetes Encapsulamiento de casos de uso ........................................77
+
+7.4.2 ANALIZAR UN CASO DE USO ..........................................................................78
+7.4.2.1 Diagrama de comunicación ..............................................................................78
+7.5. Capítulo 3 Flujo de Trabajo: Diseño .............................................................................82
+7.5.1. Diseño de Datos ....................................................................................................82
+7.5.1.1. Diseño de Datos Lógicos ................................................................................82
+7.5.1.1.1. Diagrama de Clases ....................................................................................82
+7.5.1.1.2. Mapeo ........................................................................................................83
+7.5.1.1.3. Normalización ............................................................................................87
+7.5.1.2. Diseño de Datos Físico ...................................................................................87
+7.5.1.1.1. Tabla de Volumen ......................................................................................87
+Profesor: .....................................................................................................................88
+Unidad_Educativa: ......................................................................................................89
+Grados: ......................................................................................................................89
+Paralelo: .....................................................................................................................90
+Modulo: ......................................................................................................................90
+Aulas: .........................................................................................................................90
+Colegio: ......................................................................................................................91
+Admin: ........................................................................................................................91
+SuperAdmin ................................................................................................................92
+Especialidad: ..............................................................................................................92
+Profesor_Especialidades: ...........................................................................................92
+MateriaCurso: .............................................................................................................92
+Materia: ......................................................................................................................93
+Curso: ........................................................................................................................93
+Matricula: ...................................................................................................................93
+HistorialAcademico: ...................................................................................................94
+Clase: .........................................................................................................................94
+Horario: ......................................................................................................................95
+Asistencia_Por_Clase: ................................................................................................95
+Evaluación: .................................................................................................................96
+Nota: 96
+Comportamiento: .......................................................................................................97
+TutorEstudiante: .........................................................................................................97
+AsistenciaGeneral: .....................................................................................................97
+Licencia ......................................................................................................................98
+Tutor: ..........................................................................................................................98
+7.5.1.1.2. Script ..........................................................................................................99
+
+7.3.1.1.3. Diagrama Relacional ................................................................................103
+7.3.1.1.4. Actualización de Tuplas ...........................................................................103
+7.5.1.1.5. Consultas ..................................................................................................107
+7.5.1.1.5. Procedimientos Almacenados ...................................................................112
+7.5.1.1.6. Triggers ....................................................................................................116
+8.
+Anexos ............................................................................................................120
+8.1. Entrevistas ..................................................................................................................120
+8.2. Documentos ...............................................................................................................123
+
+1. PERFIL
+1.1. Introducción
+El presente documento describe en detalle el perfil del sistema académico diseñado para el
+Colegio Don Bosco Central, ubicado en la ciudad de Santa Cruz. Este sistema tiene como propósito
+fundamental mejorar la gestión de la información académica de la institución, proporcionado una
+plataforma eficiente e integrada que facilite el manejo de datos relacionados con estudiantes,
+docentes, asignaturas y procesos administrativos.
+En el contexto educativo actual, la digitalización de procesos se ha convertido en un factor
+clave para garantizar la eficiencia operativa y la calidad en la gestión institucional. El Colegio Don
+Bosco Central, comprometido con la excelencia académica y la formación integral de sus
+estudiantes, reconoce la necesidad de adoptar herramientas tecnológicas que permitan centralizar y
+automatizar sus procesos eliminando redundancias y minimizando errores en el manejo de la
+información.
+Con la implementación de este sistema, se busca: Optimizar los procesos académicos y
+administrativos, garantizando una gestión más ágil, transparente y precisa. Reducir
+significativamente la carga laboral de docentes y personal administrativo, permitiéndoles dedicar
+más tiempo a actividades pedagógicas y estratégicas. Mejorar la comunicación entre los diferentes
+actores de la comunidad educativa (estudiantes, padres de familia, docentes y directivos).
+Garantizar la seguridad y confidencialidad de los datos institucionales mediante
+un sistema robusto y con controles de acceso adecuados. Facilitar la generación de reportes y
+análisis que contribuyan a la toma de decisiones basadas en datos.
+
+1
+
+Este sistema no solo responde a las necesidades inmediatas de gestión, sino que también se
+proyecta como una herramienta escalable, capaz de adaptarse a futuras demandas tecnológicas y
+normativas del ámbito educativo.
+1.2. Antecedentes
+El Colegio Don Bosco Central de Santa Cruz, Bolivia, ha sido un pilar fundamental en la
+educación integral de la juventud, combinando excelencia académica con una sólida formación en
+valores salesianos. Inspirado en la pedagogía de San Juan Bosco, el colegio se ha destacado por su
+enfoque educativo basado en la fe, la razón y el amor, promoviendo un ambiente de aprendizaje que
+fomenta la disciplina, la solidaridad y el compromiso con la comunidad.
+A lo largo de los años, el colegio ha experimentado un crecimiento significativo, tanto en el
+número de estudiantes como en la complejidad de su estructura administrativa. Este crecimiento ha
+sido un reflejo del éxito de su modelo educativo, que busca formar ciudadanos íntegros, responsables
+y preparados para afrontar los desafíos del mundo moderno. Sin embargo, este desarrollo también ha
+revelado ciertas limitaciones en los procesos administrativos y académicos, especialmente en áreas
+como:
+•
+
+Gestión de matrículas y registros estudiantiles, que aún se realiza manualmente, generando
+demoras y riesgos de pérdida de información.
+
+•
+
+Asignación de horarios y aulas, lo que en ocasiones provoca conflictos y dificultades en la
+planificación académica.
+
+•
+
+Seguimiento del rendimiento estudiantil y asistencia, dificultando el monitoreo oportuno del
+progreso de los alumnos.
+
+2
+
+•
+
+Comunicación con las familias, que en muchos casos no es eficiente, afectando la
+interacción entre la institución, los docentes y los padres.
+
+•
+
+Carga administrativa para el personal docente y administrativo, que debe gestionar
+múltiples tareas de forma manual o con herramientas desactualizadas.
+Ante esta situación, el colegio reconoce la necesidad de modernizar su sistema de gestión
+
+académica mediante la implementación de una plataforma digital integrada, que optimice los
+procesos administrativos y académicos, reduciendo la carga de trabajo y mejorando la eficiencia en
+la gestión educativa.
+
+1.2.1. Misión
+Fortalecer el Sistema Educativo de calidad adecuado a las necesidades reales de los
+bolivianos, según la normativa vigente del país y al estilo educativo de San Juan Bosco, que
+promueva su realización personal trascendente y la transformación de la sociedad
+1.2.2. Visión
+EPDB se constituye en un referente educativo pastoral visible en el ámbito nacional y
+eclesial; con incidencia en las políticas educativas y reconocimiento internacional, porque ofrece, al
+estilo de San Juan Bosco, un servicio educativo pastoral de calidad a la comunidad, estudiantes,
+educadoras y familias, privilegiando a los menos favorecidos, promoviendo su realización integral y
+digna en la vida social, económica, cultural y religiosa, contribuyendo a una sociedad más humana,
+justa y feliz.
+
+3
+
+1.2.3. Objetivo
+Formar jóvenes íntegros, con una sólida base académica y valores cristianos, capaces de
+contribuir al bienestar de la sociedad. Para ello, promovemos el desarrollo de habilidades, talentos
+y competencias en un ambiente educativo que fomente la responsabilidad, el respeto y el
+compromiso con los demás. La modernización de los procesos administrativos y académicos
+permitirá optimizar la gestión educativa y fortalecer la formación de nuestros estudiantes,
+garantizando una enseñanza de calidad acorde con los desafíos del siglo XXI.
+
+1.3 Justificación
+En la actualidad, el Colegio Don Bosco Central opera con procesos administrativos y
+académicos en gran medida manuales, lo que ha generado ineficiencias, retrasos y dificultades en la
+gestión escolar. La falta de un sistema automatizado e integrado ha llevado a problemas recurrentes
+que afectan no solo al personal docente y administrativo, sino también a estudiantes y padres de
+familia, limitando la capacidad de la institución para brindar un servicio educativo óptimo.
+Entre las principales problemáticas que justifican la implementación de este sistema se
+encuentran:
+1.3.1. Comunicación ineficiente con padres de familia
+•
+
+Los padres no reciben información oportuna sobre el rendimiento académico,
+asistencia o comportamiento de sus hijos, lo que dificulta su participación en el
+proceso educativo
+
+•
+
+La entrega de boletines y reportes se realiza de manera física o mediante canales
+dispersos (correos, mensajes informales), generando demoras y falta de claridad
+4
+
+1.3.2. Gestión manual de la asistencia
+•
+
+Los profesores deben registrar la asistencia en planillas físicas, perdiendo tiempo
+valioso de clase y exponiendo los datos a errores o pérdidas.
+
+•
+
+No existe un sistema centralizado que permita visualizar en tiempo real las
+inasistencias o retardos, dificultando la identificación temprana de problemas de
+disciplina o deserción escolar.
+
+1.3.3. Falta de control en el ingreso y salida de estudiantes
+•
+
+Los alumnos ingresan y salen del colegio sin un registro automatizado, lo que representa
+un riesgo en términos de seguridad y responsabilidad legal.
+
+•
+
+No se cuenta con un mecanismo eficiente para notificar a los padres en caso de
+inasistencias no justificadas o salidas anticipadas.
+
+1.3.4. Asignación ineficiente de espacios físicos
+•
+
+La distribución de aulas y ambientes educativos se realiza de manera manual,
+generando conflictos cuando dos grupos son asignados al mismo espacio o cuando se
+utilizan salones inadecuados para ciertas actividades.
+
+•
+
+No hay sistema que permita optimizar el uso de las instalaciones según la demanda
+real
+
+1.4 Descripción Del Problema
+El Colegio Don Bosco Central, a pesar de ser una institución con una larga trayectoria
+educativa, enfrenta una serie de desafíos operativos y administrativos debido a la falta de un sistema
+5
+
+de gestión escolar integrado y automatizado. Estos problemas afectan directamente la eficiencia
+institucional, la calidad de servicio educativo y la satisfacción de los diferentes actores de la
+comunidad escolar: estudiantes, docentes, padres de familia y personal administrativo.
+1.4.1. Registro de Asistencia Ineficiente
+El control de asistencia se realiza de manera manual, mediante planillas físicas que los
+docentes deben llenar al inicio de cada clase. Esto proceso presente múltiples fallas:
+Registros incompletos o erróneos: En varias ocasiones, estudiantes han ingresado tarde o se
+han ausentado sin que esto quede correctamente registrado.
+Pérdida de tiempo en clase: Los profesores dedican entre 5 y 10 minutos diarios solo a pasar
+lista, reduciendo el tiempo efectivo de enseñanza.
+Falta de consolidación de datos: No existe un sistema centralizado que permita visualizar
+patrones de ausentismo o retardos recurrentes, lo que dificulta la detección temprana de problemas
+como deserción escolar o indisciplina.
+Falta de seguimiento efectivo: Las sanciones por inasistencias reiteradas no se aplican a
+tiempo por falta de datos confiables.
+Padres no informados: Muchas familias desconocen las faltas de sus hijos hasta que el
+problema es grave, generando reclamos hacia la institución.
+Ineficiencia en reportes legales: Al finalizar el año, la administración debe dedicar horas
+extra para consolidar manualmente las asistencias y cumplir con requisitos del Ministerio de
+Educación.
+
+6
+
+1.4.2. Falta De Control En El Control Estudiantil
+El colegio carece de un mecanismo estandarizado para registrar y comunicar incidentes
+disciplinarios.
+Las amonestaciones se anotan en libretas o documentos físicos que no siempre llegan a
+coordinación.
+No hay historial consolidado del comportamiento de cada estudiante, lo que impide
+identificar patrones de conducta negativa.
+Los padres no son notificados a tiempo sobre sanciones o llamados de atención generando
+malentendidos y reclamos.
+Sanciones inconsistentes: Al no haber un registro claro, algunos estudiantes reciben llamados
+de atención mientras otros, con problemas similares no son sancionados.
+Frustración en docentes: Los profesores sienten que sus reportes no son tomados en cuenta
+debido a la falta de seguimiento.
+Deterioro del ambiente escolar: La falta de un sistema claro de disciplina afecta la
+convivencia y el respeto a las normas institucionales.
+1.4.3. Problemas En La Asignación De Horarios y Aulas
+La planificación de horarios y la asignación de espacios se realiza de manera manual y
+descentralizada, lo que genera:
+Conflictos de uso de aulas: Docentes llegan a sus clases y encuentran el salón ocupado por
+otro grupo, perdiendo tiempo valioso en reubicaciones.
+Asignaciones poco óptimas: Algunas clases se imparten en espacios inadecuados (ej:
+talleres prácticos en aulas pequeñas).
+7
+
+Cambios de última hora: No existe un sistema que notifique automáticamente a los profesores
+sobre modificaciones en horarios o aulas.
+Interrupciones en el aprendizaje: Los estudiantes pierden tiempo valioso mientras se
+resuelven conflictos de espacios.
+Sobrecarga administrativa: La persona encargada de horarios debe resolver manualmente
+estos problemas, generando estrés y retrasos.
+Mal uso de recursos: Salones especializados (laboratorios, talleres) no son aprovechados
+eficientemente por falta de planificación
+
+1.4.4. Comunicación Ineficiente con Padres de Familia
+El colegio depende de múltiples canales no integrados para comunicarse con los padres:
+Boletines impresos que a veces no llegan a destino. Mensajes por grupos de WhatsApp no oficiales,
+donde la información se pierde entre chats personales. Reuniones presenciales esporádicas, a las que
+no todos los padres pueden asistir.
+Las consecuencias son las siguientes: Padres desinformados, muchos no conocen el
+rendimiento académico o conductual de sus hijos hasta que es demasiado tarde. Saturación de
+consultas, la administración y docentes dedican horas a responder preguntas que podrían resolverse
+con un sistema de consulta en línea. Falta de compromiso familiar, al no haber una comunicación
+fluida, los padres participan menos en el proceso educativo.
+1.4.5. Gestión Académica Descentralizada
+Clasificación en planillas físicas, los docentes registran notas en cuadernos o archivos Excel
+no sincronizados, aumentando el riesgo de errores. No hay seguimiento en tiempo real, los
+8
+
+coordinadores no pueden monitorear el desempeño académico general hasta finalizar el trimestre.
+Problemas en certificados, Al final del año, se detectan inconsistencias en promedios que requieren
+correcciones manuales.
+Teniendo las siguientes consecuencias: Retraso en la entrega de notas: Los padres y
+estudiantes reciben información académica fuera de plazo. Errores en actas oficiales, en algunos, se
+han tenido que rectificar documentos debido a inconsistencias en los registros. Falta de data para
+análisis pedagógico, la institución no cuenta con herramientas para identificar tendencias (ej:
+materias con alto índice de reprobación).
+1.4.6. Ineficiencia en la Gestión de Matrículas y Finanzas Escolares
+El colegio maneja sus procesos financieros de manera manual y desconectada, lo que genera:
+Registro de matriculas en planillas físicas, la administración lleva control de matrículas, pensiones y
+otros cobros en documentos en papel o archivos Excel no integrados. Falta de recordatorios
+automatizados, los padres no reciben notificaciones oportunas sobre fechas de pago, generando
+morosidad. Dificultad en la conciliación bancaria, el departamento contable dedica horas a cruzar
+datos entre recibos, depósitos y registros internos.
+Todo esto genera: Atrasos de pagos de matrículas, algunos padres incurren en mora por falta
+de recordatorios sistemáticos. Errores en estados de cuenta, algunos alumnos han sido reportados
+incorrectamente como morosos debido a fallas en registro manuales. Pérdida de recursos, la
+institución gasta tiempo valioso en procesos que podrían automatizarse, como generación de facturas
+o reportes de ingresos. Insatisfacción de padres, conflictos frecuentes por cargos no reconocidos o
+pagos mal registrados.
+
+9
+
+1.5 Formulación Del Problema
+El presente proyecto de sistema de gestión académica se desarrollar con el propósito de
+diseñar e implementar un sistema académico integral que optimice los procesos administrativos y
+pedagógicos mediante la automatización del registro de asistencia, control de comportamiento,
+gestión de calificaciones, comunicación institucional y asignación de recursos, permitiendo una
+administración escolar más eficiente, transparente y centrada en la mejora continua de la calidad
+educativa
+1.6 Objetivos
+1.6.1 Objetivo General
+Desarrollar un sistema académico integral que facilite la gestión de asistencia, control de
+comportamiento, matrículas, asignación de aulas y comunicación con los padres, optimizando los
+procesos administrativos y mejorando la experiencia educativa.
+1.6.2 Objetivos Específicos
+•
+
+Integrar el proyecto con el gestor de datos PostgreSQL
+
+•
+
+Diseñar una API RESTful robusta con Django REST Framework para manejar todas
+las operaciones del sistema.
+
+•
+
+Desarrollar una interfaz intuitiva y responsive con React.js
+
+•
+
+Implementar un módulo de asistencia con tarjeta de entrada y salida para reducir la
+impuntualidad.
+
+•
+
+Diseñar un módulo de control de comportamiento con reportes automáticos para los
+
+•
+
+padres.
+
+10
+
+•
+
+Desarrollar un módulo de matrículas que permita la inscripción y actualización de
+datos de manera digital.
+
+•
+
+Incluir un módulo de horarios y asignación de aulas automatizado.
+
+•
+
+Crear un registro digital de profesores, estudiantes y padres de familia.
+
+•
+
+Incorporar un sistema de comunicación con los padres con alertas y notificaciones en
+tiempo real.
+
+•
+
+Permitir la creación y gestión de años escolares con opciones de personalización.
+
+1.7 Alcance
+1..7.1. Módulo de Gestión Académica
+1.7.1.1 RF1: Inscripción de Estudiantes
+Descripción: El sistema permitirá el registro completo de estudiantes, incluyendo datos
+personales (nombre completo, CI, RUDE, dirección, teléfono, correo, fotografía), información
+académica (curso, paralelo) y datos del tutor legal. Prioridad: Alta Origen: Cliente.
+1.7.1.2 RF2: Matrícula y Asignación de Cursos
+Descripción: El sistema gestionará el proceso de matrícula, asignando automáticamente
+estudiantes a cursos, paralelo y grado según parámetros definidos (edad, año anterior, capacidad del
+curso).
+Permitirá ajustes manuales cuando sea necesario. Prioridad: Alta. Origen: Cliente.
+1.7.1.3 RF3: Gestión de Planificación Académica
+Descripción: El sistema permitirá a los administradores crear y modificar mallas curriculares,
+asignar materias a cursos y definir los objetivos de aprendizaje por período.
+11
+
+Prioridad: Media. Origen: Equipo de desarrollo.
+1.7.1.4 RF4: Historial Académico
+Descripción: Mantendrá un registro completo del desempeño académico de cada estudiante,
+incluyendo calificaciones por materia, observaciones docentes y promociones de curso. Prioridad:
+Alta. Origen: Cliente.
+1.7.2 Módulo de Asistencia
+1.7.2.1 RF5: Registro Digital de Asistencia
+Descripción: Los docentes podrán registrar asistencia general como por clase mediante una
+interfaz web optimizada, con opciones para marcar presentes, ausentes o retardos. El sistema
+calculará automáticamente porcentajes de asistencia. Prioridad: Alta. Origen: Cliente.
+1.7.2.2 RF6: Notificación Automática de Faltas
+Descripción: Al detectar una ausencia no justificada, el sistema enviará notificaciones
+inmediatas a los tutores mediante la interfaz web.
+Prioridad: Alta. Origen: Cliente.
+1.7.2.3 RF7: Justificación de Faltas
+Descripción: Plataforma para que padres justifiquen ausencias, con capacidad de adjuntar
+documentos (certificados médicos) y seguimiento del estado de la justificación.
+Prioridad: Media. Origen: Cliente.
+1.7.2.4 RF8: Reportes Analíticos de Asistencia
+Descripción: Generación de reportes gráficos (barras, líneas) que muestren tendencias de
+asistencia por curso, estudiante o período, exportables en PDF/Excel. Prioridad: Media.
+12
+
+Origen: Equipo de desarrollo.
+1.7.3 Módulo de Evaluación
+1.7.3.1 RF9: Registro de Calificaciones
+Descripción: Interfaz intuitiva para que docentes ingresen calificaciones parciales y finales,
+con validación automática de rangos (0-100) y cálculo de promedios. Prioridad: Alta. Origen:
+Cliente.
+
+1.7.3.2 RF10: Generación de Boletines
+Descripción: Creación automática de boletines en PDF con diseño institucional, incluyendo
+calificaciones, observaciones, historial académico, comportamiento y firmas digitales de
+autoridades.
+Prioridad: Alta. Origen: Cliente.
+1.7.3.3 RF11: Análisis de Rendimiento
+Descripción: Dashboard interactivo que identifique estudiantes en riesgo académico basado
+en calificaciones y asistencia, con alertas para tutores.
+Prioridad: Media. Origen: Equipo de desarrollo.
+1.7.4 Módulo de Comunicación
+1.7.4.1 RF12: Portal de Noticias
+Descripción: Sección para publicar anuncios institucionales, con filtros por destinatarios
+(padres, estudiantes, docentes) y notificaciones push.
+Prioridad: Media. Origen: Cliente.
+
+13
+
+1.7.4.2 RF13: Mensajería Interna
+Descripción: Sistema de mensajería segura entre todos los usuarios (docente-padre,
+administrativo-docente), con historial de conversaciones. Prioridad: Alta. Origen: Cliente.
+1.7.5 Módulo de Seguridad
+1.7.5.1 RF14: Control de Accesos
+Descripción: Implementación de roles (admin, docente, estudiante, padre) con permisos
+granulares. Autenticación en dos factores para personal administrativo. Prioridad:
+Alta. Origen: Equipo de desarrollo.
+1.7.5.2 RF15: Auditoría del Sistema
+Descripción: Registro detallado de todas las acciones críticas (cambios de calificaciones,
+modificaciones de datos) con identificación del usuario responsable.
+Prioridad: Media. Origen: Equipo de desarrollo.
+1.7.6. Módulo de Gestión Docente
+1.7.6.1. RF16: Perfiles Docentes
+Descripción: Registro completo de información profesional de docentes (títulos,
+especializaciones, años de servicio). Prioridad: Media. Origen: Administración académica
+
+1.7.6.2. RF17: Asignación de Cargas Horarias
+Descripción: Sistema para distribuir equitativamente las horas lectivas entre el personal
+docente. Prioridad: Alta. Origen: Coordinación académica.
+
+14
+
+1.7.7. Módulos de Licencias y Permisos
+1.7.7.1. RF18: Gestión de licencias estudiantiles.
+Descripción: Permitir a los tutores solicitar licencias y subir documentos justificativos.
+Prioridad: Media. Origen: Cliente
+1.7.8. Módulo de Gestión de Aulas
+1.7.8.1. RF19: Asignación inteligente de espacios.
+Descripción: Optimizar uso de aulas basado en capacidad y horarios.
+Prioridad: Baja. Origen: Equipo de desarrollo.
+2. Elementos del Sistema Basado en Computadoras
+2.1 Hardware
+2.1.1 Servidor
+Configuraciones mínimas recomendadas para el servidor:
+Sistema Operativo: Windows 10/11
+Procesador: Intel Core i5 (4 núcleos) o equivalente AMD.
+Memoria RAM: 8 GB (mínimo), 16 GB recomendado para alta concurrencia.
+Almacenamiento: SSD de 500 GB (para sistema y bases de datos).
+Conexión a internet: Ancho de banda mínimo de 10 Mbps (para soportar múltiples
+usuarios).
+Red: Tarjeta de red Gigabit Ethernet.
+2.1.2 Cliente
+Requisitos para estaciones de trabajo (docentes, administrativos, padres):
+15
+
+Sistema Operativo: Linux Ubuntu
+Procesador: Intel Core i3 (2.5 GHz) o superior.
+Memoria RAM: 4 GB (mínimo), 8 GB recomendado.
+Almacenamiento: 5 GB de espacio libre.
+Navegador Web: Google Chrome (última versión), Mozilla Firefox o Microsoft Edge.
+Conexión: Wi-Fi o Ethernet estable.
+2.1.3 Medios de Comunicación
+Router: Equipo con capacidad para 50+ dispositivos simultáneos (ej: TP-Link Archer
+AX10).
+Navegadores compatibles: Chrome, Firefox, Edge, Safari (versiones actualizadas).
+2.1.4 Otros Dispositivos
+Periféricos: Teclado, mouse y monitor (resolución mínima 1280x720).
+Impresoras: Para generación de boletines y documentos físicos.
+2.2 Software
+2.2.1 Servidor
+Backend: Django REST Framework (Python) para API.
+Base de Datos: PostgreSQL (optimizado para consultas complejas).
+Entorno de Desarrollo: Docker (contenedorización para despliegue en AWS/Azure).
+2.2.2 CLIENTE
+Sistema Operativo: Windows 10/11, macOS o Linux.
+Navegadores soportados: Google Chrome (versión 100+). Firefox (versión 100+).
+16
+
+2.2.3 Otros Software Adicional
+Suite Office (Word/Excel) para reportes descargables.
+Adobe Acrobat Reader (para boletines en PDF).
+2.3. Datos
+Estructuras principales de datos:
+Usuario (Base para todos los usuarios) Todos los usuarios (estudiantes, profesores,
+administradores, tutores y superadministradores) comparten los siguientes atributos comunes: ID, CI
+(Carnet de Identidad), Foto, Nombre, Apellido, Email, Fecha de Nacimiento, UserName, Contraseña
+(encriptada), Estado.
+Estudiante (hereda de Usuario): ID, Código RUDE, Curso, Estado.
+Docente (hereda de Usuario): ID (Usuario), Especializaciones, Asignación de clases,
+Estado,
+Usuario (acceso al sistema): Usuario, Contraseña (encriptada), Rol
+(Admin/Docente/Padre/Estudiante).
+
+Curso: ID, Nombre
+
+Grado: Nivel Educativo
+
+Paralelo: ID, Letra, Capacidad Máxima
+
+Aula: ID, Capacidad, Estado, Tipo
+
+Colegio: ID, Nombre, Logo, Dirección, Teléfono
+17
+
+Modulo: ID, Nombre, Cantidad de Aulas
+2.4 PROCESOS
+Registro de Usuarios: Administradores registran estudiantes, docentes y tutores con datos
+personales + credenciales.
+Asignación Docente-Materia: Asignar docentes a materias por gestión. Alertas por
+conflictos de horario.
+Gestión Académica: Docentes suben notas parciales/finales con validación de rangos (0100). Sistema calcula promedios y genera boletines automáticos.
+Login y Perfiles:
+Autenticación por roles:
+Admin: Acceso total.
+Docente: Registro de notas/asistencia.
+Padre: Consulta de rendimiento/historial.
+Alumno: Perfil de alumno.
+2.5 GENTE/USUARIO
+Equipo de Desarrollo:
+Luis Angel Arze Kao.
+Trevor Félix Calero Suyo.
+Luis David Guzmán Rojas.
+Alimbert Mejía Zárate.
+David Israel Ponce Cárdenas.
+Usuarios Finales:
+18
+
+Administrativos, docentes, estudiantes y padres de familia.
+2.6 DOCUMENTOS GENERADOS
+El sistema automatiza la generación de:
+Boleta de Matricula: Datos del estudiante, curso asignado y pagos realizados.
+Boletín de Notas Trimestral: Promedios por materia, observaciones docentes y firma
+digital.
+Reporte de Asignación Docente-Materia: Listado de docentes con sus cargas horarias y
+aulas.
+Certificados de Asistencia: Para trámites legales o becas.
+Formatos: PDF (firmado digitalmen.te) y Excel (para análisis).
+3. TECNOLOGÍA PARA EL DESARROLLO DEL SOFTWARE
+3.1. Estrategia para el desarrollo de software
+La estrategia para el desarrollo de este sistema está centrada en la utilización de tecnologías
+modernas, que favorecen tanto la escalabilidad como la mantenibilidad del sistema. La estrategia a la
+cual se aplica el Sistema, y así lograr la creación del producto; el desarrollo de este Sistema de
+Información tendrá un enfoque centrado en dos herramientas de análisis y diseño: El Proceso
+Unificado de Desarrollo de Software (PUDS) y el Lenguaje Unificado de Modelado (UML).
+3.2 Metodología para el desarrollo del Software
+3.2.1. Características del PUDS
+El Proceso Unificado de Desarrollo de Software es un enfoque iterativo que propone una
+comprensión incremental del problema y un crecimiento gradual de la solución mediante ciclos
+sucesivos. Las características principales del PUDS que se implementarán en:
+19
+
+Análisis -> Diseño -> Implementación -> Pruebas
+Iteración y Evolución: El sistema se desarrollará en iteraciones (sprints) cortas, lo que
+permitirá hacer ajustes frecuentes en función de los feedbacks obtenidos.
+El desarrollo se organiza en cuatro fases:
+Inicio: Planificación del proyecto, definición de requerimientos.
+Elaboración: Diseño detallado, desarrollo inicial y prototipos.
+Construcción: Desarrollo completo y pruebas del sistema.
+Transición: Despliegue en el entorno de producción.
+3.2.2 CARACTERÍSTICAS DE UML
+UML es un lenguaje para visualizar, especificar, construir y documentar los artefactos
+(modelos) de un sistema que involucra una gran cantidad de software, desde una perspectiva
+orientada a objetos
+En este proyecto se utilizarán diversos diagramas UML para el modelado de las distintas
+fases del desarrollo:
+Diagramas de Casos de Uso: Para representar las interacciones entre los usuarios
+(profesores, administradores, estudiantes) y el sistema.
+Diagramas de Clases: Para estructurar las entidades del sistema, como estudiantes, aulas,
+reportes, etc.
+Diagramas de Secuencia: Para modelar el flujo de comunicación entre los componentes del
+sistema.
+Diagramas de Actividad: Para representar los flujos de trabajo de procesos como el registro
+de asistencia, la matriculación de estudiantes, etc.
+20
+
+3.3 Herramientas de desarrollo
+3.3.1 SOFTWARE
+Backend: Django REST Framework (Python): Framework de desarrollo web que permite
+crear APIs RESTful de manera rápida y segura. Ofrecerá una interfaz robusta para gestionar la base
+de datos y los requerimientos del sistema.
+Base de Datos: PostgreSQL: Base de datos relacional para almacenar la información de
+estudiantes, reportes, asistencia, aulas y más.
+Contenedores: Docker: Herramienta que facilitará la creación de entornos aislados y
+consistentes para el desarrollo y despliegue del sistema. Docker Compose se utilizará para definir y
+ejecutar múltiples contenedores de aplicaciones.
+Control de Versiones Git: Para la gestión del código fuente y trabajo colaborativo entre los
+miembros del equipo.
+3.3.2 HARDWARE
+
+NOMBRE
+HP Elitebok
+Lenovo
+IdeaPad
+Gaming 3
+Microsoft
+Surface
+
+CPU
+Intel Core i7-6600U
+
+RAM
+
+DISK
+
+GPU
+
+16 Gb
+
+1Tb. SSD
+
+Intel HD Graphics 512
+
+Intel Core i5-10300H
+
+8 Gb
+
+Intel Core i5-7200U
+
+4 Gb
+
+1Tb
+SSD+1Tb
+HDD
+128 Gb
+SSD
+
+NVIDIA GeForce GTX
+1650
+Intel HD Graphics 620
+
+21
+
+4. Posibles costos
+Costos de Licencias: Django REST Framework y PostgreSQL son tecnologías de código
+abierto, por lo que no se incurre en costos de licencias de software. Sin embargo, si se utilizan
+servicios en la nube o licencias de software adicionales (por ejemplo, para la mensajería interna),
+podrían generar un costo adicional.
+Costos de Infraestructura: Dependiendo de la elección entre servidores locales o en la
+nube, se deberán evaluar los costos de servidores, almacenamiento y ancho de banda.
+Costos de Desarrollo: El costo principal se derivará del trabajo de los desarrolladores
+(sueldos) y el tiempo que se invertirá en el proyecto. También hay costos asociados con pruebas,
+implementación y mantenimiento.
+Los costos asociados al desarrollo del sistema incluyen los siguientes ítems, estimados para
+un periodo de 2 meses:
+-
+
+Conexión De Internet (6 Conexiones, 200Bs/Mes)
+
+2,400.00 bs
+
+-
+
+Horas De Trabajo (20 Bs/hora/Desarrollador)
+
+10,000.00 bs
+
+-
+
+Material De Oficina (Papel, Lápices, Impresiones)
+
+200.00 bs
+
+-
+
+Alquiler de Equipos De Computación
+
+535.00 bs
+TOTAL 13,135.00 bs
+
+5 Posibles beneficios
+5.1. TIEMPO
+El sistema permitirá automatizar tareas que hoy se realizan manualmente, como la gestión de
+asistencia, reportes y matriculación. Esto reducirá significativamente el tiempo necesario para
+
+22
+
+completar estas actividades, permitiendo que el personal del colegio se enfoque en tareas de mayor
+valor.
+5.2. ESFUERZO
+La interfaz del sistema es sencilla e intuitiva, reduciendo la necesidad de capacitación extensa
+para los usuarios y facilitando la adopción por parte del personal docente y administrativo para
+gestionar las diversas actividades escolares.
+5.3. COSTOS
+La digitalización de los procesos permite un ahorro significativo en materiales de oficina,
+como papel y formularios físicos, además de reducir el esfuerzo humano necesario para tareas
+repetitivas
+A largo plazo, los costos de mantenimiento se reducirán, ya que el sistema será fácil de
+actualizar y mantener.
+6. Posibles clientes
+Este sistema está orientado a colegios de cualquier tamaño que necesiten mejorar su gestión
+administrativa. Los posibles clientes incluyen:
+Escuelas primarias y secundarias que busquen mejorar la eficiencia administrativa y la
+comunicación.
+Institutos de educación superior que necesiten una gestión más robusta de estudiantes, aulas y
+reportes.
+Centros Educativos
+
+23
+
+7. Marco Teórico
+7.1. Capitulo 1 Método Ishikawa
+7.1.1. Identificar Problemas
+7.1.1.1. Lista de Problemas
+P1. Dependencia de métodos manuales para la asistencia.
+P2. Ineficacia en la comunicación con los padres.
+P3. Carga administrativa excesiva:
+P4. Resistencia al cambio tecnológico.
+P5. Sobrecarga laboral del personal.
+P6. Falta de infraestructura tecnológica.
+P7. Documentación física vulnerable.
+P8. Falta de estandarización de procesos.
+P9. Impacto en la imagen institucional.
+P10. Sistemas obsoletos o incompletos.
+P11. Falta de seguimiento en tiempo real.
+P12. Datos fragmentados y no confiables.
+P13. Toma de decisiones reactiva (no proactiva).
+7.1.1.2. Depurar problemas
+En esta sección, se identifican y refinan los problemas clave que el Sistema de Gestión
+Académica pretende resolver, eliminando aquellos que no son abordables directamente por el
+proyecto o que dependen de factores externos.
+Problemas Identificados (Originales):
+24
+
+P1. Dependencia de métodos manuales para la asistencia.
+P2. Ineficacia en la comunicación con los padres.
+P3. Carga administrativa excesiva:
+P4. Resistencia al cambio tecnológico.
+P5. Sobrecarga laboral del personal.
+P6. Falta de infraestructura tecnológica.
+P7. Documentación física vulnerable.
+P8. Falta de estandarización de procesos.
+P9. Impacto en la imagen institucional.
+P10. Sistemas obsoletos o incompletos.
+P11. Falta de seguimiento en tiempo real.
+P12. Datos fragmentados y no confiables.
+P13. Toma de decisiones reactiva (no proactiva).
+Problemas Eliminados (Justificación):
+Problema
+
+Razón de eliminación
+
+P4
+
+Se resuelve indirectamente con la digitalización (P1, P3, P12).
+
+P6
+
+Limitación externa al sistema. Depende de inversión en hardware/redes por parte del
+colegio.
+
+P7
+
+Factor humano no controlable por el software. Requiere capacitación y gestión del
+cambio independiente
+
+P8
+
+Se soluciona con el diseño de procesos del sistema (no es un problema
+independiente).
+
+25
+
+P10
+
+Abordado implícitamente con la implementación del nuevo sistema (P6).
+
+P13
+
+Se corrige automáticamente con el seguimiento en tiempo real (P4) y reportes
+confiables (P12).
+
+7.1.1.3. Lista Final de Problemas
+P1. Dependencia de métodos manuales para la asistencia.
+P2. Ineficacia en la comunicación con los padres.
+P3. Carga administrativa excesiva:
+P4. Sobrecarga laboral del personal.
+P5. Falta de estandarización de procesos.
+P6. Impacto en la imagen institucional.
+P7. Falta de seguimiento en tiempo real.
+P8. Datos fragmentados y no confiables.
+7.1.1.4. Propietarios de los Problemas.
+Lista de problemas
+
+Docentes
+
+Administración
+
+Padres
+
+Dirección
+
+P1. Dependencia de métodos
+manuales
+P2. Ineficacia en la comunicación con
+los padres.
+P3. Carga administrativa excesiva:
+P4. Sobrecarga laboral del personal.
+
+26
+
+P5. Falta de estandarización de
+procesos.
+P6. Impacto en la imagen
+institucional
+P7. Falta de seguimiento en tiempo
+real
+P8. Datos fragmentados y no
+confiables
+
+27
+
+7.1.1.5. Análisis de Problemas
+
+28
+
+7.1.1.6. Estimación y Cuantificación del Problema
+Problema
+
+Impacto Cuantitativo
+
+Impacto Cualitativo
+
+Dependencia de métodos
+
+12 horas/semana dedicadas
+
+25% de errores en reportes de
+
+manuales para la asistencia.
+
+por docente a registros
+
+asistencia
+
+Ineficacia en la comunicación
+
+40% de padres no reciben
+
+Pérdida de confianza en la
+
+con los padres.
+
+notificaciones a tiempo
+
+institución
+
+Carga administrativa
+
+20 horas/mes en corrección de
+
+Retrasos en procesos críticos
+
+excesiva:
+
+errores manuales
+
+(ej: entrega de notas)
+
+Sobrecarga laboral del
+
+30% de tiempo docente
+
+Desmotivación y estrés
+
+personal.
+
+dedicado a tareas no
+
+laboral
+
+pedagógicas
+Falta de estandarización de
+
+15 horas/mes en resolver
+
+Dificultad para escalar
+
+procesos.
+
+conflictos por métodos
+
+operaciones
+
+inconsistentes
+Impacto en la imagen
+
+10% de disminución en
+
+Percepción de
+
+institucional.
+
+nuevas matriculas anuales
+
+desorganización ante la
+comunidad educativa
+
+Falta de seguimiento en
+
+48 horas de retraso en
+
+Incapacidad para
+
+tiempo real.
+
+identificar problemas de
+
+intervenciones oportunas
+
+ausentismo
+Datos fragmentados y no
+
+8 horas/semana en consolidar
+
+Toma de decisiones basada en
+
+confiables.
+
+información dispersa
+
+datos inexactos
+29
+
+7.1.1.7. Alternativas de Cambio
+Sistema de Gestión Académica Integral
+Automatización de Asistencia:
+•
+
+Registro digital mediante códigos QR o dispositivos biométricos.
+
+•
+
+Cálculo automático de porcentajes de asistencia y alertas tempranas.
+
+Portal Unificado:
+•
+
+Acceso centralizado para docentes, padres y administrativos con credenciales seguras.
+
+Sistema de Notificaciones Automáticas
+Comunicación Instantánea:
+•
+
+Envío de alertas a padres vía email y SMS por ausencias, calificaciones bajas o
+citaciones.
+
+•
+
+Integración con apps de mensajería (WhatsApp Business API).
+
+Historial de Notificaciones:
+•
+
+Archivo digital de todas las comunicaciones enviadas, con confirmación de lectura.
+
+Módulo de Reportes Personalizados
+Dashboards Interactivos:
+•
+
+Visualización de métricas clave (asistencia, rendimiento por curso) con filtros
+configurables.
+
+Exportación de Datos:
+•
+
+Generación de reportes en PDF y Excel para análisis externos o reuniones con padres.
+
+Plataforma de Gestión Documental
+30
+
+Digitalización de Expedientes:
+•
+
+Almacenamiento seguro de historiales académicos, justificantes médicos y
+documentos legales.
+
+Flujos de Trabajo Estandarizados:
+•
+
+Automatización de procesos como aprobación de justificaciones de ausencias.
+
+7.1.1.8. Conclusión y Recomendaciones
+Conclusiones
+Los problemas más críticos que enfrenta el Colegio Don Bosco Central son:
+Dependencia de métodos manuales en registro de asistencia, carga académica y
+comunicación, lo que genera:
+Errores en datos (25% de incidencias).
+Pérdida de 12 horas/semana por docente en tareas operativas.
+Comunicación ineficaz con padres, donde el 40% no recibe notificaciones oportunas,
+afectando la confianza institucional.
+Falta de estandarización y automatización, que deriva en:
+Procesos administrativos redundantes (20 horas/mes en correcciones).
+Imposibilidad de tomar decisiones basadas en datos en tiempo real.
+La implementación de un Sistema de Gestión Académica Integral (con Django, React y
+PostgreSQL) resolvería estos problemas, mejorando:
+Eficiencia: Reducción del 80% en tiempos de gestión.
+Precisión: Minimización de errores manuales.
+Transparencia: Comunicación fluida con padres y estudiantes.
+31
+
+Recomendaciones
+Priorización Técnica
+Implementar módulos clave en este orden:
+•
+
+Automatización de asistencia (QR/biométrico) y notificaciones automáticas.
+
+•
+
+Portal unificado para docentes, padres y administrativos.
+
+•
+
+Generación automática de reportes y dashboards analíticos.
+
+Gestión del Cambio
+•
+
+Capacitación escalonada:
+o Talleres prácticos para docentes (énfasis en registro de notas/asistencia).
+o Guías interactivas para padres (acceso al portal de seguimiento).
+
+•
+
+Piloto controlado: Implementar fase de prueba con un grado académico antes de
+escalar.
+
+Mejora de Procesos
+Estandarización:
+•
+
+Documentar protocolos para registro de datos, aprobación de justificaciones y
+comunicación.
+
+Automatización:
+•
+
+Eliminar procesos redundantes (ej: consolidación manual de planillas).
+
+Monitoreo Continuo
+Indicadores de éxito:
+
+32
+
+•
+
+Reducción del 50% en tiempo dedicado a tareas administrativas en los primeros 3
+meses.
+
+•
+
+Aumento del 90% en notificaciones entregadas a tiempo.
+
+Retroalimentación:
+•
+
+Encuestas mensuales a usuarios para ajustar funcionalidades.
+
+7.1.1.9. Diseñar el Diagrama de Ishikawa
+
+33
+
+7.1.2. Identificar las Principales Categorías
+
+PP: Ineficiencia en la Gestión Académica de la asistencia, comunicación, planificación,
+evaluación y seguridad de los datos
+C1: Métodos manuales actuales: Uso de registros en papel y planillas físicas para control
+de asistencia. El uso de registros en papel para controlar la asistencia es lento, propenso a errores y
+difícil de gestionar.
+C2: Comunicación ineficaz: Falta de sistema automatizado para notificar ausencias a
+padres. Sin un sistema automatizado para notificar ausencias, la comunicación con los padres es
+tardía e ineficaz.
+
+34
+
+C3: Infraestructura web limitada: No existe plataforma centralizada accesible desde
+móviles. La falta de una plataforma web centralizada accesible desde dispositivos móviles.
+C4: Capacitación insuficiente: Personal no entrenado en herramientas digitales, no puede
+aprovechar la tecnología de manera eficiente, lo que retrasa la adopción de soluciones automatizadas
+y aumenta dependencia de métodos manuales.
+C5: Falta de Integración de Sistemas: Los sistemas actuales operan de forma aislada, lo
+que genera duplicidad de datos, inconsistencias, pérdida de tiempo.
+7.1.3. Identificar las Causas
+
+C1: Métodos Manuales Actuales
+Causa P1: Los registros de asistencia se realizan en hojas de papel o cuadernos, lo que
+dificulta su consolidación.
+35
+
+Causa P2: Errores humanos frecuentes al transcribir los registros manuales al sistema digital.
+Causa P3: La información no se actualiza en tiempo real, generando demoras en reportes y
+acciones correctivas.
+C2: Comunicación Ineficaz
+Causa P4: No existe un sistema automatizado para enviar notificaciones a padres sobre
+ausencias o retardos.
+Causa P5: Las notificaciones dependen de procesos manuales del personal administrativo,
+provocando retrasos.
+Causa P6: Falta de alertas inmediatas cuando un estudiante no asiste a clases, afectando la
+respuesta oportuna.
+C3: Infraestructura Web Inadecuada
+Causa P7: Los servidores actuales no soportan acceso simultáneo de múltiples usuarios
+(docentes, padres, administrativos).
+Causa P8: La plataforma no es totalmente responsive, limitando su uso en dispositivos
+móviles.
+Causa P9: Problemas de conectividad a internet en algunas áreas del colegio, afectando la
+operación en tiempo real.
+C4: Capacitación Insuficiente del Personal
+Causa P10: Docentes y administrativos no están familiarizados con sistemas web para
+gestión académica.
+Causa P11: Resistencia al cambio por preferencia hacia métodos tradicionales (ej: papel y
+lápiz).
+
+36
+
+Causa P12: Falta de capacitación específica para usar el sistema eficientemente desde
+móviles o tablets.
+C5: Falta de Integración de Sistemas
+Causa P13: Los módulos de asistencia, calificaciones y comunicación funcionan de forma
+aislada.
+Causa P14: No hay sincronización automática entre bases de datos, requiriendo intervención
+manual.
+Causa P15: Inconsistencias en datos debido a la falta de validación cruzada entre sistemas.
+7.1.4. Analizar y Discutir el Diagrama.
+Métodos Manuales Actuales (C1)
+Análisis:
+El uso de registros en papel y procesos manuales es la raíz de múltiples problemas en la
+gestión académica. Actualmente, los docentes dedican un tiempo significativo a tareas repetitivas
+como tomar asistencia en cuadernos y luego transcribirla a formatos digitales, lo que no solo
+consume horas valiosas sino que introduce errores humanos en los datos.
+Solución Propuesta:
+La implementación de un sistema digital para el registro de asistencia permitirá:
+•
+
+Eliminar por completo el uso de papel
+
+•
+
+Reducir los errores en los datos
+
+•
+
+Actualizar la información en tiempo real
+
+•
+
+Liberar hasta 12 horas semanales por docente
+
+37
+
+Comunicación Ineficaz (C2)
+Análisis:
+La falta de un sistema automatizado de notificaciones genera graves demoras en la
+comunicación con los padres. Actualmente, el proceso depende completamente del personal
+administrativo, lo que provoca que:
+•
+
+Las alertas sobre ausencias lleguen con retraso
+
+•
+
+Existan inconsistencias en la información compartida
+
+•
+
+Los padres no puedan dar seguimiento oportuno
+
+Solución Propuesta:
+Implementar un módulo de comunicación automática que:
+•
+
+Genere alertas instantáneas vía notificaciones
+
+•
+
+Mantenga un historial accesible de todas las notificaciones
+
+•
+
+Permita a los padres confirmar la recepción de mensajes
+
+Infraestructura Web (C3)
+Análisis:
+La viabilidad del sistema depende críticamente de:
+•
+
+La capacidad de los servidores para manejar múltiples usuarios
+
+•
+
+La compatibilidad con diferentes dispositivos móviles
+
+•
+
+La estabilidad de la conexión a internet
+
+Solución Propuesta:
+Desarrollar una plataforma que:
+•
+
+Utilice arquitectura cloud para garantizar escalabilidad
+38
+
+•
+
+Implemente diseño responsive para acceso desde cualquier dispositivo
+
+•
+
+Incluya funcionalidad offline para zonas con conectividad limitada
+
+Capacitación del Personal (C4)
+Análisis:
+La transición exitosa al nuevo sistema requiere que:
+•
+
+Docentes y administrativos superen la resistencia al cambio
+
+•
+
+Todo el personal adquiera competencias digitales básicas
+
+•
+
+Existan recursos de soporte continuo
+
+Solución Propuesta:
+Un programa de capacitación que incluya:
+•
+
+Realizar capacitaciones específicas sobre el uso del sistema web
+
+Falta de Integración de Sistemas (C5)
+Análisis:
+La ausencia de conexión entre los módulos del sistema actual genera:
+•
+
+Duplicidad de esfuerzos, los datos se ingresan manualmente en múltiples plataformas
+
+•
+
+Inconsistencias con los datos, generados por el error de los administrativos.
+
+Solución Propuesta
+•
+
+Desarrollar interfaces de integración.
+
+•
+
+Incluir validaciones automáticas de datos.
+
+39
+
+7.2 MODELO DE NEGOCIO
+7.2.1 Diagrama de Actividades
+7.2.1.1 Proceso de Inscripción/Matrícula de Estudiantes
+
+40
+
+7.2.1.2 Proceso de Registro de Asistencia
+
+41
+
+7.2.1.3 Proceso de Registro de Calificaciones y Generación de Boletines
+
+7.2.1.4 Proceso de Gestión de Planificación Académica
+
+42
+
+7.2.1.4 Proceso de Comunicación Interna
+
+7.2.1.4 Proceso de Solicitud y Aprobación de Licencias (Permisos)
+
+43
+
+7.3 Capitulo 2: Captura de requisitos
+7.3.1 Encontrar actores y casos de uso
+Encontrar actores y casos de uso
+Lista de actores:
+A1 Super-Administrador: Es el actor que registra los colegios, unidades educativas y
+asigna administradores a los colegios.
+A2 Administrador: Es el actor que se encarga de habilitar o deshabilitar módulos e inscribir
+docente y alumnos, en este actor participan tanto la secretaría como el director del colegio.
+A3 Profesor: Es el actor a quien se le gestionará la lista de sus estudiantes y poner las notas
+de los alumnos en el sistema a través de la página web del colegio.
+A4 Estudiante: Es el actor que tendrá un perfil en la página web del colegio y podrá acceder
+a sus datos, notas, y horarios de clase.
+A5 Tutor: Es el actor que observa las notas, la asistencia, comportamiento, licencias del
+actor estudiante
+
+SUPER-ADMINISTRADOR
+
+ADMINISTRADOR
+
+PROFESOR
+
+44
+
+ESTUDIANTE
+
+TUTOR
+
+Lista de casos de uso:
+CU1: Iniciar sesión
+CU2: Cerrar sesión
+CU3: Registrar Usuarios
+CU4: Registrar Colegio
+CU5: Registrar Unidad Educativa
+CU6: Asignar Calendario y División del año escolar
+CU7: Registrar Módulos
+CU8: Registrar Aulas
+CU9: Registrar Grados
+CU10: Registrar Cursos
+CU11: Registrar Materias – Curso
+CU12: Registrar Profesores
+CU13: Inscripción de Estudiante
+CU14: Asignar Materias a un Curso
+CU15: Asignar Cargas Horarias
+CU16: Asignar Aulas
+CU17: Registrar asistencia digital
+CU18: Registrar Calificaciones
+CU19: Generar Boletines
+CU20: Analizar Rendimiento Académico
+CU21: Gestionar Licencias Estudiantiles
+
+45
+
+7.3.2 PRIORIZAR CASOS DE USO
+Nro Código Nombre
+
+Prioridad Riesgo Estado
+
+Actores
+
+1
+
+CU1
+
+Iniciar sesión
+
+Crítico
+
+Bajo
+
+Planificado
+
+A1, A2, A3,
+A4, A5
+
+2
+
+CU2
+
+Cerrar sesión
+
+Crítico
+
+Bajo
+
+Planificado
+
+A1, A2, A3,
+A4, A5
+
+3
+
+CU3
+
+Registrar Usuarios
+
+Alta
+
+Medio
+
+Planificado A1
+
+4
+
+CU4
+
+Registrar Colegio
+
+Alta
+
+Medio
+
+Planificado A1
+
+5
+
+CU5
+
+Registrar Unidad Educativa
+
+Alta
+
+Medio
+
+Planificado A1
+
+6
+
+CU6
+
+Asignar Calendario y División
+del año escolar
+
+Alta
+
+Bajo
+
+Planificado A2
+
+7
+
+CU7
+
+Registrar Módulos
+
+Media
+
+Bajo
+
+Planificado A2
+
+8
+
+CU8
+
+Registrar Aulas
+
+Media
+
+Bajo
+
+Planificado A2
+
+9
+
+CU9
+
+Registrar Grados
+
+Media
+
+Bajo
+
+Planificado A2
+
+10
+
+CU10
+
+Registrar Cursos
+
+Media
+
+Bajo
+
+Planificado A2
+
+11
+
+CU11
+
+Registrar Materias – Curso
+
+Alta
+
+Medio
+
+Pendiente
+
+A2
+
+12
+
+CU12
+
+Registrar Profesores
+
+Alta
+
+Medio
+
+Pendiente
+
+A2
+
+13
+
+CU13
+
+Inscripción de Estudiante
+
+Crítica
+
+Medio
+
+Pendiente
+
+A2
+
+14
+
+CU14
+
+Asignar Materias a un Curso
+
+Alta
+
+Bajo
+
+Pendiente
+
+A2
+
+15
+
+CU15
+
+Asignar Cargas Horarias
+
+Alta
+
+Medio
+
+Pendiente
+
+A2
+
+16
+
+CU16
+
+Asignar Aulas
+
+Media
+
+Bajo
+
+Pendiente
+
+A2
+
+17
+
+CU17
+
+Registrar asistencia digital
+
+Alta
+
+Medio
+
+Pendiente
+
+A3
+
+18
+
+CU18
+
+Registrar Calificaciones
+
+Crítica
+
+Medio
+
+Pendiente
+
+A3
+
+19
+
+CU19
+
+Generar Boletines
+
+Crítica
+
+Bajo
+
+Pendiente
+
+A3, A4, A5
+
+20
+
+CU20
+
+Analizar Rendimiento
+Académico
+
+Media
+
+Bajo
+
+Pendiente
+
+A3, A5
+
+21
+
+CU21
+
+Gestionar Licencias
+Estudiantiles
+
+Media
+
+Bajo
+
+Pendiente
+
+A5
+
+46
+
+7.3.3 DETALLE DE UN CASO DE USO
+7.3.3.1 CU1: Iniciar sesión
+
+Nombre del
+
+CU1: Iniciar Sesión
+
+Caso de Uso
+Propósito
+
+Permitir que los actores del sistema (administrador, profesor,
+estudiante, tutor, super-administrador) puedan ingresar al sistema con
+sus credenciales correspondientes.
+
+Resumen
+
+El sistema permite buscar, actualizar, registrar, nuevos
+usuarios o darles de baja del sistema.
+
+Actores
+
+Todos los actores:
+A1 Super-Administrador
+A2 Administrador
+A3 Profesor
+A4 Estudiante
+A5 Tutor
+47
+
+Actor Iniciador
+
+Cualquier usuario con cuenta activa (A1-A5)
+
+Precondiciones
+
+El usuario debe estar registrado en el sistema y tener sus
+credenciales habilitadas (usuario y contraseña).
+
+Post
+Condiciones
+
+El usuario accede al sistema y visualiza el menú
+correspondiente a su rol.
+
+Flujo Principal
+
+1. El usuario accede a la página de inicio de sesión.
+2. El sistema muestra el formulario de ingreso.
+3. El usuario introduce su nombre de usuario y contraseña.
+4. El sistema valida los datos ingresados.
+5. Si los datos son correctos, redirige al usuario al panel
+principal según su rol.
+6. Si los datos son incorrectos, muestra un mensaje de error y
+permite reintentar.
+
+7.3.3.2 CU2: Cerrar Sesión
+
+48
+
+Nombre del
+
+CU2: Cerrar Sesión
+
+Caso de Uso
+Propósito
+
+Permitir que el usuario salga del sistema de forma segura.
+
+Resumen
+
+El usuario selecciona la opción “cerrar sesión”. El sistema
+finaliza la sesión activa, limpia la información de usuario en memoria
+y redirige a la pantalla de inicio de sesión.
+
+Actores
+
+Todos los actores:
+A1 Super-Administrador
+A2 Administrador
+A3 Profesor
+A4 Estudiante
+A5 Tutor
+
+Actor Iniciador
+
+Usuario autenticado (cualquier actor que ya inició sesión)
+
+Precondiciones
+
+El usuario debe tener una sesión activa en el sistema.
+
+Post
+
+El usuario regresa a la pantalla de inicio de sesión y la sesión
+
+Condiciones
+Flujo Principal
+
+se cierra completamente.
+1. El usuario selecciona la opción "Cerrar Sesión" en la
+interfaz.
+2. El sistema muestra un mensaje de confirmación (opcional).
+3. El usuario confirma la acción.
+4. El sistema elimina la sesión activa.
+5. El sistema redirige al usuario a la pantalla de inicio de sesión.
+
+7.3.3.3 CU3: Registrar Usuarios
+
+49
+
+Nombre del
+
+CU3: Registrar Usuarios
+
+Caso de Uso
+Propósito
+
+Permitir al Super-Administrador registrar nuevos usuarios
+administradores en el sistema.
+
+Resumen
+
+El Super-Administrador accede al módulo de gestión de
+usuarios, completa el formulario de registro con los datos requeridos
+y guarda la información. El sistema valida y almacena los datos,
+permitiendo así el acceso del nuevo usuario.
+
+Actores
+
+A1 Super-Administrador
+
+Actor Iniciador
+
+A1 Super-Administrador
+
+Precondiciones
+
+El usuario que se va a registrar no debe existir previamente en
+el sistema. El actor debe estar autenticado como SuperAdministrador.
+
+Post
+Condiciones
+Flujo Principal
+
+Flujo
+Alternativos
+
+El nuevo usuario administrador queda registrado y habilitado
+para iniciar sesión.
+1. El Super-Administrador accede al módulo de gestión de
+usuarios.
+2. Selecciona la opción "Registrar nuevo usuario".
+3. El sistema muestra el formulario de registro.
+4. El Super-Administrador completa los campos requeridos
+(nombre, correo, rol, etc.).
+5. Hace clic en "Guardar".
+6. El sistema valida los datos ingresados.
+7. El sistema registra al nuevo usuario y confirma el registro.
+6a. Si los datos son inválidos o faltantes, el sistema muestra
+mensajes de error y solicita corrección.
+7a. Si el usuario ya existe, el sistema cancela el registro y
+notifica al administrador
+
+50
+
+7.3.3.4 CU4: Registrar Colegio
+
+Nombre del
+Caso de Uso
+Propósito
+
+CU4: Registrar Colegio
+Permitir al Super-Administrador registrar nuevos colegios en
+el sistema.
+
+Resumen
+
+El Super-Administrador accede al módulo correspondiente,
+llena el formulario con los datos del colegio y lo registra en el sistema
+para que pueda ser gestionado.
+
+Actores
+
+A1 Super-Administrador
+
+Actor Iniciador
+
+A1 Super-Administrador
+
+Precondiciones
+
+El colegio que se desea registrar no debe estar previamente en
+el sistema.
+
+Post
+Condiciones
+Flujo Principal
+
+Flujo
+Alternativos
+
+El colegio queda registrado y habilitado para asignar unidades
+educativas y administradores.
+1. El Super-Administrador accede al módulo de colegios.
+2. Selecciona la opción "Registrar Colegio".
+3. El sistema muestra el formulario.
+4. El Super-Administrador llena los campos requeridos.
+5. Selecciona “Guardar”.
+6. El sistema valida y guarda los datos.
+7. Muestra mensaje de confirmación.
+6a. Si el colegio ya existe, el sistema notifica el error.
+6b. Si hay errores en los datos, el sistema solicita corrección.
+
+51
+
+7.3.3.5 CU5: Registrar Unidad Educativa
+
+Nombre del
+
+CU5: Registrar Unidad Educativa
+
+Caso de Uso
+Propósito
+
+Permitir al Super-Administrador registrar una nueva Unidad
+Educativa asociada a un colegio.
+
+Resumen
+
+El Super-Administrador accede al módulo de unidades
+educativas, elige el colegio al que desea asociar la unidad, completa
+los datos requeridos y la registra en el sistema.
+
+Actores
+
+A1 Super-Administrador
+
+Actor Iniciador
+
+A1 Super-Administrador
+
+Precondiciones
+
+El colegio al que se desea asociar la unidad educativa debe
+estar registrado. La unidad no debe existir previamente.
+
+Post
+Condiciones
+Flujo Principal
+
+Flujo
+Alternativos
+
+La unidad educativa queda registrada y lista para que se le asignen
+administradores, cursos y profesores.
+1. El Super-Administrador accede al módulo de unidades
+educativas.
+2. Selecciona el colegio correspondiente.
+3. Selecciona la opción "Registrar Unidad Educativa".
+4. El sistema muestra el formulario.
+5. Completa los datos requeridos.
+6. Presiona "Guardar".
+7. El sistema valida y guarda los datos.
+8. Muestra mensaje de confirmación.
+7a. Si la unidad ya existe, el sistema muestra un mensaje de
+error.
+7b. Si faltan datos o son incorrectos, se solicita corrección.
+
+52
+
+7.3.3.6 CU6: Asignar Calendario y División del año escolar
+
+Nombre del
+Caso de Uso
+Propósito
+
+CU6: Asignar Calendario y División del Año Escolar
+Permitir al Super-Administrador establecer el calendario
+oficial del año escolar y su división por trimestres o bimestres.
+
+Resumen
+
+El Super-Administrador accede al módulo de configuración
+académica, establece las fechas de inicio y fin del año escolar, y
+define las divisiones del período (trimestres, bimestres, etc.).
+
+Actores
+
+A1 Super-Administrador
+
+Actor Iniciador
+
+A1 Super-Administrador
+
+Precondiciones
+
+Debe existir al menos una unidad educativa registrada. No
+debe haber un calendario activo aún para el mismo período escolar.
+
+Post
+Condiciones
+Flujo Principal
+
+Flujo
+Alternativos
+
+El calendario queda registrado y se puede utilizar en la planificación y
+seguimiento del año académico.
+1. El Super-Administrador accede al módulo de calendario
+académico.
+2. Selecciona "Asignar nuevo calendario".
+3. El sistema muestra el formulario.
+4. Ingresa las fechas del año escolar.
+5. Define la división por trimestres o bimestres.
+6. Presiona "Guardar".
+7. El sistema valida y guarda el calendario.
+7a. Si ya existe un calendario para ese año, se muestra un
+mensaje de advertencia.
+7b. Si hay errores en los datos, se solicita corrección.
+
+53
+
+7.3.3.7 CU7: Registrar Módulos
+
+Nombre del
+
+CU7: Registrar Módulos
+
+Caso de Uso
+Propósito
+
+Permitir al Administrador habilitar o deshabilitar los módulos
+del sistema para su uso dentro de una unidad educativa.
+
+Resumen
+
+El Administrador accede al módulo de configuración del
+sistema, visualiza los módulos disponibles, y decide cuáles habilitar o
+deshabilitar según las necesidades de la unidad educativa.
+
+Actores
+
+A2 Administrador
+
+Actor Iniciador
+
+A2 Administrador
+
+Precondiciones
+
+La unidad educativa debe estar previamente registrada. El
+usuario debe tener permisos de administrador.
+
+Post
+Condiciones
+Flujo Principal
+
+Flujo
+Alternativos
+
+Los módulos seleccionados quedan habilitados o deshabilitados para
+su uso en la plataforma.
+1. El Administrador accede al módulo de configuración de módulos.
+2. Visualiza la lista de módulos disponibles.
+3. Selecciona los módulos a habilitar o deshabilitar.
+4. Confirma los cambios.
+5. El sistema guarda la configuración y actualiza el acceso a los
+módulos.
+5a. Si hay un error al guardar, el sistema muestra un mensaje
+de error.
+5b. Si no se selecciona ningún módulo, el sistema solicita al menos
+una selección.
+
+54
+
+7.3.3.8 CU8: Registrar Aulas
+
+Nombre del
+
+CU8: Registrar Aulas
+
+Caso de Uso
+Propósito
+
+Permitir al Administrador registrar, actualizar o eliminar las
+aulas físicas disponibles en la unidad educativa.
+
+Resumen
+
+El Administrador accede al módulo de gestión de aulas, donde
+puede añadir nuevas aulas, modificar información existente o eliminar
+aulas que ya no se utilizan.
+
+Actores
+
+A2 Administrador
+
+Actor Iniciador
+
+A2 Administrador
+
+Precondiciones
+
+La unidad educativa debe estar registrada previamente. El
+usuario debe tener permisos para gestionar infraestructura.
+
+Post
+Condiciones
+Flujo Principal
+
+Flujo
+Alternativos
+
+Las aulas registradas estarán disponibles para ser asignadas a cursos o
+actividades académicas.
+1. El Administrador ingresa al módulo de aulas.
+2. Selecciona la opción "Registrar nueva aula".
+3. Ingresa los datos: nombre, ubicación, capacidad, tipo.
+4. Presiona "Guardar".
+5. El sistema registra el aula y la muestra en la lista.
+3a. Si falta algún dato obligatorio, el sistema muestra un mensaje de
+validación.
+5a. Si hay un error al guardar, el sistema muestra un mensaje de error.
+
+55
+
+7.3.3.9 CU9: Registrar Grados
+
+Nombre del
+
+CU9: Registrar Grados
+
+Caso de Uso
+Propósito
+
+Permitir al Administrador registrar y gestionar los grados
+escolares dentro de una unidad educativa.
+
+Resumen
+
+El Administrador accede al módulo de gestión académica,
+donde puede crear nuevos grados, definir niveles (Inicial, Primaria,
+Secundaria), y establecer características como turno o modalidad.
+
+Actores
+
+A2 Administrador
+
+Actor Iniciador
+
+A2 Administrador
+
+Precondiciones
+
+La unidad educativa debe estar registrada. El usuario debe
+tener permisos de configuración académica.
+
+Post
+Condiciones
+Flujo Principal
+
+Flujo
+Alternativos
+
+Los grados registrados podrán ser utilizados para organizar cursos,
+asignar docentes, y matricular estudiantes.
+1. El Administrador accede al módulo de grados.
+2. Selecciona la opción "Registrar nuevo grado".
+3. Ingresa los datos requeridos (nombre, nivel, turno, modalidad,
+etc.).
+4. Presiona "Guardar".
+5. El sistema guarda el nuevo grado y lo muestra en la lista.
+3a. Si hay datos inválidos o incompletos, el sistema solicita
+corrección.
+5a. Si ocurre un error al guardar, el sistema muestra un mensaje de
+error.
+
+56
+
+7.3.3.10 CU10: Registrar Cursos
+
+Nombre del
+
+CU10: Registrar Cursos
+
+Caso de Uso
+Propósito
+
+Permitir al Administrador registrar los cursos correspondientes
+a los grados establecidos dentro de la unidad educativa.
+
+Resumen
+
+El Administrador ingresa al módulo de cursos, selecciona un
+grado, y registra uno o varios cursos asociados, especificando datos
+como nombre, paralelo y turno.
+
+Actores
+
+A2 Administrador
+
+Actor Iniciador
+
+A2 Administrador
+
+Precondiciones
+
+Los grados deben estar previamente registrados en el sistema.
+El usuario debe tener permisos de configuración académica.
+
+Post
+Condiciones
+Flujo Principal
+
+Los cursos quedarán registrados y disponibles para asignar materias,
+profesores y estudiantes.
+1. 1. El Administrador accede al módulo de cursos.
+2. Selecciona el grado correspondiente.
+3. Elige “Registrar nuevo curso”.
+4. Ingresa datos como nombre del curso, paralelo y turno.
+5. Presiona “Guardar”.
+6. El sistema registra el curso y actualiza la lista.
+
+Flujo
+Alternativos
+
+4a. Si hay datos incompletos, el sistema solicita completarlos.
+6a. Si ocurre un error al guardar, se muestra un mensaje de error.
+
+57
+
+7.3.3.11 CU11: Registrar Materias – Curso
+
+Nombre del
+Caso de Uso
+Propósito
+
+CU11: Registrar Materias – Curso
+Permitir al Administrador asociar materias específicas a los
+cursos ya registrados dentro de la unidad educativa.
+El Administrador accede al módulo de gestión académica,
+
+Resumen
+
+selecciona un curso y le asigna las materias que formarán parte de su
+carga curricular.
+
+Actores
+
+A2 Administrador
+
+Actor Iniciador
+
+A2 Administrador
+
+Precondiciones
+
+Los cursos y las materias deben estar previamente registrados.
+
+Post
+
+Las materias quedarán asignadas a los cursos, listas para carga
+
+Condiciones
+
+horaria y asignación de docentes.
+1. El Administrador accede al módulo de asignación de
+materias.
+2. Selecciona el curso correspondiente.
+
+Flujo Principal
+
+3. Visualiza la lista de materias disponibles.
+4. Selecciona las materias deseadas.
+5. Presiona “Asignar”.
+6. El sistema vincula las materias al curso.
+
+Flujo
+Alternativo
+
+3a. Si no hay materias registradas, el sistema sugiere registrar
+primero.
+6a. Si ocurre un error al asignar, se muestra un mensaje de error.
+
+58
+
+7.3.3.12 CU12: Registrar Profesores
+
+Nombre del
+Caso de Uso
+Propósito
+
+CU12: Registrar Profesores
+Permitir al Administrador registrar nuevos profesores en el
+sistema para su posterior asignación a materias y cursos.
+A través del módulo de gestión de personal, el Administrador
+
+Resumen
+
+puede ingresar la información de docentes, registrar su perfil
+académico y habilitarlos en el sistema.
+
+Actores
+
+A2 Administrador
+
+Actor Iniciador
+
+A2 Administrador
+
+Precondiciones
+Post
+Condiciones
+
+Flujo Principal
+
+Flujo
+Alternativo
+
+El administrador debe tener acceso autorizado al sistema y permisos
+de gestión académica.
+El docente queda registrado en el sistema y disponible para
+asignaciones.
+1. El Administrador accede al módulo de docentes.
+2. Selecciona la opción "Registrar nuevo profesor".
+3. Ingresa los datos requeridos (nombre, CI, especialidad, contacto,
+etc.).
+4. Presiona “Guardar”.
+5. El sistema almacena los datos del profesor.
+3a. Si faltan datos obligatorios, el sistema notifica al usuario.
+5a. Si ocurre un error de registro, se muestra un mensaje de error.
+
+59
+
+7.3.3.13 CU13: Inscripción de Estudiante
+
+Nombre del
+Caso de Uso
+Propósito
+Resumen
+Actores
+Actor Iniciador
+Precondiciones
+Post
+Condiciones
+
+Flujo Principal
+
+Flujo
+Alternativo
+
+CU13: Inscripción de Estudiante
+Registrar a los estudiantes dentro de una unidad educativa en
+el sistema académico.
+El administrador accede al módulo de inscripción, selecciona
+un grado y curso, y registra los datos del estudiante para formalizar su
+inscripción.
+A2 Administrador
+A2 Administrador
+Debe existir al menos una unidad educativa, grados y cursos
+registrados.
+El estudiante queda inscrito en el sistema, vinculado a un
+curso.
+1. El administrador accede al módulo de inscripción.
+2. Selecciona el año, unidad educativa, curso y grado.
+3. Ingresa los datos personales del estudiante.
+4. Presiona “Inscribir”.
+5. El sistema guarda la información y vincula al estudiante al curso.
+3a. Si el estudiante ya está inscrito, el sistema muestra una
+advertencia.
+5a. Si ocurre un error, se muestra un mensaje correspondiente.
+
+60
+
+7.3.3.14 CU14: Asignar Materias a un Curso
+
+Nombre del
+Caso de Uso
+Propósito
+Resumen
+Actores
+Actor Iniciador
+Precondiciones
+
+Flujo Principal
+
+Flujo
+Alternativo
+
+CU14: Asignar Materias a un Curso
+Vincular materias previamente registradas a un curso
+específico para definir su plan académico.
+El administrador selecciona un curso y asigna las materias que
+se impartirán en él, junto con los profesores responsables (opcional).
+A2 Administrador
+A2 Administrador
+- Deben existir cursos, materias y profesores registrados.
+- El curso no debe tener materias asignadas previamente (o permitir
+edición).
+1. El administrador accede al módulo "Gestión Académica".
+2. Selecciona el curso objetivo.
+3. El sistema muestra las materias disponibles.
+4. Selecciona las materias y asigna profesores (opcional).
+5. Confirma los cambios.
+6. El sistema guarda las asignaciones.
+4a. Si no hay materias registradas, el sistema sugiere crearlas
+primero.
+6a. Si hay conflicto de horarios (profesor asignado a otra
+materia), el sistema notifica.
+
+61
+
+7.3.3.15 CU15: Asignar Cargas Horarias
+
+Nombre del
+Caso de Uso
+Propósito
+Resumen
+Actores
+Actor Iniciador
+Precondiciones
+Post
+Condiciones
+
+Flujo Principal
+
+Flujo
+Alternativo
+
+CU15: Asignar Cargas Horarias
+Distribuir las horas de clase entre los docentes según las
+materias y cursos asignados.
+El Administrador asigna a cada docente una cantidad
+específica de horas para impartir materias en distintos cursos, según la
+planificación académica.
+A2 Administrador
+A2 Administrador
+Deben existir materias, cursos y profesores registrados previamente.
+Las cargas horarias quedan asignadas a cada docente en
+relación con sus materias.
+1. El administrador accede al módulo de asignación de carga
+horaria.
+2. Selecciona el docente, materia y curso.
+3. Establece la cantidad de horas semanales.
+4. Presiona “Guardar”.
+5. El sistema almacena la carga horaria asignada.
+2a. Si no hay docentes o materias registradas, se muestra un
+mensaje de error.
+4a. Si las horas exceden el límite permitido, se alerta al
+administrador.
+
+62
+
+7.3.3.16 CU16: Asignar Aulas
+
+Nombre del
+Caso de Uso
+Propósito
+Resumen
+Actores
+Actor Iniciador
+Precondiciones
+Post
+Condiciones
+
+Flujo Principal
+
+Flujo
+Alternativo
+
+CU16: Asignar Aulas
+Designar aulas específicas para cada curso y materia en la
+planificación académica.
+El Administrador selecciona un curso, materia y horario, luego
+asigna el aula disponible correspondiente.
+A2 Administrador
+A2 Administrador
+Deben existir aulas, cursos y materias previamente registradas.
+El aula queda asignada al curso en el horario correspondiente.
+1. El administrador accede al módulo de asignación de aulas.
+2. Selecciona el curso, materia y horario.
+3. Selecciona el aula disponible.
+4. Presiona “Asignar”.
+5. El sistema registra la asignación.
+3a. Si no hay aulas disponibles, el sistema muestra un mensaje
+de alerta.
+4a. Si hay conflictos de horario, se informa al administrador
+para resolver.
+
+63
+
+7.3.3.17 CU17: Registrar asistencia digital
+
+Nombre del
+
+CU17: Registrar asistencia digital
+
+Caso de Uso
+Propósito
+
+Permitir al Profesor registrar la asistencia de sus estudiantes
+desde el sistema en línea.
+
+Resumen
+
+El Profesor accede al módulo de asistencia, selecciona su
+curso, marca la presencia o falta de cada estudiante y guarda los
+datos.
+
+Actores
+
+A3 Profesor
+
+Actor Iniciador
+
+A3 Profesor
+
+Precondiciones
+
+El profesor debe tener asignado al curso y los estudiantes
+deben estar matriculados.
+
+Post
+Condiciones
+Flujo Principal
+
+Flujo
+Alternativos
+
+La asistencia queda registrada en el sistema y puede ser consultada
+posteriormente.
+1. El profesor accede al módulo de asistencia.
+2. Selecciona curso y fecha.
+3. El sistema muestra lista de estudiantes.
+4. Marca la asistencia (presente/ausente/justificado).
+5. Guarda los registros.
+6. El sistema confirma y almacena los datos.
+2a. Si no tiene cursos asignados, el sistema muestra
+advertencia.
+4a. Si no marca todos los estudiantes, el sistema solicita
+completar antes de guardar.
+
+64
+
+7.3.3.18 CU18: Registrar calificaciones
+
+Nombre del
+
+CU18: Registrar calificaciones
+
+Caso de Uso
+Propósito
+
+Permitir al profesor registrar las calificaciones de los
+estudiantes de forma digital para cada materia y periodo, calculando
+automáticamente los promedios y validando los valores ingresados.
+
+Resumen
+
+El sistema brinda al profesor una interfaz para seleccionar el
+curso, la materia y el periodo correspondiente. Luego muestra la lista
+de estudiantes del curso, donde el docente podrá ingresar sus
+respectivas calificaciones. El sistema valida que los valores estén
+dentro del rango permitido y realiza el cálculo del promedio final
+automáticamente.
+
+Actores
+
+A3 Profesor
+
+Actor Iniciador
+
+A3 Profesor
+
+Precondiciones
+
+El profesor debe haber iniciado sesión en el sistema. El curso
+y la materia deben estar previamente asignados al docente.
+Debe existir una planificación académica activa.
+
+Post
+Condiciones
+
+Las calificaciones ingresadas quedan registradas en la base de
+datos. El sistema actualiza automáticamente los promedios y el
+historial académico del estudiante.
+
+Flujo Principal
+
+1.El profesor accede al módulo de calificaciones.
+2.Selecciona el curso, materia y periodo académico
+correspondiente.
+
+65
+
+3.El sistema muestra la lista de estudiantes matriculados en ese
+curso.
+4.El profesor ingresa las calificaciones por estudiante en los
+campos correspondientes.
+5.El sistema valida que los valores estén dentro del rango
+permitido (0 - 100).
+6.El profesor hace clic en “Guardar”.
+7.El sistema almacena las calificaciones y calcula
+automáticamente el promedio por estudiante.
+8.Se actualiza el historial académico del estudiante.
+
+7.3.3.19 CU19: Generar Boletines
+
+Nombre del
+
+CU19: Generar Boletines
+
+Caso de Uso
+Propósito
+
+Generar boletines académicos institucionales en formato PDF
+que incluyan calificaciones, observaciones docentes, comportamiento
+y firmas digitales de autoridades.
+
+Resumen
+
+El administrador accede al módulo de generación de boletines
+y selecciona los parámetros necesarios (curso, periodo y gestión). El
+sistema recopila automáticamente los datos académicos, de asistencia
+y comportamiento de cada estudiante, y genera el boletín
+correspondiente con el diseño institucional predefinido.
+
+Actores
+
+Administrador
+
+Actor Iniciador
+
+Administrador
+66
+
+Precondiciones
+
+Las calificaciones, asistencia y observaciones deben estar
+previamente registradas en el sistema.
+El usuario debe tener permisos administrativos.
+
+Post
+
+Se genera un archivo PDF por estudiante con el boletín
+
+Condiciones
+
+institucional completo. Los boletines quedan disponibles para
+descarga, impresión o envío digital.
+
+Flujo Principal
+
+1.El administrador accede al módulo de boletines
+2.Selecciona la gestión académica, el curso y el periodo a
+generar.
+3.El sistema valida que todos los datos requeridos estén
+registrados.
+4.El sistema extrae la información de calificaciones,
+observaciones, asistencia y comportamiento.
+5.Se genera automáticamente el boletín institucional en
+formato PDF.
+6.El sistema adjunta las firmas digitales necesarias (director
+y/o coordinador).
+7.El administrador puede visualizar, descargar o enviar el
+boletín por medios digitales.
+8.El boletín queda archivado en el historial académico del
+estudiante.
+
+7.3.3.20 CU20: Analizar Rendimiento Académico
+
+67
+
+Nombre del
+Caso de Uso
+Propósito
+
+Resumen
+
+Actores
+Actor Iniciador
+Precondiciones
+
+Post
+Condiciones
+Flujo Principal
+
+CU20: Analizar Rendimiento Académico
+Permitir al administrador o tutor identificar estudiantes en
+riesgo académico a través de un panel interactivo que analiza
+calificaciones, asistencia y comportamiento.
+El sistema presenta un dashboard con indicadores clave de
+rendimiento académico por estudiante, curso y periodo. Muestra
+gráficas, alertas y estadísticas que permiten detectar tendencias de
+bajo rendimiento y tomar decisiones preventivas.
+Administrador, Tutor
+Administrador o Tutor
+Deben existir datos previos de calificaciones, asistencia y
+observaciones de comportamiento en el sistema. El usuario debe
+haber iniciado sesión y tener permisos correspondientes.
+Se genera un análisis visual e interactivo que puede ser
+exportado. Se identifican estudiantes en riesgo para intervención
+temprana.
+1.El actor (administrador o tutor) accede al módulo de análisis
+académico.
+2.El sistema muestra filtros para seleccionar curso, periodo y
+materia.
+3.El usuario aplica los filtros y solicita el análisis.
+4.El sistema carga gráficos y tablas con datos de rendimiento
+académico y asistencia.
+5.Se generan alertas visuales para estudiantes con bajo
+rendimiento o alta inasistencia.
+6.El actor puede exportar el análisis en PDF o Excel.
+
+68
+
+7.3.3.21 CU21: Gestionar Licencias Estudiantiles
+
+Nombre del
+Caso de Uso
+Propósito
+Resumen
+
+Actores
+Actor Iniciador
+Precondiciones
+
+Post
+Condiciones
+Flujo Principal
+
+CU21: Gestionar Licencias Estudiantiles
+Permitir al tutor y/o administrador gestionar las solicitudes de
+licencias (faltas justificadas) de los estudiantes.
+El tutor o administrador accede al sistema, visualiza las
+solicitudes de licencias de los estudiantes, valida los documentos
+adjuntos y aprueba o rechaza las licencias. El sistema actualiza el
+estado de las licencias de acuerdo a la decisión tomada.
+A2 Administrador, A5 Tutor
+A2 Administrador, A5 Tutor
+El estudiante debe haber solicitado la licencia.
+El tutor o administrador debe tener acceso al módulo de
+licencias.
+El sistema debe tener registros de las solicitudes de licencias.
+La licencia es aprobada o rechazada, y el sistema actualiza el
+estado de la solicitud.
+Se notifica al estudiante sobre la decisión tomada.
+1. El tutor o administrador accede al módulo de gestión de
+licencias.
+2. Selecciona al estudiante y la solicitud de licencia.
+3. Visualiza la documentación adjunta (si la hay).
+4. Aprueba o rechaza la solicitud.
+5. El sistema actualiza el estado de la licencia y notifica al
+estudiante.
+
+69
+
+7.3.4 PROTOTIPAR INTERFAZ DE USUARIO
+https://www.figma.com/design/dMolSJznIGpdnQ3R7aEHCT/Untitled?node-id=01&t=iGfxKD6t1QbiQ5Ct-1
+
+70
+
+71
+
+72
+
+73
+
+7.3.5 ESTRUCTURAR MODELOS DE CASOS DE USO
+7.3.5.1 Diagrama General de Casos de uso
+
+74
+
+7.4 FLUJO DE TRABAJO: ANALISIS
+7.4.1 ANÁLISIS DE LA ARQUITECTURA
+7.4.1.1 Identificar Paquetes
+● Paquete de seguridad
+
+● Paquete de Configuración Institucional
+
+● Paquete de Gestión Académica
+
+75
+
+7.4.1.2 Relacionar Paquetes
+
+76
+
+7.4.1.3 Vista de paquetes Encapsulamiento de casos de uso
+
+77
+
+7.4.2 ANALIZAR UN CASO DE USO
+7.4.2.1 Diagrama de comunicación
+CU1: Iniciar sesión
+
+CU2: Cerrar sesión
+
+78
+
+CU3: Registrar Usuarios
+
+CU4: Registrar Colegio
+
+CU5: Registrar Unidad Educativa
+
+79
+
+CU6: Asignar Calendario y División del año escolar
+
+CU7: Registrar Módulos
+
+CU8: Registrar Aulas
+
+80
+
+CU9: Registrar Grados
+
+CU10: Registrar Cursos
+
+81
+
+7.5. Capítulo 3 Flujo de Trabajo: Diseño
+7.5.1. Diseño de Datos
+7.5.1.1. Diseño de Datos Lógicos
+7.5.1.1.1. Diagrama de Clases
+
+82
+
+7.5.1.1.2. Mapeo
+Rol
+id
+
+nombre
+
+descripcion
+
+PK
+Notificacion
+id
+
+usuario
+
+titulo
+
+mensaje
+
+Fecha
+
+leido
+
+tipo
+
+PK
+usuario
+ID
+
+RolID
+
+PK
+
+FK
+
+Contraseña
+
+CI
+
+Foto
+
+Nombre
+
+Apellido
+
+Edad
+
+UserName
+
+Estado
+
+superadmin
+ID
+PK/FK
+Admin
+ID
+
+Puesto
+
+Estado
+
+PK/FK
+Colegio
+ID
+
+ID_SuperAdmin
+
+PK
+
+FK
+
+Nombre
+
+Logo
+
+Direccion
+
+Telefono
+
+83
+
+unidad educativa
+Id
+
+Codigo_Sie
+
+Id_Colegio
+
+ID_Admin
+
+PK
+
+PK
+
+FK
+
+FK
+
+Turno
+
+Nivel
+
+Profesor
+ID
+
+Unidad_Educativa
+
+PK/FK
+
+Estado
+
+FK
+Estudainte
+
+ID
+
+Unidad_Educativa
+
+PK/FK
+
+RUDE
+
+Estado
+
+Curso
+
+FK
+TutorEstudiante
+
+TutorID
+
+EstudianteID
+
+PK/FK
+
+PK/FK
+Tutor
+
+id
+
+unida_educativa
+
+PK/FK
+
+FK
+
+parentesco
+
+Licencia
+Id
+
+estudiante_id
+
+tutor_id
+
+PK
+
+FK
+
+FK
+
+fechainicion
+
+fechafin
+
+motivo
+
+estado
+
+Asistencia General
+ID
+
+EstudianteID
+
+PK
+
+PK
+
+Fecha
+
+Estado
+
+Hora_de_Entrada
+
+Hora_de_Salida
+
+84
+
+Comportameinto
+ID
+
+EstudianteID
+
+PK
+
+FK
+
+Fecha
+
+Descripcion
+
+Tipo
+
+Asistencia_Por_Clase
+ID
+
+ID_Estudiante:
+
+IDClase:
+
+PK
+
+PK/FK
+
+PK/FK
+
+fecha
+
+estado
+
+hora
+
+Evaluacion
+ID
+
+IDMateriaCurso
+
+IDProfesor
+
+PK
+
+FK
+
+FK
+
+Fecha
+
+Ponderación
+
+Nota
+IDEvaluación
+
+IDEstudiante
+
+PK
+
+PK
+
+Valor
+
+Observaciones
+
+Especialidad
+id
+
+IDMateria
+
+PK
+
+FK
+
+IDgrado
+FK
+
+grado
+id
+
+id_unidad_educativa
+
+PK
+
+FK
+
+Nivel educativo
+
+modulo
+id
+
+Id_Colegio
+
+PK
+
+FK
+
+Nombre
+
+Cantidad_Aulas
+
+85
+
+aula
+id
+
+id_modulo
+
+PK
+
+FK
+
+capacidad
+
+estado
+
+tipo
+
+Paralelo
+ID
+
+IDGrado
+
+PK
+
+FK
+
+Letra
+
+CapacidadMaxima
+
+Materia
+ID
+
+nombre
+
+PK
+MateriaCurso
+ID
+
+idamateria
+
+idcurso
+
+PK
+
+FK
+
+FK
+
+idProfesor
+FK
+
+ProfesorEspecialidades
+ID_Profesor
+PK/FK
+
+ID_Especialidad
+PK/FK
+
+Curso
+ID
+
+IDGrado
+
+IDParalelo
+
+IDProfesor
+
+PK
+
+FK
+
+FK
+
+FK
+
+Nombre
+
+HistorialAcademico
+ID
+PK
+
+IDEstudiante
+
+IDCurso
+
+FK
+
+FK
+
+Estado
+
+Promedio
+
+Gestion
+
+86
+
+clase
+ID
+
+ID_Materia
+
+IDAula
+
+PK
+
+FK
+
+FK
+
+IDHorario
+FK
+
+Matricula
+ID
+
+IDEstudiante
+
+PK
+
+FK
+
+IDCursoOrigen
+
+IDCursoDestino
+
+FK
+
+Gestion
+
+Tipo
+
+Estado
+
+FK
+
+Horario
+ID
+
+HoraInicio
+
+HoraFin
+
+Dia
+
+PK
+Modulo
+id
+
+nombre
+
+cantidad._aulas
+
+pk
+7.5.1.1.3. Normalización
+El sistema de información ya se encuentra en 1era, 2da, 3ra y 4ta forma normal.
+7.5.1.2. Diseño de Datos Físico
+7.5.1.1.1. Tabla de Volumen
+Usuario:
+Atributo
+
+Tipo Dato
+
+ID
+
+ENTERO
+
+Ci
+
+CADENA DE
+CARACTERES
+
+Foto
+
+JPEG
+
+Amplitud Llave Nulo Descripción
+
+10
+
+PK
+
+NO
+
+Identificador único del usuario
+
+PK
+
+NO
+
+Cédula de Identidad del usuario
+
+NO
+
+Fotografía del usuario
+
+87
+
+Nombre
+
+CADENA DE
+CARACTERES
+
+50
+
+NO
+
+Nombre del usuario
+
+Apellido
+
+CADENA DE
+CARACTERES
+
+50
+
+NO
+
+Apellido del usuario
+
+Email
+
+CADENA DE
+CARACTERES
+
+50
+
+NO
+
+Correo electrónico del usuario
+
+Edad
+
+ENTERO
+
+NO
+
+Edad del usuario
+
+Rol
+
+CADENA DE
+CARACTERES
+
+10
+
+NO
+
+Rol del usuario (administrador, estudiante,
+profesor)
+
+CADENA DE
+UserName CARACTERES
+
+30
+
+NO
+
+Nombre de usuario
+
+CADENA DE
+Contraseña CARACTERES
+
+Contraseña de acceso al sistema (hasheada)
+NO
+
+30
+
+Estudiante:
+Atributo
+ID
+
+Tipo Dato
+
+Amplitud Llave Nulo Descripción
+
+ENTERO
+
+PK,
+FK
+
+NO
+
+Identificador del estudiante (referencia a
+USUARIO)
+
+FK
+
+NO
+
+Unidad educativa del estudiante
+
+CADENA DE
+Unidad_Educativa CARACTERES
+
+50
+
+RUDE
+
+CADENA DE
+CARACTERES
+
+30
+
+NO
+
+Codigo rude del estudiante
+
+Estado
+
+CADENA DE
+CARACTERES
+
+50
+
+NO
+
+Estado del estudiante (activo/inactivo)
+
+CADENA DE
+EstadoMatricula CARACTERES
+
+50
+
+NO
+
+Estado de matrícula del estudiante
+
+NO
+
+Curso del estudiante
+
+Curso
+
+CADENA DE
+CARACTERES
+
+10
+
+Tipo Dato
+
+Amplitud Llave Nulo Descripción
+
+Profesor:
+Atributo
+
+88
+
+ID
+
+NO
+
+Identificador del profesor (referencia a
+USUARIO)
+
+CARACTERES
+
+50
+
+NO
+
+Unidad educativa en la que el profesor fue
+contratado
+
+CADENA DE
+CARACTERES
+
+50
+
+NO
+
+Estado del profesor
+
+ENTERO
+
+FK
+
+Unidad_Educativa CADENA DE
+
+Estado
+
+Unidad_Educativa:
+Atributo
+
+Tipo Dato
+
+Amplitud Llave Nulo Descripción
+Identificador de la unidad educativa
+
+Id
+
+PK
+
+NO
+
+50
+
+FK
+
+NO
+
+Administrador de la unidad educativa
+
+30
+
+FK
+
+NO
+
+Id de la unidad educativa
+
+50
+
+PK
+
+NO
+
+Código Sie de la unidad educativa
+
+NO
+
+Turno que opera la unidad educativa
+
+NO
+
+Niveles que ofrece la unidad educativa
+
+ENTERO
+CADENA DE CARACTERES
+
+Admin
+CADENA DE CARACTERES
+Id_Colegio
+CADENA DE CARACTERES
+Codigo_Sie
+Turno
+
+CADENA DE CARACTERES 50
+
+Nivel
+
+CADENA DE CARACTERES
+
+10
+
+Grados:
+Atributo
+
+Tipo Dato
+
+Amplitud Llave Nulo Descripción
+Identificador del grado al que pertenece
+
+ID
+Id_Unidad_Educativa
+
+ENTERO
+CADENA DE
+CARACTERES
+
+50
+
+CADENA DE
+CARACTERES
+
+50
+
+PK
+
+NO
+
+FK
+
+NO
+
+Identificador de la unidad educativa al
+que pertenece
+
+NO
+
+Nivel de grado educativo
+
+NivelEducativo
+
+89
+
+Paralelo:
+Atributo
+
+Tipo Dato
+
+Amplitud Llave Nulo Descripción
+
+ID
+
+ENTERO
+
+NO
+
+Identificador único del paralelo
+
+IDGrado
+
+ENTERO
+
+NO
+
+identificador del grado del paralelo
+
+Letra
+
+CADENA DE CARACTERES 50
+
+NO
+
+ENTERO
+
+NO
+
+CapacidadMaxima
+Capacidad máxima del paralelo
+
+Modulo:
+Atributo
+
+Tipo Dato
+
+Id
+
+ENTERO
+
+Id_Colegio
+
+ENTERO
+
+Nombre
+
+Amplitud Llave Nulo Descripción
+NO
+
+Identificador único del modulo
+
+NO
+
+identificador del colegio
+
+CADENA DE CARACTERES 50
+
+NO
+
+Nombre del modulo
+
+ENTERO
+
+NO
+
+Cantidad de aulas del modulo
+
+PK
+FK
+
+Cantidad_Aulas
+
+Aulas:
+Atributo
+
+Tipo Dato
+
+ID
+
+ENTERO
+
+Amplitud Llave Nulo Descripción
+NO
+
+Identificador único del aula
+
+Capacidad ENTERO
+
+NO
+
+Capacidad del aula
+
+Estado
+
+NO
+
+Estado del aula
+
+CADENA DE CARACTERES 50
+
+PK
+
+90
+
+Tipo
+
+CADENA DE CARACTERES
+
+50
+
+NO
+
+Tipo de aula
+
+Colegio:
+Atributo
+
+Tipo Dato
+
+ID
+
+ENTERO
+
+ID_SuperAdmin ENTERO
+
+Amplitud Llave Nulo Descripción
+
+PK
+
+50
+
+FK
+
+NO
+
+Identificador del colegio
+
+NO
+
+Administrador del colegio
+
+NO
+
+Nombre del colegio
+
+CADENA DE CARACTERES
+Nombre
+
+30
+
+Logo
+
+JPEG
+
+SI
+
+Logo del colegio
+
+Dirección
+
+CADENA DE CARACTERES 50
+
+NO
+
+Dirección del colegio
+
+Teléfono
+
+ENTERO
+
+NO
+
+Número de teléfono del colegio
+
+Admin:
+Atributo
+
+Tipo Dato
+
+ID
+
+ENTERO
+
+Amplitud Llave Nulo Descripción
+PK, FK NO
+
+Identificador único para administrador
+
+FK
+
+NO
+
+Nombre de la unidad educativa
+
+NO
+
+Puesto del administrador
+
+SI
+
+Estado del administrador
+
+CADENA DE CARACTERES
+Unidad_Educativa
+
+50
+
+Puesto
+
+CADENA DE CARACTERES 50
+
+Estado
+
+CADENA DE CARACTERES
+
+50
+
+91
+
+SuperAdmin
+Atributo Tipo Dato Amplitud Llave Nulo Descripción
+IDU
+
+ENTERO
+
+PK, FK NO
+
+Identificador único del super administrador
+
+Especialidad:
+Atributo Tipo Dato
+ID
+
+Amplitud Llave Nulo Descripción
+
+ENTERO
+
+PK
+
+NO
+
+Identificador de la especialidad
+
+CADENA DE CARACTERES
+Materia
+
+30
+
+FK
+
+NO
+
+Materia de especialidad
+
+Grado
+
+CADENA DE CARACTERES 10
+
+PF
+
+NO
+
+Grado de especialidad
+
+Profesor_Especialidades:
+Atributo
+
+Tipo Dato Amplitud Llave Nulo Descripción
+
+ID_Profesor
+
+ENTERO
+
+PK, FK NO
+
+Identificador del profesor
+
+PK, FK
+ID_especialidad ENTERO
+
+NO
+
+Identificador de la especialidad
+
+MateriaCurso:
+Atributo
+
+Tipo Dato Amplitud Llave Nulo Descripción
+
+ID
+
+ENTERO
+
+NO
+
+Identificador único para materia, curso
+
+IDMateria ENTERO
+
+NO
+
+Identificador de la materia
+
+IDCurso
+
+ENTERO
+
+NO
+
+identificador del curso
+
+IDProfesor ENTERO
+
+NO
+
+identificador del profesor
+
+92
+
+Materia:
+Atributo Tipo Dato
+ID
+
+Amplitud Llave Nulo Descripción
+
+ENTERO
+
+NO
+
+Identificador único de la materia
+
+NO
+
+Nombre de la materia
+
+CADENA DE CARACTERES
+Nombre
+
+50
+
+Curso:
+Atributo
+
+Tipo Dato
+
+ID
+
+ENTERO
+
+IDGrado
+
+ENTERO
+
+Amplitud Llave Nulo Descripción
+
+NO
+
+Identificador único del curso
+
+NO
+
+Identificador del grado del curso
+
+IDParalelo ENTERO
+
+NO
+
+Identificador del paralelo del curso
+
+IDProfesor ENTERO
+
+NO
+
+Identificador del profesor del curso
+
+Nombre
+
+NO
+
+Nombre del curso
+
+CADENA DE CARACTERES 50
+
+PK
+FK
+
+Matricula:
+Atributo
+
+Tipo Dato
+
+Amplitud Llave Nulo Descripción
+
+ID
+
+ENTERO
+
+NO
+
+Identificador de la matricula
+
+IDEstudiante
+
+ENTERO
+
+NO
+
+Identificador del estudiante al que pertenece
+
+93
+
+IDCursoOrigen ENTERO
+
+NO
+
+Identificador del curso de origen
+
+IDCursoDestino ENTERO
+
+NO
+
+Identificador del curso de destino
+
+Gestión
+
+NO
+
+Gestión de matriculación
+
+50
+
+NO
+
+Tipo de matrícula
+
+50
+
+NO
+
+Estado de la matrícula
+
+ENTERO
+CADENA DE CARACTERES
+
+Tipo
+CADENA DE CARACTERES
+Estado
+
+HistorialAcademico:
+Atributo
+
+Tipo Dato
+
+Amplitud Llave Nulo Descripción
+
+ID
+
+ENTERO
+
+NO
+
+Identificador del historial académico
+
+IDEstudiante ENTERO
+
+NO
+
+Identificador del estudiante al que pertenece
+
+IDCurso
+
+NO
+
+Identificador del curso al que pertenece
+
+SI
+
+Estado del historial académico
+
+ENTERO
+CADENA DE CARACTERES
+
+Estado
+
+50
+
+Promedio
+
+DECIMAL
+
+NO
+
+Promedio del historial académico
+
+Gestión
+
+ENTERO
+
+NO
+
+Gestión del historial académico
+
+Clase:
+Atributo
+
+Tipo Dato Amplitud Llave Nulo Descripción
+
+94
+
+ID
+
+ENTERO
+
+ID_Materia ENTERO
+IDAula
+
+PK
+FK
+
+ENTERO
+
+NO
+
+Identificador único de la clase
+
+NO
+
+Identificador de la materia de la clase
+
+NO
+
+Identificador del aula de la clase
+
+Horario:
+Atributo Tipo Dato
+ID
+
+Amplitud Llave Nulo Descripción
+
+ENTERO
+
+NO
+
+Identificador del horario
+
+30
+
+NO
+
+Hora de inicio
+
+HoraFin
+
+CADENA DE CARACTERES 30
+
+NO
+
+Hora de finalización
+
+Dia
+
+CADENA DE CARACTERES
+
+NO
+
+Días del horario
+
+CADENA DE CARACTERES
+HoraInicio
+
+30
+
+Asistencia_Por_Clase:
+Atributo
+
+Tipo Dato
+
+ID
+
+ENTERO
+
+Amplitud Llave Nulo Descripción
+
+PK
+
+NO
+
+Identificador de asistencia a clases
+
+NO
+
+Identificador del estudiante al que pertenece
+
+NO
+
+Identificador de la clase de la asistencia
+
+PK, FK
+ID_Estudiante ENTERO
+PK, FK
+IDClase
+
+ENTERO
+CADENA DE CARACTERES
+
+Fecha
+
+30
+
+NO
+
+Fecha de la asistencia
+
+Estado
+
+CADENA DE CARACTERES 30
+
+NO
+
+Estado de la asistencia
+
+95
+
+Hora
+
+CADENA DE CARACTERES
+
+30
+
+NO
+
+Hora de la asistencia
+
+Evaluación:
+Atributo
+
+Tipo Dato
+
+Amplitud Llave Nulo Descripción
+
+ID
+
+ENTERO
+
+NO
+
+Identificador de la evaluación
+
+IDMateriaCurso ENTERO
+
+NO
+
+Identificador de la materia de evaluación
+
+IDProfesor
+
+ENTERO
+
+NO
+
+Identificador del profesor de la evaluación
+
+Fecha
+
+CADENA DE CARACTERES 30
+
+NO
+
+Fecha de la evaluación
+
+Ponderación
+
+ENTERO
+
+NO
+
+Ponderación de la evaluación
+
+Nota:
+Atributo
+
+Tipo Dato
+
+Amplitud Llave Nulo Descripción
+
+IDEvaluación ENTERO
+
+NO
+
+Identificador único de la evaluación
+
+IDEstudiante
+
+ENTERO
+
+NO
+
+Identificador del estudiante que pertenece la
+nota
+
+Valor
+
+ENTERO
+
+NO
+
+Valor de la nota
+
+SI
+
+Observaciones de la nota
+
+Observaciones CADENA DE
+CARACTERES
+
+50
+
+96
+
+Comportamiento:
+Atributo
+
+Tipo Dato
+
+ID
+
+ENTERO
+
+Amplitud Llave Nulo Descripción
+
+NO
+
+Identificador del comportamiento
+
+NO
+
+identificador del estudiante al que pertenece
+
+30
+
+NO
+
+Fecha de comportamiento
+
+Descripcion CADENA DE CARACTERES 100
+
+NO
+
+Descripción del comportamiento
+
+NO
+
+Tipo de comportamiento
+
+PK
+FK
+
+EstudianteID ENTERO
+CADENA DE CARACTERES
+Fecha
+
+Tipo
+
+CADENA DE CARACTERES
+
+50
+
+TutorEstudiante:
+Atributo
+
+Tipo Dato Amplitud Llave Nulo Descripción
+
+TutorID
+
+ENTERO
+
+PK, FK NO
+
+Identificador único del tutor
+
+PK, FK
+EstudianteID ENTERO
+
+NO
+
+Identificador único del estudiante
+
+AsistenciaGeneral:
+Atributo
+
+Tipo Dato
+
+ID
+
+ENTERO
+
+EstudianteID
+
+ENTERO
+
+Amplitud Llave Nulo Descripción
+
+PK
+FK
+
+NO
+
+Identificador para asistencia general
+
+NO
+
+Identificador del estudiante para
+asistencia
+
+NO
+
+Fecha de asistencia
+
+CADENA DE CARACTERES
+Fecha
+
+30
+
+97
+
+CADENA DE CARACTERES
+Estado
+
+50
+
+NO
+
+Estado de asistencia
+
+CADENA DE
+Hora_de_Entrada CARACTERES
+
+30
+
+NO
+
+Hora asistencia de entrada
+
+CADENA DE CARACTERES 30
+
+NO
+
+Hora asistencia de salida
+
+Hora_de_Salida
+
+Licencia
+Atributo
+
+Tipo Dato
+
+ID
+
+ENTERO
+
+Amplitud Llave
+
+PK
+
+NO
+
+Identificador único de la licencia
+
+NO
+
+Identificador del estudiante de la licencia
+
+NO
+
+Identificador del tutor del estudiante
+
+50
+
+NO
+
+Fecha de inicio de la licencia
+
+50
+
+NO
+
+Fecha de finalización de la licencia
+
+50
+
+NO
+
+Motivo de la licencia
+
+50
+
+NO
+
+Estado de la licencia
+
+FK
+
+EstudianteID ENTERO
+
+TutorID
+
+Nulo Descripción
+
+ENTERO
+
+FK
+
+CADENA DE CARACTERES
+FechaInicio
+CADENA DE CARACTERES
+FechaFin
+CADENA DE CARACTERES
+Motivo
+CADENA DE CARACTERES
+Estado
+
+Tutor:
+Atributo
+
+Tipo Dato
+
+ID
+
+ENTERO
+
+Unidad_Educativa
+
+CADENA DE
+CARACTERES
+
+Amplitud Llave Nulo Descripción
+
+50
+
+PK,
+FK
+
+NO
+
+Identificador único del tutor
+
+FK
+
+NO
+
+Nombre de la unidad educativa al que
+pertenece
+
+98
+
+Parentesco
+
+CADENA DE
+CARACTERES
+
+50
+
+NO
+
+Parentesco del tutor
+
+7.5.1.1.2. Script
+-- Crear la base de datos
+CREATE DATABASE escuela;
+-- Conectar a la base de datos
+\c escuela;
+-- Tabla SuperAdmin
+CREATE TABLE superadmin (
+ID INTEGER PRIMARY KEY
+);
+-- Tabla Admin
+CREATE TABLE admin (
+ID INTEGER PRIMARY KEY,
+Unidad_Educativa INTEGER REFERENCES
+unidad_educativa(Id), Puesto VARCHAR(255),
+Estado VARCHAR(255)
+);
+-- Tabla Colegio
+CREATE TABLE colegio (
+ID INTEGER PRIMARY KEY,
+ID_SuperAdmin INTEGER REFERENCES
+superadmin(ID), Nombre VARCHAR(255) NOT NULL,
+Logo BYTEA,
+Direccion
+VARCHAR(255), Telefono
+VARCHAR(20)
+);
+-- Tabla Unidad_Educativa
+CREATE TABLE
+unidad_educativa (
+Id INTEGER PRIMARY KEY,
+Admin INTEGER REFERENCES admin(ID),
+Id_Colegio INTEGER REFERENCES colegio(ID),
+Codigo_Sie VARCHAR(20) PRIMARY KEY,
+Turno
+VARCHAR(20),
+Nivel
+VARCHAR(20)
+);
+-- Tabla Profesor
+CREATE TABLE profesor (
+ID INTEGER PRIMARY KEY,
+Unidad_Educativa INTEGER REFERENCES
+unidad_educativa(Id), Estado VARCHAR(20)
+);
+-- Tabla Estudiante
+CREATE TABLE estudiante (
+
+99
+
+ID INTEGER PRIMARY KEY,
+Unidad_Educativa INTEGER REFERENCES
+unidad_educativa(Id), RUDE VARCHAR(20) NOT NULL,
+Estado
+VARCHAR(20), Curso
+VARCHAR(20)
+);
+-- Tabla TutorEstudiante
+CREATE TABLE tutorestudiante (
+TutorID INTEGER PRIMARY KEY REFERENCES tutor(ID),
+EstudianteID INTEGER PRIMARY KEY REFERENCES estudiante(ID)
+);
+-- Tabla Comportamiento
+CREATE TABLE comportamiento (
+ID INTEGER PRIMARY KEY,
+EstudianteID INTEGER REFERENCES
+estudiante(ID), Fecha DATE NOT NULL,
+Descripcion
+TEXT, Tipo
+VARCHAR(50)
+);
+-- Tabla Especialidad
+CREATE TABLE
+especialidad (
+ID INTEGER PRIMARY
+KEY,
+Materia INTEGER REFERENCES
+materia(ID), Grado INTEGER REFERENCES
+grado(ID)
+);
+-- Tabla modulo
+CREATE TABLE modulo (
+id INTEGER PRIMARY KEY,
+Id_Colegio INTEGER REFERENCES colegio(ID),
+Nombre VARCHAR(255),
+Cantidad_Aulas INTEGER
+);
+-- Tabla Materia
+CREATE TABLE materia (
+ID INTEGER PRIMARY KEY,
+Nombre VARCHAR(255) NOT NULL
+);
+-- Tabla MateriaCurso
+CREATE TABLE
+materiacurso (
+ID INTEGER PRIMARY
+KEY,
+IDMateria INTEGER REFERENCES materia(ID),
+IDCurso INTEGER REFERENCES curso(ID),
+IDProfesor INTEGER REFERENCES profesor(ID)
+);
+-- Tabla Profesor_Especialidades
+CREATE TABLE profesor_especialidades (
+ID_Profesor INTEGER PRIMARY KEY REFERENCES profesor(ID),
+ID_Especialidad INTEGER PRIMARY KEY REFERENCES especialidad(ID)
+
+100
+
+);
+-- Tabla Asistencia_Por_Clase
+CREATE TABLE asistencia_por_clase (
+ID INTEGER PRIMARY KEY,
+ID_Estudiante INTEGER REFERENCES
+estudiante(ID), IDClase INTEGER REFERENCES
+clase(ID),
+Fecha DATE NOT NULL,
+Estado VARCHAR(50),
+Hora TIME
+);
+-- Tabla Curso
+CREATE TABLE curso (
+ID INTEGER PRIMARY KEY,
+IDGrado INTEGER REFERENCES grado(ID),
+IDParalelo VARCHAR(20),
+IDProfesor INTEGER REFERENCES profesor(ID),
+Nombre VARCHAR(255)
+);
+-- Tabla HistorialAcademico
+CREATE TABLE historialacademico (
+ID INTEGER PRIMARY KEY,
+IDEstudiante INTEGER REFERENCES estudiante(ID),
+IDCurso INTEGER REFERENCES curso(ID),
+Estado VARCHAR(50),
+Promedio NUMERIC,
+Gestion
+VARCHAR(20)
+);
+-- Tabla Paralelo
+CREATE TABLE paralelo (
+ID INTEGER PRIMARY KEY,
+IDGrado INTEGER REFERENCES grado(ID),
+Letra VARCHAR(1) NOT NULL,
+CapacidadMaxima INTEGER
+);
+-- Tabla Matricula
+CREATE TABLE matricula (
+ID INTEGER PRIMARY KEY,
+IDEstudiante INTEGER REFERENCES
+estudiante(ID), IDCursoOrigen INTEGER
+REFERENCES curso(ID), IDCursoDestino
+INTEGER REFERENCES curso(ID), Gestion
+VARCHAR(20) NOT NULL,
+Tipo VARCHAR(50),
+Estado VARCHAR(50)
+);
+-- Tabla Clase
+CREATE TABLE clase (
+ID INTEGER PRIMARY KEY,
+ID_Materia INTEGER REFERENCES materia(ID),
+IDAula INTEGER REFERENCES aula(ID)
+);
+-- Tabla Horario
+
+101
+
+CREATE TABLE horario (
+ID INTEGER PRIMARY KEY,
+HoraInicio TIME NOT
+NULL, HoraFin TIME
+NOT NULL, Dia
+VARCHAR(20) NOT NULL
+);
+-- Tabla Evaluación
+CREATE TABLE evaluacion (
+ID INTEGER PRIMARY KEY,
+IDMateriaCurso INTEGER REFERENCES
+materiacurso(ID), IDProfesor INTEGER REFERENCES
+profesor(ID),
+Fecha DATE NOT NULL,
+Ponderación NUMERIC
+);
+-- Tabla Nota
+CREATE TABLE nota (
+IDEvaluación
+INTEGER
+REFERENCES
+evaluacion(ID),
+IDEstudiante
+INTEGER
+REFERENCES estudiante(ID), Valor NUMERIC
+NOT NULL,
+Observaciones TEXT
+);
+-- Tabla Tutor
+CREATE TABLE tutor (
+ID INTEGER PRIMARY KEY,
+Unidad_Educativa INTEGER REFERENCES
+unidad_educativa(Id), Parentesco VARCHAR(50)
+);
+-- Tabla Asistencia General
+CREATE TABLE asistencia_general (
+ID INTEGER PRIMARY KEY,
+EstudianteID INTEGER REFERENCES
+estudiante(ID), Fecha DATE NOT NULL,
+Estado VARCHAR(50),
+Hora_de_Entrada
+TIME,
+Hora_de_Salida
+TIME
+);
+-- Tabla Aula
+CREATE TABLE aula (
+ID INTEGER PRIMARY KEY,
+Nombre VARCHAR(255)
+);
+-- Tabla Grado
+CREATE TABLE grado (
+ID INTEGER PRIMARY KEY,
+Nombre VARCHAR(255)
+);
+-- Tabla Paralelo
+CREATE TABLE paralelo (
+ID INTEGER PRIMARY KEY,
+IDGrado INTEGER REFERENCES grado(ID),
+
+102
+
+Letra VARCHAR(1) NOT NULL,
+CapacidadMaxima INTEGER
+);
+-- Tabla Usuario
+CREATE TABLE usuario (
+ID INTEGER PRIMARY KEY,
+CI VARCHAR(20) PRIMARY KEY,
+Foto BYTEA,
+Nombre VARCHAR(100) NOT NULL,
+Apellido VARCHAR(100) NOT NULL,
+Email VARCHAR(255) UNIQUE NOT
+NULL, Edad INTEGER,
+Rol VARCHAR(50) NOT NULL,
+UserName VARCHAR(50) UNIQUE NOT NULL,
+Contraseña VARCHAR(255) NOT NULL
+);
+-- Tabla Licencia
+CREATE TABLE licencia (
+ID INTEGER PRIMARY KEY,
+EstudianteID INTEGER REFERENCES estudiante(ID),
+TutorID INTEGER REFERENCES tutor(ID),
+FechaInicio DATE
+NOT NULL,
+FechaFin DATE NOT
+NULL, Motivo
+VARCHAR(255),
+Estado
+VARCHAR(50)
+);
+
+7.3.1.1.3. Diagrama Relacional
+7.3.1.1.4. Actualización de Tuplas
+7.3.1.1.4.1. Insert()
+- Tabla Rol
+INSERT INTO Rol (Nombre, Descripcion) VALUES
+('SuperAdmin', 'Administrador principal del sistema con todos los privilegios.'),
+('Admin', 'Administrador con acceso a la gestión de unidades educativas y usuarios.'),
+('Profesor', 'Usuario con permisos para gestionar clases, notas y asistencia.'),
+('Estudiante', 'Usuario con acceso a información académica y personal.'),
+('Tutor', 'Usuario con acceso a información académica y personal de los estudiantes que
+tutela.');
+-- Tabla Usuario
+INSERT INTO Usuario (Ci, Nombre, Apellido, Email, Edad, Username, Contrasenia, RolID) VALUES
+('1234567', 'Juan', 'Perez', 'juan@example.com', 30, 'juanp', 'pass123', 1),
+('7654321', 'Maria', 'Lopez', 'maria@example.com', 35, 'marial', 'pass456', 2),
+
+103
+
+('1122334', 'Carlos', 'Gomez', 'carlos@example.com', 40, 'carlosg', 'pass789', 3),
+('4455667', 'Ana', 'Rodriguez', 'ana@example.com', 17, 'anar', 'passabc', 4),
+('8899001', 'Luis', 'Martinez', 'luis@example.com', 45, 'luism', 'passdef', 5),
+('2233445', 'Sofia', 'Garcia', 'sofia@example.com', 16, 'sofiag', 'passghi', 4);
+-- Tabla Notificacion
+INSERT INTO Notificacion (Titulo, Mensaje, Tipo, UsuarioID) VALUES
+('Bienvenida', 'Bienvenido al sistema', 'General', 1),
+('Nueva tarea', 'Tarea de matemáticas disponible', 'Académico', 4),
+('Reunión', 'Reunión de tutores el viernes', 'Tutor', 5);
+-- Tabla SuperAdmin
+INSERT INTO SuperAdmin (ID) VALUES (1);
+-- Tabla Admin
+INSERT INTO Admin (ID, Puesto, Estado) VALUES (2, 'Director', 'Activo');
+-- Tabla Colegio
+INSERT INTO Colegio (Nombre, Direccion, Telefono, SuperAdminID) VALUES
+('Colegio Ejemplo', 'Calle Principal 123', '123-456-789', 1);
+-- Tabla Modulo
+INSERT INTO Modulo (Nombre, CantidadAulas, ColegioID) VALUES
+('Módulo A', 10, 1),
+('Módulo B', 8, 1);
+-- Tabla Aula
+INSERT INTO Aula (Capacidad, Estado, Tipo, ModuloID) VALUES
+(30, true, 'Normal', 1),
+(25, true, 'Laboratorio', 2);
+-- Tabla Clase
+INSERT INTO Clase (AulaID) VALUES (1), (2);
+-- Tabla Horario
+INSERT INTO Horario (HoraInicio, HoraFin, Dia, ClaseID) VALUES
+('08:00:00', '09:30:00', 'Lunes', 1),
+('10:00:00', '11:30:00', 'Martes', 2);
+-- Tabla Tutor
+INSERT INTO Tutor (ID, Parentesco) VALUES (5, 'Padre');
+-- Tabla Estudiante
+INSERT INTO Estudiante (ID, RUDE, Estado, Curso) VALUES (4, '12345', 'Activo', '5to A'), (6,
+'67890', 'Activo', '6to B');
+-- Tabla TutorEstudiante
+INSERT INTO TutorEstudiante (TutorID, EstudianteID) VALUES (5, 4), (5, 6);
+-- Tabla Licencia
+INSERT INTO Licencia (FechaInicio, FechFin, Motivo, Estado, EstudianteID, TutorID) VALUES
+('2023-10-26', '2023-10-28', 'Enfermedad', 'Aprobada', 4, 5);
+-- Tabla Profesor
+INSERT INTO Profesor (ID, Estado) VALUES (3, true);
+
+104
+
+-- Tabla UnidadEducativa
+INSERT INTO UnidadEducativa (CodigoSIE, Turno, Nivel, AdminID, EstudianteID, ColegioID,
+ProfesorID) VALUES
+('UE123', 'Mañana', 'Secundaria', 2, 4, 1, 3);
+-- Tabla Grado
+INSERT INTO Grado (NiveldEducativo, UnidadEducativaID) VALUES ('Secundaria', 1);
+-- Tabla Paralelo
+INSERT INTO Paralelo (Letra, CapacidadMaxima, IDGrado) VALUES ('A', 30, 1), ('B', 25, 1);
+-- Tabla Especialidad
+INSERT INTO Especialidad (GradoID) VALUES (1);
+-- Tabla ProfesorEspecialidad
+INSERT INTO ProfesorEspecialidad (ProfesorID, EspecialidadID) VALUES (3, 1);
+-- Tabla Materia
+INSERT INTO Materia (nombre, EspecialidadID) VALUES ('Matemáticas', 1), ('Ciencias', 1);
+-- Tabla Curso
+INSERT INTO Curso (Nombre, ParaleloID) VALUES ('5to A', 1), ('6to B', 2);
+-- Tabla MateriaCurso
+INSERT INTO MateriaCurso (CursoID, MateriaID, ClaseID, ProfesorID) VALUES (1, 1, 1, 3), (2, 2,
+2, 3);
+-- Tabla Matricula
+INSERT INTO Matricula (Gestion, Tipo, Estado, EstudianteID, CursoID) VALUES ('2023',
+'Regular', 'Activo', 4, 1), ('2023', 'Regular', 'Activo', 6, 2);
+-- Tabla HistorialAcademico
+INSERT INTO HistorialAcademico (Estado, Promedio, Gestion, CursoID, EstudianteID) VALUES
+('Aprobado', 85.50, '2023', 1, 4), ('Aprobado', 90.00, '2023', 2, 6);
+-- Tabla AsistenciaPorClase
+INSERT INTO AsistenciaPorClase (fecha, estado, hora, EstudianteID, ClaseID) VALUES ('2023-1026', 'Presente', '08:00:00', 4, 1), ('2023-10-26', 'Ausente', '10:00:00', 6, 2);
+-- Tabla Evaluacion
+INSERT INTO Evaluacion (Fecha, Ponderacion, ProfesorID) VALUES ('2023-11-01', 20.00, 3),
+('2023-11-05', 30.00, 3);
+-- Tabla Comportamiento
+INSERT INTO Comportamiento (Fecha, Descripcion, Tipo, EstudianteID) VALUES ('2023-10-26', 10,
+'Positivo', 4), ('2023-10-26', 5, 'Negativo', 6);
+-- Tabla Nota
+INSERT INTO Nota (Valor, Observaciones, EvaluacionID, EstudianteID) VALUES (18.00, 'Buen
+trabajo', 1, 4), (25.00, 'Necesita mejorar', 2, 6);
+-- Tabla AsistenciaGeneral
+INSERT INTO AsistenciaGeneral (Fecha, Estado, HoraDeEntrada, HoraDeSalida, EstudianteID)
+VALUES ('2023-10-26', 'Presente', '07:55:00', '12:00:00', 4), ('2023-10-26', 'Ausente',
+'00:00:00', '00:00:00', 6);
+
+105
+
+7.3.1.1.4.2. Update()
+-- Actualizar Roles
+UPDATE Rol SET
+Descripcion = 'Nueva descripción del rol'
+WHERE Nombre = 'SuperAdmin';
+-- Actualizar Usuarios
+UPDATE Usuario SET
+Nombre = 'NuevoNombre',
+Apellido = 'NuevoApellido',
+Email = 'nuevo@email.com',
+Edad = 31,
+Contrasenia = 'nuevapass'
+WHERE CI = '1234567';
+
+-- Actualizar Notificaciones
+UPDATE Notificacion SET
+Mensaje = 'Mensaje actualizado',
+Tipo = 'NuevoTipo'
+WHERE ID = 1;
+-- Actualizar Administradores
+UPDATE Admin SET
+Puesto = 'NuevoPuesto',
+Estado = 'Inactivo'
+WHERE ID = 2;
+-- Actualizar Modulos
+UPDATE Modulo SET
+Nombre = 'Módulo Actualizado',
+CantidadAulas = 12
+WHERE ID = 1;
+-- Actualizar Estudiantes
+UPDATE Estudiante SET
+RUDE = 'NuevoRUDE',
+Estado = 'Inactivo',
+Curso = '6to A'
+WHERE ID = 4;
+
+7.3.1.1.4.3. Delete()
+-- Primero eliminar notificaciones del usuario
+DELETE FROM Notificacion WHERE UsuarioID = 1;
+-- Luego el usuario
+DELETE FROM Usuario WHERE ID = 1;
+-- Primero eliminar historial académico
+DELETE FROM HistorialAcademico WHERE EstudianteID = 4;
+-- Luego matrículas
+DELETE FROM Matricula WHERE EstudianteID = 4;
+-- Finalmente el estudiante
+
+106
+
+DELETE FROM Estudiante WHERE ID = 4;
+-- Primero eliminar notas relacionadas
+DELETE FROM Nota WHERE EvaluacionID IN (
+SELECT ID FROM Evaluacion WHERE ProfesorID = 3
+);
+-- Luego evaluaciones
+DELETE FROM Evaluacion WHERE ProfesorID = 3;
+-- Después asignaciones de materias
+DELETE FROM MateriaCurso WHERE ProfesorID = 3;
+-- Finalmente el profesor
+DELETE FROM Profesor WHERE ID = 3;
+-- Primero eliminar materias del curso
+DELETE FROM MateriaCurso WHERE CursoID = 1;
+-- Luego matrículas asociadas
+DELETE FROM Matricula WHERE CursoID = 1;
+-- Después historial académico
+DELETE FROM HistorialAcademico WHERE CursoID = 1;
+-- Finalmente el curso
+DELETE FROM Curso WHERE ID = 1;
+
+7.5.1.1.5. Consultas
+
+1. Listar todos los estudiantes:
+SQL
+
+SELECT * FROM Estudiante;
+
+2. Mostrar los nombres de todos los profesores:
+SQL
+
+SELECT Nombre FROM Usuario WHERE ID IN (SELECT ID FROM Profesor);
+
+3. Obtener los nombres de todas las materias:
+SQL
+
+SELECT nombre FROM Materia;
+
+4. Listar los nombres de los colegios:
+107
+
+SQL
+
+SELECT Nombre FROM Colegio;
+
+5. Mostrar las aulas con capacidad mayor a 25:
+SQL
+
+SELECT * FROM Aula WHERE Capacidad > 25;
+
+6. Obtener los nombres de los estudiantes en el curso '5to A':
+SQL
+
+SELECT u.Nombre
+FROM Usuario u
+JOIN Estudiante e ON u.ID = e.ID
+WHERE e.Curso = '5to A';
+
+7. Listar las notificaciones no leídas:
+SQL
+SELECT * FROM Notificacion WHERE Leido = FALSE;
+
+8. Mostrar los tutores con parentesco 'Padre':
+SQL
+
+SELECT u.Nombre
+FROM Usuario u
+JOIN Tutor t ON u.ID = t.ID
+WHERE t.Parentesco = 'Padre';
+
+9. Obtener las matrículas del año 2023:
+SQL
+
+SELECT * FROM Matricula WHERE Gestion = '2023';
+
+10. Mostrar los estudiantes con promedio mayor a 80 en su historial académico:
+SQL
+
+SELECT u.Nombre
+FROM Usuario u
+JOIN HistorialAcademico h ON u.ID = h.EstudianteID
+WHERE h.Promedio > 80;
+
+consultas multiples
+
+1. Listar los nombres de los estudiantes y los nombres de sus tutores:
+SQL
+
+SELECT e.Nombre AS Estudiante, t.Nombre AS Tutor
+
+108
+
+FROM Estudiante e
+JOIN TutorEstudiante te ON e.ID = te.EstudianteID
+JOIN Tutor t ON te.TutorID = t.ID;
+
+2. Mostrar los nombres de los profesores y las materias que enseñan:
+SQL
+
+SELECT u.Nombre AS Profesor, m.nombre AS Materia
+FROM Usuario u
+JOIN Profesor p ON u.ID = p.ID
+JOIN MateriaCurso mc ON p.ID = mc.ProfesorID
+JOIN Materia m ON mc.MateriaID = m.ID;
+
+3. Obtener los nombres de los estudiantes y sus notas:
+SQL
+
+SELECT u.Nombre AS Estudiante, n.Valor AS Nota
+FROM Usuario u
+JOIN Estudiante e ON u.ID = e.ID
+JOIN Nota n ON e.ID = n.EstudianteID;
+
+4. Listar los nombres de los estudiantes y los nombres de sus cursos:
+SQL
+
+SELECT u.Nombre AS Estudiante, c.Nombre AS Curso
+FROM Usuario u
+JOIN Estudiante e ON u.ID = e.ID
+JOIN Matricula m ON e.ID = m.EstudianteID
+JOIN Curso c ON m.CursoID = c.ID;
+
+5. Mostrar los nombres de los colegios y los nombres de los módulos que tienen:
+SQL
+
+SELECT c.Nombre AS Colegio, m.Nombre AS Modulo
+FROM Colegio c
+JOIN Modulo m ON c.ID = m.ColegioID;
+
+6. Obtener los nombres de los estudiantes y sus asistencias:
+SQL
+
+SELECT u.Nombre AS Estudiante, a.Estado AS Asistencia
+FROM Usuario u
+JOIN Estudiante e ON u.ID = e.ID
+JOIN AsistenciaGeneral a ON e.ID = a.EstudianteID;
+
+7. Listar los nombres de los profesores y los nombres de las especialidades que tienen:
+SQL
+
+SELECT u.Nombre AS Profesor, e.ID AS Especialidad
+
+109
+
+FROM Usuario u
+JOIN Profesor p ON u.ID = p.ID
+JOIN ProfesorEspecialidad pe ON p.ID = pe.ProfesorID
+JOIN Especialidad e ON pe.EspecialidadID = e.ID;
+
+8. Mostrar los nombres de los estudiantes y sus comportamientos:
+SQL
+
+SELECT u.Nombre AS Estudiante, c.Tipo AS Comportamiento
+FROM Usuario u
+JOIN Estudiante e ON u.ID = e.ID
+JOIN Comportamiento c ON e.ID = c.EstudianteID;
+
+9. Obtener los nombres de los estudiantes y sus licencias:
+SQL
+
+SELECT u.Nombre AS Estudiante, l.Motivo AS Licencia
+FROM Usuario u
+JOIN Estudiante e ON u.ID = e.ID
+JOIN Licencia l ON e.ID = l.EstudianteID;
+
+10. Listar los nombres de los estudiantes y sus promedios:
+SQL
+
+SELECT u.Nombre AS Estudiante, h.Promedio AS Promedio
+FROM Usuario u
+JOIN Estudiante e ON u.ID = e.ID
+JOIN HistorialAcademico h ON e.ID = h.EstudianteID;
+
+Subconsltas
+
+1. Encontrar los estudiantes que tienen al menos una nota superior a 90:
+SQL
+
+SELECT Nombre, Apellido
+FROM Usuario
+WHERE ID IN (SELECT EstudianteID FROM Nota WHERE Valor > 90);
+
+2. Obtener los colegios que tienen más de 10 aulas en total:
+SQL
+
+SELECT Nombre
+FROM Colegio
+WHERE ID IN (SELECT ColegioID FROM Modulo GROUP BY ColegioID HAVING
+SUM(CantidadAulas) > 10);
+
+3. Listar los estudiantes que no tienen ninguna licencia:
+110
+
+SQL
+
+SELECT Nombre, Apellido
+FROM Usuario
+WHERE ID NOT IN (SELECT EstudianteID FROM Licencia);
+
+4. Mostrar los profesores que enseñan más de una materia:
+SQL
+
+SELECT Nombre, Apellido
+FROM Usuario
+WHERE ID IN (SELECT ProfesorID FROM MateriaCurso GROUP BY ProfesorID HAVING
+COUNT(*) > 1);
+
+5. Obtener los estudiantes que tienen todas sus asistencias como 'Presente':
+SQL
+
+SELECT Nombre, Apellido
+FROM Usuario
+WHERE ID IN (SELECT EstudianteID FROM AsistenciaGeneral GROUP BY
+EstudianteID HAVING COUNT(*) = SUM(CASE WHEN Estado = 'Presente' THEN 1 ELSE 0
+END));
+
+6. Listar los estudiantes que tienen alguna nota en la evaluación con ID 1:
+SQL
+
+SELECT Nombre, Apellido
+FROM Usuario
+WHERE ID IN (SELECT EstudianteID FROM Nota WHERE EvaluacionID = 1);
+
+7. Mostrar los tutores que tienen más de un estudiante a su cargo:
+SQL
+
+SELECT Nombre, Apellido
+FROM Usuario
+WHERE ID IN (SELECT TutorID FROM TutorEstudiante GROUP BY TutorID HAVING
+COUNT(*) > 1);
+
+8. Obtener los estudiantes que tienen un comportamiento 'Negativo':
+SQL
+
+SELECT Nombre, Apellido
+FROM Usuario
+WHERE ID IN (SELECT EstudianteID FROM Comportamiento WHERE Tipo =
+'Negativo');
+
+9. Listar los colegios que tienen al menos un módulo con más de 8 aulas:
+SQL
+
+SELECT Nombre
+
+111
+
+FROM Colegio
+WHERE ID IN (SELECT ColegioID FROM Modulo WHERE CantidadAulas > 8);
+
+10. Mostrar los estudiantes que tienen un promedio superior al promedio general de todos
+los estudiantes:
+SQL
+
+SELECT Nombre, Apellido
+FROM Usuario
+WHERE ID IN (SELECT EstudianteID FROM HistorialAcademico WHERE Promedio >
+(SELECT AVG(Promedio > (
+SELECT AVG(Promedio)
+FROM HistorialAcademico
+)
+);
+
+7.5.1.1.5. Procedimientos Almacenados
+
+1. Insertar un nuevo estudiante:
+SQL
+
+CREATE OR REPLACE PROCEDURE InsertarEstudiante(
+ci VARCHAR(20),
+nombre VARCHAR(100),
+apellido VARCHAR(100),
+email VARCHAR(255),
+edad INTEGER,
+username VARCHAR(50),
+contrasenia VARCHAR(255),
+rude VARCHAR(50),
+curso VARCHAR(50)
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+INSERT INTO Usuario (Ci, Nombre, Apellido, Email, Edad, Username,
+Contrasenia, RolID)
+VALUES (ci, nombre, apellido, email, edad, username, contrasenia, 4); - RolID 4 para Estudiante
+INSERT INTO Estudiante (ID, RUDE, Estado, Curso)
+VALUES (currval('usuario_id_seq'), rude, 'Activo', curso);
+END;
+$$;
+
+2. Actualizar la nota de un estudiante:
+SQL
+
+CREATE OR REPLACE PROCEDURE ActualizarNota(
+nota_id INT,
+valor DECIMAL(5,2),
+
+112
+
+observaciones TEXT
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+UPDATE Nota
+SET Valor = valor, Observaciones = observaciones
+WHERE ID = nota_id;
+END;
+$$;
+
+3. Insertar una nueva asistencia:
+SQL
+
+CREATE OR REPLACE PROCEDURE InsertarAsistencia(
+fecha DATE,
+estado VARCHAR(50),
+hora TIME,
+estudiante_id INT,
+clase_id INT
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+INSERT INTO AsistenciaPorClase (fecha, estado, hora, EstudianteID,
+ClaseID)
+VALUES (fecha, estado, hora, estudiante_id, clase_id);
+END;
+$$;
+
+4. Obtener el promedio de un estudiante:
+SQL
+
+CREATE OR REPLACE FUNCTION ObtenerPromedioEstudiante(estudiante_id INT)
+RETURNS DECIMAL(5,2)
+LANGUAGE plpgsql
+AS $$
+DECLARE
+promedio DECIMAL(5,2);
+BEGIN
+SELECT AVG(Valor) INTO promedio
+FROM Nota
+WHERE EstudianteID = estudiante_id;
+RETURN promedio;
+END;
+$$;
+
+5. Insertar un nuevo profesor:
+SQL
+
+CREATE OR REPLACE PROCEDURE InsertarProfesor(
+
+113
+
+ci VARCHAR(20),
+nombre VARCHAR(100),
+apellido VARCHAR(100),
+email VARCHAR(255),
+edad INTEGER,
+username VARCHAR(50),
+contrasenia VARCHAR(255)
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+INSERT INTO Usuario (Ci, Nombre, Apellido, Email, Edad, Username,
+Contrasenia, RolID)
+VALUES (ci, nombre, apellido, email, edad, username, contrasenia, 3); - RolID 3 para Profesor
+INSERT INTO Profesor (ID, Estado)
+VALUES (currval('usuario_id_seq'), true);
+END;
+$$;
+
+6. Actualizar el estado de un estudiante:
+SQL
+
+CREATE OR REPLACE PROCEDURE ActualizarEstadoEstudiante(
+estudiante_id INT,
+nuevo_estado VARCHAR(50)
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+UPDATE Estudiante
+SET Estado = nuevo_estado
+WHERE ID = estudiante_id;
+END;
+$$;
+
+7. Insertar un nuevo tutor:
+SQL
+
+CREATE OR REPLACE PROCEDURE InsertarTutor(
+ci VARCHAR(20),
+nombre VARCHAR(100),
+apellido VARCHAR(100),
+email VARCHAR(255),
+edad INTEGER,
+username VARCHAR(50),
+contrasenia VARCHAR(255),
+parentesco VARCHAR(50)
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+
+114
+
+INSERT INTO Usuario (Ci, Nombre, Apellido, Email, Edad, Username,
+Contrasenia, RolID)
+VALUES (ci, nombre, apellido, email, edad, username, contrasenia, 5); - RolID 5 para Tutor
+INSERT INTO Tutor (ID, Parentesco)
+VALUES (currval('usuario_id_seq'), parentesco);
+END;
+$$;
+
+8. Obtener las notas de un estudiante en una materia específica:
+SQL
+
+CREATE OR REPLACE FUNCTION ObtenerNotasEstudianteMateria(estudiante_id INT,
+materia_id INT)
+RETURNS TABLE (nota_valor DECIMAL(5,2), observaciones TEXT)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+RETURN QUERY
+SELECT n.Valor, n.Observaciones
+FROM Nota n
+JOIN Evaluacion e ON n.EvaluacionID = e.ID
+JOIN MateriaCurso mc ON e.ProfesorID = mc.ProfesorID
+WHERE n.EstudianteID = estudiante_id AND mc.MateriaID = materia_id;
+END;
+$$;
+
+9. Insertar una nueva evaluación:
+SQL
+
+CREATE OR REPLACE PROCEDURE InsertarEvaluacion(
+fecha DATE,
+ponderacion DECIMAL(5,2),
+profesor_id INT
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+INSERT INTO Evaluacion (Fecha, Ponderacion, ProfesorID)
+VALUES (fecha, ponderacion, profesor_id);
+END;
+$$;
+
+10. Actualizar la información de un usuario:
+SQL
+
+CREATE OR REPLACE PROCEDURE ActualizarUsuario(
+usuario_id INT,
+nombre VARCHAR(100),
+apellido VARCHAR(100),
+email VARCHAR(255),
+
+115
+
+edad INTEGER
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+UPDATE Usuario
+SET Nombre = nombre, Apellido = apellido, Email = email, Edad = edad
+WHERE ID = usuario_id;
+END;
+
+7.5.1.1.6. Triggers
+CREATE OR REPLACE FUNCTION ActualizarEstadoEstudiante()
+RETURNS TRIGGER AS $$
+BEGIN
+UPDATE Estudiante
+SET Estado = 'Inactivo'
+WHERE ID = NEW.EstudianteID;
+RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+CREATE TRIGGER LicenciaInsertada
+AFTER INSERT ON Licencia
+FOR EACH ROW
+EXECUTE FUNCTION ActualizarEstadoEstudiante();
+
+2. Crear una notificación cuando se inserta una nueva nota:
+SQL
+
+CREATE OR REPLACE FUNCTION CrearNotificacionNuevaNota()
+RETURNS TRIGGER AS $$
+BEGIN
+INSERT INTO Notificacion (Titulo, Mensaje, Tipo, UsuarioID)
+VALUES ('Nueva Nota', 'Se ha registrado una nueva nota.', 'Académico',
+NEW.EstudianteID);
+RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+CREATE TRIGGER NotaInsertada
+AFTER INSERT ON Nota
+FOR EACH ROW
+EXECUTE FUNCTION CrearNotificacionNuevaNota();
+
+3. Actualizar el promedio del historial académico al insertar una nueva nota:
+SQL
+
+CREATE OR REPLACE FUNCTION ActualizarPromedioHistorial()
+RETURNS TRIGGER AS $$
+BEGIN
+
+116
+
+UPDATE HistorialAcademico
+SET Promedio = (SELECT AVG(Valor) FROM Nota WHERE EstudianteID =
+NEW.EstudianteID)
+WHERE EstudianteID = NEW.EstudianteID;
+RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+CREATE TRIGGER NotaActualizada
+AFTER INSERT ON Nota
+FOR EACH ROW
+EXECUTE FUNCTION ActualizarPromedioHistorial();
+
+4. Verificar la capacidad máxima de un paralelo antes de insertar una matrícula:
+SQL
+
+CREATE OR REPLACE FUNCTION VerificarCapacidadParalelo()
+RETURNS TRIGGER AS $$
+BEGIN
+IF (SELECT COUNT(*) FROM Matricula WHERE CursoID = NEW.CursoID) >=
+(SELECT CapacidadMaxima FROM Paralelo WHERE ID = (SELECT ParaleloID FROM Curso
+WHERE ID = NEW.CursoID)) THEN
+RAISE EXCEPTION 'Capacidad máxima del paralelo alcanzada.';
+END IF;
+RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+CREATE TRIGGER MatriculaInsertada
+BEFORE INSERT ON Matricula
+FOR EACH ROW
+EXECUTE FUNCTION VerificarCapacidadParalelo();
+
+5. Crear un registro de comportamiento al insertar una nueva asistencia como "Ausente":
+SQL
+
+CREATE OR REPLACE FUNCTION RegistrarComportamientoAusencia()
+RETURNS TRIGGER AS $$
+BEGIN
+IF NEW.estado = 'Ausente' THEN
+INSERT INTO Comportamiento (Fecha, Descripcion, Tipo, EstudianteID)
+VALUES (NEW.fecha, 0, 'Ausencia', NEW.EstudianteID);
+END IF;
+RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+CREATE TRIGGER AsistenciaInsertada
+AFTER INSERT ON AsistenciaPorClase
+FOR EACH ROW
+EXECUTE FUNCTION RegistrarComportamientoAusencia();
+
+6. Actualizar el estado de una clase a "Inactiva" si no tiene horarios asignados:
+117
+
+SQL
+
+CREATE OR REPLACE FUNCTION ActualizarEstadoClase()
+RETURNS TRIGGER AS $$
+BEGIN
+IF (SELECT COUNT(*) FROM Horario WHERE ClaseID = OLD.ClaseID) = 0 THEN
+UPDATE Clase
+SET Estado = FALSE
+WHERE ID = OLD.ClaseID;
+END IF;
+RETURN OLD;
+END;
+$$ LANGUAGE plpgsql;
+CREATE TRIGGER HorarioEliminado
+AFTER DELETE ON Horario
+FOR EACH ROW
+EXECUTE FUNCTION ActualizarEstadoClase();
+
+7. Crear un registro de auditoría al actualizar la información de un usuario:
+SQL
+
+CREATE OR REPLACE FUNCTION RegistrarAuditoriaUsuario()
+RETURNS TRIGGER AS $$
+BEGIN
+INSERT INTO AuditoriaUsuario (UsuarioID, FechaCambio, DatosAnteriores,
+DatosNuevos)
+VALUES (OLD.ID, NOW(), OLD.*, NEW.*);
+RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+CREATE TRIGGER UsuarioActualizado
+AFTER UPDATE ON Usuario
+FOR EACH ROW
+EXECUTE FUNCTION RegistrarAuditoriaUsuario();
+
+8. Verificar que un profesor tenga la especialidad requerida antes de asignar una materia:
+SQL
+
+CREATE OR REPLACE FUNCTION VerificarEspecialidadProfesor()
+RETURNS TRIGGER AS $$
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM ProfesorEspecialidad WHERE ProfesorID =
+NEW.ProfesorID AND EspecialidadID = (SELECT EspecialidadID FROM Materia WHERE ID
+= NEW.MateriaID)) THEN
+RAISE EXCEPTION 'El profesor no tiene la especialidad requerida.';
+END IF;
+RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+CREATE TRIGGER MateriaCursoInsertada
+BEFORE INSERT ON MateriaCurso
+
+118
+
+FOR EACH ROW
+EXECUTE FUNCTION VerificarEspecialidadProfesor();
+
+9. Actualizar el número de aulas disponibles en un módulo al insertar o eliminar un aula:
+SQL
+
+CREATE OR REPLACE FUNCTION ActualizarAulasDisponiblesModulo()
+RETURNS TRIGGER AS $$
+BEGIN
+UPDATE Modulo
+SET CantidadAulas = (SELECT COUNT(*) FROM Aula WHERE ModuloID =
+NEW.ModuloID)
+WHERE ID = NEW.ModuloID;
+RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+CREATE TRIGGER AulaInsertada
+AFTER INSERT ON Aula
+FOR EACH ROW
+EXECUTE FUNCTION ActualizarAulasDisponiblesModulo();
+CREATE TRIGGER AulaEliminada
+AFTER DELETE ON Aula
+FOR EACH ROW
+EXECUTE FUNCTION ActualizarAulasDisponiblesModulo();
+
+10. Crear una notificación cuando un estudiante tiene un comportamiento negativo:
+SQL
+
+CREATE OR REPLACE FUNCTION CrearNotificacionComportamientoNegativo()
+RETURNS TRIGGER AS $$
+BEGIN
+IF NEW.Tipo = 'Negativo' THEN
+INSERT INTO Notificacion (Titulo, Mensaje, Tipo, UsuarioID)
+VALUES ('Comportamiento Negativo', 'Se ha registrado un
+comportamiento negativo.', 'Comportamiento', NEW.EstudianteID);
+END IF;
+RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+CREATE TRIGGER ComportamientoInsertado
+AFTER INSERT ON Comportamiento
+FOR EACH ROW
+EXECUTE FUNCTION CrearNotificacionComportamientoNegativo();
+
+119
+
+8. Anexos
+8.1. Entrevistas
+Entrevista #1 - Director del colegio Don Bosco Central
+
+Fecha: Viernes 21 de marzo Lugar: Instalaciones del colegio Don Bosco Central
+
+Entrevistado: Luis Andrés, Director Entrevistador: Luis Ángel y Trevor Félix
+1. ¿Cuáles son las principales dificultades en la gestión académica actual? "Uno de los
+problemas más graves es la asistencia. Tenemos estudiantes que llegan tarde o se van
+antes sin autorización, y al no haber un control digital, muchas veces los padres no se
+enteran. También nos preocupa la comunicación con los padres; nos ha sucedido que un
+alumno es sancionado y los padres solo se enteran días después, cuando ya es tarde para
+intervenir."
+
+2. ¿Cómo cree que un sistema automatizado puede ayudar a mejorar
+estas dificultades? "Si tuviéramos un sistema que registre la asistencia con tarjetas
+electrónicas y que al mismo tiempo envíe notificaciones a los padres, podríamos tener un
+mejor control. Además, la gestión del comportamiento también sería más efectiva si
+pudiéramos generar reportes y enviarlos automáticamente."
+
+3. ¿Qué características considera imprescindibles en el nuevo sistema? "Debe incluir
+control de asistencia con tarjetas, registro de comportamiento de los alumnos,
+comunicación eficiente con los padres, gestión de matrículas y asignación de aulas.
+120
+
+También nos gustaría un módulo donde los padres puedan ver el rendimiento de sus
+hijos en tiempo
+
+real."
+
+Entrevista #2 - Regente del colegio Don Bosco Central
+
+Fecha: Viernes 21 de marzo Lugar: Instalaciones del colegio Don Bosco Central
+
+Entrevistado: Pedro Suárez, Regente Entrevistador: Luis Ángel y Trevor Félix
+1. ¿Cómo se maneja actualmente la asistencia de los estudiantes? "Cada profesor tiene
+una lista en papel, donde marca las faltas y tardanzas. Sin embargo, esto genera retrasos
+porque los alumnos a veces llegan después de pasar lista y no quedan registrados. En
+ocasiones, algunos estudiantes incluso han salido del colegio antes de hora sin que nadie
+lo note."
+
+2. ¿Qué tan importante es el control de comportamiento en la institución? "Es
+fundamental. Hemos tenido situaciones donde un estudiante ha acumulado varias faltas
+graves antes de que los padres se enteren. Con un sistema automatizado, podríamos
+enviar alertas inmediatas a los padres y tomar medidas antes de que la situación
+empeore."
+
+121
+
+¿Qué espera de la implementación de este sistema? "Espero que permita una gestión más
+eficiente de la información, mejor control de asistencia y disciplina, y una comunicación más fluida
+con los padres. Nos ahorraría mucho tiempo y ayudaría a mejorar la disciplina en el colegio."
+
+122
+
+8.2. Documentos
+
+123
+
+124
+
+125
+
+126
+
+127
+
+

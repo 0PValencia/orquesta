@@ -1,0 +1,78 @@
+--- Diapositiva 1 ---
+PERFIL DE PROYECTO 1 PERFIL 1.1  INTRODUCCION    David 1.2  ANTECEDENTE	 David 1.3  JUSTIFICACION	 Eddy 1.4 DESCRIPCION  DEL  PROBLEMA	 Eddy 1.5 FORMULACION  DEL  PROBLEMA	 Joel 1.6  OBJETIVOS	 Lisbeth 1.6.1 Objetivo  General 1.6.2 Objetivo  Específicos 1.7  ALCANCE	 Joel 1.8  ENTREVISTA		 Nadie
+--- Diapositiva 2 ---
+PERFIL DE PROYECTO Entrevista para obtención de requisitos Objetivo: Entrevista # 1 Lugar   :………………………………………………………  Duración :………………………………………… Datos  de la Empresa Nombre :…………………………………………………………………………………………………………….. (  ) Privada               (  ) Estatal Datos del Entrevistado Nombre :……………………………………………………………………………………………………………… Cargo:………………………………………………….. Datos del Entrevistador Nombre :………………………………………………………………………………………………………………..
+--- Diapositiva 3 ---
+PERFIL DE PROYECTO 2 ELEMENTOS  DEL SISTEMA BASADO EN COMPUTADORAS 2.1 HARDWARE 2.1.1 Servidor 2.1.2 Cliente 2.1.3 Medios  de Comunicación 2.1.4 Otros  Dispositivos 2.2 SOFTWARE 2.2.1 Servidor 2.2.2 Cliente 2.2.3 Otro  software adicional 2.3 DATOS 2,4 PROCESOS 2.5 GENTE/USUARIO 2.6 DOCUMENTO
+--- Diapositiva 4 ---
+PERFIL DE PROYECTO 3 TECNOLOGIA  PARA EL DESARROLLO DEL SOFTWARE 3.1 Estrategia  para el desarrollo del software 3.2 Metodología  para el desarrollo del software 3.2.1 Características  del PUDS 3.2.2 Características  de UML 3.3 HERRAMIENTAS  DE DESARROLLO 3.3.1 Software 3.3.2 Hardware 4 POSIBLES  COSTOS 5 POSIBLES  BENEFICIOS 5.1 TIEMPO 5.2 ESFUERZO 5.3 COSTOS 6 POSIBLES  CLIENTES 7 ANEXOS
+--- Diapositiva 5 ---
+SISTEMA CONJUNTO DE ELEMENTOS QUE INTERACTUAN ENTRE SI CON UN OBJETIVO COMUN Conjunto de elementos interrelacionados entre si de forma tal que un elemento afecta el comportamiento de todo el conjunto, que tiene un fin determinado. Un sistema es una combinación de medios (como personas, materiales, equipos, software, instalaciones, datos...), integrados de forma tal que puedan desarrollar una determinada función en respuesta a una necesidad concreta.
+--- Diapositiva 6 ---
+Características de los sistemas: ELEMENTOS.  La interacción e interdependencia de sus elementos. OBJETIVOS:  Para la permanencia del sistema éste busca definir un sentido de unidad y propósito.  La persecución de un  objetivo o finalidad. * Los sistemas deben considerarse como un todo compuesto de partes que a su vez pueden ser también subsistemas. * La interacción con el medio ambiente.
+--- Diapositiva 7 ---
+ENTRADAS.  son los ingresos del sistema que pueden ser recursos materiales, recursos humanos o información. Constituyen la fuerza de arranque que suministra al sistema de sus necesidades operativas.  PROCESO.   Es lo que transforma una entrada en salida (máquina, un individuo, una computadora, un producto químico, una tarea realizada por un miembro de la organización, etc. SALIDAS.  Son los resultados que se obtienen de procesar las entradas. (productos, servicios e información). Son el resultado del funcionamiento del sistema o, alternativamente, el propósito para el cual existe el sistema.  Características de los sistemas:
+--- Diapositiva 8 ---
+SUBSISTEMAS. Al definir el sistema se hace referencia a los subsistemas que lo componen cuando se indica que esta formado por partes o cosas que forman un todo. Estos conjunto o partes pueden ser a su vez sistemas (subsistemas del sistema), ya que forman un todo en si mismo y estos serian de un rango inferior al del sistema que componen.
+--- Diapositiva 9 ---
+Subsistemas que forman la Empresa: a) Subsistema psicosocial:  está compuesto por individuos y grupos en interacción.  Dicho subsistema está formado por la conducta individual y la motivación, las relaciones del   status y del papel, dinámica de grupos y los sistemas de influencia. 
+--- Diapositiva 10 ---
+Subsistemas que forman la Empresa: b) Subsistema Técnico:  se refiere a los conocimientos necesarios para el desarrollo de tareas, incluyendo las técnicas usadas  para  la transformación de insumos en productos. 
+--- Diapositiva 11 ---
+Subsistemas que forman la Empresa: c) Subsistema Administrativo:  relaciona a la organización con su medio y establece los objetivos, desarrolla planes de integración, estrategia y operación, mediante el diseño de la estructura y el establecimiento de los  procesos de control.
+--- Diapositiva 12 ---
+ESTRUCTURA DE UN S.I.
+--- Diapositiva 13 ---
+Características de los sistemas: Los sistemas tienen  entradas  y  salidas  necesarias para otros sistemas por lo cual tienen retroalimentación del medio. Transforman  entradas  en  salidas  las cuales son diferentes en su forma de las primeras. La  sinergia . (Asociación de varios órganos para realizar una función). La interacción de las partes individuales, se vuelve más eficiente que si cada parte actuara de manera aislada.  La  equifinalidad  o existencia de múltiples formas de lograr el objetivo del sistema.
+--- Diapositiva 14 ---
+Ejemplo: UN NEGOCIO DE PERIÓDICO Elementos : los trabajadores, el equipo y mobiliario, los materiales o materia prima, la elaboración de políticas y planes de trabajo, el programa de comercialización, el estilo de liderazgo, los programas de administración y desarrollo, etc.  Subsistemas : cada una de las áreas funcionales: contabilidad, producción, personal, etc. Objetivo : informar o comunicar a través de un medio masivo.
+--- Diapositiva 15 ---
+ Sinergia : los resultados del sistema son mayores en conjunto que los que obtienen independientemente cada uno de los elementos del sistema, esto es, si el personal no contara con la materia prima, equipo o con políticas eficientes, los resultados esperados de su funcionamiento no serían los mismos que en caso de contar con ellos.  Ambiente : la situación política, económica y social afecta al sistema y éste a su vez también lo afecta.  Equifinalidad : el objetivo planteado podría alcanzarse a través de revistas o como lo ha decidido la administración a través del periódico.
+--- Diapositiva 16 ---
+
+--- Diapositiva 17 ---
+Entrada-Proceso-Salida : El esquema de funcionamiento del sistema seria como sigue:
+--- Diapositiva 18 ---
+Ejercicio: Elabora un ejemplo.   Objetivo :  Elementos :  Subsistemas :  Sinergia :  Ambiente :   Equifinalidad :
+--- Diapositiva 19 ---
+ELEMENTOS DE UN SISTEMA ENTRADA PROCESO SALIDA RETROALIMENTACIÓN FRONTERA DEL SISTEMA MEDIO AMBIENTE
+--- Diapositiva 20 ---
+Tipos de sistemas   En cuanto a  su constitución , los sistemas pueden ser físicos o abstractos: a)  Sistemas físicos o concretos.  Están compuestos por equipos, por maquinaria y por objetos y cosas reales. Pueden ser descritos en términos cuantitativos de desempeño.  b) Sistemas abstractos.  Están compuestos por conceptos, planes, hipótesis e ideas. Aquí, los símbolos representan atributos y objetos, que muchas veces sólo existen en el pensamiento de las personas. 
+--- Diapositiva 21 ---
+En cuanto  a su naturaleza , los sistemas pueden ser cerrados o abiertos:  Sistemas cerrados:  Son los sistemas que no presentan intercambio con el medio ambiente que los rodea,   pues son herméticos a cualquier influencia ambiental. No reciben ninguna influencia del ambiente, y por otro lado tampoco influencian al ambiente. No reciben ningún recurso externo. Los autores han dado el nombre de sistema cerrado a aquellos sistemas cuyo comportamiento es totalmente  determinístico  y programado y que operan con muy  pequeño  intercambio de materia y energía con el medio ambiente.
+--- Diapositiva 22 ---
+b) Sistemas abiertos:   son los sistemas que presentan relaciones de intercambio con el ambiente,   a través de entradas y salidas.  Intercambian materia y energía regularmente con el medio ambiente  Son eminentemente adaptativos, esto es, para sobrevivir deben reajustarse constantemente a las condiciones del medio. 
+--- Diapositiva 23 ---
+La T.G.S. Se fundamentan en tres premisas básicas, a saber: A) Los sistemas existen dentro de sistemas. B ) Los sistemas son abiertos. C) Las funciones de un sistema dependen de su estructura.
+--- Diapositiva 24 ---
+DATOS E INFORMACIÓN. DATO.  Es un hecho aislado no evaluado ni significativo o bien, insumos o resultados de un fenómeno Se refieren a descripciones básicas de cosas, acontecimientos, actividades y transacciones que se registran, clasifican y almacenan pero que no se organizan de acuerdo con ningún significado especifico.  Pueden ser  numericos ,  alfanúmericos , figuras, sonidos e imágenes.
+--- Diapositiva 25 ---
+Datos e información. DATOS. Corresponden a hechos que pueden procesarse para producir una información exacta y relevante INFORMACIÓN. Datos que se procesan y operan en una computadora para darle valor y significado.
+--- Diapositiva 26 ---
+Información: Conjunto de datos que hacen comprender una cosa o algo. Conocimiento que se tiene de algo. Contenido de los mensajes transmitido por la informática. Conjunto de noticias o informes.
+--- Diapositiva 27 ---
+¿QUE ES INFORMACIÓN ? Corresponde a los datos que se han organizado de modo que tengan significado y valor para el receptor. Este interpreta el significado y obtiene conclusiones e implicaciones  La información la componen datos que se han colocado en un contexto significativo y útil y se ha comunicado a un receptor, quien la utiliza para tomar decisiones. 
+--- Diapositiva 28 ---
+
+--- Diapositiva 29 ---
+Atributos de la información:
+--- Diapositiva 30 ---
+
+--- Diapositiva 31 ---
+La sociedad ha cambiado:
+--- Diapositiva 32 ---
+Importancia de la Información en la toma de decisiones   La información  reduce nuestra incertidumbre  (sobre algún aspecto de la realidad) y, por tanto, nos permite tomar mejores decisiones. ? ?
+--- Diapositiva 33 ---
+Importancia de la Información en la toma de decisiones   La información es la materia prima y fundamental en la toma de decisiones de los analistas en una organización ya que a mayor calidad de información, mejor es la calidad en la toma de decisiones.
+--- Diapositiva 34 ---
+Importancia de la Información en la toma de decisiones   Los analistas de los sistemas deberán aumentar la calidad de las decisiones, para que puedan identificar a tiempo las desviaciones en los objetivos a los cuales se quiere llegar. 
+--- Diapositiva 35 ---
+La información como recurso empresarial. Todas las organizaciones son sistemas de procesamiento de información.
+--- Diapositiva 36 ---
+Categorías de la Información:   1. Estratégica. Información estratégica es un instrumento de cambio. Enfocada a la planeación a largo plazo  Orientada a la alta administración. 
+--- Diapositiva 37 ---
+2. Táctica. Información de control administrativo  Es un tipo de información compartida.  Tiene una utilidad a corto plazo. 
+--- Diapositiva 38 ---
+3. Operacional. Información rutinaria. Muestra la operación diaria.   Tiene una utilidad a muy corto plazo. 
+--- Diapositiva 39 ---
+PREGUNTAS DE REPASO: Que entiende por sistema? Mencione y explique las características de los sistemas. Que entiende por subsistema? Como considera a la organización como sistema? Mencione y explique los subsistemas que forman a la organización como sistema. Que se entiende por Limites o fronteras de los sistemas? Cuales son los elementos de un sistema?. Explíquelos. Cuales son los tipos de sistemas que se pueden identificar? Clasifíquelos. En que se fundamenta la teoría general de sistemas? Que entiendes por DATOS. Que entiendes por INFORMACIÓN. Mencione y explique todos los elementos presentes en todas las definiciones de información. Explique por que es importante la información en la toma de decisiones. Mencione y explique las categorías de la información. Cuales son los atributos de la información. Que impacto tienen los sistemas en nuestras actividades cotidianas?

@@ -1,0 +1,234 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Esquema de Material Académico de Enseñanza",
+  "description": "Esquema para representar apuntes de clase, presentaciones y material educativo",
+  "type": "object",
+  "required": ["metadata", "structure", "content"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["title", "topic", "document_type"],
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Título del tema o documento"
+        },
+        "topic": {
+          "type": "string",
+          "description": "Tema principal"
+        },
+        "document_type": {
+          "type": "string",
+          "enum": ["textbook", "presentation", "lecture_notes", "tutorial", "guide"],
+          "description": "Tipo de documento"
+        },
+        "author": {
+          "type": "string",
+          "description": "Autor del material"
+        },
+        "institution": {
+          "type": "string",
+          "description": "Institución educativa"
+        },
+        "course": {
+          "type": "string",
+          "description": "Materia o curso"
+        },
+        "audience": {
+          "type": "string",
+          "description": "Audiencia objetivo"
+        },
+        "level": {
+          "type": "string",
+          "enum": ["basic", "intermediate", "advanced"],
+          "description": "Nivel de dificultad"
+        }
+      }
+    },
+    "structure": {
+      "type": "object",
+      "properties": {
+        "objective": {
+          "type": "string",
+          "description": "Objetivo de aprendizaje"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "title": { "type": "string" },
+              "level": { "type": "integer" },
+              "subsections": {
+                "type": "array",
+                "items": { "$ref": "#" }
+              }
+            }
+          }
+        },
+        "total_lines": { "type": "integer" }
+      }
+    },
+    "content": {
+      "type": "object",
+      "properties": {
+        "definitions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "term": { "type": "string" },
+              "definition": { "type": "string" },
+              "source": { "type": "string" },
+              "examples": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        },
+        "concepts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "description": { "type": "string" },
+              "category": { "type": "string" }
+            }
+          }
+        },
+        "classifications": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "concept": { "type": "string" },
+              "categories": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": { "type": "string" },
+                    "description": { "type": "string" },
+                    "examples": {
+                      "type": "array",
+                      "items": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "processes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "steps": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "step": { "type": "integer" },
+                    "description": { "type": "string" },
+                    "details": {
+                      "type": "array",
+                      "items": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "comparisons": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "characteristics": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": { "type": "string" },
+                    "values": {
+                      "type": "array",
+                      "items": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "advantages_disadvantages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "concept": { "type": "string" },
+              "advantages": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "disadvantages": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "when_to_use": { "type": "string" }
+            }
+          }
+        },
+        "examples": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "context": { "type": "string" },
+              "description": { "type": "string" },
+              "application": { "type": "string" }
+            }
+          }
+        },
+        "diagrams": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "title": { "type": "string" },
+              "type": { "type": "string" },
+              "description": { "type": "string" },
+              "elements": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "authors": { "type": "string" },
+          "year": { "type": "string" },
+          "title": { "type": "string" },
+          "publisher": { "type": "string" },
+          "url": { "type": "string" }
+        }
+      }
+    }
+  }
+}
