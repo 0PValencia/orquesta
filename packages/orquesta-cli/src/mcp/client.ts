@@ -21,9 +21,11 @@ export type ConnectedServer = {
 export async function connectServers(mcp: McpFile): Promise<{
   servers: ConnectedServer[];
   tools: OrquestaTool[];
+  failed: string[];
 }> {
   const servers: ConnectedServer[] = [];
   const tools: OrquestaTool[] = [];
+  const failed: string[] = [];
 
   for (const [name, cfg] of Object.entries(mcp.mcpServers)) {
     try {
@@ -41,11 +43,12 @@ export async function connectServers(mcp: McpFile): Promise<{
       }
       console.error(`[mcp] conectado: ${name} (${listed.tools.length} tools)`);
     } catch (err) {
+      failed.push(name);
       console.error(`[mcp] falló ${name}:`, err instanceof Error ? err.message : err);
     }
   }
 
-  return { servers, tools };
+  return { servers, tools, failed };
 }
 
 async function connectOne(name: string, cfg: McpServerConfig): Promise<ConnectedServer> {

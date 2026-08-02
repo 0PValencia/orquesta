@@ -26,8 +26,7 @@ git push -u origin main
 ### 2. Cualquiera instala con una línea
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/TU_USER/TU_REPO/main/install.sh \
-  | bash -s -- --repo https://github.com/TU_USER/TU_REPO.git
+curl -fsSL https://raw.githubusercontent.com/0PValencia/orquesta/master/install.sh | bash
 ```
 
 Eso clona en `~/.orquesta/src`, compila el CLI y deja el binario en `~/.orquesta/bin/orquesta` (añade el PATH al shell).

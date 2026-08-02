@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Instalador Orquesta (estilo OpenCode: curl | bash)
 #
-# Uso (tras subir el repo a GitHub):
-#   curl -fsSL https://raw.githubusercontent.com/USER/REPO/main/install.sh | bash
+# Uso:
+#   curl -fsSL https://raw.githubusercontent.com/0PValencia/orquesta/master/install.sh | bash
 #
 # Opcional:
 #   curl -fsSL .../install.sh | bash -s -- --repo https://github.com/USER/REPO.git
@@ -17,13 +17,13 @@ GREEN='\033[0;32m'
 ORANGE='\033[38;5;214m'
 NC='\033[0m'
 
-# ─── Cambia esto cuando tengas el repo público ───
-DEFAULT_REPO="${ORQUESTA_REPO:-}"
+# ─── Repo público ───
+DEFAULT_REPO="${ORQUESTA_REPO:-https://github.com/0PValencia/orquesta.git}"
 
 INSTALL_ROOT="${ORQUESTA_HOME:-$HOME/.orquesta}"
 INSTALL_DIR="$INSTALL_ROOT/bin"
 SRC_DIR="$INSTALL_ROOT/src"
-BRANCH="${ORQUESTA_BRANCH:-main}"
+BRANCH="${ORQUESTA_BRANCH:-master}"
 
 requested_repo=""
 no_modify_path=false
@@ -42,8 +42,8 @@ Options:
   --no-modify-path        No tocar .bashrc / .zshrc
 
 Examples:
-  curl -fsSL https://raw.githubusercontent.com/USER/pipeeline/main/install.sh | bash
-  curl -fsSL .../install.sh | bash -s -- --repo https://github.com/USER/pipeeline.git
+  curl -fsSL https://raw.githubusercontent.com/0PValencia/orquesta/master/install.sh | bash
+  curl -fsSL .../install.sh | bash -s -- --repo https://github.com/0PValencia/orquesta.git
 EOF
 }
 
@@ -65,15 +65,8 @@ done
 
 REPO="${requested_repo:-$DEFAULT_REPO}"
 
-if [[ -z "$REPO" || "$REPO" == *"OWNER"* || "$REPO" == *"USER/REPO"* ]]; then
+if [[ -z "$REPO" ]]; then
   echo -e "${RED}Falta la URL del repo de GitHub.${NC}"
-  echo ""
-  echo "1) Sube este proyecto a GitHub (público o con acceso)."
-  echo "2) Instala así:"
-  echo ""
-  echo -e "  ${GREEN}curl -fsSL https://raw.githubusercontent.com/TU_USER/TU_REPO/main/install.sh | bash -s -- --repo https://github.com/TU_USER/TU_REPO.git${NC}"
-  echo ""
-  echo "O exporta ORQUESTA_REPO=https://github.com/TU_USER/TU_REPO.git"
   exit 1
 fi
 

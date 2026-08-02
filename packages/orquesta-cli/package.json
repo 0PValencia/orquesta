@@ -8,7 +8,7 @@
   },
   "main": "./dist/index.js",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && mkdir -p dist/prompts && cp src/prompts/system.txt dist/prompts/system.txt",
     "dev": "tsx src/index.ts",
     "start": "node dist/index.js"
   },

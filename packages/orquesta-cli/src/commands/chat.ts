@@ -1,13 +1,13 @@
 import readline from "node:readline/promises";
 import { stdin as input, stdout as output } from "node:process";
 import { loadConfig } from "../config.js";
-import { createSession, endSession, runTurn } from "../agent/loop.js";
+import { createSession, describeMcpStatus, endSession, runTurn } from "../agent/loop.js";
 
 export async function chatCommand(opts: { message?: string }): Promise<void> {
   const cfg = loadConfig();
   if (!cfg.baseUrl) {
     console.error(
-      "Configura ORQUESTA_BASE_URL (URL Modal .../v1).\nEjemplo:\n  export ORQUESTA_BASE_URL=https://<ws>--orquesta-informes-serve.modal.run/v1"
+      "Configura ORQUESTA_BASE_URL (URL Modal .../v1).\nEjemplo:\n  export ORQUESTA_BASE_URL='https://pvalencia--orquesta-informes-serve.modal.run/v1'"
     );
     process.exitCode = 1;
     return;
@@ -16,14 +16,15 @@ export async function chatCommand(opts: { message?: string }): Promise<void> {
   console.error(`
 ╔══════════════════════════════════════╗
 ║           ORQUESTA  v0.1             ║
-║   Modal LLM  ·  MCP  ·  Informes     ║
+║   Agente · Informes · Modal · MCP    ║
 ╚══════════════════════════════════════╝
 `);
-  console.error(`Orquesta → ${cfg.baseUrl} | model=${cfg.model}`);
-  console.error(`MCP config: ${cfg.mcpPath}`);
-  console.error(`Comandos útiles: orquesta mcp add | mcp list | doctor | config\n`);
+  console.error(`LLM → ${cfg.baseUrl} | model=${cfg.model}`);
+  console.error(`MCP file → ${cfg.mcpPath}`);
 
   const session = await createSession(cfg);
+  console.error(describeMcpStatus(session.mcpStatus));
+  console.error(`Comandos: orquesta mcp add | doctor | config | --help\n`);
 
   try {
     if (opts.message) {
