@@ -41,15 +41,21 @@ training/
     └── manifest.json
 ```
 
-## Fase 1 (ahora)
+## Fase 1 (redacción)
 
-Entrena solo con:
+Entrena con:
 - `dataset/proyectos/dataset_proyectos.jsonl`
 - `dataset/temas/dataset_temas.jsonl`
 
-**Excluido a propósito** (usar después):
-- `razonamiento` — pipeline de agente, no redacción de informes
-- `mcp_google_docs` — orquestación de tools; va al agente, no al redactor
+## Fase 2 (agente — listo)
+
+Continuar LoRA con razonamiento + MCP. Ver [`FASE2.md`](FASE2.md):
+
+```bash
+python scripts/prepare_dataset.py --phase 2
+python scripts/pack_colab_bundle.py --phase 2
+# → colab_bundle_fase2.zip + colab_sft_fase2.ipynb
+```
 
 ## Preparar datos (local)
 

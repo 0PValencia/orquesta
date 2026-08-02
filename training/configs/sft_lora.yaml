@@ -40,6 +40,6 @@ qlora:
 output_dir: outputs/lora
 
 notes:
-  - Fase 1 solo: proyectos + temas
-  - No mezclar razonamiento/MCP hasta tener buen generador de secciones
-  - Dataset pequeño: riesgo alto de overfitting; preferir early stop por val
+  - Fase 1: proyectos + temas
+  - Fase 2: razonamiento + mcp_google_docs (continuar LoRA; ver FASE2.md)
+  - Dataset pequeño: riesgo alto de overfitting; preferir early stop / pocas epochs

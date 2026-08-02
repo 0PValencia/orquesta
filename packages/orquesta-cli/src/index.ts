@@ -14,6 +14,17 @@ import { ensureUserConfig } from "./config.js";
 
 ensureUserConfig();
 
+// Atajos naturales: `orquesta add mcp` → `orquesta mcp add`
+{
+  const a = process.argv[2];
+  const b = process.argv[3];
+  if (a === "add" && b === "mcp") {
+    process.argv.splice(2, 2, "mcp", "add");
+  } else if (a === "add-mcp") {
+    process.argv.splice(2, 1, "mcp", "add");
+  }
+}
+
 const program = new Command();
 
 program

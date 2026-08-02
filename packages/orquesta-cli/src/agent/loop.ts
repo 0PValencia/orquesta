@@ -15,8 +15,9 @@ import {
 
 const TOOL_RE = /<tool_call>\s*([\s\S]*?)\s*<\/tool_call>/i;
 
+/** Pedido explícito de Google Docs / Documents / documento remoto (no basta con "informe"). */
 const DOCS_INTENT =
-  /\b(google\s*docs?|documento|documentId|crear doc|insertar|escribir en docs|sube(lo|r)? a docs|exportar (a )?pdf|mcp)\b/i;
+  /\b(google\s*docs?|documents?|docs\.google|en\s+(un\s+)?(documento|doc|docs?|documents?)(\s+de\s+google)?|crear\s+(un\s+)?(doc|documento)|documentId|insertar\s+en\s+(el\s+)?doc|escribir\s+en\s+(el\s+)?(doc|docs?|documents?)|sube(lo|r)?\s+a\s+(docs?|documents?)|exportar\s+(a\s+)?(pdf|docs?|documents?)|guarda(r|lo)?\s+en\s+(docs?|documents?))\b/i;
 
 /** Pedido de informe largo / completo → generar por secciones (≈120 págs no caben en 1 respuesta). */
 const FULL_REPORT_INTENT =
@@ -89,9 +90,10 @@ export async function createSession(cfg: OrquestaConfig): Promise<AgentSession> 
   const client = createLlmClient(cfg);
   const statusBlock = formatMcpStatusForPrompt(mcpStatus);
   const toolsNote = tools.length
-    ? `Hay ${tools.length} tools MCP listas (${connected.join(", ") || "—"}). ` +
-      "El listado detallado se añade solo cuando el usuario pide Google Docs / documentos. " +
-      "Para redactar texto en el chat NO uses tools."
+    ? `Hay ${tools.length} tools MCP listas en: ${connected.join(", ") || "—"}. ` +
+      "Úsalas SOLO si el usuario pide Docs/Documents/documento remoto (el catálogo se inyecta en ese caso). " +
+      "Si hay varios servidores, elige el que mejor encaje con la tarea. " +
+      "Para redactar solo en el chat: NO uses tools."
     : "(sin tools MCP)";
   const system = `${loadSystemPrompt()}\n\n## Estado MCP ahora\n${statusBlock}\n\n## Tools MCP\n${toolsNote}`;
 
@@ -150,8 +152,16 @@ export async function runTurn(session: AgentSession, userText: string): Promise<
 
   let content = userText;
   if (DOCS_INTENT.test(userText) && session.tools.length > 0) {
+    const byServer = new Map<string, number>();
+    for (const t of session.tools) {
+      byServer.set(t.server, (byServer.get(t.server) || 0) + 1);
+    }
+    const serversLine = [...byServer.entries()]
+      .map(([n, c]) => `- ${n} (${c} tools)`)
+      .join("\n");
     content =
-      `${userText}\n\n## Catálogo MCP (usa tool_call si hace falta)\n` +
+      `${userText}\n\n## Servidores MCP conectados\n${serversLine}\n` +
+      `Elige el servidor más adecuado al pedido.\n\n## Catálogo MCP (usa tool_call si hace falta)\n` +
       toolsCatalog(session.tools, { maxChars: 2800 });
   }
   session.messages.push({ role: "user", content });

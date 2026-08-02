@@ -2,6 +2,7 @@ import readline from "node:readline/promises";
 import { stdin as input, stdout as output } from "node:process";
 import { loadConfig } from "../config.js";
 import { createSession, describeMcpStatus, endSession, runTurn } from "../agent/loop.js";
+import { parseChoices, presentChoices, stripChoices } from "../ui/choices.js";
 
 function isAbort(err: unknown): boolean {
   if (!err || typeof err !== "object") return false;
@@ -14,9 +15,68 @@ function isAbort(err: unknown): boolean {
 }
 
 function cleanExit(code = 0): never {
-  // Deja espacio limpio en la terminal (estilo OpenCode)
   output.write("\n");
   process.exit(code);
+}
+
+async function readUserLine(prompt: string): Promise<string> {
+  const rl = readline.createInterface({ input, output, terminal: true });
+  const onSig = () => {
+    rl.close();
+    cleanExit(0);
+  };
+  rl.on("SIGINT", onSig);
+  try {
+    return (await rl.question(prompt)).trim();
+  } catch (err) {
+    if (isAbort(err)) cleanExit(0);
+    throw err;
+  } finally {
+    rl.close();
+  }
+}
+
+async function handleAgentReply(
+  session: Awaited<ReturnType<typeof createSession>>,
+  out: string,
+  interactive: boolean
+): Promise<void> {
+  let current = out;
+  // Hasta 5 rondas de aclaración por menú
+  for (let i = 0; i < 5; i++) {
+    const choices = parseChoices(current);
+    if (!choices) {
+      const text = stripChoices(current);
+      if (text) console.log("\norquesta>\n" + text + "\n");
+      return;
+    }
+
+    if (choices.preamble) {
+      console.log("\norquesta>\n" + choices.preamble + "\n");
+    }
+
+    if (!interactive) {
+      // Modo -m: mostrar opciones en texto plano
+      console.log(choices.question);
+      choices.options.forEach((o, idx) => console.log(`  ${idx + 1}) ${o}`));
+      console.log("  *) Opción propia");
+      return;
+    }
+
+    let pick: string;
+    try {
+      pick = await presentChoices(choices);
+    } catch (err) {
+      if (isAbort(err)) cleanExit(0);
+      throw err;
+    }
+
+    console.log(`→ ${pick}\n`);
+    process.stderr.write("… generando\n");
+    current = await runTurn(session, pick);
+  }
+  const text = stripChoices(current);
+  if (text) console.log("\norquesta>\n" + text + "\n");
 }
 
 export async function chatCommand(opts: { message?: string }): Promise<void> {
@@ -62,26 +122,17 @@ Dentro del chat: escribe tu pedido, «ayuda» o Ctrl+C / «salir» para salir.
     if (opts.message) {
       process.stderr.write("… generando\n");
       const out = await runTurn(session, opts.message);
-      console.log(out);
+      await handleAgentReply(session, out, false);
       return;
     }
-
-    const rl = readline.createInterface({ input, output, terminal: true });
-    rl.on("SIGINT", () => {
-      rl.close();
-      cleanExit(0);
-    });
 
     console.log("¿Qué informe o sección necesitas?\n");
     while (true) {
       let line: string;
       try {
-        line = (await rl.question("tú> ")).trim();
+        line = await readUserLine("tú> ");
       } catch (err) {
-        if (isAbort(err)) {
-          rl.close();
-          cleanExit(0);
-        }
+        if (isAbort(err)) cleanExit(0);
         throw err;
       }
       if (!line) continue;
@@ -92,19 +143,16 @@ Dentro del chat: escribe tu pedido, «ayuda» o Ctrl+C / «salir» para salir.
             "  • Redacta la introducción de un SI para taller de motos\n" +
             "  • Genera el informe completo de un sistema escolar\n" +
             "  • Escribe conclusiones de un proyecto de condominio\n" +
-            "  • Crea el documento en Google Docs  (necesita: orquesta mcp add)\n"
+            "  • Crea el informe en Google Docs / Documents  (usa el MCP de Docs)\n"
         );
         continue;
       }
       try {
         process.stderr.write("… generando\n");
         const out = await runTurn(session, line);
-        console.log("\norquesta>\n" + out + "\n");
+        await handleAgentReply(session, out, true);
       } catch (err) {
-        if (isAbort(err)) {
-          rl.close();
-          cleanExit(0);
-        }
+        if (isAbort(err)) cleanExit(0);
         const msg = err instanceof Error ? err.message : String(err);
         if (/503|ECONNREFUSED|fetch failed|timeout/i.test(msg)) {
           console.error(
@@ -112,7 +160,7 @@ Dentro del chat: escribe tu pedido, «ayuda» o Ctrl+C / «salir» para salir.
           );
         } else if (/maximum context length|demasiado largo/i.test(msg)) {
           console.error(
-            "El pedido (o las tools MCP) ocupan demasiado contexto. Prueba un mensaje más corto o `orquesta mcp remove` temporalmente."
+            "El pedido (o las tools MCP) ocupan demasiado contexto. Prueba un mensaje más corto."
           );
           console.error(msg);
         } else {
@@ -120,7 +168,6 @@ Dentro del chat: escribe tu pedido, «ayuda» o Ctrl+C / «salir» para salir.
         }
       }
     }
-    rl.close();
     output.write("\n");
   } finally {
     process.off("SIGINT", onSigInt);

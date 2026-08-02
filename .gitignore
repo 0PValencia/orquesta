@@ -1,7 +1,12 @@
-# pesos / artefactos locales
+# pesos / artefactos locales (NO van al repo ni al install.sh)
 training/outputs/
+training/colab_bundle.zip
+training/colab_bundle_fase2.zip
 qwen25-7b-informes-adapter/
+qwen25-7b-orquesta-fase2-adapter/
+qwen25-7b-*-adapter/
 *.safetensors
+*.bin
 *.zip
 packages/orquesta-cli/node_modules/
 packages/orquesta-cli/dist/
