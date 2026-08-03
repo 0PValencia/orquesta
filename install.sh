@@ -1,195 +1,245 @@
 #!/usr/bin/env bash
-# Instalador Orquesta (estilo OpenCode: curl | bash)
-#
-# Uso:
-#   curl -fsSL https://raw.githubusercontent.com/0PValencia/orquesta/master/install.sh | bash
-#
-# Opcional:
-#   curl -fsSL .../install.sh | bash -s -- --repo https://github.com/USER/REPO.git
-#   ORQUESTA_REPO=... bash install.sh
-#
+# Instalador interactivo de skills Orquesta (ecosistema npx skills)
+# https://github.com/0PValencia/orquesta
 set -euo pipefail
 
-APP=orquesta
-MUTED='\033[0;2m'
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-ORANGE='\033[38;5;214m'
-NC='\033[0m'
+REPO="${ORQUESTA_SKILLS_REPO:-0PValencia/orquesta}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# ─── Repo público ───
-DEFAULT_REPO="${ORQUESTA_REPO:-https://github.com/0PValencia/orquesta.git}"
+AGENTS=(
+  "cursor|Cursor"
+  "claude-code|Claude Code"
+  "opencode|OpenCode"
+  "codex|Codex"
+  "windsurf|Windsurf"
+  "antigravity|Gemini Antigravity"
+  "amp|Amp / Universal"
+)
 
-INSTALL_ROOT="${ORQUESTA_HOME:-$HOME/.orquesta}"
-INSTALL_DIR="$INSTALL_ROOT/bin"
-SRC_DIR="$INSTALL_ROOT/src"
-BRANCH="${ORQUESTA_BRANCH:-master}"
+c_reset=$'\033[0m'
+c_bold=$'\033[1m'
+c_dim=$'\033[2m'
+c_green=$'\033[38;2;57;255;20m'
+c_muted=$'\033[38;2;120;160;120m'
 
-requested_repo=""
-no_modify_path=false
+banner() {
+  printf '%s\n' "${c_green}${c_bold}"
+  cat <<'EOF'
+   ___                            _
+  / _ \ _ __ __ _ _   _  ___  ___| |_ __ _
+ | | | | '__/ _` | | | |/ _ \/ __| __/ _` |
+ | |_| | | | (_| | |_| |  __/\__ \ || (_| |
+  \___/|_|  \__, |\__,_|\___||___/\__\__,_|
+               |_|   skills
+EOF
+  printf '%s\n\n' "${c_reset}${c_muted}${REPO}${c_reset}"
+}
+
+ask_yn() {
+  local prompt="$1" default="${2:-y}" ans hint="[Y/n]"
+  [[ "$default" == "n" ]] && hint="[y/N]"
+  read -r -p "${prompt} ${hint} " ans || true
+  ans="${ans:-$default}"
+  [[ "$ans" =~ ^[YySs] ]]
+}
+
+# Rellena SELECTED_IDS con ids elegidos
+multi_select() {
+  local title="$1"; shift
+  local -a items=("$@")
+  SELECTED_IDS=()
+  echo "${c_bold}${title}${c_reset}"
+  echo "${c_dim}  Números separados por espacio, o: all${c_reset}"
+  local i=1
+  for it in "${items[@]}"; do
+    printf "  %2d) %s\n" "$i" "${it#*|}"
+    i=$((i + 1))
+  done
+  local choice
+  read -r -p "> " choice || true
+  [[ -z "${choice:-}" ]] && return 1
+  if [[ "$choice" =~ ^[Aa][Ll][Ll]$ ]]; then
+    for it in "${items[@]}"; do SELECTED_IDS+=("${it%%|*}"); done
+    return 0
+  fi
+  local n
+  for n in $choice; do
+    [[ "$n" =~ ^[0-9]+$ ]] || continue
+    (( n >= 1 && n <= ${#items[@]} )) || continue
+    SELECTED_IDS+=("${items[$((n - 1))]%%|*}")
+  done
+  ((${#SELECTED_IDS[@]} > 0))
+}
+
+install_skills_cli() {
+  local -a args=()
+  [[ "$SCOPE" == "global" ]] && args+=(-g)
+  local s a
+  for s in "${SELECTED_SKILLS[@]}"; do args+=(-s "$s"); done
+  for a in "${SELECTED_AGENTS[@]}"; do args+=(-a "$a"); done
+
+  local source="$REPO"
+  [[ -d "$SCRIPT_DIR/skills/google-documents" ]] && source="$SCRIPT_DIR"
+
+  echo
+  echo "${c_green}→ npx skills add ${source} ${args[*]} -y --copy${c_reset}"
+  echo
+  npx --yes skills add "$source" "${args[@]}" -y --copy
+}
+
+copy_manual() {
+  local agent="$1" dest_root
+  case "$agent" in
+    cursor)
+      [[ "$SCOPE" == "global" ]] && dest_root="${HOME}/.cursor/skills" || dest_root="$(pwd)/.cursor/skills"
+      ;;
+    claude-code)
+      [[ "$SCOPE" == "global" ]] && dest_root="${HOME}/.claude/skills" || dest_root="$(pwd)/.claude/skills"
+      ;;
+    opencode)
+      [[ "$SCOPE" == "global" ]] && dest_root="${HOME}/.config/opencode/skills" || dest_root="$(pwd)/.agents/skills"
+      ;;
+    codex)
+      [[ "$SCOPE" == "global" ]] && dest_root="${HOME}/.codex/skills" || dest_root="$(pwd)/.codex/skills"
+      ;;
+    windsurf)
+      [[ "$SCOPE" == "global" ]] && dest_root="${HOME}/.codeium/windsurf/skills" || dest_root="$(pwd)/.windsurf/skills"
+      ;;
+    antigravity)
+      [[ "$SCOPE" == "global" ]] && dest_root="${HOME}/.gemini/antigravity/skills" || dest_root="$(pwd)/.agent/skills"
+      ;;
+    amp)
+      [[ "$SCOPE" == "global" ]] && dest_root="${HOME}/.config/agents/skills" || dest_root="$(pwd)/.agents/skills"
+      ;;
+    *)
+      echo "Agente no mapeado: $agent (omitido)" >&2
+      return 0
+      ;;
+  esac
+
+  mkdir -p "$dest_root"
+  local s
+  for s in "${SELECTED_SKILLS[@]}"; do
+    local src="$SCRIPT_DIR/skills/$s"
+    [[ -d "$src" ]] || { echo "Falta $src" >&2; continue; }
+    rm -rf "${dest_root:?}/$s"
+    cp -a "$src" "$dest_root/$s"
+    echo "  ✓ $s → $dest_root/$s"
+  done
+}
 
 usage() {
   cat <<EOF
-Instala Orquesta CLI en \$HOME/.orquesta/bin
+Uso: ./install.sh [opciones]
 
-Usage:
-  curl -fsSL <URL>/install.sh | bash
-  curl -fsSL <URL>/install.sh | bash -s -- [options]
+  -g, --global     Alcance global (usuario)
+  --project        Alcance proyecto actual
+  -s NAME          Skill: google-documents | informe-angelica
+  -a AGENT         cursor | claude-code | opencode | codex | windsurf | …
+  -y               Sin prompts
 
-Options:
-  -h, --help              Ayuda
-  -r, --repo <url>        Git del monorepo (https://github.com/USER/REPO.git)
-  --no-modify-path        No tocar .bashrc / .zshrc
+Interactivo (sin flags):
+  1) global o proyecto
+  2) qué skills
+  3) a qué agentes/entornos
 
-Examples:
-  curl -fsSL https://raw.githubusercontent.com/0PValencia/orquesta/master/install.sh | bash
-  curl -fsSL .../install.sh | bash -s -- --repo https://github.com/0PValencia/orquesta.git
+Equivalente ecosystem:
+  npx skills add 0PValencia/orquesta -g -a cursor -a opencode
 EOF
 }
 
-while [[ $# -gt 0 ]]; do
-  case "$1" in
-    -h|--help) usage; exit 0 ;;
-    -r|--repo)
-      [[ -n "${2:-}" ]] || { echo -e "${RED}--repo requiere URL${NC}"; exit 1; }
-      requested_repo="$2"
-      shift 2
-      ;;
-    --no-modify-path) no_modify_path=true; shift ;;
-    *)
-      echo -e "${ORANGE}Opción desconocida: $1${NC}" >&2
-      shift
-      ;;
-  esac
-done
+main() {
+  SCOPE=""
+  SELECTED_SKILLS=()
+  SELECTED_AGENTS=()
+  NONINTERACTIVE=0
 
-REPO="${requested_repo:-$DEFAULT_REPO}"
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      -g|--global) SCOPE="global"; shift ;;
+      --project) SCOPE="project"; shift ;;
+      -s|--skill) SELECTED_SKILLS+=("$2"); shift 2 ;;
+      -a|--agent) SELECTED_AGENTS+=("$2"); shift 2 ;;
+      -y|--yes) NONINTERACTIVE=1; shift ;;
+      -h|--help) usage; exit 0 ;;
+      *) echo "Opción desconocida: $1" >&2; usage; exit 1 ;;
+    esac
+  done
 
-if [[ -z "$REPO" ]]; then
-  echo -e "${RED}Falta la URL del repo de GitHub.${NC}"
-  exit 1
-fi
+  banner
 
-need() { command -v "$1" >/dev/null 2>&1 || { echo -e "${RED}Falta '$1'. Instálalo y reintenta.${NC}"; exit 1; }; }
-need git
-need node
-need npm
-need curl
+  if [[ "$NONINTERACTIVE" -eq 0 ]]; then
+    echo "${c_bold}1) ¿Dónde instalar?${c_reset}"
+    echo "  1) Global  (~/.cursor/skills, ~/.config/opencode/skills, …)"
+    echo "  2) Proyecto actual  ($(pwd)/…)"
+    local sc
+    read -r -p "> " sc || true
+    [[ "${sc:-1}" == "2" ]] && SCOPE="project" || SCOPE="global"
+    echo
 
-NODE_MAJOR=$(node -p "process.versions.node.split('.')[0]")
-if [[ "$NODE_MAJOR" -lt 20 ]]; then
-  echo -e "${RED}Se requiere Node >= 20 (tienes $(node -v))${NC}"
-  exit 1
-fi
+    echo "${c_bold}2) ¿Qué skills?${c_reset}"
+    echo "  1) google-documents"
+    echo "  2) informe-angelica"
+    echo "  3) Ambas"
+    local sk
+    read -r -p "> " sk || true
+    case "${sk:-3}" in
+      1) SELECTED_SKILLS=(google-documents) ;;
+      2) SELECTED_SKILLS=(informe-angelica) ;;
+      *) SELECTED_SKILLS=(google-documents informe-angelica) ;;
+    esac
+    echo
 
-echo -e "${MUTED}Instalando ${NC}${APP}${MUTED} desde ${NC}$REPO"
-
-mkdir -p "$INSTALL_DIR" "$SRC_DIR"
-
-if [[ -d "$SRC_DIR/.git" ]]; then
-  echo -e "${MUTED}Actualizando código en ${NC}$SRC_DIR"
-  git -C "$SRC_DIR" remote set-url origin "$REPO" 2>/dev/null || true
-  # Copia de instalación: siempre igualar al remoto (tolera force-push / ramas divergentes)
-  git -C "$SRC_DIR" fetch --depth 1 origin "$BRANCH"
-  git -C "$SRC_DIR" checkout -B "$BRANCH" "origin/$BRANCH"
-  git -C "$SRC_DIR" reset --hard "origin/$BRANCH"
-  git -C "$SRC_DIR" clean -fd
-else
-  # carpeta puede existir vacía o sin .git
-  rm -rf "$SRC_DIR"
-  git clone --depth 1 --branch "$BRANCH" "$REPO" "$SRC_DIR"
-fi
-
-CLI="$SRC_DIR/packages/orquesta-cli"
-if [[ ! -d "$CLI" ]]; then
-  echo -e "${RED}No encontré packages/orquesta-cli en el repo.${NC}"
-  exit 1
-fi
-
-echo -e "${MUTED}npm install + build...${NC}"
-(
-  cd "$CLI"
-  npm install --silent
-  npm run build
-)
-
-# Wrapper estable en ~/.orquesta/bin/orquesta (no depende de npm link global)
-cat > "$INSTALL_DIR/orquesta" <<EOF
-#!/usr/bin/env bash
-exec node "$CLI/bin/orquesta.js" "\$@"
-EOF
-chmod 755 "$INSTALL_DIR/orquesta"
-
-# PATH
-add_to_path() {
-  local config_file=$1
-  local command=$2
-  if [[ ! -f "$config_file" ]]; then
-    return 1
+    multi_select "3) ¿En qué entornos?" "${AGENTS[@]}" || {
+      echo "Cancelado."; exit 1
+    }
+    SELECTED_AGENTS=("${SELECTED_IDS[@]}")
+  else
+    SCOPE="${SCOPE:-global}"
+    ((${#SELECTED_SKILLS[@]})) || SELECTED_SKILLS=(google-documents informe-angelica)
+    ((${#SELECTED_AGENTS[@]})) || SELECTED_AGENTS=(cursor)
   fi
-  if grep -Fq "$INSTALL_DIR" "$config_file" 2>/dev/null; then
-    echo -e "${MUTED}PATH ya incluye orquesta en ${NC}$config_file"
-    return 0
+
+  echo
+  echo "${c_bold}Resumen${c_reset}"
+  echo "  Alcance: $SCOPE"
+  echo "  Skills:  ${SELECTED_SKILLS[*]}"
+  echo "  Agentes: ${SELECTED_AGENTS[*]}"
+  echo
+  if [[ "$NONINTERACTIVE" -eq 0 ]]; then
+    ask_yn "¿Instalar?" y || { echo "Cancelado."; exit 1; }
   fi
-  if [[ -w "$config_file" ]]; then
-    {
-      echo ""
-      echo "# orquesta"
-      echo "$command"
-    } >> "$config_file"
-    echo -e "${MUTED}Añadido PATH en ${NC}$config_file"
-    return 0
+
+  if command -v npx >/dev/null 2>&1; then
+    if install_skills_cli; then
+      # Cursor a veces resuelve desde ~/.cursor/skills además de ~/.agents/skills
+      if printf '%s\n' "${SELECTED_AGENTS[@]}" | grep -qx cursor; then
+        mkdir -p "${HOME}/.cursor/skills"
+        for s in "${SELECTED_SKILLS[@]}"; do
+          if [[ -d "${HOME}/.agents/skills/$s" ]]; then
+            rm -rf "${HOME}/.cursor/skills/$s"
+            cp -a "${HOME}/.agents/skills/$s" "${HOME}/.cursor/skills/$s"
+          elif [[ -d "$SCRIPT_DIR/skills/$s" ]]; then
+            rm -rf "${HOME}/.cursor/skills/$s"
+            cp -a "$SCRIPT_DIR/skills/$s" "${HOME}/.cursor/skills/$s"
+          fi
+        done
+      fi
+      echo
+      echo "${c_green}${c_bold}✓ Instalado con npx skills${c_reset}"
+      exit 0
+    fi
+    echo "${c_muted}Fallback: copia manual…${c_reset}"
+  else
+    echo "${c_muted}Sin npx → copia manual…${c_reset}"
   fi
-  return 1
+
+  local a
+  for a in "${SELECTED_AGENTS[@]}"; do
+    copy_manual "$a"
+  done
+  echo
+  echo "${c_green}${c_bold}✓ Listo${c_reset}"
 }
 
-if [[ "$no_modify_path" != "true" ]]; then
-  if [[ ":$PATH:" != *":$INSTALL_DIR:"* ]]; then
-    current_shell=$(basename "${SHELL:-bash}")
-    case "$current_shell" in
-      zsh)  cfg="${ZDOTDIR:-$HOME}/.zshrc" ;;
-      fish) cfg="$HOME/.config/fish/config.fish" ;;
-      *)    cfg="$HOME/.bashrc" ;;
-    esac
-    case "$current_shell" in
-      fish) add_to_path "$cfg" "fish_add_path $INSTALL_DIR" || true ;;
-      *)    add_to_path "$cfg" "export PATH=\"$INSTALL_DIR:\$PATH\"" || true ;;
-    esac
-    export PATH="$INSTALL_DIR:$PATH"
-  fi
-fi
-
-echo ""
-echo -e "${GREEN}✓ Orquesta listo${NC}"
-echo -e "${MUTED}Comando:${NC} orquesta"
-echo ""
-
-# Config por defecto (modelo Modal) — solo si no existe (no pisar ajustes del usuario)
-mkdir -p "$INSTALL_ROOT"
-if [[ ! -f "$INSTALL_ROOT/config.json" ]]; then
-  cat > "$INSTALL_ROOT/config.json" <<'JSON'
-{
-  "baseUrl": "https://pvalencia--orquesta-informes-serve.modal.run/v1",
-  "model": "informes",
-  "apiKey": "not-needed",
-  "maxToolRounds": 16,
-  "maxTokens": 2048
-}
-JSON
-fi
-if [[ ! -f "$INSTALL_ROOT/mcp.json" ]]; then
-  echo '{"mcpServers":{}}' > "$INSTALL_ROOT/mcp.json"
-fi
-
-echo -e "${GREEN}Ya puedes usarlo:${NC}"
-echo "  orquesta ayuda"
-echo "  orquesta"
-echo "  orquesta update     # tras subir cambios a GitHub"
-echo ""
-if ! command -v orquesta >/dev/null 2>&1; then
-  echo -e "${ORANGE}Si no encuentra el comando, abre una terminal nueva o ejecuta:${NC}"
-  echo "  export PATH=\"$INSTALL_DIR:\$PATH\""
-  echo ""
-fi
-echo -e "${MUTED}Versión:${NC} $($INSTALL_DIR/orquesta --version 2>/dev/null || echo '?')"
-echo ""
+main "$@"
