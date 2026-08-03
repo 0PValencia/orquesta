@@ -114,9 +114,17 @@ export async function chatCommand(opts: { message?: string }): Promise<void> {
       const line = sanitizeUserInput(opts.message);
       const ui = new ThinkingUI();
       ui.begin();
-      const out = await runTurn(session, line, { onEvent: bindThinking(ui) });
-      await ui.finish(false);
-      await handleAgentReply(session, out, false);
+      try {
+        const out = await runTurn(session, line, { onEvent: bindThinking(ui) });
+        await ui.finish(false);
+        await handleAgentReply(session, out, false);
+      } catch (err) {
+        if (isAbort(err)) {
+          ui.abort();
+          cleanExit(0);
+        }
+        await ui.fail(err instanceof Error ? err.message : String(err));
+      }
       return;
     }
 
@@ -135,7 +143,7 @@ export async function chatCommand(opts: { message?: string }): Promise<void> {
           `\n${c.orange}● Tip${c.reset} ${c.gray}Ejemplos:${c.reset}\n` +
             `${c.muted}  · crea un informe en Google Docs de 4 páginas sobre …\n` +
             `  · redacta la introducción (solo chat)\n` +
-            `  · tras Pensando…, Enter muestra el proceso del agente${c.reset}\n`
+            `  · clic en Pensando / Thought → ver proceso del agente${c.reset}\n`
         );
         continue;
       }
@@ -143,19 +151,29 @@ export async function chatCommand(opts: { message?: string }): Promise<void> {
       try {
         const ui = new ThinkingUI();
         ui.begin();
-        const out = await runTurn(session, line, { onEvent: bindThinking(ui) });
-        await ui.finish(true);
-        await handleAgentReply(session, out, true);
+        try {
+          const out = await runTurn(session, line, { onEvent: bindThinking(ui) });
+          await ui.finish(true);
+          await handleAgentReply(session, out, true);
+        } catch (err) {
+          if (isAbort(err)) {
+            ui.abort();
+            cleanExit(0);
+          }
+          const msg = err instanceof Error ? err.message : String(err);
+          await ui.fail(msg);
+          if (/503|ECONNREFUSED|fetch failed|timeout/i.test(msg)) {
+            console.error(`${c.muted}Modelo arrancando (1–2 min). Reintentá.${c.reset}`);
+          } else if (/demasiado largo|context length|400/i.test(msg)) {
+            console.error(
+              `${c.muted}Tip: «salir» y pedí menos páginas, o redactá sin Docs primero.${c.reset}`
+            );
+          }
+        }
       } catch (err) {
         if (isAbort(err)) cleanExit(0);
         const msg = err instanceof Error ? err.message : String(err);
-        if (/503|ECONNREFUSED|fetch failed|timeout/i.test(msg)) {
-          console.error(`\n${c.orange}Modelo arrancando (1–2 min). Reintentá.${c.reset}`);
-        } else if (/maximum context length|demasiado largo/i.test(msg)) {
-          console.error(`\n${c.orange}Contexto lleno. Pedido más corto o «salir» y volvé a entrar.${c.reset}`);
-        } else {
-          console.error(`\n${c.orange}Error:${c.reset} ${msg}`);
-        }
+        console.error(`\n${c.orange}Error:${c.reset} ${msg}`);
       }
     }
     output.write("\n");

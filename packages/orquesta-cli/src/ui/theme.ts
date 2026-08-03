@@ -3,7 +3,6 @@ export const c = {
   reset: "\x1b[0m",
   bold: "\x1b[1m",
   dim: "\x1b[2m",
-  // OpenCode-ish
   blue: "\x1b[38;2;80;160;255m",
   orange: "\x1b[38;2;255;160;60m",
   green: "\x1b[38;2;80;220;120m",
@@ -11,17 +10,65 @@ export const c = {
   muted: "\x1b[38;2;90;90;100m",
   white: "\x1b[38;2;220;220;230m",
   yellow: "\x1b[38;2;240;200;80m",
-  bgInput: "\x1b[48;2;28;28;32m",
+  bgInput: "\x1b[48;2;32;32;36m",
 };
 
-export const LOGO = `
-${c.white}${c.bold}  ██████╗ ██████╗  ██████╗ ██╗   ██╗███████╗███████╗████████╗ █████╗ 
- ██╔═══██╗██╔══██╗██╔═══██╗██║   ██║██╔════╝██╔════╝╚══██╔══╝██╔══██╗
- ██║   ██║██████╔╝██║   ██║██║   ██║█████╗  ███████╗   ██║   ███████║
- ██║   ██║██╔══██╗██║▄▄ ██║██║   ██║██╔══╝  ╚════██║   ██║   ██╔══██║
- ╚██████╔╝██║  ██║╚██████╔╝╚██████╔╝███████╗███████║   ██║   ██║  ██║
-  ╚══▀▀═╝ ╚═╝  ╚═╝ ╚══▀▀═╝  ╚═════╝ ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝${c.reset}
-`.trimEnd();
+function cols(): number {
+  return Math.max(60, outputColumns());
+}
+
+function outputColumns(): number {
+  try {
+    return process.stdout.columns || 80;
+  } catch {
+    return 80;
+  }
+}
+
+/** Ancho visible aproximado (sin ANSI). */
+export function visibleWidth(s: string): number {
+  return s.replace(/\x1b\[[0-9;]*m/g, "").length;
+}
+
+export function centerLine(s: string, width = cols()): string {
+  const w = visibleWidth(s);
+  const pad = Math.max(0, Math.floor((width - w) / 2));
+  return " ".repeat(pad) + s;
+}
+
+export function centerBlock(text: string, width = cols()): string {
+  return text
+    .split("\n")
+    .map((l) => centerLine(l, width))
+    .join("\n");
+}
+
+/** Logo tipo OpenCode: wordmark centrado (hueco / display). */
+export const LOGO = centerBlock(
+  [
+    `${c.white}${c.bold}██████╗ ██████╗  ██████╗ ██╗   ██╗███████╗███████╗████████╗ █████╗ ${c.reset}`,
+    `${c.white}${c.bold}██╔═══██╗██╔══██╗██╔═══██╗██║   ██║██╔════╝██╔════╝╚══██╔══╝██╔══██╗${c.reset}`,
+    `${c.white}${c.bold}██║   ██║██████╔╝██║   ██║██║   ██║█████╗  ███████╗   ██║   ███████║${c.reset}`,
+    `${c.white}${c.bold}██║   ██║██╔══██╗██║▄▄ ██║██║   ██║██╔══╝  ╚════██║   ██║   ██╔══██║${c.reset}`,
+    `${c.white}${c.bold}╚██████╔╝██║  ██║╚██████╔╝╚██████╔╝███████╗███████║   ██║   ██║  ██║${c.reset}`,
+    `${c.white}${c.bold} ╚══▀▀═╝ ╚═╝  ╚═╝ ╚══▀▀═╝  ╚═════╝ ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝${c.reset}`,
+  ].join("\n")
+);
+
+function inputBox(lines: string[], width = cols()): string[] {
+  const inner = Math.min(64, Math.max(48, width - 8));
+  const pad = Math.max(0, Math.floor((width - inner) / 2));
+  const left = " ".repeat(pad);
+  const out: string[] = [];
+  for (const line of lines) {
+    const plain = line.replace(/\x1b\[[0-9;]*m/g, "");
+    const fill = Math.max(0, inner - 2 - plain.length);
+    out.push(
+      `${left}${c.bgInput}${c.blue}┃${c.reset}${c.bgInput} ${line}${c.reset}${c.bgInput}${" ".repeat(fill)}${c.reset}`
+    );
+  }
+  return out;
+}
 
 export function printHome(opts: {
   mcpCount: number;
@@ -29,26 +76,43 @@ export function printHome(opts: {
   version: string;
 }): void {
   const { mcpCount, model, version } = opts;
+  const width = cols();
+
+  // Espacio superior (sensación fullscreen / centrado vertical ligero)
+  const topPad = Math.min(4, Math.max(1, Math.floor(((process.stdout.rows || 24) - 18) / 3)));
+  console.log("\n".repeat(topPad));
   console.log(LOGO);
   console.log("");
-  // Caja de input (referencia OpenCode)
-  console.log(`${c.bgInput}${c.blue}┃${c.reset}${c.bgInput} ${c.gray}Pregunta lo que necesites…  "informe en Google Docs sobre …"${c.reset}${c.bgInput}${" ".repeat(8)}${c.reset}`);
+
+  for (const row of inputBox(
+    [
+      `${c.gray}Pregunta lo que necesites…  "informe en Google Docs sobre …"${c.reset}`,
+      `${c.blue}Build${c.reset}${c.gray} · ${model} · orquesta${c.reset}  ${c.orange}max${c.reset}`,
+    ],
+    width
+  )) {
+    console.log(row);
+  }
+
+  console.log("");
+  console.log(centerLine(`${c.muted}tab ayuda   ctrl+c salir${c.reset}`, width));
+  console.log("");
   console.log(
-    `${c.bgInput}${c.blue}┃${c.reset}${c.bgInput} ${c.blue}Build${c.reset}${c.bgInput}${c.gray} · ${model} · orquesta${c.reset}${c.bgInput}  ${c.orange}max${c.reset}${c.bgInput}${" ".repeat(20)}${c.reset}`
+    centerLine(
+      `${c.orange}● Tip${c.reset} ${c.gray}Si pides Google Docs / Documents, Orquesta usa MCP y te deja el enlace.${c.reset}`,
+      width
+    )
   );
   console.log("");
-  console.log(`${c.muted}  tab ayuda   ctrl+c salir${c.reset}`);
-  console.log("");
-  console.log(
-    `${c.orange}● Tip${c.reset} ${c.gray}Si pides Google Docs / Documents, Orquesta usa MCP y te deja el enlace.${c.reset}`
-  );
-  console.log("");
+
   const mcpLabel =
     mcpCount > 0
       ? `${c.green}○${c.reset} ${mcpCount} MCP`
       : `${c.muted}○ 0 MCP${c.reset}`;
-  console.log(`  ${c.muted}~${c.reset} ${mcpLabel} ${c.muted}/estado${c.reset}`);
-  console.log(`${"".padEnd(40)}${c.muted}${version}${c.reset}`);
+  const footL = `  ${c.muted}~${c.reset} ${mcpLabel} ${c.muted}/estado${c.reset}`;
+  const footR = `${c.muted}${version}${c.reset}`;
+  const gap = Math.max(2, width - visibleWidth(footL) - visibleWidth(footR) - 2);
+  console.log(`${footL}${" ".repeat(gap)}${footR}`);
   console.log("");
 }
 
@@ -74,11 +138,9 @@ export function sanitizeUserInput(raw: string): string {
         .replace(/^\s*orquesta\s*/i, "")
         .trim()
     )
-    .filter((l) => l.length > 0 && !/^Pensand/i.test(l));
-  // Una sola intención: primera línea “real”; si pegó mucho, unir cortas
+    .filter((l) => l.length > 0 && !/^Pensand/i.test(l) && !/^Thought/i.test(l));
   if (!cleaned.length) return raw.trim();
   if (cleaned.length === 1) return cleaned[0];
-  // Si parece pegado de UI, tomar la primera línea sustancial
   const first = cleaned.find((l) => l.length > 2) || cleaned[0];
   return first;
 }

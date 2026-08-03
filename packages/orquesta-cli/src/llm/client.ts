@@ -16,9 +16,9 @@ export function createLlmClient(cfg: OrquestaConfig): OpenAI {
 }
 
 export function approxTokens(messages: OpenAI.Chat.ChatCompletionMessageParam[]): number {
-  // Heurística barata (español ~3–4 chars/token). Mejor pecar de alto.
+  // Heurística conservadora (español + JSON tools). Mejor sobrestimar → evita 400 de vLLM.
   const chars = JSON.stringify(messages).length;
-  return Math.ceil(chars / 3);
+  return Math.ceil(chars / 2.5);
 }
 
 function clampMaxTokens(
@@ -26,13 +26,14 @@ function clampMaxTokens(
   messages: OpenAI.Chat.ChatCompletionMessageParam[]
 ): number {
   const prompt = approxTokens(messages);
-  const room = CONTEXT_LIMIT - prompt - 64;
-  if (room < 128) {
+  const room = CONTEXT_LIMIT - prompt - 256;
+  if (room < 64) {
     throw new Error(
-      `El mensaje es demasiado largo para el modelo (${prompt} tokens aprox. de prompt; límite ${CONTEXT_LIMIT}). Acorta el pedido o empieza un chat nuevo con «salir».`
+      `El mensaje es demasiado largo para el modelo (~${prompt} tok de prompt; límite ${CONTEXT_LIMIT}). ` +
+        `Acorta el pedido, escribe «salir» y entra de nuevo, o pide menos páginas.`
     );
   }
-  return Math.max(128, Math.min(requested, room));
+  return Math.max(64, Math.min(requested, room));
 }
 
 function formatApiError(err: unknown): Error {
@@ -40,9 +41,19 @@ function formatApiError(err: unknown): Error {
   const e = err as {
     message?: string;
     status?: number;
-    error?: { message?: string };
+    error?: { message?: string; type?: string };
+    code?: string;
   };
+  const status = e.status;
   const detail = e.error?.message || e.message || String(err);
+  if (status === 400 || /400/.test(detail)) {
+    return new Error(
+      `El servidor del modelo rechazó el pedido (400). ` +
+        `Suele ser contexto lleno o max_tokens inválido. Probá «salir» y un pedido más corto. ` +
+        `(${detail.slice(0, 180)})`
+    );
+  }
+  if (status) return new Error(`HTTP ${status}: ${detail}`);
   return new Error(detail);
 }
 

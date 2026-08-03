@@ -12,7 +12,7 @@ export const DEFAULTS = {
    * Tokens de salida por ciclo LLM.
    * Contexto Modal ≈ 8192 (prompt + completion).
    */
-  maxTokens: 4096,
+  maxTokens: 2048,
 } as const;
 
 export type StoredConfig = {
