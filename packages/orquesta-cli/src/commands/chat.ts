@@ -23,7 +23,8 @@ function isAbort(err: unknown): boolean {
   );
 }
 
-function cleanExit(code = 0): never {
+function cleanExit(tui: OrquestaTui | null, code = 0): never {
+  tui?.unmount();
   showCursor();
   output.write("\n");
   process.exit(code);
@@ -82,11 +83,11 @@ async function handleAgentReply(
     try {
       pick = await presentChoices(choices);
     } catch (err) {
-      if (isAbort(err)) cleanExit(0);
+      if (isAbort(err)) cleanExit(tui, 0);
       throw err;
     }
 
-    const ui = new ThinkingUI();
+    const ui = new ThinkingUI(tui);
     ui.begin();
     try {
       current = await runTurn(session, pick, { onEvent: bindThinking(ui) });
@@ -95,7 +96,7 @@ async function handleAgentReply(
     } catch (err) {
       if (isAbort(err)) {
         ui.abort();
-        cleanExit(0);
+        cleanExit(tui, 0);
       }
       await ui.fail(err instanceof Error ? err.message : String(err));
       return;
@@ -112,15 +113,17 @@ async function handleAgentReply(
 
 export async function chatCommand(opts: { message?: string }): Promise<void> {
   const cfg = loadConfig();
+  let tuiRef: OrquestaTui | null = null;
 
   const onSigInt = () => {
     try {
+      tuiRef?.unmount();
       showCursor();
       output.write("\n");
     } catch {
       /* ignore */
     }
-    cleanExit(0);
+    process.exit(0);
   };
   process.on("SIGINT", onSigInt);
 
@@ -130,7 +133,7 @@ export async function chatCommand(opts: { message?: string }): Promise<void> {
     output.write(`${c.muted}Conectando herramientas…${c.reset}\n`);
     session = await createSession(cfg);
   } catch (err) {
-    if (isAbort(err)) cleanExit(0);
+    if (isAbort(err)) cleanExit(null, 0);
     throw err;
   }
 
@@ -141,6 +144,7 @@ export async function chatCommand(opts: { message?: string }): Promise<void> {
     mcpCount: session.mcpStatus.connected.length,
     mcpLabel,
   });
+  tuiRef = tui;
 
   try {
     // Modo one-shot (sin TUI interactivo completo)
@@ -148,7 +152,7 @@ export async function chatCommand(opts: { message?: string }): Promise<void> {
       clearScreen();
       console.log(`${c.muted}${mcpLabel}${c.reset}\n`);
       const line = sanitizeUserInput(opts.message);
-      const ui = new ThinkingUI();
+      const ui = new ThinkingUI(null);
       ui.begin();
       try {
         const out = await runTurn(session, line, { onEvent: bindThinking(ui) });
@@ -157,12 +161,15 @@ export async function chatCommand(opts: { message?: string }): Promise<void> {
       } catch (err) {
         if (isAbort(err)) {
           ui.abort();
-          cleanExit(0);
+          cleanExit(null, 0);
         }
         await ui.fail(err instanceof Error ? err.message : String(err));
       }
       return;
     }
+
+    // Buffer alterno: una sola pantalla estable (como OpenCode / OpenTUI)
+    tui.mount();
 
     // ── Home fullscreen (input REAL en la caja) ──
     while (tui.isHome) {
@@ -170,27 +177,23 @@ export async function chatCommand(opts: { message?: string }): Promise<void> {
       try {
         line = sanitizeUserInput(await tui.prompt());
       } catch (err) {
-        if (isAbort(err) || /SIGINT/i.test(String(err))) cleanExit(0);
+        if (isAbort(err) || /SIGINT/i.test(String(err))) cleanExit(tui, 0);
         throw err;
       }
       if (!line) continue;
       if (line === "exit" || line === "salir" || line === "quit") {
-        clearScreen();
-        showCursor();
         break;
       }
       if (line === "ayuda" || line === "help" || line === "tab") {
-        // tip breve y seguir en home
         continue;
       }
 
-      // Pasar a layout sesión (como OpenCode tras el primer mensaje)
       tui.enterSession();
       tui.addUser(line);
       tui.render();
 
       await runOneTurn(session, tui, line);
-      break; // sale del home loop; entra al session loop abajo
+      break;
     }
 
     // ── Sesión: input abajo + chat + Thought con `t` ──
@@ -200,7 +203,7 @@ export async function chatCommand(opts: { message?: string }): Promise<void> {
         try {
           line = sanitizeUserInput(await tui.prompt());
         } catch (err) {
-          if (isAbort(err) || /SIGINT/i.test(String(err))) cleanExit(0);
+          if (isAbort(err) || /SIGINT/i.test(String(err))) cleanExit(tui, 0);
           throw err;
         }
 
@@ -217,13 +220,9 @@ export async function chatCommand(opts: { message?: string }): Promise<void> {
         await runOneTurn(session, tui, line);
       }
     }
-
-    clearScreen();
-    showCursor();
-    output.write("\n");
   } finally {
     process.off("SIGINT", onSigInt);
-    showCursor();
+    tui.unmount();
     await endSession(session);
   }
 }
@@ -233,7 +232,6 @@ async function runOneTurn(
   tui: OrquestaTui,
   line: string
 ): Promise<void> {
-  // Saludos: sin animación eterna — respuesta al toque
   if (/^(hola+|hey|buenas|hi|hello|gracias|ok|vale)[\s!?.¡¿]*$/i.test(line.trim())) {
     const out = await runTurn(session, line);
     tui.addAssistant(out);
@@ -241,7 +239,7 @@ async function runOneTurn(
     return;
   }
 
-  const ui = new ThinkingUI();
+  const ui = new ThinkingUI(tui);
   ui.begin();
   try {
     const out = await runTurn(session, line, { onEvent: bindThinking(ui) });
@@ -252,7 +250,7 @@ async function runOneTurn(
   } catch (err) {
     if (isAbort(err)) {
       ui.abort();
-      cleanExit(0);
+      cleanExit(tui, 0);
     }
     const msg = err instanceof Error ? err.message : String(err);
     await ui.fail(msg);

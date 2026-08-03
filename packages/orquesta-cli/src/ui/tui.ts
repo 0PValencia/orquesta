@@ -1,17 +1,52 @@
+/**
+ * TUI estilo OpenCode (patrones, no OpenTUI nativo):
+ * - Alternate screen buffer → sin scrollback ni pantallas apiladas
+ * - Frame de altura fija (= rows) → nunca hace scroll
+ * - Input actualizado in-place (sin clear total por tecla)
+ * - Logo responsive según ancho del terminal
+ */
 import { stdin as input, stdout as output } from "node:process";
-import { c, centerLine, visibleWidth } from "./theme.js";
+import { c, visibleWidth } from "./theme.js";
 
 export type ChatMessage = { role: "user" | "assistant" | "thought"; text: string };
 
 function termSize(): { cols: number; rows: number } {
   return {
-    cols: Math.max(60, output.columns || 80),
-    rows: Math.max(20, output.rows || 24),
+    cols: Math.max(40, output.columns || 80),
+    rows: Math.max(12, output.rows || 24),
   };
 }
 
-export function clearScreen(): void {
-  output.write("\x1b[2J\x1b[H\x1b[0m");
+/** Recorta a ancho visible, preservando códigos ANSI. */
+function clip(s: string, max: number): string {
+  if (max <= 0) return "";
+  let vis = 0;
+  let out = "";
+  const re = /(\x1b\[[0-9;]*m)|([^\x1b])/g;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(s)) !== null) {
+    if (m[1]) {
+      out += m[1];
+      continue;
+    }
+    if (vis >= max) break;
+    out += m[2];
+    vis++;
+  }
+  return out;
+}
+
+function padEndVis(s: string, width: number): string {
+  const w = visibleWidth(s);
+  if (w >= width) return clip(s, width);
+  return s + " ".repeat(width - w);
+}
+
+function centerVis(s: string, width: number): string {
+  const w = visibleWidth(s);
+  if (w >= width) return clip(s, width);
+  const left = Math.floor((width - w) / 2);
+  return " ".repeat(left) + s + " ".repeat(width - w - left);
 }
 
 export function hideCursor(): void {
@@ -22,7 +57,21 @@ export function showCursor(): void {
   output.write("\x1b[?25h");
 }
 
-const LOGO_LINES = [
+export function enterAltScreen(): void {
+  // Buffer alterno + limpia + cursor home (patrón OpenTUI / fullscreen apps)
+  output.write("\x1b[?1049h\x1b[2J\x1b[H\x1b[0m");
+}
+
+export function leaveAltScreen(): void {
+  output.write("\x1b[?1049l\x1b[0m");
+  showCursor();
+}
+
+export function clearScreen(): void {
+  output.write("\x1b[2J\x1b[H\x1b[0m");
+}
+
+const LOGO_FULL = [
   "██████╗ ██████╗  ██████╗ ██╗   ██╗███████╗███████╗████████╗ █████╗ ",
   "██╔═══██╗██╔══██╗██╔═══██╗██║   ██║██╔════╝██╔════╝╚══██╔══╝██╔══██╗",
   "██║   ██║██████╔╝██║   ██║██║   ██║█████╗  ███████╗   ██║   ███████║",
@@ -31,8 +80,21 @@ const LOGO_LINES = [
   " ╚══▀▀═╝ ╚═╝  ╚═╝ ╚══▀▀═╝  ╚═════╝ ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝",
 ];
 
+const LOGO_COMPACT = [
+  "╔═╗╦═╗╔═╗ ╦ ╦╔═╗╔═╗╔╦╗╔═╗",
+  "║ ║╠╦╝║═╬╗║ ║║╣ ╚═╗ ║ ╠═╣",
+  "╚═╝╩╚═╚═╝╚╚═╝╚═╝╚═╝ ╩ ╩ ╩",
+];
+
+function logoLines(cols: number): string[] {
+  const fullW = LOGO_FULL[0].length;
+  if (cols >= fullW + 4) return LOGO_FULL;
+  if (cols >= 28) return LOGO_COMPACT;
+  return [`${c.bold}ORQUESTA${c.reset}`];
+}
+
 function boxInnerWidth(cols: number): number {
-  return Math.min(72, Math.max(44, cols - 10));
+  return Math.min(64, Math.max(28, cols - 8));
 }
 
 async function readLineRaw(opts: {
@@ -41,7 +103,6 @@ async function readLineRaw(opts: {
 }): Promise<string> {
   return new Promise((resolve, reject) => {
     if (!input.isTTY) {
-      let data = "";
       input.setEncoding("utf8");
       input.once("data", (chunk) => resolve(String(chunk).trim()));
       return;
@@ -61,6 +122,7 @@ async function readLineRaw(opts: {
 
     const onData = (chunk: Buffer | string) => {
       const s = String(chunk);
+      // Ignorar eventos de ratón / SGR
       if (s.includes("\x1b[<") || /\x1b\[M/.test(s)) return;
 
       if (s === "\u0003") {
@@ -79,6 +141,7 @@ async function readLineRaw(opts: {
         opts.onChange(buf);
         return;
       }
+      // Secuencias de escape (flechas, etc.)
       if (s.startsWith("\x1b")) return;
       const clean = s.replace(/[\x00-\x1f]/g, "");
       if (!clean) return;
@@ -94,6 +157,7 @@ async function readLineRaw(opts: {
       return;
     }
     input.resume();
+    input.setEncoding("utf8");
     input.on("data", onData);
   });
 }
@@ -111,6 +175,11 @@ export class OrquestaTui {
   private draft = "";
   private thoughtExpanded = false;
   private lastThoughtLines: string[] = [];
+  private statusLine = "";
+  private alt = false;
+  private inputRow = 0;
+  private painting = false;
+  private resizeHandler: (() => void) | null = null;
   readonly opts: TuiOpts;
 
   constructor(opts: TuiOpts) {
@@ -119,6 +188,32 @@ export class OrquestaTui {
 
   get isHome(): boolean {
     return this.mode === "home";
+  }
+
+  /** Entra al buffer alterno (llamar una vez al iniciar el chat interactivo). */
+  mount(): void {
+    if (this.alt) return;
+    enterAltScreen();
+    hideCursor();
+    this.alt = true;
+    this.resizeHandler = () => {
+      if (!this.painting) this.paint(true);
+    };
+    output.on("resize", this.resizeHandler);
+  }
+
+  /** Sale del buffer alterno. */
+  unmount(): void {
+    if (this.resizeHandler) {
+      output.off("resize", this.resizeHandler);
+      this.resizeHandler = null;
+    }
+    if (this.alt) {
+      leaveAltScreen();
+      this.alt = false;
+    } else {
+      showCursor();
+    }
   }
 
   enterSession(): void {
@@ -139,158 +234,216 @@ export class OrquestaTui {
     this.messages.push({ role: "thought", text: summary });
   }
 
+  setStatus(text: string): void {
+    this.statusLine = text;
+    this.paint(true);
+  }
+
+  clearStatus(): void {
+    this.statusLine = "";
+    this.paint(true);
+  }
+
   toggleLastThought(): boolean {
     if (!this.lastThoughtLines.length) return false;
     this.thoughtExpanded = !this.thoughtExpanded;
-    this.render();
+    this.paint(true);
     return true;
   }
 
-  renderHome(): void {
-    const { cols, rows } = termSize();
+  /** API pública: redibuja frame completo. */
+  render(): void {
+    this.paint(true);
+  }
+
+  private drawBoxLine(content: string, inner: number): string {
+    const plain = content.replace(/\x1b\[[0-9;]*m/g, "");
+    const pad = Math.max(0, inner - 2 - Math.min(plain.length, inner - 2));
+    const clipped = clip(content, inner - 2);
+    return `${c.bgInput}${c.blue}┃${c.reset}${c.bgInput} ${clipped}${c.reset}${c.bgInput}${" ".repeat(pad)}${c.reset}`;
+  }
+
+  private buildHome(cols: number, rows: number): { lines: string[]; inputRow: number } {
     const inner = boxInnerWidth(cols);
-    const tip = "Si pides Google Docs / Documents, Orquesta usa MCP y te deja el enlace.";
-    const placeholder = 'Pregunta lo que necesites…  "informe en Google Docs sobre …"';
-    const line1 = this.draft.length ? this.draft.slice(-(inner - 4)) : `${c.gray}${placeholder}${c.reset}`;
+    const tip = "Si pides Google Docs, Orquesta usa MCP y te deja el enlace.";
+    const placeholder = 'Pregunta lo que necesites…  "informe en Docs…"';
+    const draftShown = this.draft.length
+      ? this.draft.slice(-(inner - 4))
+      : `${c.gray}${placeholder}${c.reset}`;
+
+    const logo = logoLines(cols).map((l) => `${c.white}${c.bold}${l}${c.reset}`);
+    const mcpShort =
+      this.opts.mcpCount > 0
+        ? `${c.green}○${c.reset} ${this.opts.mcpCount} MCP · ${this.opts.mcpCount ? "listas" : ""}`
+        : `${c.muted}○ 0 MCP${c.reset}`;
 
     const block: string[] = [
-      ...LOGO_LINES.map((l) => `${c.white}${c.bold}${l}${c.reset}`),
+      ...logo,
       "",
-      this.drawBoxLine(line1, inner),
+      this.drawBoxLine(draftShown, inner),
       this.drawBoxLine(
         `${c.blue}Build${c.reset}${c.gray} · ${this.opts.model} · orquesta${c.reset}  ${c.orange}max${c.reset}`,
         inner
       ),
       "",
-      `${c.muted}enter enviar   ctrl+c salir${c.reset}`,
+      `${c.muted}enter enviar · ctrl+c salir${c.reset}`,
       "",
       `${c.orange}● Tip${c.reset} ${c.gray}${tip}${c.reset}`,
       "",
-      `${c.muted}~${c.reset} ${c.green}○${c.reset} ${this.opts.mcpCount} MCP ${c.muted}/estado${c.reset}    ${c.muted}${this.opts.version}${c.reset}`,
-      "",
-      `${c.muted}${this.opts.mcpLabel.replace(/\x1b\[[0-9;]*m/g, "")}${c.reset}`,
+      `${c.muted}~${c.reset} ${mcpShort} ${c.muted}/estado${c.reset}    ${c.muted}${this.opts.version}${c.reset}`,
     ];
 
-    const topPad = Math.max(1, Math.floor((rows - block.length) / 3));
-    clearScreen();
-    hideCursor();
-    for (let i = 0; i < topPad; i++) output.write("\n");
-    for (const row of block) output.write(centerLine(row, cols) + "\n");
-    showCursor();
+    if (this.statusLine) {
+      block.push("", `${c.yellow}${this.statusLine}${c.reset}`);
+    }
+
+    // Centrar verticalmente sin desbordar rows
+    const contentH = Math.min(block.length, rows);
+    const topPad = Math.max(0, Math.floor((rows - contentH) / 3));
+    const lines = Array.from({ length: rows }, () => "");
+    let inputRow = topPad + logo.length + 1; // fila de la caja de input
+
+    for (let i = 0; i < contentH; i++) {
+      const row = topPad + i;
+      if (row >= rows) break;
+      lines[row] = centerVis(block[i], cols);
+      // Detectar fila del input (primera línea de caja = draft)
+      if (i === logo.length + 1) inputRow = row;
+    }
+    return { lines, inputRow };
   }
 
-  private drawBoxLine(content: string, inner: number): string {
-    const plain = content.replace(/\x1b\[[0-9;]*m/g, "");
-    const pad = Math.max(0, inner - 2 - plain.length);
-    return `${c.bgInput}${c.blue}┃${c.reset}${c.bgInput} ${content}${c.reset}${c.bgInput}${" ".repeat(pad)}${c.reset}`;
-  }
-
-  renderSession(): void {
-    const { cols, rows } = termSize();
-    const sidebarW = cols >= 110 ? 30 : 0;
-    const mainW = cols - (sidebarW ? sidebarW + 1 : 0);
+  private buildSession(cols: number, rows: number): { lines: string[]; inputRow: number } {
     const inputH = 3;
-    const bodyH = Math.max(6, rows - inputH - 2);
+    const headerH = 1;
+    const statusH = this.statusLine ? 1 : 0;
+    const bodyH = Math.max(4, rows - inputH - headerH - statusH);
+    const lines = Array.from({ length: rows }, () => "");
 
-    clearScreen();
-    hideCursor();
-
-    // título sesión
-    output.write(
+    lines[0] = padEndVis(
       `${c.blue}Build${c.reset}${c.gray} · ${this.opts.model}${c.reset}` +
-        `${" ".repeat(Math.max(1, cols - 40))}${c.muted}${this.opts.version}${c.reset}\n`
+        `${" ".repeat(4)}${c.muted}${this.opts.version}${c.reset}`,
+      cols
     );
 
-    const lines: string[] = [];
+    const chat: string[] = [];
     for (const m of this.messages) {
       if (m.role === "user") {
-        lines.push(`${c.white}${m.text}${c.reset}`);
-        lines.push("");
+        chat.push(`${c.white}${m.text}${c.reset}`);
+        chat.push("");
       } else if (m.role === "assistant") {
         for (const l of m.text.split("\n")) {
-          lines.push(`${c.blue}┃${c.reset} ${c.white}${l}${c.reset}`);
+          chat.push(`${c.blue}┃${c.reset} ${c.white}${l}${c.reset}`);
         }
-        lines.push("");
+        chat.push("");
       } else if (m.role === "thought") {
         const arrow = this.thoughtExpanded ? "▾" : "▸";
-        lines.push(
-          `${c.orange}${arrow} Thought · ${m.text}${c.reset}${c.muted}   (escribí t + enter)${c.reset}`
+        chat.push(
+          `${c.orange}${arrow} Thought · ${m.text}${c.reset}${c.muted}  (t + enter)${c.reset}`
         );
         if (this.thoughtExpanded) {
           for (const d of this.lastThoughtLines) {
-            lines.push(`${c.muted}  · ${d}${c.reset}`);
+            chat.push(`${c.muted}  · ${d}${c.reset}`);
           }
         }
-        lines.push("");
+        chat.push("");
       }
     }
 
-    const visible = lines.slice(-bodyH);
+    const visible = chat.slice(-bodyH);
     const padTop = Math.max(0, bodyH - visible.length);
-
-    const sideLines = [
-      `${c.bold} Sesión${c.reset}`,
-      "",
-      `${c.muted} Context${c.reset}`,
-      ` ${this.messages.length} msgs`,
-      "",
-      `${c.muted} MCP${c.reset}`,
-      ` ${c.green}●${c.reset} ${this.opts.mcpCount} conectados`,
-      "",
-      `${c.muted} Model${c.reset}`,
-      ` ${this.opts.model}`,
-    ];
-
     for (let i = 0; i < bodyH; i++) {
-      const main =
-        i < padTop ? "" : visible[i - padTop] || "";
-      const mainPad = Math.max(0, mainW - visibleWidth(main) - 1);
-      let row = main + " ".repeat(mainPad);
-      if (sidebarW > 0) {
-        const side = (sideLines[i] || "").padEnd(sidebarW).slice(0, sidebarW);
-        row += `${c.muted}│${c.reset}${side}`;
-      }
-      output.write(row + "\n");
+      const text = i < padTop ? "" : visible[i - padTop] || "";
+      lines[headerH + i] = padEndVis(text, cols);
     }
 
-    // Input REAL abajo (como OpenCode en sesión)
-    const barInner = Math.max(10, cols - 4);
+    let row = headerH + bodyH;
+    if (this.statusLine && row < rows) {
+      lines[row] = padEndVis(`${c.yellow}${this.statusLine}${c.reset}`, cols);
+      row++;
+    }
+
+    const inputRow = Math.min(row, rows - inputH);
+    const barInner = Math.max(8, cols - 4);
     const shown = this.draft.slice(-(barInner - 2));
     const fill = Math.max(0, barInner - 2 - visibleWidth(shown));
-    output.write(
-      `${c.bgInput}${c.blue}┃${c.reset}${c.bgInput} ${c.white}${shown}${c.reset}${c.bgInput}${" ".repeat(fill)}${c.reset}\n`
+    lines[inputRow] = padEndVis(
+      `${c.bgInput}${c.blue}┃${c.reset}${c.bgInput} ${c.white}${shown}${c.reset}${c.bgInput}${" ".repeat(fill)}${c.reset}`,
+      cols
     );
-    output.write(
-      `${c.muted}Build · ${this.opts.model} · orquesta${c.reset}  ${c.orange}max${c.reset}` +
-        `${" ".repeat(4)}${c.muted}t thought · ctrl+c salir${c.reset}\n`
-    );
-    showCursor();
+    if (inputRow + 1 < rows) {
+      lines[inputRow + 1] = padEndVis(
+        `${c.muted}Build · ${this.opts.model}${c.reset}  ${c.orange}max${c.reset}` +
+          `${" ".repeat(3)}${c.muted}t thought · ctrl+c salir${c.reset}`,
+        cols
+      );
+    }
+
+    return { lines, inputRow };
   }
 
-  render(): void {
-    if (this.mode === "home") this.renderHome();
-    else this.renderSession();
+  /**
+   * Pinta exactamente `rows` líneas en (0,0). Nunca hace scroll → no duplica.
+   */
+  private paint(full: boolean): void {
+    if (!this.alt) {
+      // Fallback si aún no montamos (p.ej. tests)
+      enterAltScreen();
+      this.alt = true;
+    }
+    if (this.painting) return;
+    this.painting = true;
+    try {
+      const { cols, rows } = termSize();
+      const built =
+        this.mode === "home" ? this.buildHome(cols, rows) : this.buildSession(cols, rows);
+      this.inputRow = built.inputRow;
+
+      if (full) {
+        hideCursor();
+        // Home + pintar cada fila con clear-to-eol (sin \n extras al final)
+        output.write("\x1b[H");
+        for (let i = 0; i < rows; i++) {
+          const line = clip(built.lines[i] || "", cols);
+          output.write(`\x1b[${i + 1};1H\x1b[2K${line}`);
+        }
+        // Cursor en la caja de input
+        const col = Math.min(cols - 1, 3 + Math.min(this.draft.length, boxInnerWidth(cols) - 4));
+        output.write(`\x1b[${this.inputRow + 1};${col}H`);
+        showCursor();
+      } else {
+        // Solo actualizar fila de input (tecleo rápido)
+        const line = clip(built.lines[this.inputRow] || "", cols);
+        hideCursor();
+        output.write(`\x1b[${this.inputRow + 1};1H\x1b[2K${line}`);
+        const col = Math.min(cols - 1, 3 + Math.min(this.draft.length, boxInnerWidth(cols) - 4));
+        output.write(`\x1b[${this.inputRow + 1};${col}H`);
+        showCursor();
+      }
+    } finally {
+      this.painting = false;
+    }
   }
 
   async prompt(): Promise<string> {
     this.draft = "";
-    this.render();
+    if (!this.alt) this.mount();
+    this.paint(true);
     try {
       const line = await readLineRaw({
         onChange: (buf) => {
           this.draft = buf;
-          this.render();
+          // Solo la fila del input → responsive, sin flicker ni duplicación
+          this.paint(false);
         },
         onCtrlC: () => {
-          showCursor();
-          clearScreen();
+          this.unmount();
           process.exit(0);
         },
       });
       this.draft = "";
       return line.trim();
     } catch (e) {
-      showCursor();
       throw e;
     }
   }

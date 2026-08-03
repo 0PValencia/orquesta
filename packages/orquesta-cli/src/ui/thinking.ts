@@ -1,10 +1,16 @@
-import { stdout as output } from "node:process";
 import { c } from "./theme.js";
 
 export type TraceLine = { kind: "cycle" | "tool" | "info" | "warn"; text: string };
 
+export type ThinkingSink = {
+  setStatus(text: string): void;
+  clearStatus(): void;
+  render?(): void;
+};
+
 /**
- * Pensando: UNA sola línea (sin spam). El detalle va a Thought en el TUI (`t`).
+ * Pensando: UNA sola línea de estado en el TUI (sin escribir a stdout suelto).
+ * Si no hay sink (modo one-shot), cae a \r en stdout.
  */
 export class ThinkingUI {
   private lines: TraceLine[] = [];
@@ -14,6 +20,11 @@ export class ThinkingUI {
   private startedAt = 0;
   private elapsedMs = 0;
   private active = false;
+  private sink: ThinkingSink | null;
+
+  constructor(sink: ThinkingSink | null = null) {
+    this.sink = sink;
+  }
 
   begin(): void {
     this.lines = [];
@@ -22,7 +33,6 @@ export class ThinkingUI {
     this.active = true;
     this.startedAt = Date.now();
     this.elapsedMs = 0;
-    output.write("\n");
     this.paint();
     this.timer = setInterval(() => {
       if (this.done || !this.active) return;
@@ -37,9 +47,12 @@ export class ThinkingUI {
 
   private paint(): void {
     if (!this.active || this.done) return;
-    const label = `${c.yellow}${c.bold}Pensando${".".repeat(this.dots)}${" ".repeat(3 - this.dots)}${c.reset}`;
-    // Solo \r — nunca \n (evita el spam de líneas)
-    output.write(`\r\x1b[2K  ${label}${c.muted}  …${c.reset}`);
+    const label = `Pensando${".".repeat(this.dots)}${" ".repeat(3 - this.dots)}`;
+    if (this.sink) {
+      this.sink.setStatus(label);
+      return;
+    }
+    process.stdout.write(`\r\x1b[2K  ${c.yellow}${c.bold}${label}${c.reset}`);
   }
 
   private stopTimer(): void {
@@ -53,7 +66,8 @@ export class ThinkingUI {
     this.stopTimer();
     this.active = false;
     this.done = true;
-    output.write("\r\x1b[2K");
+    this.sink?.clearStatus();
+    if (!this.sink) process.stdout.write("\r\x1b[2K");
   }
 
   async fail(message: string): Promise<void> {
@@ -61,10 +75,13 @@ export class ThinkingUI {
     this.done = true;
     this.active = false;
     this.elapsedMs = Date.now() - this.startedAt;
-    output.write(
-      `\r\x1b[2K  ${c.orange}✗${c.reset} ${c.muted}${(this.elapsedMs / 1000).toFixed(1)}s${c.reset}\n`
-    );
-    output.write(`${c.orange}Error:${c.reset} ${message}\n`);
+    this.sink?.clearStatus();
+    if (!this.sink) {
+      process.stdout.write(
+        `\r\x1b[2K  ${c.orange}✗${c.reset} ${c.muted}${(this.elapsedMs / 1000).toFixed(1)}s${c.reset}\n`
+      );
+      process.stdout.write(`${c.orange}Error:${c.reset} ${message}\n`);
+    }
   }
 
   async finish(): Promise<{ summary: string; details: string[] }> {
@@ -73,7 +90,8 @@ export class ThinkingUI {
     this.active = false;
     this.elapsedMs = Date.now() - this.startedAt;
     const secs = (this.elapsedMs / 1000).toFixed(1);
-    output.write("\r\x1b[2K");
+    this.sink?.clearStatus();
+    if (!this.sink) process.stdout.write("\r\x1b[2K");
     const details = this.lines.map((l) => {
       const icon = l.kind === "tool" ? "⚙" : l.kind === "cycle" ? "↻" : l.kind === "warn" ? "!" : "·";
       return `${icon} ${l.text}`;
