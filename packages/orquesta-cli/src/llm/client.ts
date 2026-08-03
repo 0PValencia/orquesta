@@ -11,7 +11,9 @@ export function createLlmClient(cfg: OrquestaConfig): OpenAI {
   return new OpenAI({
     apiKey: cfg.apiKey,
     baseURL: cfg.baseUrl,
-    timeout: 10 * 60 * 1000,
+    /** No dejar la UI en “Pensando…” para siempre si Modal no responde. */
+    timeout: 90 * 1000,
+    maxRetries: 1,
   });
 }
 
@@ -54,6 +56,11 @@ function formatApiError(err: unknown): Error {
     );
   }
   if (status) return new Error(`HTTP ${status}: ${detail}`);
+  if (/timeout|ETIMEDOUT|AbortError/i.test(detail)) {
+    return new Error(
+      "El modelo no respondió a tiempo (timeout 90s). Puede estar arrancando en Modal: esperá 1–2 min y reintentá."
+    );
+  }
   return new Error(detail);
 }
 

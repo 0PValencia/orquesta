@@ -30,6 +30,10 @@ const RESEARCH_INTENT =
 const FULL_REPORT_INTENT =
   /\b(informe\s+completo|proyecto\s+completo|todo\s+el\s+informe|documento\s+completo|perfil\s+completo|(genera(r)?|redacta)\s+(el\s+|un\s+)?informe\s+completo)\b/i;
 
+/** Saludos / chitchat corto: no vale la pena ir a Modal. */
+const SIMPLE_CHAT =
+  /^(hola+|hey|buenas(\s+tardes|\s+noches|\s+días)?|hi|hello|qué\s+tal|que\s+tal|buenos\s+días|buen\s+día|saludos|gracias|ok|vale|listo)[\s!?.¡¿]*$/i;
+
 const SEARCH_TOOL_RE = /^(search|web_search|web-search|news_search)$/i;
 const FETCH_TOOL_RE = /^(fetch_content|fetch_url|fetch)$/i;
 /** Mínimo de caracteres por bloque append para contar como sección. */
@@ -199,6 +203,23 @@ export async function runTurn(
   userText: string,
   opts?: RunTurnOpts
 ): Promise<string> {
+  const trimmed = userText.trim();
+
+  // Saludo / ok corto → respuesta inmediata (evita “Pensando…” eterno si Modal está frío o la UI falla)
+  if (SIMPLE_CHAT.test(trimmed)) {
+    const msg =
+      /gracias/i.test(trimmed)
+        ? "¡De nada! Cuando quieras: un informe en chat o en Google Docs."
+        : "¡Hola! Soy Orquesta. Puedo redactar informes académicos o crearlos en Google Docs. ¿Qué necesitás?";
+    session.messages.push({ role: "user", content: userText });
+    session.messages.push({ role: "assistant", content: msg });
+    session.lastUserQuery = userText;
+    session.lastTurnUsedTools = false;
+    session.toolsMode = false;
+    opts?.onEvent?.({ type: "info", text: "respuesta rápida (sin LLM)" });
+    return msg;
+  }
+
   if (DOCS_INTENT.test(userText) && session.tools.length === 0) {
     const msg = noMcpMessage(session.mcpStatus, userText);
     session.messages.push({ role: "user", content: userText });

@@ -6,10 +6,12 @@ import {
   endSession,
   runTurn,
   type AgentEvent,
+  type AgentSession,
 } from "../agent/loop.js";
 import { parseChoices, presentChoices, stripChoices } from "../ui/choices.js";
-import { ThinkingUI, readChatLine } from "../ui/thinking.js";
-import { c, printAssistant, printHome, sanitizeUserInput } from "../ui/theme.js";
+import { ThinkingUI } from "../ui/thinking.js";
+import { OrquestaTui, clearScreen, showCursor } from "../ui/tui.js";
+import { c, printAssistant, sanitizeUserInput } from "../ui/theme.js";
 
 function isAbort(err: unknown): boolean {
   if (!err || typeof err !== "object") return false;
@@ -22,6 +24,7 @@ function isAbort(err: unknown): boolean {
 }
 
 function cleanExit(code = 0): never {
+  showCursor();
   output.write("\n");
   process.exit(code);
 }
@@ -41,8 +44,9 @@ function bindThinking(ui: ThinkingUI): (e: AgentEvent) => void {
 }
 
 async function handleAgentReply(
-  session: Awaited<ReturnType<typeof createSession>>,
+  session: AgentSession,
   out: string,
+  tui: OrquestaTui | null,
   interactive: boolean
 ): Promise<void> {
   let current = out;
@@ -50,16 +54,27 @@ async function handleAgentReply(
     const choices = parseChoices(current);
     if (!choices) {
       const text = stripChoices(current);
-      if (text) printAssistant(text);
+      if (text) {
+        if (tui) {
+          tui.addAssistant(text);
+          tui.render();
+        } else {
+          printAssistant(text);
+        }
+      }
       return;
     }
 
-    if (choices.preamble) printAssistant(choices.preamble);
+    if (choices.preamble) {
+      if (tui) {
+        tui.addAssistant(choices.preamble);
+        tui.render();
+      } else printAssistant(choices.preamble);
+    }
 
     if (!interactive) {
       console.log(choices.question);
       choices.options.forEach((o, idx) => console.log(`  ${idx + 1}) ${o}`));
-      console.log("  *) Opción propia");
       return;
     }
 
@@ -73,11 +88,26 @@ async function handleAgentReply(
 
     const ui = new ThinkingUI();
     ui.begin();
-    current = await runTurn(session, pick, { onEvent: bindThinking(ui) });
-    await ui.finish(interactive);
+    try {
+      current = await runTurn(session, pick, { onEvent: bindThinking(ui) });
+      const thought = await ui.finish();
+      if (tui) tui.addThought(thought.summary, thought.details);
+    } catch (err) {
+      if (isAbort(err)) {
+        ui.abort();
+        cleanExit(0);
+      }
+      await ui.fail(err instanceof Error ? err.message : String(err));
+      return;
+    }
   }
   const text = stripChoices(current);
-  if (text) printAssistant(text);
+  if (text) {
+    if (tui) {
+      tui.addAssistant(text);
+      tui.render();
+    } else printAssistant(text);
+  }
 }
 
 export async function chatCommand(opts: { message?: string }): Promise<void> {
@@ -85,6 +115,7 @@ export async function chatCommand(opts: { message?: string }): Promise<void> {
 
   const onSigInt = () => {
     try {
+      showCursor();
       output.write("\n");
     } catch {
       /* ignore */
@@ -93,31 +124,36 @@ export async function chatCommand(opts: { message?: string }): Promise<void> {
   };
   process.on("SIGINT", onSigInt);
 
-  let session;
+  let session: AgentSession;
   try {
+    clearScreen();
+    output.write(`${c.muted}Conectando herramientas…${c.reset}\n`);
     session = await createSession(cfg);
   } catch (err) {
     if (isAbort(err)) cleanExit(0);
     throw err;
   }
 
-  printHome({
-    mcpCount: session.mcpStatus.connected.length,
+  const mcpLabel = describeMcpStatus(session.mcpStatus);
+  const tui = new OrquestaTui({
     model: cfg.model,
     version: "0.1.0",
+    mcpCount: session.mcpStatus.connected.length,
+    mcpLabel,
   });
-  console.log(`${c.muted}${describeMcpStatus(session.mcpStatus)}${c.reset}`);
-  console.log("");
 
   try {
+    // Modo one-shot (sin TUI interactivo completo)
     if (opts.message) {
+      clearScreen();
+      console.log(`${c.muted}${mcpLabel}${c.reset}\n`);
       const line = sanitizeUserInput(opts.message);
       const ui = new ThinkingUI();
       ui.begin();
       try {
         const out = await runTurn(session, line, { onEvent: bindThinking(ui) });
-        await ui.finish(false);
-        await handleAgentReply(session, out, false);
+        await ui.finish();
+        await handleAgentReply(session, out, null, false);
       } catch (err) {
         if (isAbort(err)) {
           ui.abort();
@@ -128,57 +164,99 @@ export async function chatCommand(opts: { message?: string }): Promise<void> {
       return;
     }
 
-    while (true) {
+    // ── Home fullscreen (input REAL en la caja) ──
+    while (tui.isHome) {
       let line: string;
       try {
-        line = sanitizeUserInput(await readChatLine());
+        line = sanitizeUserInput(await tui.prompt());
       } catch (err) {
-        if (isAbort(err)) cleanExit(0);
+        if (isAbort(err) || /SIGINT/i.test(String(err))) cleanExit(0);
         throw err;
       }
       if (!line) continue;
-      if (line === "exit" || line === "salir" || line === "quit") break;
-      if (line === "ayuda" || line === "help") {
-        console.log(
-          `\n${c.orange}● Tip${c.reset} ${c.gray}Ejemplos:${c.reset}\n` +
-            `${c.muted}  · crea un informe en Google Docs de 4 páginas sobre …\n` +
-            `  · redacta la introducción (solo chat)\n` +
-            `  · clic en Pensando / Thought → ver proceso del agente${c.reset}\n`
-        );
+      if (line === "exit" || line === "salir" || line === "quit") {
+        clearScreen();
+        showCursor();
+        break;
+      }
+      if (line === "ayuda" || line === "help" || line === "tab") {
+        // tip breve y seguir en home
         continue;
       }
 
-      try {
-        const ui = new ThinkingUI();
-        ui.begin();
+      // Pasar a layout sesión (como OpenCode tras el primer mensaje)
+      tui.enterSession();
+      tui.addUser(line);
+      tui.render();
+
+      await runOneTurn(session, tui, line);
+      break; // sale del home loop; entra al session loop abajo
+    }
+
+    // ── Sesión: input abajo + chat + Thought con `t` ──
+    if (!tui.isHome) {
+      while (true) {
+        let line: string;
         try {
-          const out = await runTurn(session, line, { onEvent: bindThinking(ui) });
-          await ui.finish(true);
-          await handleAgentReply(session, out, true);
+          line = sanitizeUserInput(await tui.prompt());
         } catch (err) {
-          if (isAbort(err)) {
-            ui.abort();
-            cleanExit(0);
-          }
-          const msg = err instanceof Error ? err.message : String(err);
-          await ui.fail(msg);
-          if (/503|ECONNREFUSED|fetch failed|timeout/i.test(msg)) {
-            console.error(`${c.muted}Modelo arrancando (1–2 min). Reintentá.${c.reset}`);
-          } else if (/demasiado largo|context length|400/i.test(msg)) {
-            console.error(
-              `${c.muted}Tip: «salir» y pedí menos páginas, o redactá sin Docs primero.${c.reset}`
-            );
-          }
+          if (isAbort(err) || /SIGINT/i.test(String(err))) cleanExit(0);
+          throw err;
         }
-      } catch (err) {
-        if (isAbort(err)) cleanExit(0);
-        const msg = err instanceof Error ? err.message : String(err);
-        console.error(`\n${c.orange}Error:${c.reset} ${msg}`);
+
+        if (!line) continue;
+        if (line === "exit" || line === "salir" || line === "quit") break;
+        if (line === "t" || line === "T") {
+          tui.toggleLastThought();
+          continue;
+        }
+        if (line === "ayuda" || line === "help") continue;
+
+        tui.addUser(line);
+        tui.render();
+        await runOneTurn(session, tui, line);
       }
     }
+
+    clearScreen();
+    showCursor();
     output.write("\n");
   } finally {
     process.off("SIGINT", onSigInt);
+    showCursor();
     await endSession(session);
+  }
+}
+
+async function runOneTurn(
+  session: AgentSession,
+  tui: OrquestaTui,
+  line: string
+): Promise<void> {
+  // Saludos: sin animación eterna — respuesta al toque
+  if (/^(hola+|hey|buenas|hi|hello|gracias|ok|vale)[\s!?.¡¿]*$/i.test(line.trim())) {
+    const out = await runTurn(session, line);
+    tui.addAssistant(out);
+    tui.render();
+    return;
+  }
+
+  const ui = new ThinkingUI();
+  ui.begin();
+  try {
+    const out = await runTurn(session, line, { onEvent: bindThinking(ui) });
+    const thought = await ui.finish();
+    tui.addThought(thought.summary, thought.details);
+    await handleAgentReply(session, out, tui, true);
+    tui.render();
+  } catch (err) {
+    if (isAbort(err)) {
+      ui.abort();
+      cleanExit(0);
+    }
+    const msg = err instanceof Error ? err.message : String(err);
+    await ui.fail(msg);
+    tui.addAssistant(`Error: ${msg}`);
+    tui.render();
   }
 }
