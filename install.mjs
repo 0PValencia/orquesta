@@ -322,6 +322,10 @@ function mirrorCursorFromAgents(skills) {
 }
 
 async function main() {
+  // Flush inmediato (evita “pantalla en blanco” con pipes / buffering)
+  process.stderr.write(`${GREEN}${BOLD}Orquesta skills${RESET}\n`);
+  process.stderr.write(`${DIM}${REPO}${RESET}\n\n`);
+
   const args = parseArgs(process.argv.slice(2));
   if (args.help) {
     usage();
