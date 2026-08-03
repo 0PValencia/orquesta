@@ -28,11 +28,11 @@ function clampMaxTokens(
   messages: OpenAI.Chat.ChatCompletionMessageParam[]
 ): number {
   const prompt = approxTokens(messages);
-  const room = CONTEXT_LIMIT - prompt - 256;
+  const room = CONTEXT_LIMIT - prompt - 128;
   if (room < 64) {
+    // Último intento: el caller debería haber podado; mensaje más claro
     throw new Error(
-      `El mensaje es demasiado largo para el modelo (~${prompt} tok de prompt; límite ${CONTEXT_LIMIT}). ` +
-        `Acorta el pedido, escribe «salir» y entra de nuevo, o pide menos páginas.`
+      `Contexto lleno (~${prompt}/${CONTEXT_LIMIT} tok). Escribí «salir» y arrancá de nuevo, o pedí menos páginas.`
     );
   }
   return Math.max(64, Math.min(requested, room));

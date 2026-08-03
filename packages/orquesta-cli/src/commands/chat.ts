@@ -81,7 +81,7 @@ async function handleAgentReply(
 
     let pick: string;
     try {
-      pick = await presentChoices(choices);
+      pick = await presentChoices(choices, tui);
     } catch (err) {
       if (isAbort(err)) cleanExit(tui, 0);
       throw err;

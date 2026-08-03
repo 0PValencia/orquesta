@@ -135,6 +135,8 @@ function boxInnerWidth(cols: number): number {
 async function readLineRaw(opts: {
   onChange: (buf: string) => void;
   onCtrlC?: () => void;
+  /** Clic izquierdo: fila 1-based del terminal */
+  onClick?: (row: number, col: number) => void;
 }): Promise<string> {
   return new Promise((resolve, reject) => {
     if (!input.isTTY) {
@@ -146,8 +148,20 @@ async function readLineRaw(opts: {
     let buf = "";
     opts.onChange(buf);
 
+    // Mouse SGR (clic Thought)
+    try {
+      output.write("\x1b[?1000h\x1b[?1006h");
+    } catch {
+      /* ignore */
+    }
+
     const cleanup = () => {
       input.off("data", onData);
+      try {
+        output.write("\x1b[?1006l\x1b[?1000l");
+      } catch {
+        /* ignore */
+      }
       try {
         input.setRawMode(wasRaw ?? false);
       } catch {
@@ -157,7 +171,17 @@ async function readLineRaw(opts: {
 
     const onData = (chunk: Buffer | string) => {
       const s = String(chunk);
-      // Ignorar eventos de ratón / SGR
+
+      // SGR mouse: ESC [ < btn ; col ; row M/m
+      const mouse = /\x1b\[<(\d+);(\d+);(\d+)([Mm])/.exec(s);
+      if (mouse) {
+        const btn = Number(mouse[1]);
+        const col = Number(mouse[2]);
+        const row = Number(mouse[3]);
+        const press = mouse[4] === "M";
+        if (press && btn === 0) opts.onClick?.(row, col);
+        return;
+      }
       if (s.includes("\x1b[<") || /\x1b\[M/.test(s)) return;
 
       if (s === "\u0003") {
@@ -176,7 +200,6 @@ async function readLineRaw(opts: {
         opts.onChange(buf);
         return;
       }
-      // Secuencias de escape (flechas, etc.)
       if (s.startsWith("\x1b")) return;
       const clean = s.replace(/[\x00-\x1f]/g, "");
       if (!clean) return;
@@ -208,9 +231,11 @@ export class OrquestaTui {
   private mode: "home" | "session" = "home";
   private messages: ChatMessage[] = [];
   private draft = "";
-  private thoughtExpanded = false;
+  private thoughtExpanded = true;
   private lastThoughtLines: string[] = [];
+  private thoughtHitRows: number[] = [];
   private statusLine = "";
+  private choiceOverlay: { question: string; options: string[]; index: number } | null = null;
   private alt = false;
   private inputRow = 0;
   private inputCol = 3;
@@ -266,7 +291,7 @@ export class OrquestaTui {
 
   addThought(summary: string, detailLines: string[]): void {
     this.lastThoughtLines = detailLines;
-    this.thoughtExpanded = false;
+    this.thoughtExpanded = true; // mostrar proceso al toque
     this.messages.push({ role: "thought", text: summary });
   }
 
@@ -285,6 +310,78 @@ export class OrquestaTui {
     this.thoughtExpanded = !this.thoughtExpanded;
     this.paint(true);
     return true;
+  }
+
+  /** Encuesta ↑/↓ dentro del alt-screen (no rompe el TUI). */
+  async pickChoice(
+    question: string,
+    options: { label: string; value: string; hint?: string }[]
+  ): Promise<string> {
+    let index = 0;
+    this.choiceOverlay = {
+      question,
+      options: options.map((o) => o.label + (o.hint ? `  (${o.hint})` : "")),
+      index,
+    };
+    this.paint(true);
+
+    return new Promise((resolve, reject) => {
+      if (!input.isTTY) {
+        this.choiceOverlay = null;
+        resolve(options[0]?.value || "");
+        return;
+      }
+      const wasRaw = input.isRaw;
+      input.setRawMode(true);
+      input.resume();
+      input.setEncoding("utf8");
+
+      const cleanup = () => {
+        input.off("data", onData);
+        try {
+          input.setRawMode(wasRaw ?? false);
+        } catch {
+          /* ignore */
+        }
+        this.choiceOverlay = null;
+      };
+
+      const onData = (chunk: Buffer | string) => {
+        const key = String(chunk);
+        if (key === "\u0003") {
+          cleanup();
+          reject(new Error("SIGINT"));
+          return;
+        }
+        if (key === "\r" || key === "\n") {
+          const val = options[index]?.value || "";
+          cleanup();
+          this.paint(true);
+          resolve(val);
+          return;
+        }
+        if (key === "\x1b[A" || key === "\x1bOA" || key === "k") {
+          index = (index - 1 + options.length) % options.length;
+          this.choiceOverlay = {
+            question,
+            options: options.map((o) => o.label + (o.hint ? `  (${o.hint})` : "")),
+            index,
+          };
+          this.paint(true);
+          return;
+        }
+        if (key === "\x1b[B" || key === "\x1bOB" || key === "j") {
+          index = (index + 1) % options.length;
+          this.choiceOverlay = {
+            question,
+            options: options.map((o) => o.label + (o.hint ? `  (${o.hint})` : "")),
+            index,
+          };
+          this.paint(true);
+        }
+      };
+      input.on("data", onData);
+    });
   }
 
   /** API pública: redibuja frame completo. */
@@ -372,6 +469,7 @@ export class OrquestaTui {
 
     const chat: string[] = [];
     const textW = Math.max(12, cols - 4); // margen + ┃
+    const thoughtHits: number[] = [];
     for (const m of this.messages) {
       if (m.role === "user") {
         for (const l of wrapPlain(m.text, textW)) {
@@ -385,11 +483,10 @@ export class OrquestaTui {
         chat.push("");
       } else if (m.role === "thought") {
         const arrow = this.thoughtExpanded ? "▾" : "▸";
-        const head = `${arrow} Thought · ${m.text}`;
-        const wrapped = wrapPlain(head, textW);
-        chat.push(`${c.green}${wrapped[0] || head}${c.reset}${c.muted}  (t)${c.reset}`);
-        for (let i = 1; i < wrapped.length; i++) {
-          chat.push(`${c.green}${wrapped[i]}${c.reset}`);
+        const head = `${arrow} Thought · ${m.text}  (clic o t)`;
+        const start = chat.length;
+        for (const l of wrapPlain(head, textW)) {
+          chat.push(`${c.green}${l}${c.reset}`);
         }
         if (this.thoughtExpanded) {
           for (const d of this.lastThoughtLines) {
@@ -398,12 +495,36 @@ export class OrquestaTui {
             }
           }
         }
+        // filas relativas al chat; se ajustan abajo con padTop
+        thoughtHits.push(start);
         chat.push("");
       }
     }
 
+    if (this.choiceOverlay) {
+      chat.push(`${c.green}${c.bold}${this.choiceOverlay.question}${c.reset}`);
+      chat.push(`${c.muted}↑/↓ mover · enter elegir${c.reset}`);
+      this.choiceOverlay.options.forEach((label, i) => {
+        const sel = i === this.choiceOverlay!.index;
+        chat.push(
+          sel
+            ? `${c.green}❯ ${label}${c.reset}`
+            : `${c.muted}  ${label}${c.reset}`
+        );
+      });
+      chat.push("");
+    }
+
     const visible = chat.slice(-bodyH);
     const padTop = Math.max(0, bodyH - visible.length);
+    const chatStart = Math.max(0, chat.length - bodyH);
+    this.thoughtHitRows = thoughtHits
+      .map((rel) => {
+        if (rel < chatStart) return -1;
+        return headerH + padTop + (rel - chatStart);
+      })
+      .filter((r) => r >= 0);
+
     for (let i = 0; i < bodyH; i++) {
       const text = i < padTop ? "" : visible[i - padTop] || "";
       lines[headerH + i] = padEndVis(text, cols);
@@ -481,8 +602,14 @@ export class OrquestaTui {
       const line = await readLineRaw({
         onChange: (buf) => {
           this.draft = buf;
-          // Solo la fila del input → responsive, sin flicker ni duplicación
           this.paint(false);
+        },
+        onClick: (row) => {
+          // Filas ANSI son 1-based
+          const r0 = row - 1;
+          if (this.thoughtHitRows.some((hr) => Math.abs(hr - r0) <= 1)) {
+            this.toggleLastThought();
+          }
         },
         onCtrlC: () => {
           this.unmount();

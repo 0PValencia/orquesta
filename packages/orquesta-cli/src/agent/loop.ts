@@ -232,9 +232,9 @@ export async function runTurn(
   }
 
   const research = wantsResearch(userText, session.tools);
-  if ((DOCS_INTENT.test(userText) || research) && session.tools.length > 0) {
-    session.toolsMode = true;
-  }
+  // Cada turno decide de nuevo (no dejar toolsMode pegado de un turno anterior)
+  session.toolsMode =
+    (DOCS_INTENT.test(userText) || research) && session.tools.length > 0;
   session.lastUserQuery = userText;
   session.lastTurnUsedTools = false;
   session.messages.push({ role: "user", content: userText });
@@ -445,6 +445,17 @@ async function agentLoop(session: AgentSession, opts?: RunTurnOpts): Promise<str
     session.messages.push({ role: "assistant", content: reply });
 
     let calls = parseToolCalls(reply);
+
+    // Chat sin tools: ignorar tool_call inventados (evitan inflar contexto a 8k+)
+    if (!session.toolsMode) {
+      if (calls.length) {
+        emit?.({ type: "info", text: "tool_call ignorado (modo chat)" });
+        final = stripToolNoise(reply).trim() || reply.trim();
+        break;
+      }
+      final = reply.trim();
+      break;
+    }
 
     if (askedToFinish) {
       final = stripToolNoise(reply).trim() || reply.trim();
@@ -887,15 +898,17 @@ function stripToolNoise(text: string): string {
     .trim();
 }
 
-/** system + (schemas si toolsMode) + historial podado */
+/** system + (schemas si toolsMode) + historial podado al límite de contexto */
 function buildPrompt(session: AgentSession): OpenAI.Chat.ChatCompletionMessageParam[] {
-  const history = pruneHistory(session.messages);
+  const reserve = Math.min(session.cfg.maxTokens || 2048, 2048) + 400;
+  const history = pruneHistory(session.messages, CONTEXT_LIMIT - reserve);
+
   if (!session.toolsMode || !session.tools.length) {
     return history;
   }
 
   const schemas = toolsCatalog(session.tools, {
-    maxTools: 18,
+    maxTools: 12,
     query: session.lastUserQuery,
   });
 
@@ -910,14 +923,40 @@ function buildPrompt(session: AgentSession): OpenAI.Chat.ChatCompletionMessagePa
       `FINAL: resumen corto + enlace + tools de formato usadas.`,
   };
 
+  let packed: OpenAI.Chat.ChatCompletionMessageParam[];
   if (history[0]?.role === "system") {
-    return [history[0], toolsMsg, ...history.slice(1)];
+    packed = [history[0], toolsMsg, ...history.slice(1)];
+  } else {
+    packed = [toolsMsg, ...history];
   }
-  return [toolsMsg, ...history];
+  return fitPrompt(packed, CONTEXT_LIMIT - reserve);
+}
+
+function fitPrompt(
+  messages: OpenAI.Chat.ChatCompletionMessageParam[],
+  maxTok: number
+): OpenAI.Chat.ChatCompletionMessageParam[] {
+  let packed = [...messages];
+  while (packed.length > 3 && approxTokens(packed) > maxTok) {
+    // Quitar el mensaje más viejo después del system (+ tools system si hay)
+    const dropAt = packed[1]?.role === "system" ? 2 : 1;
+    if (dropAt >= packed.length - 1) break;
+    packed.splice(dropAt, 1);
+  }
+  // Último recurso: truncar user/assistant largos
+  if (approxTokens(packed) > maxTok) {
+    packed = packed.map((m, i) => {
+      if (i === 0 || typeof m.content !== "string") return m;
+      if (m.content.length < 1200) return m;
+      return { ...m, content: m.content.slice(0, 800) + "\n…[recortado]" };
+    });
+  }
+  return packed;
 }
 
 function pruneHistory(
-  messages: OpenAI.Chat.ChatCompletionMessageParam[]
+  messages: OpenAI.Chat.ChatCompletionMessageParam[],
+  maxTok = Math.floor(CONTEXT_LIMIT * 0.55)
 ): OpenAI.Chat.ChatCompletionMessageParam[] {
   if (messages.length <= 2) return messages;
 
@@ -947,10 +986,19 @@ function pruneHistory(
     }
   }
 
+  // Compactar asistentes largos viejos (dejar últimos 2 enteros)
+  const assistIdx = rest
+    .map((m, i) => (m.role === "assistant" ? i : -1))
+    .filter((i) => i >= 0);
+  const keepFull = new Set(assistIdx.slice(-2));
+  rest = rest.map((m, i) => {
+    if (m.role !== "assistant" || typeof m.content !== "string") return m;
+    if (keepFull.has(i) || m.content.length < 1500) return m;
+    return { ...m, content: m.content.slice(0, 600) + "\n…[resumen de turno anterior]" };
+  });
+
   let packed = [...system, ...rest];
-  // Si aún excede ~70% del contexto, soltar mensajes viejos
-  const softCap = Math.floor(CONTEXT_LIMIT * 0.7 * 3); // chars aprox
-  while (packed.length > 4 && JSON.stringify(packed).length > softCap) {
+  while (packed.length > 4 && approxTokens(packed) > maxTok) {
     packed.splice(system.length, 1);
   }
   return packed;

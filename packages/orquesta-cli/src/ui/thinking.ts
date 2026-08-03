@@ -1,4 +1,5 @@
 import { c } from "./theme.js";
+import { muteInput, type InputMuteHandle } from "./input-mute.js";
 
 export type TraceLine = { kind: "cycle" | "tool" | "info" | "warn"; text: string };
 
@@ -10,7 +11,7 @@ export type ThinkingSink = {
 
 /**
  * Pensando: UNA sola línea de estado en el TUI (sin escribir a stdout suelto).
- * Si no hay sink (modo one-shot), cae a \r en stdout.
+ * Mutea teclado/scroll para que no salga basura (^[[A, etc.).
  */
 export class ThinkingUI {
   private lines: TraceLine[] = [];
@@ -21,6 +22,7 @@ export class ThinkingUI {
   private elapsedMs = 0;
   private active = false;
   private sink: ThinkingSink | null;
+  private mute: InputMuteHandle | null = null;
 
   constructor(sink: ThinkingSink | null = null) {
     this.sink = sink;
@@ -33,6 +35,15 @@ export class ThinkingUI {
     this.active = true;
     this.startedAt = Date.now();
     this.elapsedMs = 0;
+    this.mute = muteInput({
+      onCtrlC: () => {
+        try {
+          process.emit("SIGINT");
+        } catch {
+          /* ignore */
+        }
+      },
+    });
     this.paint();
     this.timer = setInterval(() => {
       if (this.done || !this.active) return;
@@ -62,8 +73,14 @@ export class ThinkingUI {
     }
   }
 
+  private releaseMute(): void {
+    this.mute?.release();
+    this.mute = null;
+  }
+
   abort(): void {
     this.stopTimer();
+    this.releaseMute();
     this.active = false;
     this.done = true;
     this.sink?.clearStatus();
@@ -72,6 +89,7 @@ export class ThinkingUI {
 
   async fail(message: string): Promise<void> {
     this.stopTimer();
+    this.releaseMute();
     this.done = true;
     this.active = false;
     this.elapsedMs = Date.now() - this.startedAt;
@@ -86,6 +104,7 @@ export class ThinkingUI {
 
   async finish(): Promise<{ summary: string; details: string[] }> {
     this.stopTimer();
+    this.releaseMute();
     this.done = true;
     this.active = false;
     this.elapsedMs = Date.now() - this.startedAt;
