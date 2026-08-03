@@ -1,16 +1,19 @@
-/** Paleta estilo OpenCode (terminal oscuro). */
+/** Paleta Orquesta — verde chillón. */
 export const c = {
   reset: "\x1b[0m",
   bold: "\x1b[1m",
   dim: "\x1b[2m",
-  blue: "\x1b[38;2;80;160;255m",
-  orange: "\x1b[38;2;255;160;60m",
-  green: "\x1b[38;2;80;220;120m",
-  gray: "\x1b[38;2;140;140;150m",
-  muted: "\x1b[38;2;90;90;100m",
-  white: "\x1b[38;2;220;220;230m",
-  yellow: "\x1b[38;2;240;200;80m",
-  bgInput: "\x1b[48;2;32;32;36m",
+  /** Acento principal: lima neón */
+  green: "\x1b[38;2;57;255;20m",
+  greenDim: "\x1b[38;2;40;180;40m",
+  /** Alias: acento = verde (antes blue) */
+  blue: "\x1b[38;2;57;255;20m",
+  orange: "\x1b[38;2;180;255;80m",
+  gray: "\x1b[38;2;120;160;120m",
+  muted: "\x1b[38;2;70;100;70m",
+  white: "\x1b[38;2;220;255;220m",
+  yellow: "\x1b[38;2;200;255;80m",
+  bgInput: "\x1b[48;2;12;28;14m",
 };
 
 function cols(): number {
@@ -119,9 +122,9 @@ export function printHome(opts: {
 /** Respuesta limpia (sin cajas que se rompen al copiar). */
 export function printAssistant(text: string): void {
   console.log("");
-  console.log(`${c.blue}┃${c.reset} ${c.white}orquesta${c.reset}`);
+  console.log(`${c.green}┃${c.reset} ${c.white}orquesta${c.reset}`);
   for (const line of text.split("\n")) {
-    console.log(`${c.blue}┃${c.reset} ${c.white}${line}${c.reset}`);
+    console.log(`${c.green}┃${c.reset} ${c.white}${line}${c.reset}`);
   }
   console.log("");
 }

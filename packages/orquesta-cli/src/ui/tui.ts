@@ -178,6 +178,7 @@ export class OrquestaTui {
   private statusLine = "";
   private alt = false;
   private inputRow = 0;
+  private inputCol = 3;
   private painting = false;
   private resizeHandler: (() => void) | null = null;
   readonly opts: TuiOpts;
@@ -256,64 +257,72 @@ export class OrquestaTui {
     this.paint(true);
   }
 
-  private drawBoxLine(content: string, inner: number): string {
-    const plain = content.replace(/\x1b\[[0-9;]*m/g, "");
-    const pad = Math.max(0, inner - 2 - Math.min(plain.length, inner - 2));
-    const clipped = clip(content, inner - 2);
-    return `${c.bgInput}${c.blue}┃${c.reset}${c.bgInput} ${clipped}${c.reset}${c.bgInput}${" ".repeat(pad)}${c.reset}`;
+  private drawInputBox(content: string, inner: number): string {
+    const maxInner = Math.max(4, inner - 2);
+    const clipped = clip(content, maxInner);
+    const pad = Math.max(0, maxInner - visibleWidth(clipped));
+    return `${c.bgInput}${c.green}┃${c.reset}${c.bgInput} ${clipped}${c.reset}${c.bgInput}${" ".repeat(pad)}${c.reset}`;
   }
 
-  private buildHome(cols: number, rows: number): { lines: string[]; inputRow: number } {
+  private buildHome(cols: number, rows: number): {
+    lines: string[];
+    inputRow: number;
+    inputCol: number;
+  } {
     const inner = boxInnerWidth(cols);
-    const tip = "Si pides Google Docs, Orquesta usa MCP y te deja el enlace.";
-    const placeholder = 'Pregunta lo que necesites…  "informe en Docs…"';
+    const placeholder = "Pregunta lo que necesites…";
     const draftShown = this.draft.length
-      ? this.draft.slice(-(inner - 4))
-      : `${c.gray}${placeholder}${c.reset}`;
+      ? `${c.white}${this.draft.slice(-(inner - 4))}${c.reset}`
+      : `${c.greenDim}${placeholder}${c.reset}`;
 
-    const logo = logoLines(cols).map((l) => `${c.white}${c.bold}${l}${c.reset}`);
+    const logo = logoLines(cols).map((l) => `${c.green}${c.bold}${l}${c.reset}`);
     const mcpShort =
       this.opts.mcpCount > 0
-        ? `${c.green}○${c.reset} ${this.opts.mcpCount} MCP · ${this.opts.mcpCount ? "listas" : ""}`
+        ? `${c.green}●${c.reset} ${c.gray}${this.opts.mcpCount} MCP${c.reset}`
         : `${c.muted}○ 0 MCP${c.reset}`;
 
+    const inputBox = this.drawInputBox(draftShown, inner);
+
+    // Solo: logo + espacio + caja de escribir centrada + pie mínimo
     const block: string[] = [
       ...logo,
       "",
-      this.drawBoxLine(draftShown, inner),
-      this.drawBoxLine(
-        `${c.blue}Build${c.reset}${c.gray} · ${this.opts.model} · orquesta${c.reset}  ${c.orange}max${c.reset}`,
-        inner
-      ),
       "",
-      `${c.muted}enter enviar · ctrl+c salir${c.reset}`,
+      inputBox,
       "",
-      `${c.orange}● Tip${c.reset} ${c.gray}${tip}${c.reset}`,
-      "",
-      `${c.muted}~${c.reset} ${mcpShort} ${c.muted}/estado${c.reset}    ${c.muted}${this.opts.version}${c.reset}`,
+      `${mcpShort}  ${c.muted}${this.opts.version}${c.reset}`,
     ];
 
     if (this.statusLine) {
       block.push("", `${c.yellow}${this.statusLine}${c.reset}`);
     }
 
-    // Centrar verticalmente sin desbordar rows
     const contentH = Math.min(block.length, rows);
     const topPad = Math.max(0, Math.floor((rows - contentH) / 3));
     const lines = Array.from({ length: rows }, () => "");
-    let inputRow = topPad + logo.length + 1; // fila de la caja de input
+    const inputIdx = logo.length + 2; // tras logo + 2 blancos
+    let inputRow = topPad + inputIdx;
 
     for (let i = 0; i < contentH; i++) {
       const row = topPad + i;
       if (row >= rows) break;
       lines[row] = centerVis(block[i], cols);
-      // Detectar fila del input (primera línea de caja = draft)
-      if (i === logo.length + 1) inputRow = row;
+      if (i === inputIdx) inputRow = row;
     }
-    return { lines, inputRow };
+
+    const boxW = visibleWidth(inputBox);
+    const leftPad = Math.max(0, Math.floor((cols - boxW) / 2));
+    const typed = Math.min(this.draft.length, Math.max(0, inner - 4));
+    const inputCol = Math.min(cols, leftPad + 3 + typed);
+
+    return { lines, inputRow, inputCol };
   }
 
-  private buildSession(cols: number, rows: number): { lines: string[]; inputRow: number } {
+  private buildSession(cols: number, rows: number): {
+    lines: string[];
+    inputRow: number;
+    inputCol: number;
+  } {
     const inputH = 3;
     const headerH = 1;
     const statusH = this.statusLine ? 1 : 0;
@@ -321,7 +330,7 @@ export class OrquestaTui {
     const lines = Array.from({ length: rows }, () => "");
 
     lines[0] = padEndVis(
-      `${c.blue}Build${c.reset}${c.gray} · ${this.opts.model}${c.reset}` +
+      `${c.green}orquesta${c.reset}${c.gray} · ${this.opts.model}${c.reset}` +
         `${" ".repeat(4)}${c.muted}${this.opts.version}${c.reset}`,
       cols
     );
@@ -333,13 +342,13 @@ export class OrquestaTui {
         chat.push("");
       } else if (m.role === "assistant") {
         for (const l of m.text.split("\n")) {
-          chat.push(`${c.blue}┃${c.reset} ${c.white}${l}${c.reset}`);
+          chat.push(`${c.green}┃${c.reset} ${c.white}${l}${c.reset}`);
         }
         chat.push("");
       } else if (m.role === "thought") {
         const arrow = this.thoughtExpanded ? "▾" : "▸";
         chat.push(
-          `${c.orange}${arrow} Thought · ${m.text}${c.reset}${c.muted}  (t + enter)${c.reset}`
+          `${c.green}${arrow} Thought · ${m.text}${c.reset}${c.muted}  (t + enter)${c.reset}`
         );
         if (this.thoughtExpanded) {
           for (const d of this.lastThoughtLines) {
@@ -368,18 +377,18 @@ export class OrquestaTui {
     const shown = this.draft.slice(-(barInner - 2));
     const fill = Math.max(0, barInner - 2 - visibleWidth(shown));
     lines[inputRow] = padEndVis(
-      `${c.bgInput}${c.blue}┃${c.reset}${c.bgInput} ${c.white}${shown}${c.reset}${c.bgInput}${" ".repeat(fill)}${c.reset}`,
+      `${c.bgInput}${c.green}┃${c.reset}${c.bgInput} ${c.white}${shown}${c.reset}${c.bgInput}${" ".repeat(fill)}${c.reset}`,
       cols
     );
     if (inputRow + 1 < rows) {
       lines[inputRow + 1] = padEndVis(
-        `${c.muted}Build · ${this.opts.model}${c.reset}  ${c.orange}max${c.reset}` +
-          `${" ".repeat(3)}${c.muted}t thought · ctrl+c salir${c.reset}`,
+        `${c.muted}${this.opts.model}${c.reset}${" ".repeat(3)}${c.muted}t thought · ctrl+c${c.reset}`,
         cols
       );
     }
 
-    return { lines, inputRow };
+    const typed = Math.min(this.draft.length, Math.max(0, barInner - 2));
+    return { lines, inputRow, inputCol: Math.min(cols, 3 + typed) };
   }
 
   /**
@@ -398,26 +407,22 @@ export class OrquestaTui {
       const built =
         this.mode === "home" ? this.buildHome(cols, rows) : this.buildSession(cols, rows);
       this.inputRow = built.inputRow;
+      this.inputCol = built.inputCol;
 
       if (full) {
         hideCursor();
-        // Home + pintar cada fila con clear-to-eol (sin \n extras al final)
         output.write("\x1b[H");
         for (let i = 0; i < rows; i++) {
           const line = clip(built.lines[i] || "", cols);
           output.write(`\x1b[${i + 1};1H\x1b[2K${line}`);
         }
-        // Cursor en la caja de input
-        const col = Math.min(cols - 1, 3 + Math.min(this.draft.length, boxInnerWidth(cols) - 4));
-        output.write(`\x1b[${this.inputRow + 1};${col}H`);
+        output.write(`\x1b[${this.inputRow + 1};${this.inputCol}H`);
         showCursor();
       } else {
-        // Solo actualizar fila de input (tecleo rápido)
         const line = clip(built.lines[this.inputRow] || "", cols);
         hideCursor();
         output.write(`\x1b[${this.inputRow + 1};1H\x1b[2K${line}`);
-        const col = Math.min(cols - 1, 3 + Math.min(this.draft.length, boxInnerWidth(cols) - 4));
-        output.write(`\x1b[${this.inputRow + 1};${col}H`);
+        output.write(`\x1b[${this.inputRow + 1};${this.inputCol}H`);
         showCursor();
       }
     } finally {
