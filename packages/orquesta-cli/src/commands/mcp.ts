@@ -1,4 +1,6 @@
 import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import {
   ensureConfigDir,
   formatServerLine,
@@ -175,6 +177,33 @@ export function mcpInitCommand(): void {
 export function mcpPathCommand(): void {
   const cfg = loadConfig();
   console.log(cfg.mcpPath);
+}
+
+/** Ejecuta smoke test de las tools google-document (106). */
+export async function mcpSmokeDocsCommand(): Promise<void> {
+  const here = path.dirname(fileURLToPath(import.meta.url));
+  const candidates = [
+    path.join(here, "../../scripts/smoke-docs-tools.mjs"),
+    path.join(here, "../scripts/smoke-docs-tools.mjs"),
+  ];
+  const script = candidates.find((p) => fs.existsSync(p));
+  if (!script) {
+    console.error("No encuentro scripts/smoke-docs-tools.mjs");
+    process.exitCode = 1;
+    return;
+  }
+  const { spawn } = await import("node:child_process");
+  await new Promise<void>((resolve, reject) => {
+    const child = spawn(process.execPath, [script], {
+      stdio: "inherit",
+      env: process.env,
+    });
+    child.on("exit", (code) => {
+      process.exitCode = code ?? 1;
+      resolve();
+    });
+    child.on("error", reject);
+  });
 }
 
 function splitCommand(line: string): string[] {

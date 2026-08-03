@@ -9,7 +9,7 @@ import {
 } from "../agent/loop.js";
 import { parseChoices, presentChoices, stripChoices } from "../ui/choices.js";
 import { ThinkingUI, readChatLine } from "../ui/thinking.js";
-import { assistantBubble, c, userBubble } from "../ui/theme.js";
+import { c, printAssistant, printHome, sanitizeUserInput } from "../ui/theme.js";
 
 function isAbort(err: unknown): boolean {
   if (!err || typeof err !== "object") return false;
@@ -29,11 +29,11 @@ function cleanExit(code = 0): never {
 function bindThinking(ui: ThinkingUI): (e: AgentEvent) => void {
   return (e) => {
     if (e.type === "cycle") {
-      ui.log("cycle", `ciclo ${e.round}/${e.max} · ~${e.promptTokens} tokens`);
+      ui.log("cycle", `ciclo ${e.round}/${e.max} · ~${e.promptTokens} tok`);
     } else if (e.type === "tool") {
       ui.log("tool", `MCP → ${e.name}`);
     } else if (e.type === "retry_format") {
-      ui.log("warn", `reintento: ${e.reason}`);
+      ui.log("warn", e.reason);
     } else if (e.type === "info") {
       ui.log("info", e.text);
     }
@@ -50,13 +50,11 @@ async function handleAgentReply(
     const choices = parseChoices(current);
     if (!choices) {
       const text = stripChoices(current);
-      if (text) console.log("\n" + assistantBubble(text) + "\n");
+      if (text) printAssistant(text);
       return;
     }
 
-    if (choices.preamble) {
-      console.log("\n" + assistantBubble(choices.preamble) + "\n");
-    }
+    if (choices.preamble) printAssistant(choices.preamble);
 
     if (!interactive) {
       console.log(choices.question);
@@ -73,14 +71,13 @@ async function handleAgentReply(
       throw err;
     }
 
-    console.log(userBubble(pick));
     const ui = new ThinkingUI();
     ui.begin();
     current = await runTurn(session, pick, { onEvent: bindThinking(ui) });
     await ui.finish(interactive);
   }
   const text = stripChoices(current);
-  if (text) console.log("\n" + assistantBubble(text) + "\n");
+  if (text) printAssistant(text);
 }
 
 export async function chatCommand(opts: { message?: string }): Promise<void> {
@@ -96,14 +93,6 @@ export async function chatCommand(opts: { message?: string }): Promise<void> {
   };
   process.on("SIGINT", onSigInt);
 
-  console.log(`
-${c.green}╔══════════════════════════════════════╗
-║           ORQUESTA                   ║
-║   Agente de informes académicos      ║
-╚══════════════════════════════════════╝${c.reset}
-`);
-
-  process.stderr.write(`${c.dim}Preparando agente…${c.reset}\n`);
   let session;
   try {
     session = await createSession(cfg);
@@ -112,28 +101,29 @@ ${c.green}╔══════════════════════�
     throw err;
   }
 
-  console.log(describeMcpStatus(session.mcpStatus));
-  console.log(`
-${c.dim}Comandos: orquesta ayuda · orquesta mcp add · orquesta update
-Chat: escribe tu pedido · «proceso» no hace falta (Enter tras Pensando) · salir / Ctrl+C${c.reset}
-`);
+  printHome({
+    mcpCount: session.mcpStatus.connected.length,
+    model: cfg.model,
+    version: "0.1.0",
+  });
+  console.log(`${c.muted}${describeMcpStatus(session.mcpStatus)}${c.reset}`);
+  console.log("");
 
   try {
     if (opts.message) {
-      console.log(userBubble(opts.message));
+      const line = sanitizeUserInput(opts.message);
       const ui = new ThinkingUI();
       ui.begin();
-      const out = await runTurn(session, opts.message, { onEvent: bindThinking(ui) });
+      const out = await runTurn(session, line, { onEvent: bindThinking(ui) });
       await ui.finish(false);
       await handleAgentReply(session, out, false);
       return;
     }
 
-    console.log(`${c.dim}¿Qué informe o sección necesitas?${c.reset}`);
     while (true) {
       let line: string;
       try {
-        line = await readChatLine();
+        line = sanitizeUserInput(await readChatLine());
       } catch (err) {
         if (isAbort(err)) cleanExit(0);
         throw err;
@@ -142,16 +132,15 @@ Chat: escribe tu pedido · «proceso» no hace falta (Enter tras Pensando) · sa
       if (line === "exit" || line === "salir" || line === "quit") break;
       if (line === "ayuda" || line === "help") {
         console.log(
-          "\nEjemplos:\n" +
-            "  • Redacta la introducción de un SI para taller de motos\n" +
-            "  • Crea el informe en Google Docs / Documents (usa MCP)\n" +
-            "  • Tras «Pensando ✓», Enter muestra el proceso (ciclos/tools)\n"
+          `\n${c.orange}● Tip${c.reset} ${c.gray}Ejemplos:${c.reset}\n` +
+            `${c.muted}  · crea un informe en Google Docs de 4 páginas sobre …\n` +
+            `  · redacta la introducción (solo chat)\n` +
+            `  · tras Pensando…, Enter muestra el proceso del agente${c.reset}\n`
         );
         continue;
       }
 
       try {
-        console.log(userBubble(line));
         const ui = new ThinkingUI();
         ui.begin();
         const out = await runTurn(session, line, { onEvent: bindThinking(ui) });
@@ -161,16 +150,11 @@ Chat: escribe tu pedido · «proceso» no hace falta (Enter tras Pensando) · sa
         if (isAbort(err)) cleanExit(0);
         const msg = err instanceof Error ? err.message : String(err);
         if (/503|ECONNREFUSED|fetch failed|timeout/i.test(msg)) {
-          console.error(
-            `${c.yellow}El modelo está arrancando (1–2 min). Vuelve a intentarlo.${c.reset}`
-          );
+          console.error(`\n${c.orange}Modelo arrancando (1–2 min). Reintentá.${c.reset}`);
         } else if (/maximum context length|demasiado largo/i.test(msg)) {
-          console.error(
-            `${c.yellow}Contexto lleno. Prueba un pedido más corto o «salir» y vuelve a entrar.${c.reset}`
-          );
-          console.error(c.dim + msg + c.reset);
+          console.error(`\n${c.orange}Contexto lleno. Pedido más corto o «salir» y volvé a entrar.${c.reset}`);
         } else {
-          console.error(`${c.yellow}No pude completar eso:${c.reset}`, msg);
+          console.error(`\n${c.orange}Error:${c.reset} ${msg}`);
         }
       }
     }

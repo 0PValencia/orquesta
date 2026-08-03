@@ -7,12 +7,12 @@ export const DEFAULTS = {
   baseUrl: "https://pvalencia--orquesta-informes-serve.modal.run/v1",
   model: "informes",
   apiKey: "not-needed",
-  maxToolRounds: 16,
+  maxToolRounds: 24,
   /**
    * Tokens de salida por ciclo LLM.
    * Contexto Modal ≈ 8192 (prompt + completion).
    */
-  maxTokens: 2048,
+  maxTokens: 4096,
 } as const;
 
 export type StoredConfig = {

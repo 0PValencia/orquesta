@@ -9,6 +9,7 @@ import {
   mcpPathCommand,
   mcpRemoveCommand,
   mcpShowCommand,
+  mcpSmokeDocsCommand,
 } from "./commands/mcp.js";
 import { updateCommand } from "./commands/update.js";
 import { ensureUserConfig } from "./config.js";
@@ -129,6 +130,13 @@ mcp
   .description("Ruta del archivo de herramientas")
   .action(() => {
     mcpPathCommand();
+  });
+
+mcp
+  .command("smoke-docs")
+  .description("Probar las ~106 tools de Google Documents (smoke test)")
+  .action(async () => {
+    await mcpSmokeDocsCommand();
   });
 
 function collect(value: string, prev: string[]): string[] {

@@ -10,7 +10,7 @@ export function selectTools(
   const q = (opts?.query || "").toLowerCase();
 
   const PRIORITY =
-    /^(create_document|generate_academic_document|create_academic_structure|get_document_structure|list_documents|read_document|insert_text|append_text|replace_text|delete_text|apply_heading|apply_format|insert_table_of_contents|append_bibliography|format_academic_document|repair_academic_document|create_table|insert_image|search_images|insert_diagram|export_document|get_document_metadata|find_text|duplicate_document)$/i;
+    /^(search|web_search|web-search|fetch_content|fetch_url|create_document|generate_academic_document|create_academic_structure|get_document_structure|list_documents|read_document|insert_text|append_text|replace_text|delete_text|apply_heading|apply_format|insert_table_of_contents|append_bibliography|format_academic_document|repair_academic_document|create_table|insert_image|search_images|insert_diagram|export_document|get_document_metadata|find_text|duplicate_document)$/i;
 
   const queryHit = (t: OrquestaTool) => {
     if (!q) return false;
@@ -61,7 +61,8 @@ export function toolsCatalog(
   return (
     out +
     "\n\nProtocolo (una o más por mensaje):\n" +
-    '<tool_call>{"name":"create_document","arguments":{"title":"..."}}</tool_call>\n' +
-    "También vale name corto sin prefijo de servidor. Docs: documentId real; get_document_structure antes de índices."
+    '<tool_call>{"name":"search","arguments":{"query":"...","max_results":5}}</tool_call>\n' +
+    "Luego create_document / append_text. Name corto sin prefijo de servidor también vale.\n" +
+    "Docs: documentId real. Investigación: search antes de redactar hechos."
   );
 }

@@ -5,72 +5,90 @@ import { c } from "./theme.js";
 export type TraceLine = { kind: "cycle" | "tool" | "info" | "warn"; text: string };
 
 /**
- * Estado "Pensando" estilo DeepSeek: amarillo mientras corre,
- * luego colapsado; Enter expande/oculta el proceso.
+ * Pensando… (puntos animados). Enter expande/oculta el proceso del agente.
+ * Colapsado: solo "Pensando..." / "Pensado".
  */
 export class ThinkingUI {
   private lines: TraceLine[] = [];
-  private started = false;
-  private liveCount = 0;
+  private timer: ReturnType<typeof setInterval> | null = null;
+  private dots = 0;
+  private expanded = false;
+  private done = false;
+  private headerRow = false;
 
   begin(): void {
     this.lines = [];
-    this.started = true;
-    this.liveCount = 0;
-    output.write(`\n  ${c.yellow}${c.bold}● Pensando…${c.reset}${c.dim}  (el proceso se puede expandir al terminar)${c.reset}\n`);
+    this.dots = 0;
+    this.expanded = false;
+    this.done = false;
+    output.write("\n");
+    this.paintCollapsed();
+    this.headerRow = true;
+    this.timer = setInterval(() => {
+      this.dots = (this.dots + 1) % 4;
+      this.paintCollapsed();
+    }, 400);
   }
 
   log(kind: TraceLine["kind"], text: string): void {
     this.lines.push({ kind, text });
-    if (!this.started) return;
-    const icon =
-      kind === "tool" ? "⚙" : kind === "cycle" ? "↻" : kind === "warn" ? "!" : "·";
-    const color =
-      kind === "tool" ? c.cyan : kind === "warn" ? c.yellow : c.dim;
-    output.write(`  ${color}${icon} ${text}${c.reset}\n`);
-    this.liveCount++;
+    // No spamear el proceso en vivo: solo queda en buffer para el toggle
   }
 
-  /** Colapsa el bloque live y deja un toggle Enter. */
-  async finish(interactive: boolean): Promise<void> {
-    if (!this.started) return;
-    this.started = false;
+  private paintCollapsed(): void {
+    if (!output.isTTY) return;
+    const label = this.done
+      ? `${c.yellow}${c.bold}Pensado${c.reset}`
+      : `${c.yellow}${c.bold}Pensando${".".repeat(this.dots)}${" ".repeat(3 - this.dots)}${c.reset}`;
+    const hint = this.done
+      ? `${c.muted}  Enter = ${this.expanded ? "ocultar" : "ver"} proceso${c.reset}`
+      : `${c.muted}  …${c.reset}`;
+    // Reescribir misma línea
+    output.write(`\r\x1b[2K  ${label}${hint}`);
+  }
 
-    // Subir y limpiar líneas live + cabecera (~ liveCount+1)
-    const erase = this.liveCount + 1;
-    if (erase > 0 && output.isTTY) {
-      output.write(`\x1b[${erase}A`);
-      for (let i = 0; i < erase; i++) output.write(`\x1b[2K\n`);
-      output.write(`\x1b[${erase}A`);
+  private paintExpanded(): void {
+    output.write("\n");
+    output.write(`  ${c.muted}┌ proceso${"─".repeat(28)}${c.reset}\n`);
+    for (const l of this.lines) {
+      const icon = l.kind === "tool" ? "⚙" : l.kind === "cycle" ? "↻" : l.kind === "warn" ? "!" : "·";
+      output.write(`  ${c.muted}│ ${icon} ${l.text}${c.reset}\n`);
     }
+    if (!this.lines.length) {
+      output.write(`  ${c.muted}│ (sin pasos registrados)${c.reset}\n`);
+    }
+    output.write(`  ${c.muted}└ Enter oculta${"─".repeat(24)}${c.reset}\n`);
+  }
 
-    const summary = summarize(this.lines);
-    output.write(
-      `  ${c.yellow}${c.bold}● Pensando${c.reset}${c.green} ✓${c.reset}` +
-        `${c.dim}  ${summary}  ·  Enter = ver/ocultar proceso${c.reset}\n`
-    );
+  private clearExpandedBlock(): void {
+    // No hay forma perfecta sin guardar filas; imprimimos colapsado en línea nueva
+    output.write("\n");
+    this.paintCollapsed();
+  }
 
-    if (!interactive || !input.isTTY || !this.lines.length) return;
+  async finish(interactive: boolean): Promise<void> {
+    if (this.timer) {
+      clearInterval(this.timer);
+      this.timer = null;
+    }
+    this.done = true;
+    this.expanded = false;
+    this.paintCollapsed();
+    output.write("\n");
 
-    let expanded = false;
-    const render = () => {
-      if (expanded) {
-        output.write(`  ${c.dim}┌─ proceso ─────────────────────${c.reset}\n`);
-        for (const l of this.lines) {
-          const icon = l.kind === "tool" ? "⚙" : l.kind === "cycle" ? "↻" : "·";
-          output.write(`  ${c.dim}│ ${icon} ${l.text}${c.reset}\n`);
-        }
-        output.write(`  ${c.dim}└─ Enter oculta · sigue en el chat ─${c.reset}\n`);
-      }
-    };
+    if (!interactive || !input.isTTY) return;
 
-    // Una pulsación Enter opcional (timeout 1.2s para no bloquear el chat)
-    const key = await waitEnterOrTimeout(1200);
-    if (key === "enter") {
-      expanded = true;
-      render();
-      await waitEnterOrTimeout(60_000);
-      // no borramos el proceso expandido; el usuario ya lo vio
+    // Toggle opcional: Enter en ~2.5s abre proceso; Enter otra vez cierra; timeout sigue
+    const first = await waitKey(["enter"], 2500);
+    if (first !== "enter") return;
+
+    this.expanded = true;
+    this.paintExpanded();
+    const second = await waitKey(["enter"], 120_000);
+    if (second === "enter") {
+      this.expanded = false;
+      // marcar colapsado otra vez
+      output.write(`  ${c.yellow}${c.bold}Pensado${c.reset}${c.muted}  (proceso oculto)${c.reset}\n`);
     }
   }
 
@@ -79,16 +97,7 @@ export class ThinkingUI {
   }
 }
 
-function summarize(lines: TraceLine[]): string {
-  const cycles = lines.filter((l) => l.kind === "cycle").length;
-  const tools = lines.filter((l) => l.kind === "tool").length;
-  const parts = [];
-  if (cycles) parts.push(`${cycles} ciclo${cycles === 1 ? "" : "s"}`);
-  if (tools) parts.push(`${tools} tool${tools === 1 ? "" : "s"}`);
-  return parts.length ? parts.join(" · ") : "listo";
-}
-
-function waitEnterOrTimeout(ms: number): Promise<"enter" | "timeout"> {
+function waitKey(keys: Array<"enter" | "other">, ms: number): Promise<"enter" | "timeout" | "other"> {
   return new Promise((resolve) => {
     if (!input.isTTY) {
       resolve("timeout");
@@ -105,6 +114,17 @@ function waitEnterOrTimeout(ms: number): Promise<"enter" | "timeout"> {
       if (s === "\r" || s === "\n") {
         cleanup();
         resolve("enter");
+        return;
+      }
+      if (s === "\u0003") {
+        cleanup();
+        resolve("other");
+        return;
+      }
+      // cualquier otra tecla = no expandir
+      if (keys.includes("other")) {
+        cleanup();
+        resolve("other");
       }
     };
 
@@ -120,12 +140,12 @@ function waitEnterOrTimeout(ms: number): Promise<"enter" | "timeout"> {
   });
 }
 
-/** Prompt de usuario estilo chat. */
+/** Prompt tipo OpenCode (barra azul). */
 export async function readChatLine(): Promise<string> {
   const rl = readline.createInterface({ input, output, terminal: true });
   try {
-    const ans = await rl.question(`\n${c.cyan}tú${c.reset} ${c.dim}›${c.reset} `);
-    return ans.trim();
+    const ans = await rl.question(`${c.blue}┃${c.reset} `);
+    return ans;
   } finally {
     rl.close();
   }

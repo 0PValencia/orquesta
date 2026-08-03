@@ -19,6 +19,14 @@ function run(cmd: string, args: string[], opts?: { cwd?: string }): Promise<numb
   });
 }
 
+function runQuiet(cmd: string, args: string[]): Promise<number> {
+  return new Promise((resolve) => {
+    const child = spawn(cmd, args, { stdio: "ignore" });
+    child.on("close", (code) => resolve(code ?? 1));
+    child.on("error", () => resolve(1));
+  });
+}
+
 function runShell(script: string): Promise<number> {
   return new Promise((resolve, reject) => {
     const child = spawn("bash", ["-lc", script], {
@@ -37,8 +45,7 @@ function installShUrl(repo: string, branch: string): string | null {
 }
 
 /**
- * Actualiza la instalación en ~/.orquesta (git fetch + npm build).
- * No hace falta borrar ni volver a hacer curl | bash.
+ * Actualiza ~/.orquesta/src igualando al remoto (force: tolera cambios locales).
  */
 export async function updateCommand(opts?: { remoteInstall?: boolean }): Promise<void> {
   const repo = (process.env.ORQUESTA_REPO || DEFAULT_REPO).trim();
@@ -59,44 +66,41 @@ export async function updateCommand(opts?: { remoteInstall?: boolean }): Promise
     }
     console.log(`Instalador remoto: ${raw}`);
     const code = await runShell(`curl -fsSL '${raw}' | bash -s -- --no-modify-path`);
-    if (code !== 0) {
-      process.exitCode = code;
-      return;
+    process.exitCode = code;
+    if (code === 0) {
+      console.log("\n✓ Orquesta actualizado");
+      console.log("  Prueba: orquesta --version && orquesta estado\n");
     }
-    console.log("\n✓ Orquesta actualizado");
-    console.log("  Prueba: orquesta --version && orquesta estado\n");
     return;
   }
 
   if (!fs.existsSync(path.join(srcDir, ".git"))) {
-    console.log(`No hay instalación en ${srcDir}.`);
-    console.log("Instalando por primera vez…\n");
+    console.log(`No hay instalación en ${srcDir}. Instalando…\n`);
     const raw =
       installShUrl(repo, branch) ||
       "https://raw.githubusercontent.com/0PValencia/orquesta/master/install.sh";
-    const code = await runShell(`curl -fsSL '${raw}' | bash -s -- --no-modify-path`);
-    process.exitCode = code;
+    process.exitCode = await runShell(`curl -fsSL '${raw}' | bash -s -- --no-modify-path`);
     return;
   }
 
   console.log(`Código: ${srcDir}`);
-  let code = await run("git", ["-C", srcDir, "remote", "set-url", "origin", repo]);
+  // Instalación = copia del remoto. Descartar cambios/locales sin preguntar.
+  await runQuiet("git", ["-C", srcDir, "remote", "set-url", "origin", repo]);
+  await runQuiet("git", ["-C", srcDir, "clean", "-fd"]);
+  await runQuiet("git", ["-C", srcDir, "reset", "--hard", "HEAD"]);
+  let code = await run("git", ["-C", srcDir, "fetch", "--depth", "1", "origin", branch]);
   if (code !== 0) {
     process.exitCode = code;
     return;
   }
-  code = await run("git", ["-C", srcDir, "fetch", "--depth", "1", "origin", branch]);
-  if (code !== 0) {
-    process.exitCode = code;
-    return;
-  }
-  await run("git", ["-C", srcDir, "checkout", "-B", branch, `origin/${branch}`]);
+  // reset duro al tip remoto (evita checkout conflictivo)
   code = await run("git", ["-C", srcDir, "reset", "--hard", `origin/${branch}`]);
   if (code !== 0) {
     process.exitCode = code;
     return;
   }
   await run("git", ["-C", srcDir, "clean", "-fd"]);
+  await runQuiet("git", ["-C", srcDir, "checkout", "-B", branch]);
 
   if (!fs.existsSync(cliDir)) {
     console.error(`No encontré ${cliDir}`);
@@ -118,6 +122,11 @@ export async function updateCommand(opts?: { remoteInstall?: boolean }): Promise
 
   fs.mkdirSync(binDir, { recursive: true });
   const wrapper = path.join(binDir, "orquesta");
+  try {
+    fs.unlinkSync(wrapper);
+  } catch {
+    /* ignore */
+  }
   fs.writeFileSync(
     wrapper,
     `#!/usr/bin/env bash\nexec node "${cliDir}/bin/orquesta.js" "$@"\n`,
@@ -136,9 +145,4 @@ export async function updateCommand(opts?: { remoteInstall?: boolean }): Promise
   console.log(`\n✓ Orquesta actualizado (${head})`);
   console.log(`  ${wrapper}`);
   console.log("  Prueba: orquesta --version && orquesta estado\n");
-
-  if (!process.env.PATH?.split(path.delimiter).includes(binDir)) {
-    console.log("Si no encuentra el comando:");
-    console.log(`  export PATH="${binDir}:$PATH"\n`);
-  }
 }

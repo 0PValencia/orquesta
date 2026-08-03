@@ -1,0 +1,658 @@
+{
+  "ts": "2026-08-03T00:48:14.493Z",
+  "documentId": "1-hO7cIkqYYbl1QDX7oU0Zm-wk2VeL-UbxGzh5mwYaDQ",
+  "url": "https://docs.google.com/document/d/1-hO7cIkqYYbl1QDX7oU0Zm-wk2VeL-UbxGzh5mwYaDQ/edit",
+  "totalTools": 106,
+  "covered": 106,
+  "ok": 96,
+  "fail": 6,
+  "skip": 4,
+  "results": [
+    {
+      "name": "create_document",
+      "ok": true,
+      "skipped": false,
+      "ms": 1019
+    },
+    {
+      "name": "append_text",
+      "ok": true,
+      "skipped": false,
+      "ms": 287
+    },
+    {
+      "name": "get_document_structure",
+      "ok": true,
+      "skipped": false,
+      "ms": 325
+    },
+    {
+      "name": "apply_heading",
+      "ok": true,
+      "skipped": false,
+      "ms": 371
+    },
+    {
+      "name": "create_academic_structure",
+      "ok": true,
+      "skipped": false,
+      "ms": 1583
+    },
+    {
+      "name": "insert_text",
+      "ok": true,
+      "skipped": false,
+      "ms": 268
+    },
+    {
+      "name": "find_text",
+      "ok": true,
+      "skipped": false,
+      "ms": 222
+    },
+    {
+      "name": "replace_text",
+      "ok": true,
+      "skipped": false,
+      "ms": 404
+    },
+    {
+      "name": "count_words",
+      "ok": true,
+      "skipped": false,
+      "ms": 306
+    },
+    {
+      "name": "read_document",
+      "ok": true,
+      "skipped": false,
+      "ms": 326
+    },
+    {
+      "name": "get_document_metadata",
+      "ok": true,
+      "skipped": false,
+      "ms": 467
+    },
+    {
+      "name": "get_document",
+      "ok": true,
+      "skipped": false,
+      "ms": 226
+    },
+    {
+      "name": "get_page_setup",
+      "ok": true,
+      "skipped": false,
+      "ms": 224
+    },
+    {
+      "name": "apply_format",
+      "ok": true,
+      "skipped": false,
+      "ms": 256
+    },
+    {
+      "name": "set_bold",
+      "ok": true,
+      "skipped": false,
+      "ms": 284
+    },
+    {
+      "name": "set_italic",
+      "ok": true,
+      "skipped": false,
+      "ms": 261
+    },
+    {
+      "name": "set_underline",
+      "ok": true,
+      "skipped": false,
+      "ms": 247
+    },
+    {
+      "name": "set_font_family",
+      "ok": true,
+      "skipped": false,
+      "ms": 272
+    },
+    {
+      "name": "set_font_size",
+      "ok": true,
+      "skipped": false,
+      "ms": 305
+    },
+    {
+      "name": "set_alignment_left",
+      "ok": true,
+      "skipped": false,
+      "ms": 310
+    },
+    {
+      "name": "set_alignment_center",
+      "ok": true,
+      "skipped": false,
+      "ms": 247
+    },
+    {
+      "name": "set_alignment_justified",
+      "ok": true,
+      "skipped": false,
+      "ms": 291
+    },
+    {
+      "name": "set_line_spacing",
+      "ok": true,
+      "skipped": false,
+      "ms": 264
+    },
+    {
+      "name": "append_bibliography",
+      "ok": true,
+      "skipped": false,
+      "ms": 246
+    },
+    {
+      "name": "create_table",
+      "ok": true,
+      "skipped": false,
+      "ms": 302
+    },
+    {
+      "name": "insert_table_of_contents",
+      "ok": true,
+      "skipped": false,
+      "ms": 503
+    },
+    {
+      "name": "create_header",
+      "ok": true,
+      "skipped": false,
+      "ms": 567
+    },
+    {
+      "name": "create_footer",
+      "ok": true,
+      "skipped": false,
+      "ms": 536
+    },
+    {
+      "name": "create_named_range",
+      "ok": true,
+      "skipped": false,
+      "ms": 263
+    },
+    {
+      "name": "list_documents",
+      "ok": true,
+      "skipped": false,
+      "ms": 1278
+    },
+    {
+      "name": "list_revisions",
+      "ok": true,
+      "skipped": false,
+      "ms": 424
+    },
+    {
+      "name": "list_permissions",
+      "ok": true,
+      "skipped": false,
+      "ms": 323
+    },
+    {
+      "name": "search_images",
+      "ok": true,
+      "skipped": false,
+      "ms": 788
+    },
+    {
+      "name": "format_academic_document",
+      "ok": true,
+      "skipped": false,
+      "ms": 1121
+    },
+    {
+      "name": "clear_formatting",
+      "ok": true,
+      "skipped": false,
+      "ms": 265
+    },
+    {
+      "name": "copy_content",
+      "ok": true,
+      "skipped": false,
+      "ms": 226
+    },
+    {
+      "name": "create_document_revision",
+      "ok": true,
+      "skipped": false,
+      "ms": 673
+    },
+    {
+      "name": "create_drive_comment",
+      "ok": true,
+      "skipped": false,
+      "ms": 430
+    },
+    {
+      "name": "create_footnote",
+      "ok": true,
+      "skipped": false,
+      "ms": 676
+    },
+    {
+      "name": "create_paragraph_bullets",
+      "ok": true,
+      "skipped": false,
+      "ms": 359
+    },
+    {
+      "name": "create_permission",
+      "ok": true,
+      "skipped": false,
+      "ms": 769
+    },
+    {
+      "name": "create_shortcut",
+      "ok": true,
+      "skipped": false,
+      "ms": 637
+    },
+    {
+      "name": "cut_content",
+      "ok": true,
+      "skipped": false,
+      "ms": 730
+    },
+    {
+      "name": "delete_document_permanently",
+      "ok": true,
+      "skipped": true,
+      "reason": "irreversible",
+      "ms": 0
+    },
+    {
+      "name": "delete_drive_comment",
+      "ok": true,
+      "skipped": false,
+      "ms": 344
+    },
+    {
+      "name": "delete_footer",
+      "ok": true,
+      "skipped": false,
+      "ms": 262
+    },
+    {
+      "name": "delete_header",
+      "ok": true,
+      "skipped": false,
+      "ms": 245
+    },
+    {
+      "name": "delete_named_range",
+      "ok": true,
+      "skipped": false,
+      "ms": 244
+    },
+    {
+      "name": "delete_paragraph_bullets",
+      "ok": true,
+      "skipped": false,
+      "ms": 311
+    },
+    {
+      "name": "delete_permission",
+      "ok": true,
+      "skipped": true,
+      "reason": "api/limitación conocida",
+      "ms": 0
+    },
+    {
+      "name": "delete_table_column",
+      "ok": true,
+      "skipped": false,
+      "ms": 242
+    },
+    {
+      "name": "delete_table_row",
+      "ok": true,
+      "skipped": false,
+      "ms": 244
+    },
+    {
+      "name": "delete_text",
+      "ok": false,
+      "skipped": false,
+      "ms": 1221,
+      "errorPreview": "{\n  \"content\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"No fue posible eliminar texto en '1-hO7cIkqYYbl1QDX7oU0Zm-wk2VeL-UbxGzh5mwYaDQ'. Invalid requests[0].deleteContentRange: Invalid deletion range. Cannot delete the requested range.\"\n    }\n  ],\n  \"isError\": true\n}"
+    },
+    {
+      "name": "duplicate_document",
+      "ok": true,
+      "skipped": false,
+      "ms": 2855
+    },
+    {
+      "name": "export_document",
+      "ok": true,
+      "skipped": false,
+      "ms": 1002
+    },
+    {
+      "name": "generate_academic_document",
+      "ok": true,
+      "skipped": false,
+      "ms": 5442
+    },
+    {
+      "name": "get_document_folder",
+      "ok": true,
+      "skipped": false,
+      "ms": 427
+    },
+    {
+      "name": "get_document_owners",
+      "ok": true,
+      "skipped": false,
+      "ms": 302
+    },
+    {
+      "name": "get_permission",
+      "ok": true,
+      "skipped": false,
+      "ms": 369
+    },
+    {
+      "name": "get_range_content",
+      "ok": true,
+      "skipped": false,
+      "ms": 267
+    },
+    {
+      "name": "get_revision",
+      "ok": true,
+      "skipped": false,
+      "ms": 359
+    },
+    {
+      "name": "insert_citation",
+      "ok": true,
+      "skipped": false,
+      "ms": 256
+    },
+    {
+      "name": "insert_date",
+      "ok": true,
+      "skipped": false,
+      "ms": 397
+    },
+    {
+      "name": "insert_diagram",
+      "ok": true,
+      "skipped": false,
+      "ms": 3726
+    },
+    {
+      "name": "insert_image",
+      "ok": true,
+      "skipped": false,
+      "ms": 586
+    },
+    {
+      "name": "insert_page_break",
+      "ok": true,
+      "skipped": false,
+      "ms": 709
+    },
+    {
+      "name": "insert_person",
+      "ok": true,
+      "skipped": false,
+      "ms": 268
+    },
+    {
+      "name": "insert_section_break",
+      "ok": true,
+      "skipped": false,
+      "ms": 293
+    },
+    {
+      "name": "insert_table_column",
+      "ok": true,
+      "skipped": false,
+      "ms": 269
+    },
+    {
+      "name": "insert_table_row",
+      "ok": true,
+      "skipped": false,
+      "ms": 253
+    },
+    {
+      "name": "keep_revision_forever",
+      "ok": true,
+      "skipped": false,
+      "ms": 639
+    },
+    {
+      "name": "list_drive_comments",
+      "ok": true,
+      "skipped": false,
+      "ms": 276
+    },
+    {
+      "name": "list_images",
+      "ok": true,
+      "skipped": false,
+      "ms": 280
+    },
+    {
+      "name": "list_named_ranges",
+      "ok": true,
+      "skipped": false,
+      "ms": 260
+    },
+    {
+      "name": "merge_table_cells",
+      "ok": true,
+      "skipped": false,
+      "ms": 250
+    },
+    {
+      "name": "move_content",
+      "ok": true,
+      "skipped": false,
+      "ms": 486
+    },
+    {
+      "name": "move_document",
+      "ok": true,
+      "skipped": true,
+      "reason": "api/limitación conocida",
+      "ms": 0
+    },
+    {
+      "name": "paste_content",
+      "ok": true,
+      "skipped": false,
+      "ms": 246
+    },
+    {
+      "name": "pin_table_header_rows",
+      "ok": true,
+      "skipped": false,
+      "ms": 453
+    },
+    {
+      "name": "rename_document",
+      "ok": true,
+      "skipped": false,
+      "ms": 806
+    },
+    {
+      "name": "repair_academic_document",
+      "ok": true,
+      "skipped": false,
+      "ms": 6719
+    },
+    {
+      "name": "replace_image",
+      "ok": false,
+      "skipped": false,
+      "ms": 7488,
+      "errorPreview": "{\n  \"content\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"No fue posible reemplazar la imagen 'missing'. Invalid requests[0].replaceImage: The object with ID missing could not be found.\"\n    }\n  ],\n  \"isError\": true\n}"
+    },
+    {
+      "name": "replace_named_range_content",
+      "ok": true,
+      "skipped": false,
+      "ms": 588
+    },
+    {
+      "name": "set_alignment_right",
+      "ok": true,
+      "skipped": false,
+      "ms": 276
+    },
+    {
+      "name": "set_background_color",
+      "ok": true,
+      "skipped": false,
+      "ms": 273
+    },
+    {
+      "name": "set_first_line_indent",
+      "ok": true,
+      "skipped": false,
+      "ms": 282
+    },
+    {
+      "name": "set_foreground_color",
+      "ok": true,
+      "skipped": false,
+      "ms": 273
+    },
+    {
+      "name": "set_indent_start",
+      "ok": true,
+      "skipped": false,
+      "ms": 304
+    },
+    {
+      "name": "set_link",
+      "ok": true,
+      "skipped": false,
+      "ms": 322
+    },
+    {
+      "name": "set_small_caps",
+      "ok": true,
+      "skipped": false,
+      "ms": 243
+    },
+    {
+      "name": "set_space_above",
+      "ok": true,
+      "skipped": false,
+      "ms": 848
+    },
+    {
+      "name": "set_space_below",
+      "ok": true,
+      "skipped": false,
+      "ms": 248
+    },
+    {
+      "name": "set_strikethrough",
+      "ok": true,
+      "skipped": false,
+      "ms": 243
+    },
+    {
+      "name": "set_subscript",
+      "ok": true,
+      "skipped": false,
+      "ms": 264
+    },
+    {
+      "name": "set_superscript",
+      "ok": true,
+      "skipped": false,
+      "ms": 251
+    },
+    {
+      "name": "star_document",
+      "ok": true,
+      "skipped": false,
+      "ms": 1617
+    },
+    {
+      "name": "unmerge_table_cells",
+      "ok": false,
+      "skipped": false,
+      "ms": 1225,
+      "errorPreview": "{\n  \"content\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"No fue posible desfusionar celdas en '1-hO7cIkqYYbl1QDX7oU0Zm-wk2VeL-UbxGzh5mwYaDQ'. Invalid requests[0].unmergeTableCells: Index 1475 must be less than the end index of the referenced segment, 1274.\"\n    }\n  ],\n  \"isError\": true\n}"
+    },
+    {
+      "name": "update_document_style",
+      "ok": true,
+      "skipped": false,
+      "ms": 261
+    },
+    {
+      "name": "update_permission",
+      "ok": true,
+      "skipped": true,
+      "reason": "api/limitación conocida",
+      "ms": 0
+    },
+    {
+      "name": "update_table_cell_style",
+      "ok": false,
+      "skipped": false,
+      "ms": 1223,
+      "errorPreview": "{\n  \"content\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"No fue posible estilizar celdas en '1-hO7cIkqYYbl1QDX7oU0Zm-wk2VeL-UbxGzh5mwYaDQ'. Invalid requests[0].updateTableCellStyle: Index 1475 must be less than the end index of the referenced segment, 1274.\"\n    }\n  ],\n  \"isError\": true\n}"
+    },
+    {
+      "name": "update_table_column_width",
+      "ok": false,
+      "skipped": false,
+      "ms": 1218,
+      "errorPreview": "{\n  \"content\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"No fue posible actualizar ancho de columna en '1-hO7cIkqYYbl1QDX7oU0Zm-wk2VeL-UbxGzh5mwYaDQ'. Invalid requests[0].updateTableColumnProperties: Index 1475 must be less than the end index of the referenced segment, 1274.\"\n    }\n  ],\n  \"isErro"
+    },
+    {
+      "name": "update_table_row_min_height",
+      "ok": false,
+      "skipped": false,
+      "ms": 1220,
+      "errorPreview": "{\n  \"content\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"No fue posible actualizar alto de fila en '1-hO7cIkqYYbl1QDX7oU0Zm-wk2VeL-UbxGzh5mwYaDQ'. Invalid requests[0].updateTableRowStyle: Index 1475 must be less than the end index of the referenced segment, 1274.\"\n    }\n  ],\n  \"isError\": true\n}"
+    },
+    {
+      "name": "list_trashed_documents",
+      "ok": true,
+      "skipped": false,
+      "ms": 555
+    },
+    {
+      "name": "trash_document",
+      "ok": true,
+      "skipped": false,
+      "ms": 552
+    },
+    {
+      "name": "restore_from_trash",
+      "ok": true,
+      "skipped": false,
+      "ms": 690
+    },
+    {
+      "name": "delete_document",
+      "ok": true,
+      "skipped": false,
+      "ms": 714
+    }
+  ]
+}
