@@ -49,6 +49,41 @@ function centerVis(s: string, width: number): string {
   return " ".repeat(left) + s + " ".repeat(width - w - left);
 }
 
+/** Envuelve texto plano al ancho (palabra a palabra). */
+function wrapPlain(text: string, width: number): string[] {
+  const w = Math.max(8, width);
+  const out: string[] = [];
+  for (const para of text.replace(/\r/g, "").split("\n")) {
+    if (!para.trim()) {
+      out.push("");
+      continue;
+    }
+    const words = para.split(/(\s+)/);
+    let line = "";
+    for (const part of words) {
+      if (!part) continue;
+      if (visibleWidth(line) + visibleWidth(part) <= w) {
+        line += part;
+        continue;
+      }
+      if (line.trim()) out.push(line.replace(/\s+$/, ""));
+      // palabra más larga que el ancho → cortar
+      if (visibleWidth(part) > w) {
+        let rest = part.trimStart();
+        while (visibleWidth(rest) > w) {
+          out.push(rest.slice(0, w));
+          rest = rest.slice(w);
+        }
+        line = rest;
+      } else {
+        line = part.trimStart();
+      }
+    }
+    if (line.trim() || line === "") out.push(line.replace(/\s+$/, ""));
+  }
+  return out.length ? out : [""];
+}
+
 export function hideCursor(): void {
   output.write("\x1b[?25l");
 }
@@ -336,23 +371,31 @@ export class OrquestaTui {
     );
 
     const chat: string[] = [];
+    const textW = Math.max(12, cols - 4); // margen + ┃
     for (const m of this.messages) {
       if (m.role === "user") {
-        chat.push(`${c.white}${m.text}${c.reset}`);
+        for (const l of wrapPlain(m.text, textW)) {
+          chat.push(`${c.white}${l}${c.reset}`);
+        }
         chat.push("");
       } else if (m.role === "assistant") {
-        for (const l of m.text.split("\n")) {
+        for (const l of wrapPlain(m.text, textW - 2)) {
           chat.push(`${c.green}┃${c.reset} ${c.white}${l}${c.reset}`);
         }
         chat.push("");
       } else if (m.role === "thought") {
         const arrow = this.thoughtExpanded ? "▾" : "▸";
-        chat.push(
-          `${c.green}${arrow} Thought · ${m.text}${c.reset}${c.muted}  (t + enter)${c.reset}`
-        );
+        const head = `${arrow} Thought · ${m.text}`;
+        const wrapped = wrapPlain(head, textW);
+        chat.push(`${c.green}${wrapped[0] || head}${c.reset}${c.muted}  (t)${c.reset}`);
+        for (let i = 1; i < wrapped.length; i++) {
+          chat.push(`${c.green}${wrapped[i]}${c.reset}`);
+        }
         if (this.thoughtExpanded) {
           for (const d of this.lastThoughtLines) {
-            chat.push(`${c.muted}  · ${d}${c.reset}`);
+            for (const l of wrapPlain(`· ${d}`, textW - 2)) {
+              chat.push(`${c.muted}  ${l}${c.reset}`);
+            }
           }
         }
         chat.push("");
