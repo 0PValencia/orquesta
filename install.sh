@@ -1,10 +1,21 @@
 #!/usr/bin/env bash
-# Instalador interactivo de skills Orquesta (ecosistema npx skills)
-# https://github.com/0PValencia/orquesta
+# Un solo comando (sin clonar):
+#   curl -fsSL https://raw.githubusercontent.com/0PValencia/orquesta/master/install.sh | bash
+#
+# Lee menús desde /dev/tty para que funcione con curl|bash.
 set -euo pipefail
 
 REPO="${ORQUESTA_SKILLS_REPO:-0PValencia/orquesta}"
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_URL="${ORQUESTA_SKILLS_URL:-https://github.com/${REPO}.git}"
+RAW_BASE="${ORQUESTA_SKILLS_RAW:-https://raw.githubusercontent.com/${REPO}/master}"
+
+# Si se ejecuta desde un clone local
+_SELF="${BASH_SOURCE[0]:-}"
+if [[ -n "$_SELF" && -f "$_SELF" ]]; then
+  SCRIPT_DIR="$(cd "$(dirname "$_SELF")" && pwd)"
+else
+  SCRIPT_DIR=""
+fi
 
 AGENTS=(
   "cursor|Cursor"
@@ -22,6 +33,20 @@ c_dim=$'\033[2m'
 c_green=$'\033[38;2;57;255;20m'
 c_muted=$'\033[38;2;120;160;120m'
 
+# Entrada del usuario aunque el script venga por pipe (curl | bash)
+TTY=/dev/tty
+if [[ ! -r "$TTY" ]]; then
+  TTY=/dev/stdin
+fi
+
+prompt_read() {
+  # usage: prompt_read VAR "texto "
+  local __var="$1" __msg="$2" __val=""
+  printf '%s' "$__msg" >"$TTY"
+  IFS= read -r __val <"$TTY" || true
+  printf -v "$__var" '%s' "$__val"
+}
+
 banner() {
   printf '%s\n' "${c_green}${c_bold}"
   cat <<'EOF'
@@ -32,18 +57,17 @@ banner() {
   \___/|_|  \__, |\__,_|\___||___/\__\__,_|
                |_|   skills
 EOF
-  printf '%s\n\n' "${c_reset}${c_muted}${REPO}${c_reset}"
+  printf '%s\n\n' "${c_reset}${c_muted}Instalador · ${REPO}${c_reset}"
 }
 
 ask_yn() {
   local prompt="$1" default="${2:-y}" ans hint="[Y/n]"
   [[ "$default" == "n" ]] && hint="[y/N]"
-  read -r -p "${prompt} ${hint} " ans || true
+  prompt_read ans "${prompt} ${hint} "
   ans="${ans:-$default}"
   [[ "$ans" =~ ^[YySs] ]]
 }
 
-# Rellena SELECTED_IDS con ids elegidos
 multi_select() {
   local title="$1"; shift
   local -a items=("$@")
@@ -56,7 +80,7 @@ multi_select() {
     i=$((i + 1))
   done
   local choice
-  read -r -p "> " choice || true
+  prompt_read choice "> "
   [[ -z "${choice:-}" ]] && return 1
   if [[ "$choice" =~ ^[Aa][Ll][Ll]$ ]]; then
     for it in "${items[@]}"; do SELECTED_IDS+=("${it%%|*}"); done
@@ -71,6 +95,37 @@ multi_select() {
   ((${#SELECTED_IDS[@]} > 0))
 }
 
+# Fuente para npx: siempre el repo remoto (no hace falta clonar)
+# Si hay clone local con skills/, se puede usar para desarrollo.
+skills_source() {
+  if [[ -n "${SCRIPT_DIR}" && -d "${SCRIPT_DIR}/skills/google-documents" ]]; then
+    printf '%s' "$SCRIPT_DIR"
+  else
+    printf '%s' "$REPO"
+  fi
+}
+
+ensure_local_skills() {
+  # Para fallback sin npx: clonar a temp
+  if [[ -n "${SCRIPT_DIR}" && -d "${SCRIPT_DIR}/skills/google-documents" ]]; then
+    LOCAL_SKILLS="$SCRIPT_DIR/skills"
+    return 0
+  fi
+  if [[ -n "${LOCAL_SKILLS:-}" && -d "${LOCAL_SKILLS}/google-documents" ]]; then
+    return 0
+  fi
+  echo "${c_muted}Clonando ${REPO} (temporal)…${c_reset}"
+  WORK_DIR="$(mktemp -d "${TMPDIR:-/tmp}/orquesta-skills.XXXXXX")"
+  cleanup_work() { rm -rf "$WORK_DIR"; }
+  trap cleanup_work EXIT
+  if ! git clone --depth 1 "$REPO_URL" "$WORK_DIR" 2>/dev/null; then
+    echo "No pude clonar $REPO_URL. ¿Hay git y red?" >&2
+    exit 1
+  fi
+  LOCAL_SKILLS="$WORK_DIR/skills"
+  SCRIPT_DIR="$WORK_DIR"
+}
+
 install_skills_cli() {
   local -a args=()
   [[ "$SCOPE" == "global" ]] && args+=(-g)
@@ -78,8 +133,8 @@ install_skills_cli() {
   for s in "${SELECTED_SKILLS[@]}"; do args+=(-s "$s"); done
   for a in "${SELECTED_AGENTS[@]}"; do args+=(-a "$a"); done
 
-  local source="$REPO"
-  [[ -d "$SCRIPT_DIR/skills/google-documents" ]] && source="$SCRIPT_DIR"
+  local source
+  source="$(skills_source)"
 
   echo
   echo "${c_green}→ npx skills add ${source} ${args[*]} -y --copy${c_reset}"
@@ -117,10 +172,11 @@ copy_manual() {
       ;;
   esac
 
+  ensure_local_skills
   mkdir -p "$dest_root"
   local s
   for s in "${SELECTED_SKILLS[@]}"; do
-    local src="$SCRIPT_DIR/skills/$s"
+    local src="${LOCAL_SKILLS}/$s"
     [[ -d "$src" ]] || { echo "Falta $src" >&2; continue; }
     rm -rf "${dest_root:?}/$s"
     cp -a "$src" "$dest_root/$s"
@@ -128,23 +184,33 @@ copy_manual() {
   done
 }
 
+mirror_cursor() {
+  printf '%s\n' "${SELECTED_AGENTS[@]}" | grep -qx cursor || return 0
+  mkdir -p "${HOME}/.cursor/skills"
+  local s
+  for s in "${SELECTED_SKILLS[@]}"; do
+    if [[ -d "${HOME}/.agents/skills/$s" ]]; then
+      rm -rf "${HOME}/.cursor/skills/$s"
+      cp -a "${HOME}/.agents/skills/$s" "${HOME}/.cursor/skills/$s"
+    fi
+  done
+}
+
 usage() {
   cat <<EOF
-Uso: ./install.sh [opciones]
+Instalar skills Orquesta (interactivo, sin clonar):
 
-  -g, --global     Alcance global (usuario)
-  --project        Alcance proyecto actual
-  -s NAME          Skill: google-documents | informe-angelica
-  -a AGENT         cursor | claude-code | opencode | codex | windsurf | …
-  -y               Sin prompts
+  curl -fsSL ${RAW_BASE}/install.sh | bash
 
-Interactivo (sin flags):
-  1) global o proyecto
-  2) qué skills
-  3) a qué agentes/entornos
+Opciones:
+  -g, --global     Alcance global
+  --project        Proyecto actual
+  -s NAME          google-documents | informe-angelica
+  -a AGENT         cursor | claude-code | opencode | …
+  -y               Sin preguntas
 
-Equivalente ecosystem:
-  npx skills add 0PValencia/orquesta -g -a cursor -a opencode
+También:
+  npx skills add ${REPO} -g -a cursor -y --copy
 EOF
 }
 
@@ -153,6 +219,8 @@ main() {
   SELECTED_SKILLS=()
   SELECTED_AGENTS=()
   NONINTERACTIVE=0
+  LOCAL_SKILLS=""
+  WORK_DIR=""
 
   while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -170,19 +238,19 @@ main() {
 
   if [[ "$NONINTERACTIVE" -eq 0 ]]; then
     echo "${c_bold}1) ¿Dónde instalar?${c_reset}"
-    echo "  1) Global  (~/.cursor/skills, ~/.config/opencode/skills, …)"
-    echo "  2) Proyecto actual  ($(pwd)/…)"
+    echo "  1) Global  (recomendado — todos tus proyectos)"
+    echo "  2) Solo este proyecto  ($(pwd))"
     local sc
-    read -r -p "> " sc || true
+    prompt_read sc "> "
     [[ "${sc:-1}" == "2" ]] && SCOPE="project" || SCOPE="global"
     echo
 
     echo "${c_bold}2) ¿Qué skills?${c_reset}"
-    echo "  1) google-documents"
-    echo "  2) informe-angelica"
+    echo "  1) google-documents   (MCP Google Docs)"
+    echo "  2) informe-angelica   (informes SI I / Angélica)"
     echo "  3) Ambas"
     local sk
-    read -r -p "> " sk || true
+    prompt_read sk "> "
     case "${sk:-3}" in
       1) SELECTED_SKILLS=(google-documents) ;;
       2) SELECTED_SKILLS=(informe-angelica) ;;
@@ -190,7 +258,7 @@ main() {
     esac
     echo
 
-    multi_select "3) ¿En qué entornos?" "${AGENTS[@]}" || {
+    multi_select "3) ¿En qué entornos / agentes?" "${AGENTS[@]}" || {
       echo "Cancelado."; exit 1
     }
     SELECTED_AGENTS=("${SELECTED_IDS[@]}")
@@ -207,37 +275,31 @@ main() {
   echo "  Agentes: ${SELECTED_AGENTS[*]}"
   echo
   if [[ "$NONINTERACTIVE" -eq 0 ]]; then
-    ask_yn "¿Instalar?" y || { echo "Cancelado."; exit 1; }
+    ask_yn "¿Instalar ahora?" y || { echo "Cancelado."; exit 1; }
   fi
 
-  if command -v npx >/dev/null 2>&1; then
-    if install_skills_cli; then
-      # Cursor a veces resuelve desde ~/.cursor/skills además de ~/.agents/skills
-      if printf '%s\n' "${SELECTED_AGENTS[@]}" | grep -qx cursor; then
-        mkdir -p "${HOME}/.cursor/skills"
-        for s in "${SELECTED_SKILLS[@]}"; do
-          if [[ -d "${HOME}/.agents/skills/$s" ]]; then
-            rm -rf "${HOME}/.cursor/skills/$s"
-            cp -a "${HOME}/.agents/skills/$s" "${HOME}/.cursor/skills/$s"
-          elif [[ -d "$SCRIPT_DIR/skills/$s" ]]; then
-            rm -rf "${HOME}/.cursor/skills/$s"
-            cp -a "$SCRIPT_DIR/skills/$s" "${HOME}/.cursor/skills/$s"
-          fi
-        done
-      fi
-      echo
-      echo "${c_green}${c_bold}✓ Instalado con npx skills${c_reset}"
-      exit 0
-    fi
-    echo "${c_muted}Fallback: copia manual…${c_reset}"
-  else
-    echo "${c_muted}Sin npx → copia manual…${c_reset}"
+  if ! command -v npx >/dev/null 2>&1; then
+    echo "Necesitás Node.js (npx). Instalalo y volvé a correr el mismo comando." >&2
+    echo "  https://nodejs.org/" >&2
+    # Igual intentamos copia vía git clone
+    echo "${c_muted}Intentando instalación manual con git…${c_reset}"
+    for a in "${SELECTED_AGENTS[@]}"; do copy_manual "$a"; done
+    mirror_cursor
+    echo "${c_green}${c_bold}✓ Listo${c_reset}"
+    exit 0
   fi
 
-  local a
-  for a in "${SELECTED_AGENTS[@]}"; do
-    copy_manual "$a"
-  done
+  if install_skills_cli; then
+    mirror_cursor
+    echo
+    echo "${c_green}${c_bold}✓ Skills instaladas${c_reset}"
+    echo "${c_muted}Reiniciá el agente (Cursor/OpenCode/…) para que las tome.${c_reset}"
+    exit 0
+  fi
+
+  echo "${c_muted}npx skills falló → copia manual…${c_reset}"
+  for a in "${SELECTED_AGENTS[@]}"; do copy_manual "$a"; done
+  mirror_cursor
   echo
   echo "${c_green}${c_bold}✓ Listo${c_reset}"
 }
