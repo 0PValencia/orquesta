@@ -1,38 +1,34 @@
 # Orquesta — Agent Skills
 
-Skills para Cursor, OpenCode, Claude Code, Codex y más:
-
 | Skill | Para qué |
 |-------|----------|
 | [`google-documents`](skills/google-documents/) | MCP Google Docs |
 | [`informe-angelica`](skills/informe-angelica/) | Informes SI I / Angélica (UAGRM) |
 
-## Instalacion
+## Instalar (un comando)
+
+### Linux / macOS / WSL / Git Bash
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/0PValencia/orquesta/master/install.sh | bash
 ```
 
-El instalador te pregunta:
+### Windows (PowerShell)
 
-1. **Global** o solo este proyecto  
-2. Qué skills  
-3. En qué entornos (Cursor, OpenCode, Claude Code, …)
-
-Requisito: [Node.js](https://nodejs.org/) (`npx`).
-
-### Ecosistema skills.sh
-
-```bash
-npx skills add 0PValencia/orquesta
-npx skills add 0PValencia/orquesta -g -a cursor -a opencode -y --copy
+```powershell
+irm https://raw.githubusercontent.com/0PValencia/orquesta/master/install.ps1 | iex
 ```
+
+Requisito en todos los SO: [Node.js LTS](https://nodejs.org/).
+
+El instalador pregunta:
+
+1. Global o solo este proyecto  
+2. Qué skills  
+3. En qué agentes (Cursor, OpenCode, Claude Code, …) — **multi-selección**
 
 ## Uso
 
-Pedí la tarea en el agente (Docs / informe SI I) o nombrá la skill.
-Para un informe **en** Google Docs: usá **ambas**.
+Pedí la tarea en el agente o nombrá la skill. Informe **en** Docs → ambas skills.
 
-## Repo
-
-[github.com/0PValencia/orquesta](https://github.com/0PValencia/orquesta)
+Repo: [github.com/0PValencia/orquesta](https://github.com/0PValencia/orquesta)
