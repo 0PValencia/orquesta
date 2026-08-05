@@ -1,58 +1,52 @@
-# Estructura detallada — Informe Angélica
+# Estructura y presupuestos — Angélica
 
-## Perfil (longitudes guía)
+## Orden canónico
 
-| Sección | Líneas (aprox.) | Notas |
-|---------|-----------------|-------|
-| Introducción | 30–70 | Contexto SI + dominio |
-| Antecedentes | 20–40 | Estado del arte / previos |
-| Justificación | 20–40 | Por qué importa |
-| Descripción del problema | 60–160 | Por áreas; consecuencias |
-| Formulación | 5–15 | Pregunta(s) de investigación |
-| Objetivos | 20–40 | General + específicos |
-| Alcance | 100–500 | Módulos funcionales (muy extenso) |
-| Entrevista | variable | Objetivo, lugar, empresa, roles |
+Ver `SKILL.md` (alineado a proyecto2 / proyecto3 / Grupo C0503).  
+No reordenar bloques mayores sin pedido explícito.
 
-## Elementos del sistema
+Numeración puede variar (`1.- PERFIL` vs `PERFIL.`); lo crítico es el **orden**
+y que cada bloque mayor sea `HEADING_1` con H2/H3 debajo.
 
-- **Hardware**: servidor, cliente, medios, otros
-- **Software**: servidor, cliente, adicional
-- **Datos / Procesos / Gente / Documentos de respaldo**
+## Longitudes guía (perfil)
 
-Ser específicos al dominio (no genéricos vacíos).
+| Sección | Extensión útil | Formato |
+|---------|----------------|---------|
+| Introducción | 1–2 páginas | prosa corta + contexto |
+| Antecedentes | 1 página | prosa (+ misión/visión si org. educativa) |
+| Justificación | 1 página | 3 dimensiones |
+| Descripción del problema | 2–3 páginas | **por área + tabla resumen** |
+| Formulación | ½ página | preguntas |
+| Objetivos | ½–1 página | listas GO/OE |
+| Alcance | 2–4 páginas | **tabla de módulos/subsistemas** |
+| Entrevista | 1–2 páginas | plantilla fija / anexo |
 
-## Tecnología
+## Capítulos técnicos (ejemplos)
 
-- Estrategia de desarrollo
-- Metodología: **PUDS** + **UML** (características aplicadas al caso)
-- Herramientas software/hardware concretas
+Tras perfil suelen ir, en este espíritu:
 
-## Capítulos técnicos
+1. Elementos del sistema (HW/SW/…) — **tablas**  
+2. Tecnología (PUDS/UML/herramientas)  
+3. Costos / beneficios / clientes — **tablas**  
+4. Diseño de datos / modelo de dominio — **figuras + tablas**  
+5. Modelo de negocio  
+6. Ishikawa — **diagrama**  
+7. Captura de requisitos (actores, CU) — **tablas + diagrama CU**  
+8. Análisis / diseño UML — **varios diagramas**  
+9. Implementación (pantallas) — **muchas imágenes**  
+10. Conclusiones · recomendaciones · bibliografía · anexos  
 
-### 1 · Ishikawa
-Lista de problemas → depurar → propietarios → análisis → cuantificación →
-alternativas → conclusión → diagrama (categorías y causas).
+## Capítulos técnicos — regla de oro
 
-### 2 · Requisitos
-Actores, casos de uso, priorización, detalle, prototipo UI, modelo CU.
+No sustituir diagramas por “se realizó un diagrama de…”.  
+Si no se puede insertar aún: heading + `[Pendiente: Figura X — …]` y avisar.
 
-### 3 · Análisis
-Paquetes, relación con CU, comunicación, análisis de clase/paquete.
+## Informe corto (4–10 páginas)
 
-### 4 · Diseño
-Despliegue, capas, datos lógico/físico (clases, mapeo, normalización, SQL,
-volumen, triggers), secuencias.
+Portada + índice + perfil condensado + elementos + costos/beneficios en tablas
++ Ishikawa (diagrama) + conclusiones. No fingir informe de 100 páginas.
 
-### 5 · Implementación
-Plataforma, lenguajes, frameworks, BD, nube, arquitectura.
+## Informe completo
 
-### 6 · Pruebas
-Plan + casos de prueba.
-
-## Cierre
-
-Conclusiones, recomendaciones, bibliografía, anexos (entrevistas, diagramas).
-
-## Numeración
-
-Decimal: `1`, `1.1`, `1.1.1`. Índice hasta nivel 3.
+Seguir partes P0–P5 del SKILL. Un capítulo mayor por ciclo de tools.  
+Cumplir cuotas de [benchmarks-ejemplos.md](benchmarks-ejemplos.md).

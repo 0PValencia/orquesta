@@ -1,61 +1,55 @@
-# Plantillas — Portada y entrevista
+# Plantillas — intake y portada
 
-## Portada (texto)
+## Pregunta de modo (copiar idea)
+
+```text
+¿Cómo querés avanzar?
+1) Por partes (recomendado): carátula + índice + perfil, validás, seguimos
+2) Informe completo (igual se escribe por bloques internos)
+```
+
+## Checklist de requisitos (no inventar)
+
+- [ ] Título del sistema  
+- [ ] Integrantes + códigos  
+- [ ] Grupo  
+- [ ] Docente  
+- [ ] Gestión  
+- [ ] Organización / dominio  
+- [ ] Logo (sí/no + fuente)  
+- [ ] Color institucional (sí/no)  
+- [ ] ¿Entrevista?  
+- [ ] ¿Docs o solo chat?  
+
+## Portada (texto base — estilo ejemplos)
 
 ```text
 UNIVERSIDAD AUTÓNOMA GABRIEL RENÉ MORENO
-FACULTAD DE INGENIERÍA EN CIENCIAS DE LA COMPUTACIÓN Y
-TELECOMUNICACIONES
 
-GRUPO #[N]
+GRUPO “[N]”
 
-[TÍTULO DEL SISTEMA DE INFORMACIÓN]
+[TÍTULO DEL SISTEMA DE INFORMACIÓN …]
+[“NOMBRE CORTO”]          ← opcional
 
 Integrantes:
-- [Nombre Completo] [Código]
-- …
+[Nombre] — [Código]
+…
 
 Materia: Sistemas de Información I
 Sigla: INF 342
-Docente: MSc. Ing. [Nombre]
+Docente: [Nombre exacto]
+Semestre / Gestión: [Periodo]
 
-Santa Cruz de la Sierra, Gestión [Periodo]
+Santa Cruz – Bolivia
 ```
 
-Completar con datos del usuario; no inventar códigos ni docente.
-
-## Entrevista (1.8 / perfil)
+## Entrevista
 
 ```text
-Objetivo de la entrevista:
-Número:
-Lugar:
-Duración:
-
-Empresa:
-  Nombre:
-  Tipo: (privada / estatal)
-
-Entrevistado:
-  Nombre:
-  Cargo:
-
+Objetivo:
+Número / Lugar / Duración:
+Empresa (nombre, tipo):
+Entrevistado (nombre, cargo):
 Entrevistador:
-  Nombre:
-  Rol:
-
 Preguntas y respuestas: …
-```
-
-## Objetivo general (esqueleto)
-
-```text
-[Verbo en infinitivo] un sistema de información para [organización/dominio]
-que permita [beneficio principal medible], mediante [enfoque/tecnología].
-```
-
-## Objetivo específico (esqueleto)
-
-```text
-- [Verbo] [qué] en [ámbito], con el fin de [resultado].
 ```

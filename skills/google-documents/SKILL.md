@@ -33,24 +33,26 @@ equivalente). Objetivo: Docs reales, bien formateados, sin alucinaciones de
 ## Flujo canónico (informe en Docs)
 
 ```text
-1. (Opcional) search / fetch → fuentes reales
-2. create_document(title)  → guardar documentId + URL
-3. create_academic_structure  O  generate_academic_document (solo andamiaje)
-4. Por sección:
-   get_document_structure → insert_text / append_text (párrafos densos, sin #)
-5. get_document_structure → apply_heading (solo renglón del título, ≤120 chars)
-6. append_bibliography(entries[]) con URLs reales
-7. insert_table_of_contents (si aplica)
-8. format_academic_document / repair_academic_document
-9. read_document + count_words → verificar
-10. create_document_revision + get_document_metadata → entregar enlace
+1. Intake / requisitos (si es informe Angélica → skill informe-angelica)
+2. create_document → documentId + URL
+3. Carátula (centrado, color, logo) + salto de página
+4. create_academic_structure O headings H1/H2 reales
+5. insert_table_of_contents  ← índice REAL (nunca lista manual)
+6. format_academic_document (APA 7)
+7. Por sección (un bloque por ciclo):
+   get_document_structure → insert/append (sin #) → apply_heading H2/H3
+   → create_table / insert_diagram / search_images+insert_image
+8. append_bibliography
+9. insert_table_of_contents (regenerar) + repair_academic_document
+10. read_document + count_words + get_document_metadata → enlace
 ```
 
 ### Densidad mínima (informes)
 
-- Preferir **varias** escrituras por sección (≥3 párrafos densos).
-- Evitar un único `append_text` gigante que destroza la estructura.
-- Tras escribir: verificar `headings` no vacíos y sin `#` literal en títulos.
+- Preferir **varias** escrituras por sección; evitar un `append_text` gigante.
+- Cada ~400–600 palabras: subtítulo, lista, **tabla** o **figura**.
+- Verificar headings con jerarquía (no todo en HEADING_1).
+- Índice solo con `insert_table_of_contents`.
 
 ## Tools por categoría
 

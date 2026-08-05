@@ -4,40 +4,38 @@
 
 - Español latinoamericano (Bolivia / académico UAGRM)
 - Tercera persona (`El presente informe…`, `Se plantea…`)
-- Presente para descripción; pasado solo en antecedentes puntuales
-- Formal: evitar “vamos a”, emojis, relleno de chatbot
+- Formal: sin emojis, sin “vamos a”, sin relleno de chatbot
+
+## Párrafos (anti “demasiada letra”)
+
+- Máximo ~6–8 líneas por párrafo
+- Una idea principal por párrafo
+- Datos enumerables → **lista o tabla**, no prosa
+- Evitar triple explicación de lo mismo
 
 ## Títulos
 
-- Claros, nominales o con numeración decimal
-- **Sin** markdown `#` si el destino es Google Docs
-- En chat, títulos en negrita o línea propia está bien
+- Numeración decimal en el texto del heading: `3.1 Introducción`
+- Sin markdown `#`
+- En Docs: estilo real HEADING_1/2/3
 
-## Párrafos
+## Objetivos
 
-- Densos: 4–8 oraciones cuando la sección lo pide
-- Evitar listas de una sola palabra donde corresponde prosa
-- Hechos del dominio concretos (actores, procesos, dolores)
-
-## Objetivos — verbos útiles
-
-Analizar, Diseñar, Desarrollar, Implementar, Evaluar, Identificar,
-Documentar, Modelar, Validar, Optimizar.
+- General: 1–2 oraciones, infinitivo
+- Específicos: 4–10 ítems medibles, infinitivo
 
 ## Anti-patrones
 
 | Evitar | Preferir |
 |--------|----------|
+| Monólogo de 2 páginas | Subtítulos + tabla |
 | “En este ensayo voy a…” | “El presente informe aborda…” |
-| Objetivos vagos (“mejorar todo”) | Objetivos medibles |
-| Alcance de 5 líneas | Módulos y límites explícitos |
-| Inventar cifras de costos | Estimaciones razonadas o “pendiente de cotización” |
-| Copiar plantilla sin adaptar | Anclar al dominio del usuario |
-| Mezclar vos/tú/nosotros | Tercera persona estable |
+| Objetivos vagos | Verbos medibles |
+| Inventar cifras | Tabla con “pendiente de cotización” |
+| UML descrito solo en palabras | Diagrama + 1 párrafo |
 
-## Calidad mínima por entrega parcial
+## Checklist de prosa por sección
 
-- [ ] Secciones pedidas presentes
-- [ ] Coherencia de nombres (sistema, actores, módulos)
-- [ ] Objetivos alineados a formulación del problema
-- [ ] Sin contradicciones hardware/software entre secciones
+- [ ] ¿Se puede escanear en 10 s (subtítulos visibles)?  
+- [ ] ¿Hay al menos un elemento no-prosa (lista/tabla/figura)?  
+- [ ] ¿Los nombres del sistema/actores son consistentes?
